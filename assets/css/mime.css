@@ -1,0 +1,61 @@
+.mimeIcon {
+	background:url('../img/icons.png') no-repeat 0 -87px;
+}
+
+
+.mimeXLS,
+.mimeODS {
+	background-position: 0 -328px;
+}
+
+.mimePDF {
+	background-position: 0 -118px;
+}
+
+.mimeDOC,
+.mimeODT,
+.mimeDOCX {
+	background-position: 0 -388px;
+}
+
+.mimeT3X {
+	background-position: 0 -418px;
+}
+
+.mimePHP {
+	background-position: 0 -358px;
+}
+
+.mimePNG,
+.mimeJPG,
+.mimeGIF  {
+	background-position: 0 -448px;
+}
+
+.mimeHTML,
+.mimeHTM,
+.mimeTMPL {
+	background-position: 0 -478px;
+}
+
+.mimeXML {
+	background-position: 0 -508px;
+}
+
+.mimeJS {
+	background-position: 0 -538px;
+}
+
+.mimeCSS {
+	background-position: 0 -568px;
+}
+
+.mimePPT,
+.mimePPS {
+	background-position: 0 -598px;
+}
+
+.mimeZIP,
+.mimeTAR {
+	background-position: 0 -148px;
+}

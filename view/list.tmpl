@@ -1,0 +1,40 @@
+<div id="task-{$idTask}-assets-list" class="tabBlock overflow assetList">
+	<table id="task-{$idTask}-assettable" class="asset-table" width="100%">
+		<thead>
+			<tr class="assets-table-header">
+				<th class="assets-table-col-checkbox checkbox"><input type="checkbox" id="task-{$idTask}-assets-checkallbox" onchange="Todoyu.Ext.assets.List.selectAll({$idTask})" title="{Label assets.alt.selectall}"/></th>
+				<th class="assets-table-col-mime">&nbsp;</th>
+				<th class="assets-table-col-filename">{Label assets.list.header.filename}</th>
+				<th class="assets-table-col-filesize">{Label assets.list.header.filesize}</th>
+				<th class="assets-table-col-uploaddate" colspan="2">{Label assets.list.header.uploaddate}</th>
+			</tr>
+		</thead>
+		<tbody id="task-{$idTask}-assets-tablebody">
+{foreach $assets key asset assetlist}
+			<tr id="asset-{$asset.id}" onmouseover="Todoyu.Ext.assets.List.hover({$asset.id})" onmouseout="Todoyu.Ext.assets.List.hover({$asset.id})" onclick="Todoyu.Ext.assets.List.select({$asset.id})" class="{cycle values="odd,even"}">
+				<td class="checkbox">
+					<input type="checkbox" id="asset-{$asset.id}-checkbox" value="{$asset.id}" onclick="this.checked=!this.checked" />
+				</td>
+				<td class="mimetype mimeIcon mime{strtoupper $asset.file_ext}" >
+				</td>
+				<td class="filename">
+					<a onclick="Todoyu.Ext.assets.download({$asset.id})" href="javascript:void(0)" title="{Label assets.alt.download}">
+						{$asset.file_name}
+					</a>
+				</td>
+				<td class="filesize">
+					{filesize $asset.file_size}
+				</td>
+				<td class="uploaddate">
+					<span title="{Label assets.alt.uploadedby} {UserName $asset.id_user_create}">{date_format $asset.date_create "%d.%m.%y %R"}</span>
+				</td>
+				<td class="actions">
+					<a id="asset-{$asset.id}-icon-public" onclick="Todoyu.Ext.assets.toggleVisibility({$asset.id})" href="javascript:void(0)" title="{Label assets.alt.changeVisibility}" class="asset-icon-public {if !$asset.is_public}not{/if}"><span class="hidden">{Label assets.alt.changeVisibility}</span></a>
+					<a id="asset-{$asset.id}-icon-download" onclick="Todoyu.Ext.assets.download({$asset.id})" href="javascript:void(0)" title="{Label assets.alt.download}" class="asset-icon-download"><span class="hidden">{Label assets.alt.download}</span></a>
+					<a id="asset-{$asset.id}-icon-delete" onclick="Todoyu.Ext.assets.remove({$asset.id})" href="javascript:void(0)" title="{Label assets.alt.delete}" class="asset-icon-delete"><span class="hidden">{Label assets.alt.delete}</span></a>
+				</td>
+			</tr>
+{/foreach}
+		</tbody>
+	</table>
+</div>

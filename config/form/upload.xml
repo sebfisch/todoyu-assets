@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<attributes>
+		<attribute name="action">?ext=assets&amp;controller=upload</attribute>
+		<attribute name="name">asset</attribute>
+		<attribute name="onsubmit">return false;</attribute>
+		<attribute name="enctype">multipart/form-data</attribute>
+		<attribute name="method">POST</attribute>
+	</attributes>
+	<hiddenFields>
+		<field name="id_task" />
+	</hiddenFields>
+	<fieldsets>
+		<fieldset name="main">
+			<legend>Left form column</legend>
+			<class>main</class>
+			<elements>
+				<field type="upload" name="file">
+					<label>LLL:assets.upload.selectfile</label>
+					<onchange>Todoyu.Ext.assets.Upload.onChange(#id_task#);</onchange>
+				</field>
+			</elements>
+		</fieldset>
+	</fieldsets>
+</form>

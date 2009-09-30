@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locallang>
+	<labels lang="en">
+		<label index="tab.noAssets">Add first asset</label>
+		<label index="tab.asset">asset</label>
+		<label index="tab.assets">assets</label>
+		<label index="tab.toggle">assets on/off</label>
+		<label index="filesize.gb">GB</label>
+		<label index="filesize.mb">MB</label>
+		<label index="filesize.kb">KB</label>
+		<label index="filesize.b">B</label>
+		<label index="list.header.filename">Filename</label>
+		<label index="list.header.filesize">Filesize</label>
+		<label index="list.header.uploaddate">Uploaddate</label>
+		<label index="alt.download">Download file</label>
+		<label index="alt.uploadedby">Uploaded by</label>
+		<label index="alt.delete">Delete file</label>
+		<label index="alt.changeVisibility">Change visibility for customer</label>
+		<label index="alt.selectall">Select all/none files</label>
+		<label index="upload.selectfile">Select a file to upload</label>
+		<label index="confirm.delete">Do you really want to delete this file?</label>
+		<label index="upload.new">Add new file</label>
+		<label index="download.selection">Download selection</label>
+	</labels>
+	<labels lang="de">
+		<label index="tab.noAssets">Erste Datei hochladen</label>
+		<label index="tab.asset">Datei</label>
+		<label index="tab.assets">Dateien</label>
+		<label index="tab.toggle">Dateien ein/ausklappen</label>
+		<label index="filesize.gb">GB</label>
+		<label index="filesize.mb">MB</label>
+		<label index="filesize.kb">KB</label>
+		<label index="filesize.b">B</label>
+		<label index="list.header.filename">Name</label>
+		<label index="list.header.filesize">Grösse</label>
+		<label index="list.header.uploaddate">hochgeladen am</label>
+		<label index="alt.download">Datei herunterladen</label>
+		<label index="alt.uploadedby">Hochgeladen von</label>
+		<label index="alt.delete">Datei löschen</label>
+		<label index="alt.changeVisibility">Sichtbarkeit für Kunde ändern</label>
+		<label index="alt.selectall">Alle Auswählen/Keine Auswählen</label>
+		<label index="upload.selectfile">Datei wählen zum Hochladen</label>
+		<label index="confirm.delete">Wollen Sie diese Datei wirklich löschen?</label>
+		<label index="upload.new">Neue Datei hochladen</label>
+		<label index="download.selection">Auswahl herunterladen</label>
+	</labels>
+</locallang>

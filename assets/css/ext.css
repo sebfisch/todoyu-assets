@@ -1,0 +1,181 @@
+.assetForm form fieldset div {
+	background:transparent;
+}
+
+.assetList .assets-table-header {
+	background: #E5E8DA url(../../../../core/assets/img/bg_tab_header.png) repeat-x 0 top;
+}
+
+.assetList th {
+	padding: 5px 0px;
+	text-transform:uppercase;
+}
+
+.assetList td {
+	padding: 3px 0px;
+}
+
+.assetList .checkbox {
+	padding-left:5px;
+	width:20px;
+}
+
+.assetList .mimetype {
+	width:20px;
+}
+
+.assetList .filename {
+	width:300px;
+}
+
+.assetList .filesize {
+	width:60px;
+}
+
+.assetList .uploaddate {
+	width:80px;
+}
+
+.assetList .actions {
+	width:60px;
+}
+
+.assetList .actions a {
+	background-image:url(../img/icons.png);
+	width:16px;
+	height:16px;
+	display:block;
+	float:left;
+	clear:none;
+	margin-right:3px;
+}
+
+.assetList .asset-icon-download {
+	background-position:0px -30px;
+}
+
+.assetList .asset-icon-delete {
+	background-position:0px 0px;
+}
+
+.assetList .asset-icon-public {
+	background-position:0px -60px;
+}
+
+.assetList .asset-icon-public.not {
+	background-position:0px -630px;
+}
+
+/* Background colors of the rows in the list */
+.assetList tr.odd td {
+	background-color:#FFFFFF;
+}
+
+.assetList tr.even td {
+	background-color:#EFF1E8;
+}
+
+.assetList tr.hover td {
+	background-color:#E3EACE;
+}
+
+.assetList tr.selected td {
+	background-color:#D3DABB;
+}
+
+/* asset box*/
+th.assetsFilelistHeaderFilenames {
+	width:50%;
+}
+#taskList .activeTabContent .assetBox .assetsUploader .assetsULfile label {
+	margin-left: 10px;
+}
+
+#taskList .activeTabContent .assetBox .assetsUploader input.button {
+	margin-top: 5px;
+}
+
+#taskList .activeTabContent .assetBox table.assFilelistHeaderTablPortal,
+#taskList .activeTabContent .assetBox table.assFilelistHeaderTablNonPortal {
+	width: 616px;
+	margin: -5px -5px 0;
+	table-layout: fixed;
+}
+
+.assetFilesList {
+	margin-top:-4px !important;
+}
+
+.expanded #taskList .activeTabContent .assetBox table.assFilelistHeaderTablPortal,
+.expanded #taskList .activeTabContent .assetBox table.assFilelistHeaderTablNonPortal { width: 895px; }
+
+#taskList .activeTabContent .assetBox tr.assetsFilelistHeaderSFP {
+	position: relative;
+	background: #f7f9fa url(../../img/content/hr_hor.png) repeat-x 0 bottom;
+}
+
+#taskList .activeTabContent .assetBox tr.assetsFilelistHeaderSFP th {
+	padding: 5px;
+}
+
+#taskList .activeTabContent .assetBox tr.assetsFilelistHeaderSFP th.assetsFilelistTHfullSel {
+	width: 60px;
+	text-align: center;
+}
+
+#taskList .activeTabContent .assetBox tr.assetsFilelistHeaderSFP th.assetsFilelistHeaderFilensizes {
+	width: 70px;
+}
+
+
+#taskList .activeTabContent .assetBox tr.assetsFilelistHeaderSFP th.assetsFilelistHeaderDates {
+	width: 100px;
+}
+
+#taskList .activeTabContent .assetBox td {
+	padding: 3px 5px 0;
+}
+
+#taskList .activeTabContent .assetBox td.assetsFileListEntryTD a {
+	display: block;
+	float: left;
+	width: 20px;
+	margin: 2px 0 0 3px;
+}
+
+span.customerinvisible_icon,
+span.customervisible_icon	{
+	position: relative;
+	height: 10px;
+	width: 12px;
+	padding: 6px 6px;
+	left: 4px;
+	top: 4px;
+}
+
+span.customervisible_icon {
+	background: url(../../img/sprite-icons.png) no-repeat 0px -1366px !important;
+}
+
+span.customerinvisible_icon {
+	background: url(../../img/sprite-icons.png) no-repeat 0px -1390px !important;
+}
+
+#taskList .activeTabContent .assetBox td.assetsFileListEntryTD span.customerinvisible_icon,
+#taskList .activeTabContent .assetBox td.assetsFileListEntryTD span.customervisible_icon {
+	left: 0px;
+}
+
+#taskList .activeTabContent .assetBox td.assetsFileListEntryTD a img {
+	position: static;
+}
+
+#taskList .activeTabContent .assetBox td.assetsFileListEntryTD input.assetsSel {
+	position: relative;
+	top: -5px;
+}
+
+#taskList .activeTabContent .assetBox td.assetsFileListEntryTD img {
+	position: relative;
+	left: 5px;
+}

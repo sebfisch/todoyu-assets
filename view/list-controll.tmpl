@@ -1,0 +1,12 @@
+<div class="tabBlock overflow assetsButtons" id="task-{$idTask}-assets-commands">
+	<button onclick="Todoyu.Ext.assets.Upload.showForm({$idTask})" class="button">
+		<span class="hasIcon addCommentButton">{Label $labels.newfile}</span><span class="rgt"><!-- right --></span>
+	</button>
+	<button onclick="Todoyu.Ext.assets.downloadSelection({$idTask})" class="button">
+		<span class="hasIcon sortChronoDesc">{Label $labels.downloadselection}</span><span class="rgt"><!-- right --></span>
+	</button>
+	<a class="icon assets toggle" onclick="Todoyu.Ext.assets.toggleList({$idTask})" href="javascript:void(0)" title="{Label assets.tab.toggle}">
+		<span class="hidden">{Label assets.tab.toggle}</span>
+	</a>
+
+</div>
