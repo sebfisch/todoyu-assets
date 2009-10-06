@@ -40,7 +40,7 @@ class TodoyuAssetManager {
 	 * Get project
 	 *
 	 * @param	Integer		$idAsset
-	 * @return	Asset
+	 * @return	TodoyuAsset
 	 */
 	public static function getAsset($idAsset) {
 		$idAsset	= intval($idAsset);
@@ -62,27 +62,27 @@ class TodoyuAssetManager {
 
 		return sizeof($assets);
 	}
-	
-	
+
+
 	public static function getElementAssetIDs($idElement, $type = ASSET_PARENTTYPE_TASK) {
 		$idElement	= intval($idElement);
 		$type		= intval($type);
-		
+
 		$field	= 'id';
 		$table	= self::TABLE;
 		$where	= '	id_parent		= ' . $idElement . ' AND
 					parenttype		= ' . $type . ' AND
 					deleted			= 0';
 		$order	= 'date_create DESC';
-		
+
 		return Todoyu::db()->getColumn($field, $table, $where, '', $order);
 	}
-	
-	
+
+
 	public static function getElementAssets($idElement, $type = ASSET_PARENTTYPE_TASK) {
 		$idElement	= intval($idElement);
 		$type		= intval($type);
-		
+
 		$fields	= '*';
 		$table	= self::TABLE;
 		$where	= '	id_parent		= ' . $idElement . ' AND
@@ -103,7 +103,7 @@ class TodoyuAssetManager {
 	 */
 	public static function getTaskAssetIDs($idTask) {
 		$idTask	= intval($idTask);
-		
+
 		return self::getElementAssetIDs($idTask, ASSET_PARENTTYPE_TASK);
 	}
 
@@ -117,18 +117,29 @@ class TodoyuAssetManager {
 	 */
 	public static function getTaskAssets($idTask) {
 		$idTask	= intval($idTask);
-		
+
 		return self::getElementAssets($idTask, ASSET_PARENTTYPE_TASK);
 	}
-	
+
+
+
+	/**
+	 * Add an uploaded file as task asset
+	 *
+	 * @param	Integer		$idTask			Task ID
+	 * @param	String		$tempFile		Path to temporary file on server
+	 * @param	String		$fileName		Filename on user system
+	 * @param	String		$mimeType		Submitted file type by browser
+	 * @return	Integer		Asset ID
+	 */
 	public static function addTaskAsset($idTask, $tempFile, $fileName, $mimeType) {
 		$idTask	= intval($idTask);
-		
+
 		return self::addAsset(ASSET_PARENTTYPE_TASK, $idTask, $tempFile, $fileName, $mimeType);
 	}
-	
-	
-	
+
+
+
 
 
 
@@ -154,7 +165,7 @@ class TodoyuAssetManager {
 
 			// Get storage path (relative to basePath)
 		$relStoragePath	= str_replace($basePath, '', $filePath);
-		
+
 			// Get filesize and file info
 		$fileSize	= filesize($filePath);
 		$info		= pathinfo($filePath);
@@ -199,9 +210,7 @@ class TodoyuAssetManager {
 	public static function addFileToStorage($basePath, $sourceFile, $uploadFileName) {
 		$fileName	= NOW . '_' . self::cleanFileName($uploadFileName);
 		$filePath	= $basePath . '/' . $fileName;
-		
-		TodoyuFileManager::makeDirDeep($basePath);
-		
+
 		$fileMoved	= move_uploaded_file($sourceFile, $filePath);
 
 		return $fileMoved ? $filePath : false ;
@@ -252,7 +261,12 @@ class TodoyuAssetManager {
 		$idAsset	= intval($idAsset);
 		$asset		= TodoyuAssetManager::getAsset($idAsset);
 
+//		TodoyuHeader::sendHeaderHTML();
+//		TodoyuDebug::printHtml($asset);
+
 		$filePath	= $asset->getFileStoragePath();
+
+//		TodoyuDebug::printHtml($filePath);
 
 		TodoyuDiv::sendFile($filePath);
 	}
@@ -307,11 +321,12 @@ class TodoyuAssetManager {
 		TodoyuHeader::sendHeader('Content-type', 'application/octet-stream');
 		TodoyuHeader::sendHeader('Content-disposition', 'attachment; filename=' . $filename);
 		TodoyuHeader::sendHeader('Content-length', $filesize);
-		TodoyuHeader::sendHeader('Expires', date('r', NOW+600));
-		TodoyuHeader::sendHeader('Cache-Control', 'no-cache, must-revalidate');
-		TodoyuHeader::sendHeader('Pragma', 'no-cache');
+		TodoyuHeader::sendNoCacheHeaders();
 
+			// Delete temporary zip file after download
 		TodoyuDiv::sendFile($zipFile);
+
+		unlink($zipFile);
 	}
 
 
@@ -403,31 +418,31 @@ class TodoyuAssetManager {
 	}
 
 
-	public static function getTaskAssetStoragePath($idTask) {	
+	public static function getTaskAssetStoragePath($idTask) {
 		$idTask		= intval($idTask);
-		
+
 		return self::getAssetStoragePath(ASSET_PARENTTYPE_TASK, $idTask);
 	}
-	
-	
+
+
 	public static function getAssetStoragePath($type, $idParent) {
 		$type		= intval($type);
 		$idParent	= intval($idParent);
 		$basePath	= self::getStorageBasePath();
-		
+
 		switch($type) {
 			case ASSET_PARENTTYPE_TASK:
-				$folder = $GLOBALS['CONFIG']['EXT']['assets']['TYPES']['task'];
+				$folder = $GLOBALS['CONFIG']['EXT']['assets']['TYPES']['task']['folder'];
 				break;
-				
+
 			case ASSET_PARENTTYPE_PROJECT:
-				$folder = $GLOBALS['CONFIG']['EXT']['assets']['TYPES']['project'];
+				$folder = $GLOBALS['CONFIG']['EXT']['assets']['TYPES']['project']['folder'];
 				break;
-				
+
 			default:
 				die('INVALID ASSET TYPE');
 		}
-		
+
 		return $basePath . '/' . $folder . '/' . $idParent;
 	}
 

@@ -7,7 +7,7 @@
 *
 *  This script is part of the todoyu project.
 *  The todoyu project is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License, version 2, 
+*  it under the terms of the GNU General Public License, version 2,
 *  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
 *  the Free Software Foundation;
 *
@@ -36,9 +36,9 @@ class TodoyuAsset extends TodoyuBaseObject {
 	public function __construct($idAsset) {
 		parent::__construct($idAsset, 'ext_assets_asset');
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Get parenttype of the asset (ex: task)
 	 *
@@ -47,9 +47,9 @@ class TodoyuAsset extends TodoyuBaseObject {
 	public function getParentType() {
 		return $this->get('parenttype');
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Get id of parent element
 	 *
@@ -58,9 +58,9 @@ class TodoyuAsset extends TodoyuBaseObject {
 	public function getParentID() {
 		return $this->get('id_parent');
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Get ID of the uploader
 	 *
@@ -69,9 +69,9 @@ class TodoyuAsset extends TodoyuBaseObject {
 	public function getUserID() {
 		return parent::getUserID('create');
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Get uploader user object
 	 *
@@ -80,18 +80,18 @@ class TodoyuAsset extends TodoyuBaseObject {
 	public function getUser() {
 		return parent::getUser('create');
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Get file storage path
 	 *
 	 * @return	String
 	 */
 	public function getFileStoragePath() {
-		$basePath	= TodoyuAssetManagergetStorageBasePath();
+		$basePath	= TodoyuAssetManager::getStorageBasePath();
 		$filePath	= $this->get('file_storage');
-		
+
 		return $basePath . $filePath;
 	}
 

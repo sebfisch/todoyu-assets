@@ -7,7 +7,7 @@
 *
 *  This script is part of the todoyu project.
 *  The todoyu project is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License, version 2, 
+*  it under the terms of the GNU General Public License, version 2,
 *  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
 *  the Free Software Foundation;
 *
@@ -19,8 +19,8 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-$CONFIG['EXT']['assets']['basePath'] 	= PATH_FILES . '/assets';
-$CONFIG['EXT']['assets']['cachePath'] 	= PATH_CACHE . '/downloads';
+$CONFIG['EXT']['assets']['basePath'] 	= PATH_FILES . DIRECTORY_SEPARATOR . 'assets';
+$CONFIG['EXT']['assets']['cachePath'] 	= PATH_CACHE . DIRECTORY_SEPARATOR . 'downloads';
 
 $CONFIG['sendFile']['allow'][] = $CONFIG['EXT']['assets']['basePath'];
 $CONFIG['sendFile']['allow'][] = $CONFIG['EXT']['assets']['cachePath'];

@@ -54,11 +54,23 @@ Todoyu.Ext.assets = {
 	 */
 	downloadSelection: function(idTask) {
 		var selectedAssets = this.List.getSelectedAssets(idTask);
-
-		if( selectedAssets.length === 1 ) {
-			this.download(selectedAssets[0]);
+				
+		if( selectedAssets.size() === 0 ) {
+			Todoyu.notifyError('Please select at least one file', 3);
+		} else if( selectedAssets.size() === 1 ) {
+			Todoyu.notifyInfo('You only selected one file, normal file download', 3);
+			this.download(selectedAssets.first());
 		} else {
-			location.href = Todoyu.getUrl('assets', 'zip') + '&cmd=download&task=' + idTask + '&assets=' + selectedAssets.join(',');
+			Todoyu.notifyInfo('The selected files have been packed into an archive for download', 3);
+			var params = {
+				'cmd': 'download',
+				'task': idTask,
+				'assets': selectedAssets.join(',')
+			};
+			
+			Todoyu.goTo('assets', 'zip', params);
+			
+			//location.href = Todoyu.getUrl('assets', 'zip') + '&cmd=download&task=' + idTask + '&assets=' + selectedAssets.join(',');
 		}
 	},
 
@@ -102,6 +114,19 @@ Todoyu.Ext.assets = {
 		Todoyu.send(url, options);
 		
 		$('asset-' + idAsset + '-icon-public').toggleClassName('not');
+	},
+	
+	updateTab: function(idTask) {
+		var url		= Todoyu.getUrl('assets', 'tasktab');
+		var options	= {
+			'parameters': {
+				'cmd': 'tab',
+				'task': idTask
+			}
+		};
+		var target	= 'task-11-tabcontent-assets';
+		
+		Todoyu.Ui.update(target, url, options);
 	},
 
 
@@ -390,8 +415,12 @@ Todoyu.Ext.assets = {
 			var fileID	= hex_md5(filename);
 
 			$('asset-uploader-element-' + fileID).remove();
-
-			Todoyu.Ext.assets.List.refresh(idTask);
+			
+			if( Todoyu.exists('task-11-assets-commands') ) {
+				Todoyu.Ext.assets.List.refresh(idTask);
+			} else {
+				Todoyu.Ext.assets.updateTab(idTask);
+			}		
 		}
 	},
 
