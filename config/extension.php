@@ -21,6 +21,7 @@
 
 $CONFIG['EXT']['assets']['basePath'] 	= PATH_FILES . DIRECTORY_SEPARATOR . 'assets';
 $CONFIG['EXT']['assets']['cachePath'] 	= PATH_CACHE . DIRECTORY_SEPARATOR . 'downloads';
+$CONFIG['EXT']['assets']['deleteFiles'] = true;
 
 $CONFIG['sendFile']['allow'][] = $CONFIG['EXT']['assets']['basePath'];
 $CONFIG['sendFile']['allow'][] = $CONFIG['EXT']['assets']['cachePath'];

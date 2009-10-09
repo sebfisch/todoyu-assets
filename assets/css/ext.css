@@ -1,3 +1,12 @@
+.assetsButtons .buttonUpload .hasIcon {
+	
+}
+
+.assetsButtons .buttonDownload .hasIcon {
+	background:url(../img/icons.png) no-repeat 6px -24px;
+}
+
+
 .assetForm form fieldset div {
 	background:transparent;
 }

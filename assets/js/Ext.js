@@ -69,8 +69,6 @@ Todoyu.Ext.assets = {
 			};
 			
 			Todoyu.goTo('assets', 'zip', params);
-			
-			//location.href = Todoyu.getUrl('assets', 'zip') + '&cmd=download&task=' + idTask + '&assets=' + selectedAssets.join(',');
 		}
 	},
 
@@ -124,7 +122,7 @@ Todoyu.Ext.assets = {
 				'task': idTask
 			}
 		};
-		var target	= 'task-11-tabcontent-assets';
+		var target	= 'task-' + idTask + '-tabcontent-assets';
 		
 		Todoyu.Ui.update(target, url, options);
 	},
@@ -350,15 +348,19 @@ Todoyu.Ext.assets = {
 		 *	@param	Integer	idTask
 		 */
 		createIFrame: function(idTask) {
-			var iframe	= new Element('iframe', {
-				'name': 'asset-upload-iframe-' + idTask,
-				'id': 'asset-upload-iframe-' + idTask,
-				'class': 'asset-upload-iframe'
-			});
-
-			iframe.hide();
-
-			$('task-' + idTask + '-assetform').insert(iframe);
+			var idIframe= 'asset-upload-iframe-' + idTask;
+			
+			if( ! Todoyu.exists(idIframe) ) {
+				var iframe	= new Element('iframe', {
+					'name': 'asset-upload-iframe-' + idTask,
+					'id': 'asset-upload-iframe-' + idTask,
+					'class': 'asset-upload-iframe'
+				});
+	
+				iframe.hide();
+	
+				$('task-' + idTask + '-assetform').insert(iframe);
+			}
 		},
 
 
@@ -414,9 +416,10 @@ Todoyu.Ext.assets = {
 		uploadFinished: function(idTask, filename) {
 			var fileID	= hex_md5(filename);
 
+				// Remove uploader progress bar
 			$('asset-uploader-element-' + fileID).remove();
 			
-			if( Todoyu.exists('task-11-assets-commands') ) {
+			if( Todoyu.exists('task-' + idTask + '-assets-commands') ) {
 				Todoyu.Ext.assets.List.refresh(idTask);
 			} else {
 				Todoyu.Ext.assets.updateTab(idTask);
