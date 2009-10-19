@@ -335,7 +335,7 @@ class TodoyuAssetManager {
 	 */
 	public static function downloadAssetsZipped($idTask, array $assetIDs) {
 		$idTask		= intval($idTask);
-		$assetIDs	= TodoyuDiv::intvalArray($assetIDs);
+		$assetIDs	= TodoyuArray::intval($assetIDs);
 
 		$zipFile	= self::createAssetZip($idTask, $assetIDs);
 
@@ -364,7 +364,7 @@ class TodoyuAssetManager {
 	 */
 	private static function createAssetZip($idTask, array $assetIDs) {
 		$idTask		= intval($idTask);
-		$assetIDs	= TodoyuDiv::intvalArray($assetIDs, true, true);
+		$assetIDs	= TodoyuArray::intval($assetIDs, true, true);
 
 		TodoyuFileManager::makeDirDeep($GLOBALS['CONFIG']['EXT']['assets']['cachePath']);
 
@@ -414,7 +414,7 @@ class TodoyuAssetManager {
 	 */
 	private static function makeZipFileName($idTask, array $assetIDs) {
 		$idTask		= intval($idTask);
-		$assetIDs	= TodoyuDiv::intvalArray($assetIDs, true, true);
+		$assetIDs	= TodoyuArray::intval($assetIDs, true, true);
 
 		$field	= 'date_create';
 		$table	= self::TABLE;
