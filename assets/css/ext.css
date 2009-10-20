@@ -1,11 +1,10 @@
 .assetsButtons .buttonUpload .hasIcon {
-	
+
 }
 
 .assetsButtons .buttonDownload .hasIcon {
 	background:url(../img/icons.png) no-repeat 6px -24px;
 }
-
 
 .assetForm form fieldset div {
 	background:transparent;
@@ -92,7 +91,10 @@
 	background-color:#D3DABB;
 }
 
-/* asset box*/
+/* ---------------
+	asset box
+   --------------- */
+
 th.assetsFilelistHeaderFilenames {
 	width:50%;
 }
@@ -135,7 +137,6 @@ th.assetsFilelistHeaderFilenames {
 #taskList .activeTabContent .assetBox tr.assetsFilelistHeaderSFP th.assetsFilelistHeaderFilensizes {
 	width: 70px;
 }
-
 
 #taskList .activeTabContent .assetBox tr.assetsFilelistHeaderSFP th.assetsFilelistHeaderDates {
 	width: 100px;
