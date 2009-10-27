@@ -28,16 +28,19 @@
 
 if( ! defined('TODOYU') ) die('NO ACCESS');
 
-	// declare ext ID, path
+
+
+	// Declare ext ID, path
 define('EXTID_ASSETS', 101);
 define('PATH_EXT_ASSETS', PATH_EXT . '/assets');
 
-	// request configurations
-require_once( PATH_EXT_ASSETS . '/config/extension.php' );
-
-	// register localization files
+	// Register module locales
 TodoyuLocale::register('assets', PATH_EXT_ASSETS . '/locale/ext.xml');
 
+	// Request configurations
+require_once( PATH_EXT_ASSETS . '/config/extension.php' );
+
+	// Add assets
 TodoyuPage::addExtAssets('assets', 'public');
 
 ?>
