@@ -129,12 +129,16 @@ class TodoyuAssetRenderer {
 	 * @return	String
 	 */
 	public static function renderUploadframeContent($idTask, $fileName) {
+		$idTask		= intval($idTask);
+		$tabLabel	= TodoyuTaskAssetViewHelper::getTabLabel($idTask);
+
+		$tmpl	= 'core/view/htmldoc.tmpl';
 		$data	= array(
 			'title'		=> 'Uploader IFrame',
-			'content'	=> '<script type="text/javascript">window.parent.Todoyu.Ext.assets.Upload.uploadFinished(' . $idTask . ', \'' . $fileName . '\');</script>'
+			'content'	=> '<script type="text/javascript">window.parent.Todoyu.Ext.assets.Upload.uploadFinished(' . $idTask . ', \'' . $fileName . '\', \'' . $tabLabel . '\');</script>'
 		);
 
-		return render('core/view/htmldoc.tmpl', $data);
+		return render($tmpl, $data);
 	}
 
 }

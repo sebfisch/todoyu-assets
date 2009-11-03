@@ -126,6 +126,10 @@ Todoyu.Ext.assets = {
 		
 		Todoyu.Ui.update(target, url, options);
 	},
+	
+	setTabLabel: function(idTask, label) {
+		$('task-' + idTask + '-tabhead-assets-label').select('.labeltext').first().update(label);
+	},
 
 
 
@@ -413,7 +417,7 @@ Todoyu.Ext.assets = {
 		 *	@param	Integer	idTask
 		 *	@param	String	filename
 		 */
-		uploadFinished: function(idTask, filename) {
+		uploadFinished: function(idTask, filename, tabLabel) {
 			var fileID	= hex_md5(filename);
 
 				// Remove uploader progress bar
@@ -423,7 +427,9 @@ Todoyu.Ext.assets = {
 				Todoyu.Ext.assets.List.refresh(idTask);
 			} else {
 				Todoyu.Ext.assets.updateTab(idTask);
-			}		
+			}
+			
+			Todoyu.Ext.assets.setTabLabel(idTask, tabLabel);			
 		}
 	},
 
