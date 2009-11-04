@@ -135,7 +135,7 @@ class TodoyuAssetRenderer {
 		$tmpl	= 'core/view/htmldoc.tmpl';
 		$data	= array(
 			'title'		=> 'Uploader IFrame',
-			'content'	=> '<script type="text/javascript">window.parent.Todoyu.Ext.assets.Upload.uploadFinished(' . $idTask . ', \'' . $fileName . '\', \'' . $tabLabel . '\');</script>'
+			'content'	=> '<script type="text/javascript">window.parent.Todoyu.Ext.assets.Upload.uploadFinished(' . $idTask . ', \'' . $tabLabel . '\');</script>'
 		);
 
 		return render($tmpl, $data);

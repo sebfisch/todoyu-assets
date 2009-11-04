@@ -67,7 +67,7 @@ Todoyu.Ext.assets = {
 				'task': idTask,
 				'assets': selectedAssets.join(',')
 			};
-			
+						
 			Todoyu.goTo('assets', 'zip', params);
 		}
 	},
@@ -86,11 +86,21 @@ Todoyu.Ext.assets = {
 				'parameters': {
 					'cmd': 'delete',
 					'asset': idAsset
-				}
+				},
+				'onComplete': this.onRemoved.bind(this, idAsset)
 			};
 			Todoyu.send(url, options);
 			Effect.Fade('asset-' + idAsset);
 		}
+	},
+	
+	
+	onRemoved: function(idAsset, response) {
+		var idTask	= response.getTodoyuHeader('idTask');
+		var label	= response.getTodoyuHeader('tabLabel');
+		
+		this.setTabLabel(idTask, label);
+		this.List.refresh(idTask);
 	},
 
 
@@ -393,9 +403,9 @@ Todoyu.Ext.assets = {
 		 *	@param	String	filename
 		 */
 		showUploader: function(idTask, filename) {
-			var fileID		= hex_md5(filename);
+
 			var formElement = new Element('div', {
-				'id': 'asset-uploader-element-' + fileID,
+				'id': 'asset-uploader-element',
 				'class': 'formElement'
 			});
 			var loaderText = new Element('div').update('Filename: ' + filename);
@@ -417,11 +427,9 @@ Todoyu.Ext.assets = {
 		 *	@param	Integer	idTask
 		 *	@param	String	filename
 		 */
-		uploadFinished: function(idTask, filename, tabLabel) {
-			var fileID	= hex_md5(filename);
-
+		uploadFinished: function(idTask, tabLabel) {
 				// Remove uploader progress bar
-			$('asset-uploader-element-' + fileID).remove();
+			$('asset-uploader-element').remove();
 			
 			if( Todoyu.exists('task-' + idTask + '-assets-commands') ) {
 				Todoyu.Ext.assets.List.refresh(idTask);

@@ -28,18 +28,46 @@
 
 class TodoyuAssetsAssetActionController extends TodoyuActionController {
 
+	/**
+	 * Asset download request
+	 * Send file headers and binary data to the browser
+	 * This action can't be called over ajax
+	 *
+	 * @param	Array		$params
+	 */
 	public function downloadAction(array $params) {
 		$idAsset	= intval($params['asset']);
 
 		TodoyuAssetManager::downloadAsset($idAsset);
 	}
 
+
+
+	/**
+	 * Delete an asset
+	 *
+	 * @param	Array		$params
+	 */
 	public function deleteAction(array $params) {
 		$idAsset	= intval($params['asset']);
+		$idTask		= TodoyuAssetManager::getTaskID($idAsset);
 
+			// Delete the asset
 		TodoyuAssetManager::deleteAsset($idAsset);
+
+		$tabLabel	= TodoyuTaskAssetViewHelper::getTabLabel($idTask);
+
+		TodoyuHeader::sendTodoyuHeader('idTask', $idTask);
+		TodoyuHeader::sendTodoyuHeader('tabLabel', $tabLabel);
 	}
 
+
+
+	/**
+	 * Toggle
+	 *
+	 * @param array $params
+	 */
 	public function togglevisibilityAction(array $params) {
 		$idAsset	= intval($params['asset']);
 

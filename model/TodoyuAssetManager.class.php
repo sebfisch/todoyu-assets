@@ -51,6 +51,20 @@ class TodoyuAssetManager {
 
 
 	/**
+	 * Get asset record array
+	 *
+	 * @param	Integer		$idAsset
+	 * @return	Array
+	 */
+	public static function getAssetArray($idAsset) {
+		$idAsset	= intval($idAsset);
+
+		return Todoyu::db()->getRecord(self::TABLE, $idAsset);
+	}
+
+
+
+	/**
 	 * Get a task asset
 	 *
 	 * @param	Integer				$idAsset
@@ -133,6 +147,22 @@ class TodoyuAssetManager {
 		$idTask	= intval($idTask);
 
 		return self::getElementAssets($idTask, ASSET_PARENTTYPE_TASK);
+	}
+
+
+
+	/**
+	 * Get task ID of an asset
+	 *
+	 * @param	Integer		$idAsset
+	 * @return	Integer
+	 */
+	public static function getTaskID($idAsset) {
+		$idAsset	= intval($idAsset);
+
+		$asset		= self::getAssetArray($idAsset);
+
+		return intval($asset['id_parent']);
 	}
 
 
@@ -373,8 +403,13 @@ class TodoyuAssetManager {
 		$zipPath	= $GLOBALS['CONFIG']['EXT']['assets']['cachePath'] . DIRECTORY_SEPARATOR . $zipName;
 
 			// Create zip file
-		$zip = new ZipArchive();
-		$zip->open($zipPath, ZIPARCHIVE::CREATE);
+		$zip	= new ZipArchive();
+		$status	= $zip->open($zipPath, ZIPARCHIVE::CREATE);
+
+		if( $status !== true ) {
+			Todoyu::log('Can\'t create zip archive: ' . $zipPath, LOG_LEVEL_ERROR);
+		}
+
 
 			// Get asset data
 		$fields	= 'file_name, file_storage';
@@ -388,10 +423,9 @@ class TodoyuAssetManager {
 
 		$assets	= Todoyu::db()->getArray($fields, $table, $where);
 
-
 			// Add assets
 		foreach($assets as $asset) {
-			$success = $zip->addFile( $GLOBALS['CONFIG']['EXT']['assets']['basePath'] . $asset['file_storage'], $asset['file_name']);
+			$success = $zip->addFile($GLOBALS['CONFIG']['EXT']['assets']['basePath'] . DIRECTORY_SEPARATOR . $asset['file_storage'], $asset['file_name']);
 
 			if( $success !== true ) {
 				Todoyu::log('Failed to add asset to zipfile', LOG_LEVEL_ERROR, $GLOBALS['CONFIG']['EXT']['assets']['asset_dir'] . $asset['file_storage'], $asset['file_name']);
