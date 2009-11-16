@@ -37,7 +37,7 @@ Todoyu.Ext.assets = {
 	 */
 	download: function(idAsset) {
 		var params	= {
-			'cmd': 'download',
+			'action': 'download',
 			'asset': idAsset
 		};
 
@@ -63,7 +63,7 @@ Todoyu.Ext.assets = {
 		} else {
 			Todoyu.notifyInfo('The selected files have been packed into an archive for download', 3);
 			var params = {
-				'cmd': 'download',
+				'action': 'download',
 				'task': idTask,
 				'assets': selectedAssets.join(',')
 			};
@@ -84,7 +84,7 @@ Todoyu.Ext.assets = {
 			var url		= Todoyu.getUrl('assets', 'asset');
 			var options	= {
 				'parameters': {
-					'cmd': 'delete',
+					'action': 'delete',
 					'asset': idAsset
 				},
 				'onComplete': this.onRemoved.bind(this, idAsset)
@@ -114,7 +114,7 @@ Todoyu.Ext.assets = {
 		var url		= Todoyu.getUrl('assets', 'asset');
 		var options	= {
 			'parameters': {
-				'cmd': 'togglevisibility',
+				'action': 'togglevisibility',
 				'asset': idAsset
 			}
 		};
@@ -128,7 +128,7 @@ Todoyu.Ext.assets = {
 		var url		= Todoyu.getUrl('assets', 'tasktab');
 		var options	= {
 			'parameters': {
-				'cmd': 'tab',
+				'action': 'tab',
 				'task': idTask
 			}
 		};
@@ -158,7 +158,7 @@ Todoyu.Ext.assets = {
 			var url		= Todoyu.getUrl('assets', 'tasktab');
 			var options	= {
 				'parameters': {
-					'cmd': 'list',
+					'action': 'list',
 					'task': idTask
 				}
 			};
@@ -294,7 +294,7 @@ Todoyu.Ext.assets = {
 				var url		= Todoyu.getUrl('assets', 'tasktab');
 				var options	= {
 					'parameters': {
-						'cmd': 'uploadform',
+						'action': 'uploadform',
 						'task': idTask
 					}
 				};
