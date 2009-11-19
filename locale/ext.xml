@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
+		<label index="ext.title">Task assets</label>
 		<label index="tab.noAssets">Add first asset</label>
 		<label index="tab.asset">asset</label>
 		<label index="tab.assets">assets</label>
