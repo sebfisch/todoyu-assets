@@ -97,8 +97,7 @@ class TodoyuAssetRenderer {
 
 			// Construct form object
 		$xmlPath	= 'ext/assets/config/form/upload.xml';
-		$form		= new TodoyuForm($xmlPath);
-		$form		= TodoyuFormHook::callBuildForm($xmlPath, $form, $idTask);
+		$form		= TodoyuFormManager::getForm($xmlPath, $idTask);
 
 			// Get form data
 		$formData	= array(
