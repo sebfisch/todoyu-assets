@@ -80,7 +80,7 @@ Todoyu.Ext.assets = {
 	 *	@param	Integer	idAsset
 	 */
 	remove: function(idAsset) {
-		if( confirm('[LLL:assets.confirm.delete]') ) {
+		if( confirm('[LLL:assets.delete.confirm]') ) {
 			var url		= Todoyu.getUrl('assets', 'asset');
 			var options	= {
 				'parameters': {

@@ -13,8 +13,8 @@
 		<label index="alt.changeVisibility">Change visibility for customer</label>
 		<label index="alt.selectall">Select all/none files</label>
 		<label index="upload.selectfile">Select a file to upload</label>
-		<label index="confirm.delete">Do you really want to delete this file?</label>
 		<label index="upload.new">Add new file</label>
+		<label index="delete.confirm">Do you really want to delete this file?</label>
 		<label index="download.selection">Download selection</label>
 	</labels>
 	<labels lang="de"></labels>
