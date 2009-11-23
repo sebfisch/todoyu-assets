@@ -16,6 +16,7 @@
 		<label index="upload.new">Add new file</label>
 		<label index="delete.confirm">Do you really want to delete this file?</label>
 		<label index="download.selection">Download selection</label>
+<!--  ......................................... added after 20091122 -->
 	</labels>
 	<labels lang="de"></labels>
 </locallang>
