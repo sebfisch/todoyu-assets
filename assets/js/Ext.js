@@ -84,8 +84,8 @@ Todoyu.Ext.assets = {
 			var url		= Todoyu.getUrl('assets', 'asset');
 			var options	= {
 				'parameters': {
-					'action': 'delete',
-					'asset': idAsset
+					'action':	'delete',
+					'asset':	idAsset
 				},
 				'onComplete': this.onRemoved.bind(this, idAsset)
 			};
@@ -114,8 +114,8 @@ Todoyu.Ext.assets = {
 		var url		= Todoyu.getUrl('assets', 'asset');
 		var options	= {
 			'parameters': {
-				'action': 'togglevisibility',
-				'asset': idAsset
+				'action':	'togglevisibility',
+				'asset':	idAsset
 			}
 		};
 
@@ -128,8 +128,8 @@ Todoyu.Ext.assets = {
 		var url		= Todoyu.getUrl('assets', 'tasktab');
 		var options	= {
 			'parameters': {
-				'action': 'tab',
-				'task': idTask
+				'action':	'tab',
+				'task':		idTask
 			}
 		};
 		var target	= 'task-' + idTask + '-tabcontent-assets';
@@ -158,8 +158,8 @@ Todoyu.Ext.assets = {
 			var url		= Todoyu.getUrl('assets', 'tasktab');
 			var options	= {
 				'parameters': {
-					'action': 'list',
-					'task': idTask
+					'action':	'list',
+					'task':		idTask
 				}
 			};
 
@@ -294,8 +294,8 @@ Todoyu.Ext.assets = {
 				var url		= Todoyu.getUrl('assets', 'tasktab');
 				var options	= {
 					'parameters': {
-						'action': 'uploadform',
-						'task': idTask
+						'action':	'uploadform',
+						'task':		idTask
 					}
 				};
 				var target	= 'task-' + idTask + '-assets-commands';
@@ -366,9 +366,9 @@ Todoyu.Ext.assets = {
 			
 			if( ! Todoyu.exists(idIframe) ) {
 				var iframe	= new Element('iframe', {
-					'name': 'asset-upload-iframe-' + idTask,
-					'id': 'asset-upload-iframe-' + idTask,
-					'class': 'asset-upload-iframe'
+					'name':		'asset-upload-iframe-' + idTask,
+					'id':		'asset-upload-iframe-' + idTask,
+					'class':	'asset-upload-iframe'
 				});
 	
 				iframe.hide();
@@ -386,10 +386,10 @@ Todoyu.Ext.assets = {
 		replaceField: function(idTask) {
 			var old		= this.getField(idTask);
 			var field	= new Element('input', {
-				'id': old.readAttribute('id'),
-				'type': old.readAttribute('type'),
-				'onchange': old.readAttribute('onchange'),
-				'name': old.readAttribute('name')
+				'id':		old.readAttribute('id'),
+				'type':		old.readAttribute('type'),
+				'onchange':	old.readAttribute('onchange'),
+				'name':		old.readAttribute('name')
 			});
 
 			old.replace(field);
