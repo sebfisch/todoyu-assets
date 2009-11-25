@@ -54,12 +54,13 @@ class TodoyuAssetRenderer {
 	public static function renderList($idTask) {
 		$idTask	= intval($idTask);
 
+		$tmpl	= 'ext/assets/view/list.tmpl';
 		$data	= array(
 			'idTask'	=> $idTask,
 			'assets'	=> TodoyuAssetManager::getTaskAssets($idTask)
 		);
 
-		return render('ext/assets/view/list.tmpl', $data);
+		return render($tmpl, $data);
 	}
 
 
@@ -73,15 +74,12 @@ class TodoyuAssetRenderer {
 	public static function renderListControll($idTask) {
 		$idTask	= intval($idTask);
 
+		$tmpl	= 'ext/assets/view/list-controll.tmpl';
 		$data	= array(
-			'idTask' => $idTask,
-			'labels'	=> array(
-				'newfile'			=> 'LLL:assets.upload.new',
-				'downloadselection'	=> 'LLL:assets.download.selection'
-			)
+			'idTask' => $idTask
 		);
 
-		return render('ext/assets/view/list-controll.tmpl', $data);
+		return render($tmpl, $data);
 	}
 
 
