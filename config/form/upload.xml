@@ -16,7 +16,7 @@
 			<class>main</class>
 			<elements>
 				<field type="upload" name="file">
-					<label>LLL:assets.upload.selectfile</label>
+					<label>assets.upload.selectfile</label>
 					<onchange>Todoyu.Ext.assets.Upload.onChange(#id_task#);</onchange>
 				</field>
 			</elements>
