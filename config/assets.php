@@ -7,7 +7,7 @@
 *
 *  This script is part of the todoyu project.
 *  The todoyu project is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License, version 2, 
+*  it under the terms of the GNU General Public License, version 2,
 *  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
 *  the Free Software Foundation;
 *
@@ -25,9 +25,6 @@
  * @package		Todoyu
  * @subpackage	Project
  */
-
-if( ! defined('TODOYU') ) die('NO ACCESS');
-
 
 $CONFIG['EXT']['assets']['assets'] = array(
 		// default assets: loaded all over the installation always

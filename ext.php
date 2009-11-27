@@ -26,9 +26,6 @@
  * @subpackage	Assets
  */
 
-if( ! defined('TODOYU') ) die('NO ACCESS');
-
-
 
 	// Declare ext ID, path
 define('EXTID_ASSETS', 101);
