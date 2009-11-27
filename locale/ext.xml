@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
-		<label index="ext.title">Task assets</label>
-		<label index="tab.noAssets">Add first asset</label>
-		<label index="tab.asset">asset</label>
-		<label index="tab.assets">assets</label>
-		<label index="tab.toggle">assets on/off</label>
-		<label index="list.header.uploaddate">Uploaddate</label>
-		<label index="alt.download">Download file</label>
+		<label index="ext.title">Task Assets</label>
+		<label index="tab.noAssets">Add First Asset</label>
+		<label index="tab.asset">Asset</label>
+		<label index="tab.assets">Assets</label>
+		<label index="tab.toggle">Assets On/Off</label>
+		<label index="list.header.uploaddate">Upload Date</label>
+		<label index="alt.download">Download File</label>
 		<label index="alt.uploadedby">Uploaded by</label>
-		<label index="alt.delete">Delete file</label>
-		<label index="alt.changeVisibility">Change visibility for customer</label>
-		<label index="alt.selectall">Select all/none files</label>
-		<label index="upload.selectfile">Select a file to upload</label>
-		<label index="upload.new">Add new file</label>
+		<label index="alt.delete">Delete File</label>
+		<label index="alt.changeVisibility">Change Visibility for Customer</label>
+		<label index="alt.selectall">Select all/none</label>
+		<label index="upload.selectfile">Select a File to Upload</label>
+		<label index="upload.new">Add new File</label>
 		<label index="delete.confirm">Do you really want to delete this file?</label>
-		<label index="download.selection">Download selection</label>
-<!--  ......................................... added after 20091122 -->
+		<label index="download.selection">Download Selection</label>
 	</labels>
-	<labels lang="de"></labels>
+	<labels lang="de">
+		<label index="ext.title">Aufgaben Anhänge</label>
+		<label index="tab.noAssets">1. Anhang anfügen</label>
+		<label index="tab.asset">Anhang</label>
+		<label index="tab.assets">Anhänge</label>
+		<label index="tab.toggle">Anhänge an/aus</label>
+		<label index="list.header.uploaddate">Upload-Datum</label>
+		<label index="alt.download">Datei runterladen</label>
+		<label index="alt.uploadedby">Aktualisiert von</label>
+		<label index="alt.delete">Datei löschen</label>
+		<label index="alt.changeVisibility">Sichtbarkeit für Kunden ändern</label>
+		<label index="alt.selectall">alle/keinen auswählen</label>
+		<label index="upload.selectfile">Datei für Upload auswählen</label>
+		<label index="upload.new">Neue Datei anfügen</label>
+		<label index="delete.confirm">Wollen Sie diese Datei wirklich löschen?</label>
+		<label index="download.selection">Auswahl zum Runterladen</label>
+	</labels>
 </locallang>
