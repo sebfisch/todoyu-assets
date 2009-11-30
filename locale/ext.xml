@@ -19,7 +19,7 @@
 	</labels>
 	<labels lang="de">
 		<label index="ext.title">Aufgaben-Anhänge</label>
-		<label index="tab.noAssets">1. Anhang anfügen</label>
+		<label index="tab.noAssets">Anhang anfügen</label>
 		<label index="tab.asset">Anhang</label>
 		<label index="tab.assets">Anhänge</label>
 		<label index="tab.toggle">Anhänge an/aus</label>
