@@ -143,6 +143,10 @@ Todoyu.Ext.assets = {
 
 
 
+/* -----------------------------------------------
+	Todoyu.Ext.assets.List
+-------------------------------------------------- */
+
 	/**
 	 *	List assets
 	 */
@@ -276,6 +280,10 @@ Todoyu.Ext.assets = {
 
 
 
+/* -----------------------------------------------
+	Todoyu.Ext.assets.Upload
+-------------------------------------------------- */
+
 	/**
 	 *	Asset upload methods
 	 */
@@ -378,6 +386,7 @@ Todoyu.Ext.assets = {
 		},
 
 
+
 		/**
 		 *	Replace field inside assets upload form
 		 *
@@ -394,6 +403,7 @@ Todoyu.Ext.assets = {
 
 			old.replace(field);
 		},
+
 
 
 		/**
@@ -436,7 +446,7 @@ Todoyu.Ext.assets = {
 			} else {
 				Todoyu.Ext.assets.updateTab(idTask);
 			}
-			
+
 			Todoyu.Ext.assets.setTabLabel(idTask, tabLabel);			
 		}
 	},
