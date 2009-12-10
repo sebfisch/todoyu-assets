@@ -19,23 +19,27 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-$CONFIG['EXT']['assets']['basePath'] 	= PATH_FILES . DIRECTORY_SEPARATOR . 'assets';
-$CONFIG['EXT']['assets']['cachePath'] 	= PATH_CACHE . DIRECTORY_SEPARATOR . 'downloads';
+	// Basic paths
+$CONFIG['EXT']['assets']['basePath'] 	= PATH_FILES . '/assets';
+$CONFIG['EXT']['assets']['cachePath'] 	= PATH_CACHE . '/downloads';
+	// Delete files on harddisk when delete in database
 $CONFIG['EXT']['assets']['deleteFiles'] = true;
 
+	// Add allowed paths where files can be downloaded from
 $CONFIG['sendFile']['allow'][] = $CONFIG['EXT']['assets']['basePath'];
 $CONFIG['sendFile']['allow'][] = $CONFIG['EXT']['assets']['cachePath'];
 
-TodoyuTaskManager::registerTaskTab('assets', 'TodoyuTaskAssetViewHelper::getTabLabel', 'TodoyuTaskAssetViewHelper::getTabContent', 30);
-
-define('ASSET_PARENTTYPE_TASK', 1);
-define('ASSET_PARENTTYPE_PROJECT', 2);
-
+	// Configure upload folders for types
 $CONFIG['EXT']['assets']['TYPES']['task'] = array(
 	'folder'	=> 'task'
 );
 $CONFIG['EXT']['assets']['TYPES']['project'] = array(
 	'folder'	=> 'project'
 );
+
+	// Add task tab
+if( allowed('assets', 'use') ) {
+	TodoyuTaskManager::addTaskTab('assets', 'TodoyuTaskAssetViewHelper::getTabLabel', 'TodoyuTaskAssetViewHelper::getTabContent', 30);
+}
 
 ?>

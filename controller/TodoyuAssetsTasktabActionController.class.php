@@ -19,21 +19,50 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Asset tasktab action controller
+ *
+ * @package		Todoyu
+ * @subpackage	Assets
+ */
 class TodoyuAssetsTasktabActionController extends TodoyuActionController {
 
+	/**
+	 * Get upload form
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function uploadformAction(array $params) {
 		$idTask	= intval($params['task']);
 
 		return TodoyuAssetRenderer::renderUploadForm($idTask);
 	}
 
-	public function listAction(array $params) {
-		$idTask	= intval($params['task']);
 
+
+	/**
+	 * Get asset list
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
+	public function listAction(array $params) {
+		restrict('assets', 'seePublic');
+
+		$idTask	= intval($params['task']);
 
 		return TodoyuAssetRenderer::renderList($idTask);
 	}
 
+
+
+	/**
+	 * Get tab content
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function tabAction(array $params) {
 		$idTask	= intval($params['task']);
 

@@ -5,4 +5,13 @@
 		<right name="use" />
 	</section>
 	
+	<section name="asset" require="use">
+		<right name="seePublic" />
+		<right name="seeAll" require="seePublic" />
+		<right name="upload" />
+		<right name="download" />
+		<right name="delete" />
+		<right name="makepublic" />
+	</section>
+	
 </rights>

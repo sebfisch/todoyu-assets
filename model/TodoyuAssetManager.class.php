@@ -25,7 +25,6 @@
  * @package		Todoyu
  * @subpackage	Assets
  */
-
 class TodoyuAssetManager {
 
 	/**
@@ -117,6 +116,14 @@ class TodoyuAssetManager {
 					parenttype		= ' . $type . ' AND
 					deleted			= 0';
 		$order	= 'date_create DESC';
+
+			// If user can't see all assets, limit to public and own
+		if( ! allowed('assets', 'seeAll') ) {
+			$where .= ' AND (
+							is_public 		= 1 OR
+							id_user_create 	= ' . userid() . '
+						)';
+		}
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
 	}

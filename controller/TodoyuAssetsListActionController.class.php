@@ -19,9 +19,23 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Asset list action controller
+ *
+ * @package		Todoyu
+ * @subpackage	Assets
+ */
 class TodoyuAssetsListActionController extends TodoyuActionController {
 
+	/**
+	 * Default action: render list
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function defaultAction(array $params) {
+		restrict('assets', 'use');
+
 		$idTask		= intval($params['task']);
 
 		return TodoyuAssetRenderer::renderList($idTask);

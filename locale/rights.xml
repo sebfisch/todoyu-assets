@@ -3,6 +3,13 @@
 	<labels lang="en">
 		<label index="section.general">General settings</label>
 		<label index="right.use">Use assets</label>
+		<label index="section.asset">Assets</label>
+		<label index="right.seePublic">Show 'public' assets</label>
+		<label index="right.seeAll">Show ALL assets</label>
+		<label index="right.upload">Upload new asset</label>
+		<label index="right.download">Download assets</label>
+		<label index="right.delete">Delete an asset</label>
+		<label index="right.makepublic">Set asset public</label>
 	</labels>
 	<labels lang="de">
 		

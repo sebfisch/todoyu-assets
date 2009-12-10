@@ -25,7 +25,6 @@
  * @package		Todoyu
  * @subpackage	Assets
  */
-
 class TodoyuAsset extends TodoyuBaseObject {
 
 	/**
@@ -126,6 +125,17 @@ class TodoyuAsset extends TodoyuBaseObject {
 	 */
 	public function getFilename() {
 		return $this->get('file_name');
+	}
+
+
+
+	/**
+	 * Check if asset is public
+	 *
+	 * @return	Bool
+	 */
+	public function isPublic() {
+		return $this->get('is_public') == 1;
 	}
 
 }

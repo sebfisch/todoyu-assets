@@ -19,9 +19,23 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Asset upload action controller
+ *
+ * @package		Todoyu
+ * @subpackage	Assets
+ */
 class TodoyuAssetsUploadActionController extends TodoyuActionController {
 
+	/**
+	 * Upload an asset
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function defaultAction(array $params) {
+		restrict('assets', 'upload');
+
 		$idTask		= intval($params['asset']['id_task']);
 
 		$tempFile	= $_FILES['asset']['tmp_name']['file'];

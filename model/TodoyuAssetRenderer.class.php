@@ -25,7 +25,6 @@
  * @package		Todoyu
  * @subpackage	Assets
  */
-
 class TodoyuAssetRenderer {
 
 	/**
@@ -36,12 +35,15 @@ class TodoyuAssetRenderer {
 	 */
 	public static function renderTabContent($idTask) {
 		$idTask	= intval($idTask);
-		
+		$content= '';
+
 		if(TodoyuAssetManager::getNumTaskAssets($idTask) > 0)	{
-			$content	= self::renderListControll($idTask);
-			$content	.=self::renderList($idTask);
-		} else {
-			$content	= self::renderUploadForm($idTask);
+			if( allowedAny('assets', 'upload,download') ) {
+				$content .= self::renderListControll($idTask);
+			}
+			$content .=self::renderList($idTask);
+		} elseif( allowed('assets', 'upload') ) {
+			$content .= self::renderUploadForm($idTask);
 		}
 
 		return $content;
@@ -59,7 +61,7 @@ class TodoyuAssetRenderer {
 		$idTask	= intval($idTask);
 
 		$tmpl	= 'ext/assets/view/list.tmpl';
-		
+
 		$data	= array(
 			'idTask'	=> $idTask,
 			'assets'	=> TodoyuAssetManager::getTaskAssets($idTask)

@@ -1,7 +1,10 @@
 <div class="tabBlock overflow assetsButtons" id="task-{$idTask}-assets-commands">
+{restrict assets upload}
 	{Button label="assets.upload.new" class="upload" onclick="Todoyu.Ext.assets.Upload.showForm($idTask)"}
+{/restrict}
+{restrict assets download}
 	{Button label="assets.download.selection" class="downloadSelection" onclick="Todoyu.Ext.assets.downloadSelection($idTask)"}
-
+{/restrict}
 	<a class="icon assets toggle" onclick="Todoyu.Ext.assets.toggleList({$idTask})" href="javascript:void(0)" title="{Label assets.tab.toggle}">
 		<span class="hidden">{Label assets.tab.toggle}</span>
 	</a>

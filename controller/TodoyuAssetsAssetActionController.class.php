@@ -25,7 +25,6 @@
  * @package		Todoyu
  * @subpackage	Assets
  */
-
 class TodoyuAssetsAssetActionController extends TodoyuActionController {
 
 	/**
@@ -37,6 +36,17 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 	 */
 	public function downloadAction(array $params) {
 		$idAsset	= intval($params['asset']);
+		$asset		= TodoyuAssetManager::getAsset($idAsset);
+
+			// If asset is not uploaded by current user, he needs download rights
+		if( $asset->getUserID() != userid() ) {
+			restrict('assets', 'download');
+
+				// If asset if not public, user need the right so see also not public assets
+			if( ! $asset->isPublic() ) {
+				restrict('assets', 'seeAll');
+			}
+		}
 
 		TodoyuAssetManager::downloadAsset($idAsset);
 	}
@@ -50,10 +60,20 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 	 */
 	public function deleteAction(array $params) {
 		$idAsset	= intval($params['asset']);
-		$idTask		= TodoyuAssetManager::getTaskID($idAsset);
+		$asset		= TodoyuAssetManager::getAsset($idAsset);
+
+			// If asset is not uploaded by current user, he needs delete rights
+		if( $asset->getUserID() != userid() ) {
+			restrict('assets', 'delete');
+		}
 
 			// Delete the asset
 		TodoyuAssetManager::deleteAsset($idAsset);
+
+			/**
+			 * @todo	Currently this works, but if tasks can be in different parents, it could also be a project...
+			 */
+		$idTask		= $asset->getParentID();
 
 		$tabLabel	= TodoyuTaskAssetViewHelper::getTabLabel($idTask);
 
@@ -70,6 +90,12 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 	 */
 	public function togglevisibilityAction(array $params) {
 		$idAsset	= intval($params['asset']);
+		$asset		= TodoyuAssetManager::getAsset($idAsset);
+
+			// If asset is not uploaded by current user, he needs delete rights
+		if( $asset->getUserID() != userid() ) {
+			restrict('assets', 'makepublic');
+		}
 
 		TodoyuAssetManager::toggleVisibility($idAsset);
 	}

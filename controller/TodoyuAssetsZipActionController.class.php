@@ -19,8 +19,19 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Asset zip download action controller
+ *
+ * @package		Todoyu
+ * @subpackage	Assets
+ */
 class TodoyuAssetsZipActionController extends TodoyuActionController {
 
+	/**
+	 * Download multiple assets in a zip archive
+	 *
+	 * @param	Array		$params
+	 */
 	public function downloadAction(array $params) {
 		$idTask		= intval($params['task']);
 		$assetIDs	= TodoyuDiv::intExplode(',', $params['assets'], true, true);

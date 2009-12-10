@@ -35,6 +35,7 @@ define('PATH_EXT_ASSETS', PATH_EXT . '/assets');
 TodoyuLocale::register('assets', PATH_EXT_ASSETS . '/locale/ext.xml');
 
 	// Request configurations
+require_once( PATH_EXT_ASSETS . '/config/constants.php' );
 require_once( PATH_EXT_ASSETS . '/config/extension.php' );
 
 ?>
