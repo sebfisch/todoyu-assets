@@ -100,7 +100,7 @@ Todoyu.Ext.assets = {
 		var label	= response.getTodoyuHeader('tabLabel');
 		
 		this.setTabLabel(idTask, label);
-		this.List.refresh(idTask);
+		this.updateTab(idTask);
 	},
 
 

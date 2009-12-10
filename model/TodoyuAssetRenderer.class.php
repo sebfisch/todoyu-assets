@@ -36,9 +36,13 @@ class TodoyuAssetRenderer {
 	 */
 	public static function renderTabContent($idTask) {
 		$idTask	= intval($idTask);
-
-		$content	= self::renderListControll($idTask);
-		$content	.=self::renderList($idTask);
+		
+		if(TodoyuAssetManager::getNumTaskAssets($idTask) > 0)	{
+			$content	= self::renderListControll($idTask);
+			$content	.=self::renderList($idTask);
+		} else {
+			$content	= self::renderUploadForm($idTask);
+		}
 
 		return $content;
 	}
@@ -55,6 +59,7 @@ class TodoyuAssetRenderer {
 		$idTask	= intval($idTask);
 
 		$tmpl	= 'ext/assets/view/list.tmpl';
+		
 		$data	= array(
 			'idTask'	=> $idTask,
 			'assets'	=> TodoyuAssetManager::getTaskAssets($idTask)
