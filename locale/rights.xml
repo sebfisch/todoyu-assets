@@ -12,6 +12,14 @@
 		<label index="right.makepublic">Set asset public</label>
 	</labels>
 	<labels lang="de">
-		
-	</labels>	
+		<label index="section.general">Allgemeine Einstellungen</label>
+		<label index="right.use">Dateianlagen benutzen</label>
+		<label index="section.asset">Dateien</label>
+		<label index="right.seePublic">Zeige 'öffentliche' Dateien</label>
+		<label index="right.seeAll">Zeige ALLE Dateien</label>
+		<label index="right.upload">Neue Datei hochladen</label>
+		<label index="right.download">Datei herunterladen</label>
+		<label index="right.delete">Datei löschen</label>
+		<label index="right.makepublic">Datei öffentlich schalten</label>
+	</labels>
 </locallang>
