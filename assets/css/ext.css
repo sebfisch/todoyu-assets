@@ -157,23 +157,6 @@ th.assetsFilelistHeaderFilenames {
 	margin:2px 0 0 3px;
 }
 
-span.customerinvisible_icon,
-span.customervisible_icon	{
-	position:relative;
-	height:10px;
-	width:12px;
-	padding:6px 6px;
-	left:4px;
-	top:4px;
-}
-
-span.customervisible_icon {
-	background:url(../../img/sprite-icons.png) no-repeat 0px -1366px !important;
-}
-
-span.customerinvisible_icon {
-	background:url(../../img/sprite-icons.png) no-repeat 0px -1390px !important;
-}
 
 #taskList .activeTabContent .assetBox td.assetsFileListEntryTD span.customerinvisible_icon,
 #taskList .activeTabContent .assetBox td.assetsFileListEntryTD span.customervisible_icon {

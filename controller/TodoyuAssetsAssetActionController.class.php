@@ -97,7 +97,7 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 			restrict('assets', 'makepublic');
 		}
 
-		TodoyuAssetManager::toggleVisibility($idAsset);
+		TodoyuAssetManager::togglePublic($idAsset);
 	}
 }
 

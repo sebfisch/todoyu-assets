@@ -352,11 +352,11 @@ class TodoyuAssetManager {
 
 
 	/**
-	 * Toggle customer visibility of an asset
+	 * Toggle asset public flag
 	 *
 	 * @param	Integer		$idAsset
 	 */
-	public static function toggleVisibility($idAsset) {
+	public static function togglePublic($idAsset) {
 		$idAsset	= intval($idAsset);
 
 		Todoyu::db()->doBooleanInvert(self::TABLE, $idAsset, 'is_public');
