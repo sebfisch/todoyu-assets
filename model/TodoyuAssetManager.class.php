@@ -118,7 +118,7 @@ class TodoyuAssetManager {
 		$order	= 'date_create DESC';
 
 			// If user can't see all assets, limit to public and own
-		if( ! allowed('assets', 'seeAll') ) {
+		if( ! allowed('assets', 'asset:seeAll') ) {
 			$where .= ' AND (
 							is_public 		= 1 OR
 							id_user_create 	= ' . userid() . '

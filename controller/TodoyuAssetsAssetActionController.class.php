@@ -40,11 +40,11 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 
 			// If asset is not uploaded by current user, he needs download rights
 		if( $asset->getUserID() != userid() ) {
-			restrict('assets', 'download');
+			restrict('assets', 'asset:download');
 
 				// If asset if not public, user need the right so see also not public assets
 			if( ! $asset->isPublic() ) {
-				restrict('assets', 'seeAll');
+				restrict('assets', 'asset:seeAll');
 			}
 		}
 
@@ -64,7 +64,7 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 
 			// If asset is not uploaded by current user, he needs delete rights
 		if( $asset->getUserID() != userid() ) {
-			restrict('assets', 'delete');
+			restrict('assets', 'asset:delete');
 		}
 
 			// Delete the asset
@@ -94,7 +94,7 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 
 			// If asset is not uploaded by current user, he needs delete rights
 		if( $asset->getUserID() != userid() ) {
-			restrict('assets', 'makepublic');
+			restrict('assets', 'asset:makepublic');
 		}
 
 		TodoyuAssetManager::togglePublic($idAsset);

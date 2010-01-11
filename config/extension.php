@@ -38,7 +38,7 @@ $CONFIG['EXT']['assets']['TYPES']['project'] = array(
 );
 
 	// Add task tab
-if( allowed('assets', 'use') ) {
+if( allowed('assets', 'general:use') ) {
 	TodoyuTaskManager::addTaskTab('assets', 'TodoyuTaskAssetViewHelper::getTabLabel', 'TodoyuTaskAssetViewHelper::getTabContent', 30);
 }
 

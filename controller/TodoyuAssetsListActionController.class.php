@@ -34,7 +34,7 @@ class TodoyuAssetsListActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function defaultAction(array $params) {
-		restrict('assets', 'use');
+		restrict('assets', 'general:use');
 
 		$idTask		= intval($params['task']);
 

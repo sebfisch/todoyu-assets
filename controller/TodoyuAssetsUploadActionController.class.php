@@ -34,7 +34,7 @@ class TodoyuAssetsUploadActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function defaultAction(array $params) {
-		restrict('assets', 'upload');
+		restrict('assets', 'asset:upload');
 
 		$idTask		= intval($params['asset']['id_task']);
 

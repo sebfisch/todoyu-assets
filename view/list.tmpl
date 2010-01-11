@@ -11,16 +11,16 @@
 		</thead>
 		<tbody id="task-{$idTask}-assets-tablebody">
 		{foreach $assets key asset assetlist}
-			<tr id="asset-{$asset.id}" onmouseover="Todoyu.Ext.assets.List.hover({$asset.id})" onmouseout="Todoyu.Ext.assets.List.hover({$asset.id})" {if allowedOrOwn('assets','download',$asset.id_user_create)}onclick="Todoyu.Ext.assets.List.select({$asset.id})"{/if} class="{cycle values="odd,even"}">
+			<tr id="asset-{$asset.id}" onmouseover="Todoyu.Ext.assets.List.hover({$asset.id})" onmouseout="Todoyu.Ext.assets.List.hover({$asset.id})" {if allowedOrOwn('assets','asset:download',$asset.id_user_create)}onclick="Todoyu.Ext.assets.List.select({$asset.id})"{/if} class="{cycle values="odd,even"}">
 				<td class="checkbox">
-					{if allowedOrOwn('assets','download',$asset.id_user_create)}
+					{if allowedOrOwn('assets','asset:download',$asset.id_user_create)}
 					<input type="checkbox" id="asset-{$asset.id}-checkbox" value="{$asset.id}" onclick="this.checked=!this.checked" />
 					{/if}
 				</td>
 				<td class="mimetype mimeIcon mime{strtoupper $asset.file_ext}" >
 				</td>
 				<td class="filename">
-					<a {if allowedOrOwn('assets','download',$asset.id_user_create)}onclick="Todoyu.Ext.assets.download({$asset.id})"{/if} href="javascript:void(0)" title="{Label assets.alt.download}">
+					<a {if allowedOrOwn('assets','asset:download',$asset.id_user_create)}onclick="Todoyu.Ext.assets.download({$asset.id})"{/if} href="javascript:void(0)" title="{Label assets.alt.download}">
 						{$asset.file_name}
 					</a>
 				</td>
@@ -31,11 +31,11 @@
 					<span title="{Label assets.alt.uploadedby} {UserName $asset.id_user_create}">{date_format $asset.date_create "%d.%m.%y %R"}</span>
 				</td>
 				<td class="actions">
-					<a id="asset-{$asset.id}-icon-public" {if allowedOrOwn('assets','makePublic',$asset.id_user_create)}onclick="Todoyu.Ext.assets.toggleVisibility({$asset.id})"{/if} href="javascript:void(0)" title="{Label assets.alt.changeVisibility}" class="asset-icon-public {if !$asset.is_public}not{/if}"><span class="hidden">{Label assets.alt.changeVisibility}</span></a>
-					{if allowedOrOwn('assets','download',$asset.id_user_create)}
+					<a id="asset-{$asset.id}-icon-public" {if allowedOrOwn('assets','asset:makePublic',$asset.id_user_create)}onclick="Todoyu.Ext.assets.toggleVisibility({$asset.id})"{/if} href="javascript:void(0)" title="{Label assets.alt.changeVisibility}" class="asset-icon-public {if !$asset.is_public}not{/if}"><span class="hidden">{Label assets.alt.changeVisibility}</span></a>
+					{if allowedOrOwn('assets','asset:download',$asset.id_user_create)}
 						<a id="asset-{$asset.id}-icon-download" onclick="Todoyu.Ext.assets.download({$asset.id})" href="javascript:void(0)" title="{Label assets.alt.download}" class="asset-icon-download"><span class="hidden">{Label assets.alt.download}</span></a>
 					{/if}
-					{if allowedOrOwn('assets','delete',$asset.id_user_create)}
+					{if allowedOrOwn('assets','asset:delete',$asset.id_user_create)}
 						<a id="asset-{$asset.id}-icon-delete" onclick="Todoyu.Ext.assets.remove({$asset.id})" href="javascript:void(0)" title="{Label assets.alt.delete}" class="asset-icon-delete"><span class="hidden">{Label assets.alt.delete}</span></a>
 					{/if}
 				</td>

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
-		<label index="section.general">General settings</label>
-		<label index="right.use">Use assets</label>
-		<label index="section.asset">Assets</label>
-		<label index="right.seePublic">Show 'public' assets</label>
-		<label index="right.seeAll">Show ALL assets</label>
-		<label index="right.upload">Upload new asset</label>
-		<label index="right.download">Download assets</label>
-		<label index="right.delete">Delete an asset</label>
-		<label index="right.makepublic">Set asset public</label>
+		<label index="general">General settings</label>
+		<label index="general.use">Use assets</label>
+		<label index="asset">Assets</label>
+		<label index="asset.seePublic">Show 'public' assets</label>
+		<label index="asset.seeAll">Show ALL assets</label>
+		<label index="asset.upload">Upload new asset</label>
+		<label index="asset.download">Download assets</label>
+		<label index="asset.delete">Delete an asset</label>
+		<label index="asset.makepublic">Set asset public</label>
 	</labels>
 	<labels lang="de">
-		<label index="section.general">Allgemeine Einstellungen</label>
-		<label index="right.use">Dateianlagen benutzen</label>
-		<label index="section.asset">Dateien</label>
-		<label index="right.seePublic">Zeige 'öffentliche' Dateien</label>
-		<label index="right.seeAll">Zeige ALLE Dateien</label>
-		<label index="right.upload">Neue Datei hochladen</label>
-		<label index="right.download">Datei herunterladen</label>
-		<label index="right.delete">Datei löschen</label>
-		<label index="right.makepublic">Datei öffentlich schalten</label>
+		<label index="general">Allgemeine Einstellungen</label>
+		<label index="general.use">Dateianlagen benutzen</label>
+		<label index="asset">Dateien</label>
+		<label index="asset.seePublic">Zeige 'öffentliche' Dateien</label>
+		<label index="asset.seeAll">Zeige ALLE Dateien</label>
+		<label index="asset.upload">Neue Datei hochladen</label>
+		<label index="asset.download">Datei herunterladen</label>
+		<label index="asset.delete">Datei löschen</label>
+		<label index="asset.makepublic">Datei öffentlich schalten</label>
 	</labels>
 </locallang>

@@ -42,7 +42,7 @@ class TodoyuAssetRenderer {
 				$content .= self::renderListControll($idTask);
 			}
 			$content .=self::renderList($idTask);
-		} elseif( allowed('assets', 'upload') ) {
+		} elseif( allowed('assets', 'asset:upload') ) {
 			$content .= self::renderUploadForm($idTask);
 		}
 
