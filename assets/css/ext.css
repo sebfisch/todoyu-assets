@@ -75,20 +75,9 @@
 }
 
 /* Background colors of the rows in the list */
-.assetList tr.odd td {
-	background-color:#FFFFFF;
-}
-
-.assetList tr.even td {
-	background-color:#EFF1E8;
-}
-
-.assetList tr.hover td {
-	background-color:#E3EACE;
-}
 
 .assetList tr.selected td {
-	background-color:#D3DABB;
+	background-color:#d3dabb;
 }
 
 
