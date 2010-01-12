@@ -20,8 +20,8 @@
 ***************************************************************/
 
 	// Basic paths
-$CONFIG['EXT']['assets']['basePath'] 	= PATH_FILES . '/assets';
-$CONFIG['EXT']['assets']['cachePath'] 	= PATH_CACHE . '/downloads';
+$CONFIG['EXT']['assets']['basePath'] 	= PATH_FILES . DIRECTORY_SEPARATOR . 'assets';
+$CONFIG['EXT']['assets']['cachePath'] 	= PATH_CACHE . DIRECTORY_SEPARATOR . 'downloads';
 	// Delete files on harddisk when delete in database
 $CONFIG['EXT']['assets']['deleteFiles'] = true;
 
