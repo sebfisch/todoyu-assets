@@ -241,8 +241,7 @@ class TodoyuAssetManager {
 			'file_mime_sub'			=> $fileMimeSub,
 			'file_storage'			=> $relStoragePath,
 			'file_name'				=> $fileName,
-			'file_size'				=> $fileSize,
-			'id_old_version'		=> 0
+			'file_size'				=> $fileSize
 		);
 
 		return Todoyu::db()->addRecord($table, $values);
