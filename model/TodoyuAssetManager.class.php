@@ -406,7 +406,7 @@ class TodoyuAssetManager {
 
 			// Build file path and name
 		$zipName	= self::makeZipFileName($idTask, $assetIDs);
-		$zipPath	= $GLOBALS['CONFIG']['EXT']['assets']['cachePath'] . DIRECTORY_SEPARATOR . $zipName;
+		$zipPath	= TodoyuFileManager::pathAbsolute($GLOBALS['CONFIG']['EXT']['assets']['cachePath'] . DIRECTORY_SEPARATOR . $zipName);
 
 			// Create zip file
 		$zip	= new ZipArchive();
@@ -427,20 +427,50 @@ class TodoyuAssetManager {
 			$where = 'id_task = ' . $idTask . ' AND deleted = 0';
 		}
 
-		$assets	= Todoyu::db()->getArray($fields, $table, $where);
+			// Get selected asset records
+		$assets			= Todoyu::db()->getArray($fields, $table, $where);
+			// Counter for identical filenames
+		$fileNameCounter= array();
 
 			// Add assets
 		foreach($assets as $asset) {
-			$success = $zip->addFile($GLOBALS['CONFIG']['EXT']['assets']['basePath'] . DIRECTORY_SEPARATOR . $asset['file_storage'], $asset['file_name']);
+				// Handle doublicated filenames
+			$inZipName	= $asset['file_name'];
+				// If filename is already in archive, postfile with a counter
+			if( array_key_exists($inZipName, $fileNameCounter) ) {
+				$index		= intval($fileNameCounter[$asset['file_name']]);
+				$inZipName	= TodoyuDiv::appendToFilename($inZipName, '_' . $index);
+			}
+				// Get path to file on server
+			$storageFilePath= self::getStoragePath($asset['file_storage']);
 
+				// Add file
+			$success = $zip->addFile($storageFilePath, $inZipName);
+
+				// Log error if adding failed
 			if( $success !== true ) {
 				Todoyu::log('Failed to add asset to zipfile', LOG_LEVEL_ERROR, $GLOBALS['CONFIG']['EXT']['assets']['asset_dir'] . $asset['file_storage'], $asset['file_name']);
 			}
+
+				// Count filename (to check for doublicates)
+			$fileNameCounter[$asset['file_name']]++;
 		}
 
 		$zip->close();
 
 		return $zipPath;
+	}
+
+
+
+	/**
+	 * Get path to file in storage
+	 *
+	 * @param	String		$storageFileName		Relative path from asset storage
+	 * @return	String		Absolute path to file in asset storage
+	 */
+	public static function getStoragePath($storageFileName) {
+		return $GLOBALS['CONFIG']['EXT']['assets']['basePath'] . DIRECTORY_SEPARATOR . $storageFileName;
 	}
 
 
