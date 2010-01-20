@@ -32,7 +32,7 @@ define('EXTID_ASSETS', 101);
 define('PATH_EXT_ASSETS', PATH_EXT . '/assets');
 
 	// Register module locales
-TodoyuLocale::register('assets', PATH_EXT_ASSETS . '/locale/ext.xml');
+TodoyuLanguage::register('assets', PATH_EXT_ASSETS . '/locale/ext.xml');
 
 	// Request configurations
 require_once( PATH_EXT_ASSETS . '/config/constants.php' );
