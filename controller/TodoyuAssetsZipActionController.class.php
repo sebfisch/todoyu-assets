@@ -34,7 +34,7 @@ class TodoyuAssetsZipActionController extends TodoyuActionController {
 	 */
 	public function downloadAction(array $params) {
 		$idTask		= intval($params['task']);
-		$assetIDs	= TodoyuDiv::intExplode(',', $params['assets'], true, true);
+		$assetIDs	= TodoyuArray::intExplode(',', $params['assets'], true, true);
 
 		if( sizeof($assetIDs) > 0 ) {
 			TodoyuAssetManager::downloadAssetsZipped($idTask, $assetIDs);
