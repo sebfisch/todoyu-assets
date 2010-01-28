@@ -13,6 +13,7 @@
 		<label index="alt.changeVisibility">Change Visibility for Customer</label>
 		<label index="alt.selectall">Select all/none</label>
 		<label index="upload.selectfile">Select a File to Upload</label>
+		<label index="upload.filename">Filename</label>
 		<label index="upload.new">Add new File</label>
 		<label index="delete.confirm">Do you really want to delete this file?</label>
 		<label index="download.selection">Download Selection</label>
@@ -30,6 +31,7 @@
 		<label index="alt.changeVisibility">Sichtbarkeit für Kunden ändern</label>
 		<label index="alt.selectall">alle/keinen auswählen</label>
 		<label index="upload.selectfile">Datei für Upload auswählen</label>
+		<label index="upload.filename">Dateiname</label>
 		<label index="upload.new">Neue Datei anfügen</label>
 		<label index="delete.confirm">Wollen Sie diese Datei wirklich löschen?</label>
 		<label index="download.selection">Auswahl herunterladen</label>

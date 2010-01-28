@@ -85,10 +85,10 @@
 /* ---------------
 	asset box
    --------------- */
-
 th.assetsFilelistHeaderFilenames {
 	width:50%;
 }
+
 #taskList .activeTabContent .assetBox .assetsUploader .assetsULfile label {
 	margin-left:10px;
 }

@@ -93,8 +93,15 @@ Todoyu.Ext.assets = {
 			Effect.Fade('asset-' + idAsset);
 		}
 	},
-	
-	
+
+
+
+	/**
+	 * Handler to be called after having deleted a file: updates file list
+	 * 
+	 * @param	Interger	idAsset
+	 * @param	Object		response 
+	 */
 	onRemoved: function(idAsset, response) {
 		var idTask	= response.getTodoyuHeader('idTask');
 		var label	= response.getTodoyuHeader('tabLabel');
@@ -123,7 +130,14 @@ Todoyu.Ext.assets = {
 		
 		$('asset-' + idAsset + '-icon-public').toggleClassName('not');
 	},
-	
+
+
+
+	/**
+	 * Update assets tab of given task
+	 * 
+	 * @param	Integer		idTask
+	 */
 	updateTab: function(idTask) {
 		var url		= Todoyu.getUrl('assets', 'tasktab');
 		var options	= {
@@ -418,7 +432,7 @@ Todoyu.Ext.assets = {
 				'id': 'asset-uploader-element',
 				'class': 'formElement'
 			});
-			var loaderText = new Element('div').update('Filename: ' + filename);
+			var loaderText = new Element('div').update('[LLL:assets.upload.filename]' + ': ' + filename);
 			var loaderImage = new Element('img', {
 				'src': 'ext/assets/assets/img/uploader.gif'
 			});
