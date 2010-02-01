@@ -72,6 +72,3 @@ class TodoyuAssetsTasktabActionController extends TodoyuActionController {
 }
 
 ?>
-
-
-

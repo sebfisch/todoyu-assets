@@ -150,7 +150,15 @@ Todoyu.Ext.assets = {
 		
 		Todoyu.Ui.update(target, url, options);
 	},
-	
+
+
+
+	/**
+	 * Set label of task assets tab
+	 * 
+	 * @param	Integer	idTask
+	 * @param	String	label
+	 */	
 	setTabLabel: function(idTask, label) {
 		$('task-' + idTask + '-tabhead-assets-label').select('.labeltext').first().update(label);
 	},
