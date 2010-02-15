@@ -6,7 +6,7 @@ CREATE TABLE `ext_assets_asset` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `date_create` int(10) unsigned NOT NULL DEFAULT '0',
   `date_update` int(10) unsigned NOT NULL DEFAULT '0',
-  `id_user_create` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `id_person_create` smallint(5) unsigned NOT NULL DEFAULT '0',
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `id_parent` int(10) unsigned NOT NULL DEFAULT '0',
   `parenttype` tinyint(1) NOT NULL,

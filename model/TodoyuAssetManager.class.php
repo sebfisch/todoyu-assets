@@ -121,7 +121,7 @@ class TodoyuAssetManager {
 		if( ! allowed('assets', 'asset:seeAll') ) {
 			$where .= ' AND (
 							is_public 		= 1 OR
-							id_user_create 	= ' . personid() . '
+							id_person_create 	= ' . personid() . '
 						)';
 		}
 
@@ -231,7 +231,7 @@ class TodoyuAssetManager {
 		$values		= array(
 			'parenttype'			=> $type,
 			'id_parent'				=> $idParent,
-			'id_user_create'		=> personid(),
+			'id_person_create'		=> personid(),
 			'date_create'			=> NOW,
 			'date_update'			=> NOW,
 			'deleted'				=> 0,
