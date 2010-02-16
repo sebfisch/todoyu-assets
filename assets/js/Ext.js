@@ -160,7 +160,7 @@ Todoyu.Ext.assets = {
 	 * @param	String	label
 	 */	
 	setTabLabel: function(idTask, label) {
-		$('task-' + idTask + '-tabhead-assets-label').select('.labeltext').first().update(label);
+		$('task-' + idTask + '-tab-assets-label').select('.labeltext').first().update(label);
 	},
 
 
