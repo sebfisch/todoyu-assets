@@ -45,6 +45,14 @@ $CONFIG['EXT']['assets']['assets'] = array(
 				'position'	=> 100
 			),
 			array(
+				'file'		=> 'ext/assets/assets/js/AssetsList.js',
+				'position'	=> 110
+			),
+			array(
+				'file'		=> 'ext/assets/assets/js/AssetsUpload.js',
+				'position'	=> 120
+			),
+			array(
 				'file'		=> 'lib/js/md5.js',
 				'position'	=> 26
 			)
