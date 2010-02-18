@@ -28,7 +28,7 @@
 					{filesize $asset.file_size}
 				</td>
 				<td class="uploaddate">
-					<span title="{Label assets.alt.uploadedby} {UserName $asset.id_person_create}">{date_format $asset.date_create "%d.%m.%y %R"}</span>
+					<span title="{Label assets.alt.uploadedby} {name $asset.id_person_create}">{date_format $asset.date_create "%d.%m.%y %R"}</span>
 				</td>
 				<td class="actions">
 					<a id="asset-{$asset.id}-icon-public" {if allowedOrOwn('assets','asset:makePublic',$asset.id_person_create)}onclick="Todoyu.Ext.assets.toggleVisibility({$asset.id})"{/if} href="javascript:void(0)" title="{Label assets.alt.changeVisibility}" class="asset-icon-public {if !$asset.is_public}not{/if}"><span class="hidden">{Label assets.alt.changeVisibility}</span></a>

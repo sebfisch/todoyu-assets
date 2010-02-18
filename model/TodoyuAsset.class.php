@@ -65,19 +65,19 @@ class TodoyuAsset extends TodoyuBaseObject {
 	 *
 	 * @return	Integer
 	 */
-	public function getUserID() {
+	public function getPersonID() {
 		return parent::getPersonID('create');
 	}
 
 
 
 	/**
-	 * Get uploader user object
+	 * Get uploader person object
 	 *
-	 * @return	User
+	 * @return	TodoyuPerson
 	 */
-	public function getUser() {
-		return parent::getUser('create');
+	public function getPerson() {
+		return parent::getPerson('create');
 	}
 
 
