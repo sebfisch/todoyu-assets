@@ -117,7 +117,7 @@ class TodoyuAssetManager {
 					deleted			= 0';
 		$order	= 'date_create DESC';
 
-			// If user can't see all assets, limit to public and own
+			// If person can't see all assets, limit to public and own
 		if( ! allowed('assets', 'asset:seeAll') ) {
 			$where .= ' AND (
 							is_public 		= 1 OR
@@ -179,7 +179,7 @@ class TodoyuAssetManager {
 	 *
 	 * @param	Integer		$idTask			Task ID
 	 * @param	String		$tempFile		Path to temporary file on server
-	 * @param	String		$fileName		Filename on user system
+	 * @param	String		$fileName		Filename on browser system
 	 * @param	String		$mimeType		Submitted file type by browser
 	 * @return	Integer		Asset ID
 	 */
