@@ -33,14 +33,13 @@ $CONFIG['EXT']['assets']['info'] = array(
 		'company'	=> 'Snowflake Productions, Zürich'
 	),
 	'state' 			=> 'beta',
-	'version' => '0.1.0',
+	'version' => '0.2.0',
 	'constraints' => array(
 		'depends' => array(
-			'user'			=> '0.1.0',
-			'project' 		=> '0.1.0',
+			'contact'		=> '0.2.0',
+			'project' 		=> '0.2.0',
 		),
 		'conflicts' => array(
-
 		)
 	)
 );
