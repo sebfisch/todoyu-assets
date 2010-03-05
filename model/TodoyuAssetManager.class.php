@@ -95,14 +95,9 @@ class TodoyuAssetManager {
 		$idElement	= intval($idElement);
 		$type		= intval($type);
 
-		$field	= 'id';
-		$table	= self::TABLE;
-		$where	= '	id_parent		= ' . $idElement . ' AND
-					parenttype		= ' . $type . ' AND
-					deleted			= 0';
-		$order	= 'date_create DESC';
+		$assets		= self::getElementAssets($idElement, $type);
 
-		return Todoyu::db()->getColumn($field, $table, $where, '', $order);
+		return TodoyuArray::getColumn($assets, 'id');
 	}
 
 
@@ -118,7 +113,7 @@ class TodoyuAssetManager {
 		$order	= 'date_create DESC';
 
 			// If person can't see all assets, limit to public and own
-		if( ! allowed('assets', 'asset:seeAll') ) {
+		if( Todoyu::person()->isExternal()  && ! allowed('assets', 'asset:seeAll') ) {
 			$where .= ' AND (
 							is_public 		= 1 OR
 							id_person_create 	= ' . personid() . '

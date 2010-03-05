@@ -6,12 +6,8 @@
 	</section>
 
 	<section name="asset" require="general:use">
-		<right name="seePublic" />
-		<right name="seeAll" require="asset:seePublic" />
-		<right name="upload" />
-		<right name="download" />
+		<right name="seeAll" />
 		<right name="delete" />
-		<right name="makepublic" />
 	</section>
 
 </rights>

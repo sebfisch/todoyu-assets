@@ -48,7 +48,7 @@ class TodoyuAssetsTasktabActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function listAction(array $params) {
-		restrict('assets', 'asset:seePublic');
+		restrict('assets', 'general:use');
 
 		$idTask	= intval($params['task']);
 

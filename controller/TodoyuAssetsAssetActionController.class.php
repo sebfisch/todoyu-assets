@@ -27,6 +27,12 @@
  */
 class TodoyuAssetsAssetActionController extends TodoyuActionController {
 
+
+	public function init(array $params) {
+		restrict('assets', 'general:use');
+	}
+
+
 	/**
 	 * Asset download request
 	 * Send file headers and binary data to the browser
@@ -38,14 +44,9 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 		$idAsset	= intval($params['asset']);
 		$asset		= TodoyuAssetManager::getAsset($idAsset);
 
-			// If asset is not uploaded by current person, he needs download rights
-		if( ! $asset->isCurrentPersonCreator() ) {
-			restrict('assets', 'asset:download');
-
-				// If asset if not public, person need the right so see also not public assets
-			if( ! $asset->isPublic() ) {
-				restrict('assets', 'asset:seeAll');
-			}
+			// If asset if not public, person need the right so see also not public assets
+		if( ! Todoyu::person()->isInternal() && ! $asset->isPublic() ) {
+			restrict('assets', 'asset:seeAll');
 		}
 
 		TodoyuAssetManager::downloadAsset($idAsset);
@@ -89,13 +90,10 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 	 * @param array $params
 	 */
 	public function togglevisibilityAction(array $params) {
+		restrictInternal();
+
 		$idAsset	= intval($params['asset']);
 		$asset		= TodoyuAssetManager::getAsset($idAsset);
-
-			// If asset is not uploaded by current person, he needs delete rights
-		if( ! $asset->isCurrentPersonCreator() ) {
-			restrict('assets', 'asset:makepublic');
-		}
 
 		TodoyuAssetManager::togglePublic($idAsset);
 	}

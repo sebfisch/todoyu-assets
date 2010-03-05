@@ -27,6 +27,10 @@
  */
 class TodoyuAssetsUploadActionController extends TodoyuActionController {
 
+	public function init(array $params) {
+		restrict('assets', 'general:use');
+	}
+
 	/**
 	 * Upload an asset
 	 *
@@ -34,8 +38,6 @@ class TodoyuAssetsUploadActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function defaultAction(array $params) {
-		restrict('assets', 'asset:upload');
-
 		$idTask		= intval($params['asset']['id_task']);
 
 		$tempFile	= $_FILES['asset']['tmp_name']['file'];

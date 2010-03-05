@@ -45,11 +45,11 @@ $CONFIG['EXT']['assets']['assets'] = array(
 				'position'	=> 100
 			),
 			array(
-				'file'		=> 'ext/assets/assets/js/AssetsList.js',
+				'file'		=> 'ext/assets/assets/js/List.js',
 				'position'	=> 110
 			),
 			array(
-				'file'		=> 'ext/assets/assets/js/AssetsUpload.js',
+				'file'		=> 'ext/assets/assets/js/Upload.js',
 				'position'	=> 120
 			),
 			array(

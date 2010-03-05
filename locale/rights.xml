@@ -4,22 +4,14 @@
 		<label index="general">General settings</label>
 		<label index="general.use">Use assets</label>
 		<label index="asset">Assets</label>
-		<label index="asset.seePublic">Show 'public' assets</label>
 		<label index="asset.seeAll">Show ALL assets</label>
-		<label index="asset.upload">Upload new asset</label>
-		<label index="asset.download">Download assets</label>
 		<label index="asset.delete">Delete an asset</label>
-		<label index="asset.makepublic">Set asset public</label>
 	</labels>
 	<labels lang="de">
 		<label index="general">Allgemeine Einstellungen</label>
 		<label index="general.use">Dateianlagen benutzen</label>
 		<label index="asset">Dateien</label>
-		<label index="asset.seePublic">Zeige 'öffentliche' Dateien</label>
 		<label index="asset.seeAll">Zeige ALLE Dateien</label>
-		<label index="asset.upload">Neue Datei hochladen</label>
-		<label index="asset.download">Datei herunterladen</label>
 		<label index="asset.delete">Datei löschen</label>
-		<label index="asset.makepublic">Datei öffentlich schalten</label>
 	</labels>
 </locallang>

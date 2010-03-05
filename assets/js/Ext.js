@@ -88,8 +88,8 @@ Todoyu.Ext.assets = {
 				},
 				'onComplete': this.onRemoved.bind(this, idAsset)
 			};
+			
 			Todoyu.send(url, options);
-			Effect.Fade('asset-' + idAsset);
 		}
 	},
 
@@ -102,6 +102,8 @@ Todoyu.Ext.assets = {
 	 * @param	Object		response 
 	 */
 	onRemoved: function(idAsset, response) {
+		Effect.Fade('asset-' + idAsset);
+		
 		var idTask	= response.getTodoyuHeader('idTask');
 		var label	= response.getTodoyuHeader('tabLabel');
 		
