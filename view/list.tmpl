@@ -26,7 +26,7 @@
 					{filesize $asset.file_size}
 				</td>
 				<td class="uploaddate">
-					<span title="{Label assets.alt.uploadedby} {name $asset.id_person_create}">{date_format $asset.date_create "%d.%m.%y %R"}</span>
+					<span title="{Label assets.alt.uploadedby} {name $asset.id_person_create}">{dateFormat $asset.date_create datetime}</span>
 				</td>
 				<td class="actions">
 					{if isInternal()}
