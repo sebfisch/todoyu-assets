@@ -44,7 +44,7 @@ class TodoyuAssetManager {
 	public static function getAsset($idAsset) {
 		$idAsset	= intval($idAsset);
 
-		return TodoyuCache::getRecord('TodoyuAsset', $idAsset);
+		return TodoyuRecordManager::getRecord('TodoyuAsset', $idAsset);
 	}
 
 
@@ -72,7 +72,7 @@ class TodoyuAssetManager {
 	public static function getTaskAsset($idAsset) {
 		$idAsset	= intval($idAsset);
 
-		return TodoyuCache::getRecord('TodoyuTaskAsset', $idAsset);
+		return TodoyuRecordManager::getRecord('TodoyuTaskAsset', $idAsset);
 	}
 
 
