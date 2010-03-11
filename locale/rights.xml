@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
-		<label index="general">General settings</label>
-		<label index="general.use">Use assets</label>
+		<label index="general">General Settings</label>
+		<label index="general.use">Use Assets</label>
 		<label index="asset">Assets</label>
-		<label index="asset.seeAll">Show ALL assets</label>
-		<label index="asset.delete">Delete an asset</label>
+		<label index="asset.seeAll">Show ALL Assets</label>
+		<label index="asset.delete">Delete An Asset</label>
 	</labels>
 	<labels lang="de">
 		<label index="general">Allgemeine Einstellungen</label>

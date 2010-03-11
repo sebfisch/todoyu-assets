@@ -10,11 +10,11 @@
 		<label index="alt.download">Download File</label>
 		<label index="alt.uploadedby">Uploaded by</label>
 		<label index="alt.delete">Delete File</label>
-		<label index="alt.changeVisibility">Change Visibility for Customer</label>
-		<label index="alt.selectall">Select all/none</label>
-		<label index="upload.selectfile">Select a File to Upload</label>
+		<label index="alt.changeVisibility">Change Visibility For Customer</label>
+		<label index="alt.selectall">Select All/None</label>
+		<label index="upload.selectfile">Select A File To Upload</label>
 		<label index="upload.filename">Filename</label>
-		<label index="upload.new">Add new File</label>
+		<label index="upload.new">Add New File</label>
 		<label index="delete.confirm">Do you really want to delete this file?</label>
 		<label index="download.selection">Download Selection</label>
 	</labels>
