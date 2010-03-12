@@ -55,12 +55,12 @@ Todoyu.Ext.assets = {
 		var selectedAssets = this.List.getSelectedAssets(idTask);
 				
 		if( selectedAssets.size() === 0 ) {
-			Todoyu.notifyError('Please select at least one file', 3);
+			Todoyu.notifyError('[LLL:assets.error.minimumFile]', 3);
 		} else if( selectedAssets.size() === 1 ) {
-			Todoyu.notifyInfo('You only selected one file, normal file download', 3);
+			Todoyu.notifyInfo('[LLL:assets.download.normal]', 3);
 			this.download(selectedAssets.first());
 		} else {
-			Todoyu.notifyInfo('The selected files have been packed into an archive for download', 3);
+			Todoyu.notifyInfo('[LLL:assets.download.compressed]', 3);
 			var params = {
 				'action': 'download',
 				'task': idTask,
