@@ -10,6 +10,13 @@
 	background:transparent;
 }
 
+.assetForm form div.fElement .fLabel,
+.assetForm form div.fElement .fField {
+	float:left;
+	width:auto;
+	padding-left:8px;
+}
+
 .assetList .assets-table-header {
 	background:#E5E8DA url(../../../../core/assets/img/bg-tabheader.png) repeat-x 0 top;
 }
