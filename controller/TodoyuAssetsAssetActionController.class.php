@@ -27,10 +27,15 @@
  */
 class TodoyuAssetsAssetActionController extends TodoyuActionController {
 
-
+	/**
+	 * Initialize controller: restrict access
+	 *
+	 * @param	Array	$params
+	 */
 	public function init(array $params) {
 		restrict('assets', 'general:use');
 	}
+
 
 
 	/**
@@ -85,7 +90,7 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 
 
 	/**
-	 * Toggle
+	 * Toggle asset public visibilty
 	 *
 	 * @param array $params
 	 */
@@ -98,6 +103,5 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 		TodoyuAssetManager::togglePublic($idAsset);
 	}
 }
-
 
 ?>
