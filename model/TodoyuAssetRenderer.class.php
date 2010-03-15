@@ -106,7 +106,8 @@ class TodoyuAssetRenderer {
 
 			// Get form data
 		$formData	= array(
-			'id_task'	=> $idTask
+			'id_task'		=> $idTask,
+			'MAX_FILE_SIZE'	=> intval($GLOBALS['CONFIG']['EXT']['assets']['max_file_size'])
 		);
 		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, $idTask);
 
@@ -140,6 +141,20 @@ class TodoyuAssetRenderer {
 		$data	= array(
 			'title'		=> 'Uploader IFrame',
 			'content'	=> '<script type="text/javascript">window.parent.Todoyu.Ext.assets.Upload.uploadFinished(' . $idTask . ', \'' . $tabLabel . '\');</script>'
+		);
+
+		return render($tmpl, $data);
+	}
+
+
+
+	public static function renderUploadframeContentFailed($error, $fileName) {
+		$maxFileSize	= intval($GLOBALS['CONFIG']['EXT']['assets']['max_file_size']);
+
+		$tmpl	= 'core/view/htmldoc.tmpl';
+		$data	= array(
+			'title'		=> 'Uploader IFrame',
+			'content'	=> '<script type="text/javascript">window.parent.Todoyu.Ext.assets.Upload.uploadFailed(' . $error . ', \'' . $fileName . '\', ' . $maxFileSize . ');</script>'
 		);
 
 		return render($tmpl, $data);

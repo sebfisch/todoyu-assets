@@ -166,6 +166,12 @@ Todoyu.Ext.assets.Upload = {
 
 		$('formElement-asset-' + idTask + '-field-file').insert({'before': formElement});
 	},
+	
+	
+	removeUploader: function() {
+			// Remove uploader progress bar
+		$('asset-uploader-element').remove();
+	},
 
 
 
@@ -176,16 +182,36 @@ Todoyu.Ext.assets.Upload = {
 	 * @param	String		filename
 	 */
 	uploadFinished: function(idTask, tabLabel) {
-			// Remove uploader progress bar
-		$('asset-uploader-element').remove();
+		this.removeUploader();
 		
 		if( Todoyu.exists('task-' + idTask + '-assets-commands') ) {
 			Todoyu.Ext.assets.List.refresh(idTask);
 		} else {
 			Todoyu.Ext.assets.updateTab(idTask);
 		}
+		
+		Todoyu.notifySuccess('[LLL:assets.uploadOk]');
 
 		Todoyu.Ext.assets.setTabLabel(idTask, tabLabel);			
+	},
+	
+	
+	
+	uploadFailed: function(error, filename, maxFileSize) {
+		this.removeUploader();
+		var info	= {
+			'filename': 	filename,
+			'maxFileSize':	maxFileSize
+		};
+		var msg		= '';
+		
+		if( error === 1 || error === 2 ) {
+			msg	= '[LLL:assets.maxFileSizeExceeded]';
+		} else {
+			msg	= '[LLL:assets.uploadFailed]';
+		}
+		
+		Todoyu.notifyError(msg.interpolate(info), 10);
 	}
 
 };

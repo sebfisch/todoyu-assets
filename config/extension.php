@@ -37,6 +37,10 @@ $CONFIG['EXT']['assets']['TYPES']['project'] = array(
 	'folder'	=> 'project'
 );
 
+	// Set max upload file size
+$CONFIG['EXT']['assets']['max_file_size'] = 50000000; // 50MB
+
+
 	// Add task tab
 if( allowed('assets', 'general:use') ) {
 	TodoyuTaskManager::addTaskTab('assets', 'TodoyuTaskAssetViewHelper::getTabLabel', 'TodoyuTaskAssetViewHelper::getTabContent', 30);

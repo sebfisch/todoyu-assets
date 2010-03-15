@@ -252,8 +252,6 @@ class TodoyuAssetManager {
 		$fileName	= NOW . '_' . self::cleanFileName($uploadFileName);
 		$filePath	= $basePath . DIRECTORY_SEPARATOR . $fileName;
 
-//		TodoyuDebug::printHtml(func_get_args(), 'args');
-
 		$fileMoved	= move_uploaded_file($sourceFile, $filePath);
 
 		return $fileMoved ? $filePath : false ;
@@ -285,7 +283,7 @@ class TodoyuAssetManager {
 		$asset		= TodoyuAssetManager::getAsset($idAsset);
 
 		TodoyuHeader::sendHeader('Content-type', $asset->getMimeType());
-		TodoyuHeader::sendHeader('Content-disposition', 'attachment; filename=' . $asset->getFilename());
+		TodoyuHeader::sendHeader('Content-disposition', 'attachment; filename="' . $asset->getFilename() . '"');
 		TodoyuHeader::sendHeader('Content-length', $asset->getFilesize());
 		TodoyuHeader::sendHeader('Expires', date('r', NOW+600));
 		TodoyuHeader::sendHeader('Last-Modified', date('r', $asset->get('date_update')));
@@ -303,13 +301,7 @@ class TodoyuAssetManager {
 	private static function sendAssetDownloadData($idAsset) {
 		$idAsset	= intval($idAsset);
 		$asset		= TodoyuAssetManager::getAsset($idAsset);
-
-//		TodoyuHeader::sendHeaderHTML();
-//		TodoyuDebug::printHtml($asset);
-
 		$filePath	= $asset->getFileStoragePath();
-
-//		TodoyuDebug::printHtml($filePath);
 
 		TodoyuDiv::sendFile($filePath);
 	}

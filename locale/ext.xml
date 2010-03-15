@@ -20,6 +20,9 @@
 		<label index="download.normal">You only selected one file, normal file download</label>
 		<label index="download.compressed">The selected files have been packed into an archive for download</label>
 		<label index="error.minimumFile">Please select at least one file</label>
+		<label index="maxFileSizeExceeded">The file '#{filename}' has exceeded the maximum allowed filesize (#{maxFileSize}Bytes) to upload</label>
+		<label index="uploadFailed">The upload of the file '#{filename}' has failed</label>
+		<label index="uploadOk">The file has been uploaded</label>
 	</labels>
 	<labels lang="de">
 		<label index="ext.title">Aufgaben-Anhänge</label>
@@ -41,5 +44,8 @@
 		<label index="download.normal">Sie haben nur eine Datei gewählt. Normaler Dateidownload</label>
 		<label index="download.compressed">Die gewählten Dateien werden für den Download gepackt</label>
 		<label index="error.minimumFile">Bitte wählen Sie mindestens eine Datei</label>
+		<label index="maxFileSizeExceeded">Die Datei '#{filename}' hat die maximal zulässige Grösse für Uploads (#{maxFileSize}Bytes) überschritten</label>
+		<label index="uploadFailed">Das Hochladen der Datei '#{filename}' ist fehlgeschlagen</label>
+		<label index="uploadOk">Die Datei wurde erfolgreich hochgeladen</label>
 	</labels>
 </locallang>

@@ -8,6 +8,7 @@
 		<attribute name="method">POST</attribute>
 	</attributes>
 	<hiddenFields>
+		<field name="MAX_FILE_SIZE" value="100000000" noWrap="true" noStorage="true" />
 		<field name="id_task" />
 	</hiddenFields>
 	<fieldsets>
