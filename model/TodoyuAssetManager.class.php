@@ -222,13 +222,9 @@ class TodoyuAssetManager {
 		$fileMimeSub= $types[1];
 
 			// Add record to database
-		$table		= self::TABLE;
-		$values		= array(
+		$data		= array(
 			'parenttype'			=> $type,
 			'id_parent'				=> $idParent,
-			'id_person_create'		=> personid(),
-			'date_create'			=> NOW,
-			'date_update'			=> NOW,
 			'deleted'				=> 0,
 			'is_public'	=> 0,
 			'file_ext'				=> $info['extension'],
@@ -239,7 +235,7 @@ class TodoyuAssetManager {
 			'file_size'				=> $fileSize
 		);
 
-		return Todoyu::db()->addRecord($table, $values);
+		return TodoyuRecordManager::addRecord(self::TABLE, $data);
 	}
 
 
@@ -328,11 +324,10 @@ class TodoyuAssetManager {
 	public static function deleteAsset($idAsset) {
 		$idAsset	= intval($idAsset);
 		$update		= array(
-			'deleted' 		=> 1,
-			'date_update'	=> NOW
+			'deleted' 		=> 1
 		);
 
-		Todoyu::db()->updateRecord(self::TABLE, $idAsset, $update);
+		TodoyuRecordManager::updateRecord(self::TABLE, $idAsset, $update);
 
 			// Delete file on harddisk?
 		if( $GLOBALS['CONFIG']['EXT']['assets']['deleteFiles'] === true ) {
