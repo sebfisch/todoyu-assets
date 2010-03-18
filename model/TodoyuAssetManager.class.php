@@ -302,7 +302,7 @@ class TodoyuAssetManager {
 		$asset		= TodoyuAssetManager::getAsset($idAsset);
 		$filePath	= $asset->getFileStoragePath();
 
-		TodoyuDiv::sendFile($filePath);
+		TodoyuFileManager::sendFile($filePath);
 	}
 
 
@@ -365,7 +365,7 @@ class TodoyuAssetManager {
 		TodoyuHeader::sendNoCacheHeaders();
 
 			// Delete temporary zip file after download
-		TodoyuDiv::sendFile($zipFile);
+		TodoyuFileManager::sendFile($zipFile);
 
 		unlink($zipFile);
 	}
@@ -420,7 +420,7 @@ class TodoyuAssetManager {
 				// If filename is already in archive, postfile with a counter
 			if( array_key_exists($inZipName, $fileNameCounter) ) {
 				$index		= intval($fileNameCounter[$asset['file_name']]);
-				$inZipName	= TodoyuDiv::appendToFilename($inZipName, '_' . $index);
+				$inZipName	= TodoyuFileManager::appendToFilename($inZipName, '_' . $index);
 			}
 				// Get path to file on server
 			$storageFilePath= self::getStoragePath($asset['file_storage']);
