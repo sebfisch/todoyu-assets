@@ -23,47 +23,33 @@
  * Assets (JS, CSS, SWF, etc.) requirements for assets extension
  *
  * @package		Todoyu
- * @subpackage	Project
+ * @subpackage	Assets
  */
-
 $CONFIG['EXT']['assets']['assets'] = array(
-		// Default assets: loaded all over the installation always
-	'default' => array(
-		'js' => array(
-
+	'js' => array(
+		array(
+			'file'		=> 'ext/assets/assets/js/Ext.js',
+			'position'	=> 100
 		),
-		'css' => array(
-
+		array(
+			'file'		=> 'ext/assets/assets/js/List.js',
+			'position'	=> 110
+		),
+		array(
+			'file'		=> 'ext/assets/assets/js/Upload.js',
+			'position'	=> 120
+		),
+		array(
+			'file'		=> 'lib/js/md5.js',
+			'position'	=> 26
 		)
 	),
-
-		// Public assets: basis assets for this extension
-	'public' => array(
-		'js' => array(
-			array(
-				'file'		=> 'ext/assets/assets/js/Ext.js',
-				'position'	=> 100
-			),
-			array(
-				'file'		=> 'ext/assets/assets/js/List.js',
-				'position'	=> 110
-			),
-			array(
-				'file'		=> 'ext/assets/assets/js/Upload.js',
-				'position'	=> 120
-			),
-			array(
-				'file'		=> 'lib/js/md5.js',
-				'position'	=> 26
-			)
+	'css' => array(
+		array(
+			'file'	=> 'ext/assets/assets/css/ext.css'
 		),
-		'css' => array(
-			array(
-				'file'	=> 'ext/assets/assets/css/ext.css'
-			),
-			array(
-				'file'	=> 'ext/assets/assets/css/mime.css'
-			)
+		array(
+			'file'	=> 'ext/assets/assets/css/mime.css'
 		)
 	)
 );
