@@ -33,7 +33,7 @@ Todoyu.Ext.assets.List = {
 	 * @param	Integer		idTask
 	 */
 	toggle: function(idTask) {
-		Todoyu.Ui.toggle('task-' + idTask + '-assets-list');		
+		Todoyu.Ui.toggle('task-' + idTask + '-assets-list');
 	},
 
 

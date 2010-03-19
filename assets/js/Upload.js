@@ -166,10 +166,13 @@ Todoyu.Ext.assets.Upload = {
 
 		$('formElement-asset-' + idTask + '-field-file').insert({'before': formElement});
 	},
-	
-	
+
+
+
+	/**
+	 * Remove uploader progress bar from DOM
+	 */
 	removeUploader: function() {
-			// Remove uploader progress bar
 		$('asset-uploader-element').remove();
 	},
 
@@ -189,14 +192,21 @@ Todoyu.Ext.assets.Upload = {
 		} else {
 			Todoyu.Ext.assets.updateTab(idTask);
 		}
-		
+
 		Todoyu.notifySuccess('[LLL:assets.uploadOk]');
 
-		Todoyu.Ext.assets.setTabLabel(idTask, tabLabel);			
+		Todoyu.Ext.assets.setTabLabel(idTask, tabLabel);
 	},
-	
-	
-	
+
+
+
+	/**
+	 * Check whether upload failed, determine reason (file too big / failure) and notify
+	 * 
+	 * @param	Integer		error		1 = filesize exceeded, 2 = failure
+	 * @param	String		filename
+	 * @param	Integer		maxFileSize
+	 */
 	uploadFailed: function(error, filename, maxFileSize) {
 		this.removeUploader();
 		var info	= {
@@ -204,13 +214,13 @@ Todoyu.Ext.assets.Upload = {
 			'maxFileSize':	maxFileSize
 		};
 		var msg		= '';
-		
+
 		if( error === 1 || error === 2 ) {
 			msg	= '[LLL:assets.maxFileSizeExceeded]';
 		} else {
 			msg	= '[LLL:assets.uploadFailed]';
 		}
-		
+
 		Todoyu.notifyError(msg.interpolate(info), 10);
 	}
 

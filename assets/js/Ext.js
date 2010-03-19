@@ -66,7 +66,7 @@ Todoyu.Ext.assets = {
 				'task': idTask,
 				'assets': selectedAssets.join(',')
 			};
-						
+
 			Todoyu.goTo('assets', 'zip', params);
 		}
 	},
@@ -88,7 +88,7 @@ Todoyu.Ext.assets = {
 				},
 				'onComplete': this.onRemoved.bind(this, idAsset)
 			};
-			
+
 			Todoyu.send(url, options);
 		}
 	},
@@ -103,10 +103,10 @@ Todoyu.Ext.assets = {
 	 */
 	onRemoved: function(idAsset, response) {
 		Effect.Fade('asset-' + idAsset);
-		
+
 		var idTask	= response.getTodoyuHeader('idTask');
 		var label	= response.getTodoyuHeader('tabLabel');
-		
+
 		this.setTabLabel(idTask, label);
 		this.updateTab(idTask);
 	},
