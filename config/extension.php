@@ -20,25 +20,25 @@
 ***************************************************************/
 
 	// Basic paths
-$CONFIG['EXT']['assets']['basePath'] 	= PATH_FILES . DIRECTORY_SEPARATOR . 'assets';
-$CONFIG['EXT']['assets']['cachePath'] 	= PATH_CACHE . DIRECTORY_SEPARATOR . 'downloads';
+Todoyu::$CONFIG['EXT']['assets']['basePath'] 	= PATH_FILES . DIRECTORY_SEPARATOR . 'assets';
+Todoyu::$CONFIG['EXT']['assets']['cachePath'] 	= PATH_CACHE . DIRECTORY_SEPARATOR . 'downloads';
 	// Delete files on harddisk when delete in database
-$CONFIG['EXT']['assets']['deleteFiles'] = true;
+Todoyu::$CONFIG['EXT']['assets']['deleteFiles'] = true;
 
 	// Add allowed paths where files can be downloaded from
-$CONFIG['sendFile']['allow'][] = $CONFIG['EXT']['assets']['basePath'];
-$CONFIG['sendFile']['allow'][] = $CONFIG['EXT']['assets']['cachePath'];
+Todoyu::$CONFIG['sendFile']['allow'][] = Todoyu::$CONFIG['EXT']['assets']['basePath'];
+Todoyu::$CONFIG['sendFile']['allow'][] = Todoyu::$CONFIG['EXT']['assets']['cachePath'];
 
 	// Configure upload folders for types
-$CONFIG['EXT']['assets']['TYPES']['task'] = array(
+Todoyu::$CONFIG['EXT']['assets']['TYPES']['task'] = array(
 	'folder'	=> 'task'
 );
-$CONFIG['EXT']['assets']['TYPES']['project'] = array(
+Todoyu::$CONFIG['EXT']['assets']['TYPES']['project'] = array(
 	'folder'	=> 'project'
 );
 
 	// Set max upload file size
-$CONFIG['EXT']['assets']['max_file_size'] = 50000000; // 50MB
+Todoyu::$CONFIG['EXT']['assets']['max_file_size'] = 50000000; // 50MB
 
 
 	// Add task tab

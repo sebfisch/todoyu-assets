@@ -321,7 +321,7 @@ class TodoyuAssetManager {
 		TodoyuRecordManager::updateRecord(self::TABLE, $idAsset, $update);
 
 			// Delete file on harddisk?
-		if( $GLOBALS['CONFIG']['EXT']['assets']['deleteFiles'] === true ) {
+		if( Todoyu::$CONFIG['EXT']['assets']['deleteFiles'] === true ) {
 			$asset		= self::getAsset($idAsset);
 			$filePath	= $asset->getFileStoragePath();
 
@@ -383,11 +383,11 @@ class TodoyuAssetManager {
 		$idTask		= intval($idTask);
 		$assetIDs	= TodoyuArray::intval($assetIDs, true, true);
 
-		TodoyuFileManager::makeDirDeep($GLOBALS['CONFIG']['EXT']['assets']['cachePath']);
+		TodoyuFileManager::makeDirDeep(Todoyu::$CONFIG['EXT']['assets']['cachePath']);
 
 			// Build file path and name
 		$zipName	= self::makeZipFileName($idTask, $assetIDs);
-		$zipPath	= TodoyuFileManager::pathAbsolute($GLOBALS['CONFIG']['EXT']['assets']['cachePath'] . DIRECTORY_SEPARATOR . $zipName);
+		$zipPath	= TodoyuFileManager::pathAbsolute(Todoyu::$CONFIG['EXT']['assets']['cachePath'] . DIRECTORY_SEPARATOR . $zipName);
 
 			// Create zip file
 		$zip	= new ZipArchive();
@@ -430,7 +430,7 @@ class TodoyuAssetManager {
 
 				// Log error if adding failed
 			if( $success !== true ) {
-				Todoyu::log('Failed to add asset to zipfile', LOG_LEVEL_ERROR, $GLOBALS['CONFIG']['EXT']['assets']['asset_dir'] . $asset['file_storage'], $asset['file_name']);
+				Todoyu::log('Failed to add asset to zipfile', LOG_LEVEL_ERROR, Todoyu::$CONFIG['EXT']['assets']['asset_dir'] . $asset['file_storage'], $asset['file_name']);
 			}
 
 				// Count filename (to check for doublicates)
@@ -451,7 +451,7 @@ class TodoyuAssetManager {
 	 * @return	String		Absolute path to file in asset storage
 	 */
 	public static function getStoragePath($storageFileName) {
-		return $GLOBALS['CONFIG']['EXT']['assets']['basePath'] . DIRECTORY_SEPARATOR . $storageFileName;
+		return Todoyu::$CONFIG['EXT']['assets']['basePath'] . DIRECTORY_SEPARATOR . $storageFileName;
 	}
 
 
@@ -489,7 +489,7 @@ class TodoyuAssetManager {
 	 * @return	String
 	 */
 	public static function getStorageBasePath() {
-		return TodoyuFileManager::pathAbsolute($GLOBALS['CONFIG']['EXT']['assets']['basePath']);
+		return TodoyuFileManager::pathAbsolute(Todoyu::$CONFIG['EXT']['assets']['basePath']);
 	}
 
 
@@ -507,11 +507,11 @@ class TodoyuAssetManager {
 
 		switch($type) {
 			case ASSET_PARENTTYPE_TASK:
-				$folder = $GLOBALS['CONFIG']['EXT']['assets']['TYPES']['task']['folder'];
+				$folder = Todoyu::$CONFIG['EXT']['assets']['TYPES']['task']['folder'];
 				break;
 
 			case ASSET_PARENTTYPE_PROJECT:
-				$folder = $GLOBALS['CONFIG']['EXT']['assets']['TYPES']['project']['folder'];
+				$folder = Todoyu::$CONFIG['EXT']['assets']['TYPES']['project']['folder'];
 				break;
 
 			default:

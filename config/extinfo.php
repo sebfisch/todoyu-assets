@@ -24,7 +24,7 @@
  */
 
 
-$CONFIG['EXT']['assets']['info'] = array(
+Todoyu::$CONFIG['EXT']['assets']['info'] = array(
 	'title'				=> 'Task Assets',
 	'description' 		=> 'Task Assets Listing, Upload, Download, etc.',
 	'author' 			=> array(

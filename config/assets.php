@@ -25,7 +25,7 @@
  * @package		Todoyu
  * @subpackage	Assets
  */
-$CONFIG['EXT']['assets']['assets'] = array(
+Todoyu::$CONFIG['EXT']['assets']['assets'] = array(
 	'js' => array(
 		array(
 			'file'		=> 'ext/assets/assets/js/Ext.js',

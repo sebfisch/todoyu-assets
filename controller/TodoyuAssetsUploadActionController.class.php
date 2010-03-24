@@ -53,7 +53,7 @@ class TodoyuAssetsUploadActionController extends TodoyuActionController {
 		$fileSize	= $_FILES['asset']['size']['file'];
 
 			// Check again for file limit
-		if( $fileSize > intval($GLOBALS['CONFIG']['EXT']['assets']['max_file_size']) ) {
+		if( $fileSize > intval(Todoyu::$CONFIG['EXT']['assets']['max_file_size']) ) {
 			$error	= UPLOAD_ERR_FORM_SIZE;
 		}
 

@@ -107,7 +107,7 @@ class TodoyuAssetRenderer {
 			// Get form data
 		$formData	= array(
 			'id_task'		=> $idTask,
-			'MAX_FILE_SIZE'	=> intval($GLOBALS['CONFIG']['EXT']['assets']['max_file_size'])
+			'MAX_FILE_SIZE'	=> intval(Todoyu::$CONFIG['EXT']['assets']['max_file_size'])
 		);
 		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, $idTask);
 
@@ -149,7 +149,7 @@ class TodoyuAssetRenderer {
 
 
 	public static function renderUploadframeContentFailed($error, $fileName) {
-		$maxFileSize	= intval($GLOBALS['CONFIG']['EXT']['assets']['max_file_size']);
+		$maxFileSize	= intval(Todoyu::$CONFIG['EXT']['assets']['max_file_size']);
 
 		$tmpl	= 'core/view/htmldoc.tmpl';
 		$data	= array(
