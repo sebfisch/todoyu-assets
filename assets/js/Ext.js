@@ -127,7 +127,6 @@ Todoyu.Ext.assets = {
 		};
 
 		Todoyu.send(url, options);
-		
 		$('asset-' + idAsset + '-icon-public').toggleClassName('not');
 	},
 
