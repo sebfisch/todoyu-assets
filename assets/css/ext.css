@@ -10,15 +10,25 @@ h1.extIconAssets .title {
 	background:url(../img/icons.png) no-repeat 0 -688px;
 }
 
+.assetForm {
+	padding: 10px 20px;
+}
+
 .assetForm form fieldset div {
 	background:transparent;
 }
 
-.assetForm form div.fElement .fLabel,
+.assetForm form div.fElement .fLabel {
+	float:left;
+	top: 4px;
+	right: 0;
+	width: auto;
+}
+
 .assetForm form div.fElement .fField {
 	float:left;
-	width:auto;
-	padding-left:8px;
+	margin-left: 10px;
+	width: auto;
 }
 
 .assetList .assets-table-header {
