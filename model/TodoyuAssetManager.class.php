@@ -346,7 +346,7 @@ class TodoyuAssetManager {
 	/**
 	 * Download assets zipped
 	 *
-	 * @param	Intger	$idTask
+	 * @param	Integer $idTask
 	 * @param	Array	$assetIDs
 	 */
 	public static function downloadAssetsZipped($idTask, array $assetIDs) {
