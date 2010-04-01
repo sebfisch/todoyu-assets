@@ -89,23 +89,38 @@ class TodoyuAssetManager {
 	}
 
 
-	public static function getElementAssetIDs($idElement, $type = ASSET_PARENTTYPE_TASK) {
-		$idElement	= intval($idElement);
+	/**
+	 * Get IDs of assets of given parent element
+	 *
+	 * @param	Integer		$idParent		ID of parent element
+	 * @param	Integer		$type			type of parent element, e.g. task
+	 * @return	Array
+	 */
+	public static function getElementAssetIDs($idParent, $type = ASSET_PARENTTYPE_TASK) {
+		$idParent	= intval($idParent);
 		$type		= intval($type);
 
-		$assets		= self::getElementAssets($idElement, $type);
+		$assets		= self::getElementAssets($idParent, $type);
 
 		return TodoyuArray::getColumn($assets, 'id');
 	}
 
 
-	public static function getElementAssets($idElement, $type = ASSET_PARENTTYPE_TASK) {
-		$idElement	= intval($idElement);
+
+	/**
+	 * Get assets of given parent element
+	 *
+	 * @param	Integer		$idParent		ID of parent element
+	 * @param	Integer		$type			type of parent element, e.g. task
+	 * @return	Array
+	 */
+	public static function getElementAssets($idParent, $type = ASSET_PARENTTYPE_TASK) {
+		$idParent	= intval($idParent);
 		$type		= intval($type);
 
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '	id_parent		= ' . $idElement . ' AND
+		$where	= '	id_parent		= ' . $idParent . ' AND
 					parenttype		= ' . $type . ' AND
 					deleted			= 0';
 		$order	= 'date_create DESC';
@@ -124,7 +139,7 @@ class TodoyuAssetManager {
 
 
 	/**
-	 * The the IDs of all task assets
+	 * Get the IDs of all assets of given task
 	 *
 	 * @param	Integer		$idTask
 	 * @return	Array
@@ -181,9 +196,6 @@ class TodoyuAssetManager {
 
 		return self::addAsset(ASSET_PARENTTYPE_TASK, $idTask, $tempFile, $fileName, $mimeType);
 	}
-
-
-
 
 
 
@@ -396,7 +408,6 @@ class TodoyuAssetManager {
 			Todoyu::log('Can\'t create zip archive: ' . $zipPath, LOG_LEVEL_ERROR);
 		}
 
-
 			// Get asset data
 		$fields	= 'file_name, file_storage';
 		$table	= self::TABLE;
@@ -432,7 +443,7 @@ class TodoyuAssetManager {
 				Todoyu::log('Failed to add asset to zipfile', LOG_LEVEL_ERROR, Todoyu::$CONFIG['EXT']['assets']['asset_dir'] . $asset['file_storage'], $asset['file_name']);
 			}
 
-				// Count filename (to check for doublicates)
+				// Count filename (check for duplicates)
 			$fileNameCounter[$asset['file_name']]++;
 		}
 
@@ -492,6 +503,13 @@ class TodoyuAssetManager {
 	}
 
 
+
+	/**
+	 * Get storage path of assets of given task
+	 *
+	 * @param	Integer		$idTask
+	 * @return	String
+	 */
 	public static function getTaskAssetStoragePath($idTask) {
 		$idTask		= intval($idTask);
 
@@ -499,6 +517,14 @@ class TodoyuAssetManager {
 	}
 
 
+
+	/**
+	 * Get (root) storage path of assets
+	 * 
+	 * @param	Integer		$type			type of parent element, e.g. task
+	 * @param	Integer		$idParent		ID of parent element
+	 * @return	String
+	 */
 	public static function getAssetStoragePath($type, $idParent) {
 		$type		= intval($type);
 		$idParent	= intval($idParent);
@@ -519,17 +545,21 @@ class TodoyuAssetManager {
 
 		$storagePath = TodoyuFileManager::pathAbsolute($basePath . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . $idParent);
 
-		TodoyuFileManager::makeDirDeep($storagePath);
-
-		return $storagePath;
+		return TodoyuFileManager::makeDirDeep($storagePath);
 	}
 
 
+
+	/**
+	 * Clean filename: replace illegal characters in filename by "_"
+	 *
+	 * @param	String		$dirtyFileName
+	 * @return	String
+	 */
 	public static function cleanFileName($dirtyFileName) {
 		return TodoyuFileManager::makeCleanFilename($dirtyFileName);
 	}
 
 }
-
 
 ?>
