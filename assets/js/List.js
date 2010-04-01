@@ -130,17 +130,15 @@ Todoyu.Ext.assets.List = {
 			}
 		});
 
-		var checkAll = notAll ? true : false;
-
 		boxes.each(function(item){
-			if( checkAll === true ) {
+			if( notAll === true ) {
 				this.check(item.value);
 			} else {
 				this.unCheck(item.value);
 			}
 		}.bind(this));
 
-		$('task-' + idTask + '-assets-checkallbox').checked = checkAll;
+		$('task-' + idTask + '-assets-checkallbox').checked = notAll;
 	},
 
 
