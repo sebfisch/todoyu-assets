@@ -36,12 +36,12 @@ h1.extIconAssets .title {
 }
 
 .assetList th {
-	padding:5px 0px;
+	padding:5px 0;
 	text-transform:uppercase;
 }
 
 .assetList td {
-	padding:3px 0px;
+	padding:3px 0;
 }
 
 .assetList .checkbox {
@@ -80,19 +80,19 @@ h1.extIconAssets .title {
 }
 
 .assetList .asset-icon-download {
-	background-position:0px -30px;
+	background-position:0 -30px;
 }
 
 .assetList .asset-icon-delete {
-	background-position:0px 0px;
+	background-position:0 0;
 }
 
 .assetList .asset-icon-public {
-	background-position:0px -60px;
+	background-position:0 -60px;
 }
 
 .assetList .asset-icon-public.not {
-	background-position:0px -630px;
+	background-position:0 -630px;
 }
 
 /* Background colors of the rows in the list */
@@ -140,7 +140,7 @@ th.assetsFilelistHeaderFilenames {
 
 #taskList .activeTabContent .assetBox tr.assetsFilelistHeaderSFP {
 	position:relative;
-	background:#f7f9fa url(../../img/content/hr-hor.png) repeat-x 0 bottom;
+	background:#f7f9fa url(../../../../core/assets/img/hr-hor.png) repeat-x 0 bottom;
 }
 
 #taskList .activeTabContent .assetBox tr.assetsFilelistHeaderSFP th {
@@ -174,7 +174,7 @@ th.assetsFilelistHeaderFilenames {
 
 #taskList .activeTabContent .assetBox td.assetsFileListEntryTD span.customerinvisible_icon,
 #taskList .activeTabContent .assetBox td.assetsFileListEntryTD span.customervisible_icon {
-	left:0px;
+	left:0;
 }
 
 #taskList .activeTabContent .assetBox td.assetsFileListEntryTD a img {

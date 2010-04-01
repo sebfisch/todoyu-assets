@@ -130,7 +130,7 @@ Todoyu.Ext.assets.List = {
 			}
 		});
 
-		var checkAll = notAll ? true : false ;
+		var checkAll = notAll ? true : false;
 
 		boxes.each(function(item){
 			if( checkAll === true ) {
