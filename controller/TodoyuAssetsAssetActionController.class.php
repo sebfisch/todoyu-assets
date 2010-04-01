@@ -40,7 +40,7 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 	/**
 	 * Asset download request
 	 * Send file headers and binary data to the browser
-	 * This action can't be called over ajax
+	 * This action can't be called over AJAX
 	 *
 	 * @param	Array		$params
 	 */
