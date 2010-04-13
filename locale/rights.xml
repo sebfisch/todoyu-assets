@@ -14,4 +14,11 @@
 		<label index="asset.seeAll">Zeige ALLE Dateien</label>
 		<label index="asset.delete">Datei löschen</label>
 	</labels>
+	<labels lang="pt">
+		<label index="general">Configurações Gerais</label>
+		<label index="general.use">Utilizar Recursos</label>
+		<label index="asset">Recursos</label>
+		<label index="asset.seeAll">Exibir Todos os Recursos</label>
+		<label index="asset.delete">Excluir Recurso</label>
+	</labels>
 </locallang>
