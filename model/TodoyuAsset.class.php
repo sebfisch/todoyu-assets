@@ -90,7 +90,7 @@ class TodoyuAsset extends TodoyuBaseObject {
 		$basePath	= TodoyuAssetManager::getStorageBasePath();
 		$filePath	= $this->get('file_storage');
 
-		return TodoyuFileManager::pathAbsolute($basePath . DIRECTORY_SEPARATOR . $filePath);
+		return TodoyuFileManager::pathAbsolute($basePath . DIR_SEP . $filePath);
 	}
 
 

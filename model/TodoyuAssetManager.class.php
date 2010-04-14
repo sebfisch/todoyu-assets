@@ -220,7 +220,7 @@ class TodoyuAssetManager {
 		$filePath	= self::addFileToStorage($storageDir, $tempFile, $fileName);
 
 			// Get storage path (relative to basePath)
-		$relStoragePath	= str_replace($basePath . DIRECTORY_SEPARATOR, '', $filePath);
+		$relStoragePath	= str_replace($basePath . DIR_SEP, '', $filePath);
 
 			// Get filesize and file info
 		$fileSize	= filesize($filePath);
@@ -260,7 +260,7 @@ class TodoyuAssetManager {
 	 */
 	public static function addFileToStorage($basePath, $sourceFile, $uploadFileName) {
 		$fileName	= NOW . '_' . self::cleanFileName($uploadFileName);
-		$filePath	= $basePath . DIRECTORY_SEPARATOR . $fileName;
+		$filePath	= $basePath . DIR_SEP . $fileName;
 
 		$fileMoved	= move_uploaded_file($sourceFile, $filePath);
 
@@ -398,7 +398,7 @@ class TodoyuAssetManager {
 
 			// Build file path and name
 		$zipName	= self::makeZipFileName($idTask, $assetIDs);
-		$zipPath	= TodoyuFileManager::pathAbsolute(Todoyu::$CONFIG['EXT']['assets']['cachePath'] . DIRECTORY_SEPARATOR . $zipName);
+		$zipPath	= TodoyuFileManager::pathAbsolute(Todoyu::$CONFIG['EXT']['assets']['cachePath'] . DIR_SEP . $zipName);
 
 			// Create zip file
 		$zip	= new ZipArchive();
@@ -461,7 +461,7 @@ class TodoyuAssetManager {
 	 * @return	String		Absolute path to file in asset storage
 	 */
 	public static function getStoragePath($storageFileName) {
-		return Todoyu::$CONFIG['EXT']['assets']['basePath'] . DIRECTORY_SEPARATOR . $storageFileName;
+		return Todoyu::$CONFIG['EXT']['assets']['basePath'] . DIR_SEP . $storageFileName;
 	}
 
 
@@ -543,7 +543,7 @@ class TodoyuAssetManager {
 				die('INVALID ASSET TYPE');
 		}
 
-		$storagePath = TodoyuFileManager::pathAbsolute($basePath . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . $idParent);
+		$storagePath = TodoyuFileManager::pathAbsolute($basePath . DIR_SEP . $folder . DIR_SEP . $idParent);
 
 		return TodoyuFileManager::makeDirDeep($storagePath);
 	}

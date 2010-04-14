@@ -19,8 +19,8 @@
 *****************************************************************************/
 
 	// Basic paths
-Todoyu::$CONFIG['EXT']['assets']['basePath'] 	= PATH_FILES . DIRECTORY_SEPARATOR . 'assets';
-Todoyu::$CONFIG['EXT']['assets']['cachePath'] 	= PATH_CACHE . DIRECTORY_SEPARATOR . 'downloads';
+Todoyu::$CONFIG['EXT']['assets']['basePath'] 	= PATH_FILES . DIR_SEP . 'assets';
+Todoyu::$CONFIG['EXT']['assets']['cachePath'] 	= PATH_CACHE . DIR_SEP . 'downloads';
 	// Delete files on harddisk when delete in database
 Todoyu::$CONFIG['EXT']['assets']['deleteFiles'] = true;
 
