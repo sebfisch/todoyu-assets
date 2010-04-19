@@ -70,10 +70,7 @@ Todoyu.Ext.assets.Upload = {
 	 * @param	Integer	idTask
 	 */
 	submit: function(idTask) {
-		var form = this.getForm(idTask);
-
-		form.writeAttribute('target', 'asset-upload-iframe-' + idTask);
-		form.submit();
+		this.getForm(idTask).submit();
 	},
 
 
@@ -108,19 +105,7 @@ Todoyu.Ext.assets.Upload = {
 	 * @param	Integer	idTask
 	 */
 	createIFrame: function(idTask) {
-		var idIframe= 'asset-upload-iframe-' + idTask;
-
-		if( ! Todoyu.exists(idIframe) ) {
-			var iframe	= new Element('iframe', {
-				'name':		'asset-upload-iframe-' + idTask,
-				'id':		'asset-upload-iframe-' + idTask,
-				'class':	'asset-upload-iframe'
-			});
-
-			iframe.hide();
-
-			$('task-' + idTask + '-assetform').insert(iframe);
-		}
+		Todoyu.Form.addIFrame(idTask, 'task-' + idTask + '-assetform');
 	},
 
 

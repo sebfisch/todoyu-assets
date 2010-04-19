@@ -1,11 +1,10 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <form>
 	<attributes>
 		<attribute name="action">?ext=assets&amp;controller=upload</attribute>
 		<attribute name="name">asset</attribute>
-		<attribute name="onsubmit">return false;</attribute>
 		<attribute name="enctype">multipart/form-data</attribute>
-		<attribute name="method">POST</attribute>
+		<attribute name="target">upload-iframe-#id_task#</attribute>
 	</attributes>
 	<hiddenFields>
 		<field name="MAX_FILE_SIZE" value="100000000" noWrap="true" noStorage="true" />
