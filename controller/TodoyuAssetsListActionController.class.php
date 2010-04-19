@@ -42,5 +42,4 @@ class TodoyuAssetsListActionController extends TodoyuActionController {
 
 }
 
-
 ?>

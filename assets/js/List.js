@@ -29,7 +29,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Toggle display of assets list of given task
 	 * 
-	 * @param	Integer		idTask
+	 * @param	{Integer}		idTask
 	 */
 	toggle: function(idTask) {
 		Todoyu.Ui.toggle('task-' + idTask + '-assets-list');
@@ -40,7 +40,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Refresh assets list of given task
 	 *
-	 * @param	Integer	idTask
+	 * @param	{Integer}	idTask
 	 */
 	refresh: function(idTask) {
 		var list	= 'task-' + idTask + '-assets-list';
@@ -65,7 +65,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Hover given asset
 	 *
-	 * @param	Integer	idAsset
+	 * @param	{Integer}	idAsset
 	 */
 	hover: function(idAsset) {
 		$('asset-' + idAsset).toggleClassName('hover');
@@ -76,7 +76,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Select given asset
 	 *
-	 * @param	Integer	idAsset
+	 * @param	{Integer}	idAsset
 	 */
 	select: function(idAsset) {
 		if( $('asset-' + idAsset + '-checkbox').checked ) {
@@ -91,7 +91,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Set given asset checked
 	 *
-	 * @param	Integer	idAsset
+	 * @param	{Integer}	idAsset
 	 */
 	check: function(idAsset) {
 		$('asset-' + idAsset).addClassName('selected');
@@ -103,7 +103,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Set asset unchecked
 	 *
-	 * @param	Integer	idAsset
+	 * @param	{Integer}	idAsset
 	 */
 	unCheck: function(idAsset) {
 		$('asset-' + idAsset).removeClassName('selected');
@@ -115,7 +115,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Select all assets of given task
 	 *
-	 * @param	Integer	idTask
+	 * @param	{Integer}	idTask
 	 */
 	selectAll: function(idTask) {
 		var list 	= $('task-' + idTask + '-assets-tablebody');
@@ -146,7 +146,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Get selected assets of given task
 	 *
-	 * @param	Integer	idTask
+	 * @param	{Integer}	idTask
 	 * @return	Array
 	 */
 	getSelectedAssets: function(idTask) {

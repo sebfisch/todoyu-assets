@@ -30,9 +30,9 @@ Todoyu.Ext.assets = {
 
 
 	/**
-	 *	Download asset
+	 * Download asset
 	 *
-	 *	@param	Integer	idAsset
+	 * @param	{Integer}	idAsset
 	 */
 	download: function(idAsset) {
 		var params	= {
@@ -46,9 +46,9 @@ Todoyu.Ext.assets = {
 
 
 	/**
-	 *	Download (zipped) selection of assets of given task
+	 * Download (zipped) selection of assets of given task
 	 *
-	 *	@param	Integer	idTask
+	 * @param	{Integer}	idTask
 	 */
 	downloadSelection: function(idTask) {
 		var selectedAssets = this.List.getSelectedAssets(idTask);
@@ -73,9 +73,9 @@ Todoyu.Ext.assets = {
 
 
 	/**
-	 *	Remove given asset
+	 * Remove given asset
 	 *
-	 *	@param	Integer	idAsset
+	 * @param	{Integer}	idAsset
 	 */
 	remove: function(idAsset) {
 		if( confirm('[LLL:assets.delete.confirm]') ) {
@@ -97,8 +97,8 @@ Todoyu.Ext.assets = {
 	/**
 	 * Handler to be called after having deleted a file: updates file list
 	 * 
-	 * @param	Interger	idAsset
-	 * @param	Object		response 
+	 * @param	{Integer}	idAsset
+	 * @param	{Object}	response
 	 */
 	onRemoved: function(idAsset, response) {
 		Effect.Fade('asset-' + idAsset);
@@ -113,9 +113,9 @@ Todoyu.Ext.assets = {
 
 
 	/**
-	 *	Toggle given asset visibility (hide from customers?)
+	 * Toggle given asset visibility (hide from customers?)
 	 *
-	 *	@param	Integer	idAsset
+	 * @param	{Integer} 	idAsset
 	 */
 	toggleVisibility: function(idAsset) {
 		var url		= Todoyu.getUrl('assets', 'asset');
@@ -135,7 +135,7 @@ Todoyu.Ext.assets = {
 	/**
 	 * Update assets tab of given task
 	 * 
-	 * @param	Integer		idTask
+	 * @param	{Integer}		idTask
 	 */
 	updateTab: function(idTask) {
 		var url		= Todoyu.getUrl('assets', 'tasktab');
@@ -155,8 +155,8 @@ Todoyu.Ext.assets = {
 	/**
 	 * Set label of task assets tab
 	 * 
-	 * @param	Integer	idTask
-	 * @param	String	label
+	 * @param	{Integer}	idTask
+	 * @param	{String}	label
 	 */
 	setTabLabel: function(idTask, label) {
 		$('task-' + idTask + '-tab-assets-label').select('.labeltext').first().update(label);
@@ -167,7 +167,7 @@ Todoyu.Ext.assets = {
 	/**
 	 * Toggle assets list visibility
 	 * 
-	 * @param	Integer		idTask
+	 * @param	{Integer}		idTask
 	 */
 	toggleList: function(idTask) {
 		this.List.toggle(idTask);

@@ -29,7 +29,7 @@ Todoyu.Ext.assets.Upload = {
 	 /**
 	 * Show asset upload form of given task
 	 *
-	 * @param	Integer	idTask
+	 * @param	{Integer}	idTask
 	 */
 	showForm: function(idTask) {
 		var form	= 'task-' + idTask + '-assetform';
@@ -53,7 +53,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * onChange handler of assets upload form to given task
 	 *
-	 * @param	Integer	idTask
+	 * @param	{Integer}	idTask
 	 */
 	onChange: function(idTask) {
 		this.createIFrame(idTask);
@@ -67,7 +67,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Assets upload form submission handler
 	 *
-	 * @param	Integer	idTask
+	 * @param	{Integer}	idTask
 	 */
 	submit: function(idTask) {
 		this.getForm(idTask).submit();
@@ -78,8 +78,8 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Get asset upload form file field's value of given task
 	 *
-	 * @param	Integer	idTask
-	 * @return	Element
+	 * @param	{Integer}	idTask
+	 * @return	{Element}
 	 */
 	getField: function(idTask) {
 		return $('asset-' + idTask + '-field-file');
@@ -90,8 +90,8 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Get assets upload form
 	 *
-	 * @param	Integer	idTask
-	 * @return	Element
+	 * @param	{Integer}	idTask
+	 * @return	{Element}
 	 */
 	getForm: function(idTask) {
 		return $('asset-' + idTask + '-form');
@@ -102,7 +102,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Create iFrame for assets upload
 	 *
-	 * @param	Integer	idTask
+	 * @param	{Integer}	idTask
 	 */
 	createIFrame: function(idTask) {
 		Todoyu.Form.addIFrame(idTask, 'task-' + idTask + '-assetform');
@@ -113,7 +113,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Replace field inside assets upload form
 	 *
-	 * @param	Integer		idTask
+	 * @param	{Integer}		idTask
 	 */
 	replaceField: function(idTask) {
 		var old		= this.getField(idTask);
@@ -132,8 +132,8 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Show assets uploader
 	 *
-	 * @param	Integer		idTask
-	 * @param	String		filename
+	 * @param	{Integer}		idTask
+	 * @param	{String}		filename
 	 */
 	showUploader: function(idTask, filename) {
 		var formElement = new Element('div', {
@@ -165,8 +165,8 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Asset upload finished handler
 	 *
-	 * @param	Integer		idTask
-	 * @param	String		filename
+	 * @param	{Integer}		idTask
+	 * @param	{String}		filename
 	 */
 	uploadFinished: function(idTask, tabLabel) {
 		this.removeUploader();
@@ -187,9 +187,9 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Check whether upload failed, determine reason (file too big / failure) and notify
 	 * 
-	 * @param	Integer		error		1 = filesize exceeded, 2 = failure
-	 * @param	String		filename
-	 * @param	Integer		maxFileSize
+	 * @param	{Integer}		error		1 = filesize exceeded, 2 = failure
+	 * @param	{String}		filename
+	 * @param	{Integer}		maxFileSize
 	 */
 	uploadFailed: function(error, filename, maxFileSize) {
 		this.removeUploader();

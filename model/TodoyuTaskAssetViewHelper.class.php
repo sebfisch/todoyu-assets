@@ -26,7 +26,6 @@
  */
 class TodoyuTaskAssetViewHelper {
 
-
 	/**
 	 * Get labeltext for the asset tab in the task
 	 *
