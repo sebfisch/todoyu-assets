@@ -22,7 +22,6 @@
  * Various assets extension info data
  */
 
-
 Todoyu::$CONFIG['EXT']['assets']['info'] = array(
 	'title'				=> 'Task Assets',
 	'description' 		=> 'Task Assets Listing, Upload, Download, etc.',

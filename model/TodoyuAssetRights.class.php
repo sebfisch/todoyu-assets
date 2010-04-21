@@ -39,7 +39,7 @@ class TodoyuAssetRights {
 
 
 	/**
-	 * Check if a person is allowed to see the asset
+	 * Check whether a person is allowed to see the asset
 	 *
 	 * @param	Integer		$idAsset
 	 * @return	Boolean
@@ -67,7 +67,7 @@ class TodoyuAssetRights {
 
 
 	/**
-	 * Check if a person is allowed to delete the asset
+	 * Check whether a person is allowed to delete the asset
 	 *
 	 * @param	Integer		$idAsset
 	 * @return	Boolean

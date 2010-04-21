@@ -21,7 +21,7 @@
 	// Basic paths
 Todoyu::$CONFIG['EXT']['assets']['basePath'] 	= PATH_FILES . DIR_SEP . 'assets';
 Todoyu::$CONFIG['EXT']['assets']['cachePath'] 	= PATH_CACHE . DIR_SEP . 'temp';
-	// Delete files on harddisk when delete in database
+	// Delete files on hard disk when deleted in database
 Todoyu::$CONFIG['EXT']['assets']['deleteFiles'] = true;
 
 	// Add allowed paths where files can be downloaded from
@@ -38,7 +38,6 @@ Todoyu::$CONFIG['EXT']['assets']['TYPES']['project'] = array(
 
 	// Set max upload file size
 Todoyu::$CONFIG['EXT']['assets']['max_file_size'] = 50000000; // 50MB
-
 
 	// Add task tab
 if( allowed('assets', 'general:use') ) {

@@ -137,12 +137,12 @@ Todoyu.Ext.assets.Upload = {
 	 */
 	showUploader: function(idTask, filename) {
 		var formElement = new Element('div', {
-			'id': 'asset-uploader-element',
-			'class': 'formElement'
+			'id':       'asset-uploader-element',
+			'class':    'formElement'
 		});
 		var loaderText = new Element('div').update('[LLL:assets.upload.filename]' + ': ' + filename);
 		var loaderImage = new Element('img', {
-			'src': 'ext/assets/assets/img/uploader.gif'
+			'src': 'core/assets/img/progress.gif'
 		});
 
 		formElement.insert(loaderText);

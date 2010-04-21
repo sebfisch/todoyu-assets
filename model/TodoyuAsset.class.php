@@ -129,7 +129,7 @@ class TodoyuAsset extends TodoyuBaseObject {
 
 
 	/**
-	 * Check if asset is public
+	 * Check whether asset is public
 	 *
 	 * @return	Boolean
 	 */
