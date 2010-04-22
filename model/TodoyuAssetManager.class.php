@@ -274,13 +274,12 @@ class TodoyuAssetManager {
 		$idAsset	= intval($idAsset);
 		$asset		= TodoyuAssetManager::getAsset($idAsset);
 
-		TodoyuHeader::sendHeader('Content-type', $asset->getMimeType());
-		TodoyuHeader::sendHeader('Content-disposition', 'attachment; filename="' . $asset->getFilename() . '"');
-		TodoyuHeader::sendHeader('Content-length', $asset->getFilesize());
-		TodoyuHeader::sendHeader('Expires', date('r', NOW+600));
-		TodoyuHeader::sendHeader('Last-Modified', date('r', $asset->get('date_update')));
-		TodoyuHeader::sendHeader('Cache-Control', 'no-cache, must-revalidate');
-		TodoyuHeader::sendHeader('Pragma', 'no-cache');
+		$mimeType 	= $asset->getMimeType();
+		$filename	= $asset->getFilename();
+		$filesize	= $asset->getFilesize();
+		$fileModTime= $asset->get('date_update');
+
+		TodoyuHeader::sendDownloadHeaders($mimeType, $filename, $filesize, $fileModTime);
 	}
 
 
