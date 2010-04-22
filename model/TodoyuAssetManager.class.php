@@ -202,8 +202,8 @@ class TodoyuAssetManager {
 
 	/**
 	 * Add a new file to the system.
-	 *  - Copy the file in the file structure
-	 *  - Add a asset record to the database
+	 *  - Copy the file to the file structure
+	 *  - Add an asset record to the database
 	 *
 	 * @param	Integer		$idTask			Task ID
 	 * @param	String		$tempFile		Absolute path to the temporary file
@@ -218,12 +218,12 @@ class TodoyuAssetManager {
 
 			// Move temporary file to asset storage
 		$storageDir	= self::getAssetStoragePath($type, $idParent);
-		$filePath	= self::addFileToStorage($storageDir, $tempFile, $fileName);
+		$filePath	= TodoyuFileManager::addFileToStorage($storageDir, $tempFile, $fileName);
 
 			// Get storage path (relative to basePath)
 		$relStoragePath	= str_replace($basePath . DIR_SEP, '', $filePath);
 
-			// Get filesize and file info
+			// Get file size and file info
 		$fileSize	= filesize($filePath);
 		$info		= pathinfo($filePath);
 
@@ -252,28 +252,9 @@ class TodoyuAssetManager {
 
 
 	/**
-	 * Move a file to the folder structure
-	 *
-	 * @param	Integer		$idTask
-	 * @param	String		$sourceFile
-	 * @param	String		$uploadFileName
-	 * @return	Boolean
-	 */
-	public static function addFileToStorage($basePath, $sourceFile, $uploadFileName) {
-		$fileName	= NOW . '_' . self::cleanFileName($uploadFileName);
-		$filePath	= $basePath . DIR_SEP . $fileName;
-
-		$fileMoved	= move_uploaded_file($sourceFile, $filePath);
-
-		return $fileMoved ? $filePath : false ;
-	}
-
-
-
-	/**
 	 * Download an asset. Send headers and data to the browser
 	 *
-	 * @param	Integer	$idAsset
+	 * @param	Integer		$idAsset
 	 */
 	public static function downloadAsset($idAsset) {
 		$idAsset	= intval($idAsset);
@@ -287,7 +268,7 @@ class TodoyuAssetManager {
 	/**
 	 * Send asset file headers to the browser
 	 *
-	 * @param	Integer	$idAsset
+	 * @param	Integer		$idAsset
 	 */
 	private static function sendAssetDownloadHeaders($idAsset) {
 		$idAsset	= intval($idAsset);
@@ -332,7 +313,7 @@ class TodoyuAssetManager {
 
 		TodoyuRecordManager::updateRecord(self::TABLE, $idAsset, $update);
 
-			// Delete file on harddisk?
+			// Delete file on hard disk?
 		if( Todoyu::$CONFIG['EXT']['assets']['deleteFiles'] === true ) {
 			$asset		= self::getAsset($idAsset);
 			$filePath	= $asset->getFileStoragePath();
@@ -387,9 +368,9 @@ class TodoyuAssetManager {
 	/**
 	 * Create zip file from assets
 	 *
-	 * @param	Integer	$idTask
-	 * @param	Array	$assetIDs
-	 * @return	String	path to zip file
+	 * @param	Integer		$idTask
+	 * @param	Array		$assetIDs
+	 * @return	String		path to ZIP file
 	 */
 	private static function createAssetZip($idTask, array $assetIDs) {
 		$idTask		= intval($idTask);
@@ -401,7 +382,7 @@ class TodoyuAssetManager {
 		$zipName	= self::makeZipFileName($idTask, $assetIDs);
 		$zipPath	= TodoyuFileManager::pathAbsolute(Todoyu::$CONFIG['EXT']['assets']['cachePath'] . DIR_SEP . $zipName);
 
-			// Create zip file
+			// Create ZIP file
 		$zip	= new ZipArchive();
 		$status	= $zip->open($zipPath, ZIPARCHIVE::CREATE);
 
@@ -421,14 +402,14 @@ class TodoyuAssetManager {
 
 			// Get selected asset records
 		$assets			= Todoyu::db()->getArray($fields, $table, $where);
-			// Counter for identical filenames
+			// Counter for identical file names
 		$fileNameCounter= array();
 
 			// Add assets
 		foreach($assets as $asset) {
-				// Handle doublicated filenames
+				// Handle duplicated file names
 			$inZipName	= $asset['file_name'];
-				// If filename is already in archive, postfile with a counter
+				// If filename is already in archive, post-file with a counter
 			if( array_key_exists($inZipName, $fileNameCounter) ) {
 				$index		= intval($fileNameCounter[$asset['file_name']]);
 				$inZipName	= TodoyuFileManager::appendToFilename($inZipName, '_' . $index);
@@ -547,18 +528,6 @@ class TodoyuAssetManager {
 		$storagePath = TodoyuFileManager::pathAbsolute($basePath . DIR_SEP . $folder . DIR_SEP . $idParent);
 
 		return TodoyuFileManager::makeDirDeep($storagePath);
-	}
-
-
-
-	/**
-	 * Clean filename: replace illegal characters in filename by "_"
-	 *
-	 * @param	String		$dirtyFileName
-	 * @return	String
-	 */
-	public static function cleanFileName($dirtyFileName) {
-		return TodoyuFileManager::makeCleanFilename($dirtyFileName);
 	}
 
 }
