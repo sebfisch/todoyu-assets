@@ -97,7 +97,7 @@ h1.extIconAssets .title {
 
 /* Background colors of the rows in the list */
 .assetList tr th {
-	border-bottom: 1px solid white;
+	border-bottom:1px solid white;
 }
 
 .assetList tr.selected td {

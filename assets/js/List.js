@@ -22,6 +22,10 @@
  */
 Todoyu.Ext.assets.List = {
 
+	/**
+	 * Extension backlink
+	 * @var	{Object}	ext
+	 */
 	ext: Todoyu.Ext.assets,
 
 
