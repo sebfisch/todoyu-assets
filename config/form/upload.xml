@@ -4,10 +4,9 @@
 		<attribute name="action">?ext=assets&amp;controller=upload</attribute>
 		<attribute name="name">asset</attribute>
 		<attribute name="enctype">multipart/form-data</attribute>
-		<attribute name="target">upload-iframe-#id_task#</attribute>
 	</attributes>
 	<hiddenFields>
-		<field name="MAX_FILE_SIZE" value="100000000" noWrap="true" noStorage="true" />
+		<field name="MAX_FILE_SIZE" value="50000000" noWrap="true" noStorage="true" />
 		<field name="id_task" />
 	</hiddenFields>
 	<fieldsets>

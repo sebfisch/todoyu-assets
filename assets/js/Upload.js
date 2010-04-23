@@ -22,7 +22,17 @@
  */
 Todoyu.Ext.assets.Upload = {
 
+	/**
+	 * Extension backlink
+	 * @var	{Object}	ext
+	 */
 	ext: Todoyu.Ext.assets,
+
+	/**
+	 * Upload activity flag
+	 * @var	{Boolean}
+	 */
+	active: false,
 
 
 
@@ -32,6 +42,10 @@ Todoyu.Ext.assets.Upload = {
 	 * @param	{Integer}	idTask
 	 */
 	showForm: function(idTask) {
+		if( this.active === true ) {
+			return;
+		}
+
 		var form	= 'task-' + idTask + '-assetform';
 
 		if( ! Todoyu.exists(form) ) {
@@ -56,8 +70,9 @@ Todoyu.Ext.assets.Upload = {
 	 * @param	{Integer}	idTask
 	 */
 	onChange: function(idTask) {
-		this.createIFrame(idTask);
-		this.showUploader(idTask, this.getField(idTask).value);
+		this.addIFrame(idTask);
+		this.showProgressBar(idTask, this.getField(idTask).value);
+		this.hideUploadField(idTask);
 		this.submit(idTask);
 		this.replaceField(idTask);
 	},
@@ -70,6 +85,9 @@ Todoyu.Ext.assets.Upload = {
 	 * @param	{Integer}	idTask
 	 */
 	submit: function(idTask) {
+		this.active	= true;
+		
+		this.getForm(idTask).writeAttribute('target', 'upload-iframe-asset-' + idTask);
 		this.getForm(idTask).submit();
 	},
 
@@ -104,8 +122,17 @@ Todoyu.Ext.assets.Upload = {
 	 *
 	 * @param	{Integer}	idTask
 	 */
-	createIFrame: function(idTask) {
-		Todoyu.Form.addIFrame(idTask, 'task-' + idTask + '-assetform');
+	addIFrame: function(idTask) {
+		Todoyu.Form.addIFrame('asset-' + idTask);
+	},
+
+
+
+	/**
+	 * Remove the upload iframe
+	 */
+	removeIFrame: function() {
+		$$('iframe.uploadIframe').first().remove();
 	},
 
 
@@ -135,7 +162,7 @@ Todoyu.Ext.assets.Upload = {
 	 * @param	{Integer}		idTask
 	 * @param	{String}		filename
 	 */
-	showUploader: function(idTask, filename) {
+	showProgressBar: function(idTask, filename) {
 		var formElement = new Element('div', {
 			'id':       'asset-uploader-element',
 			'class':    'formElement'
@@ -148,7 +175,9 @@ Todoyu.Ext.assets.Upload = {
 		formElement.insert(loaderText);
 		formElement.insert(loaderImage);
 
-		$('formElement-asset-' + idTask + '-field-file').insert({'before': formElement});
+		$('formElement-asset-' + idTask + '-field-file').insert({
+			before: formElement
+		});
 	},
 
 
@@ -156,8 +185,41 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Remove uploader progress bar from DOM
 	 */
-	removeUploader: function() {
+	removeProgressBar: function() {
 		$('asset-uploader-element').remove();
+	},
+
+
+
+	/**
+	 * Hide upload field to prevent multiple uploads at the same time
+	 *
+	 * @param	{Integer}		idTask
+	 */
+	hideUploadField: function(idTask) {
+		$('formElement-asset-' + idTask + '-field-file').hide();		
+	},
+
+
+
+	/**
+	 * Show upload field which was hidden during the upload process
+	 */
+	showUploadField: function() {
+		var fields	= $$('input[type=file][id^=asset-][id$=-field-file]');
+
+		fields.each(function(element){
+			var formElement	= element.up('div.typeUpload');
+
+				// If is in a form element
+			if( formElement ) {
+					// If form element is in an asset form and is hidden
+				if( formElement.up('form.formAsset') && !formElement.visible() ) {
+					formElement.show();
+					return;
+				}
+			}
+		});
 	},
 
 
@@ -169,7 +231,11 @@ Todoyu.Ext.assets.Upload = {
 	 * @param	{String}		filename
 	 */
 	uploadFinished: function(idTask, tabLabel) {
-		this.removeUploader();
+		this.active = false;
+
+		this.removeProgressBar();
+		this.removeIFrame();
+		this.showUploadField();
 		
 		if( Todoyu.exists('task-' + idTask + '-assets-commands') ) {
 			Todoyu.Ext.assets.List.refresh(idTask);
@@ -192,7 +258,12 @@ Todoyu.Ext.assets.Upload = {
 	 * @param	{Integer}		maxFileSize
 	 */
 	uploadFailed: function(error, filename, maxFileSize) {
-		this.removeUploader();
+		this.active = false;
+
+		this.removeProgressBar();
+		this.removeIFrame();
+		this.showUploadField();
+		
 		var info	= {
 			'filename': 	filename,
 			'maxFileSize':	maxFileSize

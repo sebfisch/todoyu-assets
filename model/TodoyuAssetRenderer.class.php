@@ -147,8 +147,16 @@ class TodoyuAssetRenderer {
 
 
 
+	/**
+	 * Render upload-frame content if upload has failed
+	 *
+	 * @param	Integer		$error
+	 * @param	String		$fileName
+	 * @return	String
+	 */
 	public static function renderUploadframeContentFailed($error, $fileName) {
-		$maxFileSize	= intval(Todoyu::$CONFIG['EXT']['assets']['max_file_size']);
+		$error		= intval($error);
+		$maxFileSize= intval(Todoyu::$CONFIG['EXT']['assets']['max_file_size']);
 
 		$tmpl	= 'core/view/htmldoc.tmpl';
 		$data	= array(

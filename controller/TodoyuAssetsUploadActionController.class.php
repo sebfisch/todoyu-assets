@@ -48,20 +48,15 @@ class TodoyuAssetsUploadActionController extends TodoyuActionController {
 
 		$file	= TodoyuRequest::getUploadFile('file', 'asset');
 
-			// Check again for file limit
-		if( $file['size'] > Todoyu::$CONFIG['EXT']['assets']['max_file_size'] ) {
-			$error	= UPLOAD_ERR_FORM_SIZE;
-		}
-
 			// Render frame content. Success or error
-		if( $file['error'] === UPLOAD_ERR_OK ) {
-			$idAsset	= TodoyuAssetManager::addTaskAsset($idTask, $file['tmp_name'], $file['name'], $file['type']);
-
-			return TodoyuAssetRenderer::renderUploadframeContent($idTask, $file['name']);
-		} else {
+		if( $file === false || $file['error'] !== UPLOAD_ERR_OK ) {
 			Todoyu::log('File upload failed: ' . $file['name'] . ' (ERROR:' . $file['error'] . ')', LOG_LEVEL_ERROR);
 
 			return TodoyuAssetRenderer::renderUploadframeContentFailed($file['error'], $file['name']);
+		} else {
+			$idAsset	= TodoyuAssetManager::addTaskAsset($idTask, $file['tmp_name'], $file['name'], $file['type']);
+
+			return TodoyuAssetRenderer::renderUploadframeContent($idTask, $file['name']);
 		}
 	}
 
