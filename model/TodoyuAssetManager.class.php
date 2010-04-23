@@ -504,13 +504,13 @@ class TodoyuAssetManager {
 	 * 
 	 * @param	Integer		$type			type of parent element, e.g. task
 	 * @param	Integer		$idParent		ID of parent element
-	 * @return	String
+	 * @return	String		Path to storage folder
 	 */
 	public static function getAssetStoragePath($type, $idParent) {
 		$type		= intval($type);
 		$idParent	= intval($idParent);
 		$basePath	= self::getStorageBasePath();
-
+		
 		switch($type) {
 			case ASSET_PARENTTYPE_TASK:
 				$folder = Todoyu::$CONFIG['EXT']['assets']['TYPES']['task']['folder'];
@@ -526,7 +526,10 @@ class TodoyuAssetManager {
 
 		$storagePath = TodoyuFileManager::pathAbsolute($basePath . DIR_SEP . $folder . DIR_SEP . $idParent);
 
-		return TodoyuFileManager::makeDirDeep($storagePath);
+			// Create storage folder if it doesn't exist
+		TodoyuFileManager::makeDirDeep($storagePath);
+		
+		return $storagePath;
 	}
 
 }

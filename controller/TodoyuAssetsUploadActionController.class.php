@@ -45,26 +45,23 @@ class TodoyuAssetsUploadActionController extends TodoyuActionController {
 	 */
 	public function defaultAction(array $params) {
 		$idTask		= intval($params['asset']['id_task']);
-		$error		= intval($_FILES['asset']['error']['file']);
-		$tempFile	= $_FILES['asset']['tmp_name']['file'];
-		$fileName	= $_FILES['asset']['name']['file'];
-		$mimeType	= $_FILES['asset']['type']['file'];
-		$fileSize	= $_FILES['asset']['size']['file'];
+
+		$file	= TodoyuRequest::getUploadFile('file', 'asset');
 
 			// Check again for file limit
-		if( $fileSize > intval(Todoyu::$CONFIG['EXT']['assets']['max_file_size']) ) {
+		if( $file['size'] > Todoyu::$CONFIG['EXT']['assets']['max_file_size'] ) {
 			$error	= UPLOAD_ERR_FORM_SIZE;
 		}
 
 			// Render frame content. Success or error
-		if( $error === UPLOAD_ERR_OK ) {
-			$idAsset	= TodoyuAssetManager::addTaskAsset($idTask, $tempFile, $fileName, $mimeType);
+		if( $file['error'] === UPLOAD_ERR_OK ) {
+			$idAsset	= TodoyuAssetManager::addTaskAsset($idTask, $file['tmp_name'], $file['name'], $file['type']);
 
-			return TodoyuAssetRenderer::renderUploadframeContent($idTask, $fileName);
+			return TodoyuAssetRenderer::renderUploadframeContent($idTask, $file['name']);
 		} else {
-			Todoyu::log('File upload failed: ' . $fileName . ' (ERROR:' . $error . ')', LOG_LEVEL_ERROR);
+			Todoyu::log('File upload failed: ' . $file['name'] . ' (ERROR:' . $file['error'] . ')', LOG_LEVEL_ERROR);
 
-			return TodoyuAssetRenderer::renderUploadframeContentFailed($error, $fileName);
+			return TodoyuAssetRenderer::renderUploadframeContentFailed($file['error'], $file['name']);
 		}
 	}
 
