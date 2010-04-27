@@ -39,7 +39,7 @@ Todoyu.Ext.assets.Upload = {
 	 /**
 	 * Show asset upload form of given task
 	 *
-	 * @param	{Integer}	idTask
+	 * @param	{Number}	idTask
 	 */
 	showForm: function(idTask) {
 		if( this.active === true ) {
@@ -67,7 +67,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * onChange handler of assets upload form to given task
 	 *
-	 * @param	{Integer}	idTask
+	 * @param	{Number}	idTask
 	 */
 	onChange: function(idTask) {
 		this.addIFrame(idTask);
@@ -82,7 +82,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Assets upload form submission handler
 	 *
-	 * @param	{Integer}	idTask
+	 * @param	{Number}	idTask
 	 */
 	submit: function(idTask) {
 		this.active	= true;
@@ -96,7 +96,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Get asset upload form file field's value of given task
 	 *
-	 * @param	{Integer}	idTask
+	 * @param	{Number}	idTask
 	 * @return	{Element}
 	 */
 	getField: function(idTask) {
@@ -108,7 +108,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Get assets upload form
 	 *
-	 * @param	{Integer}	idTask
+	 * @param	{Number}	idTask
 	 * @return	{Element}
 	 */
 	getForm: function(idTask) {
@@ -120,7 +120,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Create iFrame for assets upload
 	 *
-	 * @param	{Integer}	idTask
+	 * @param	{Number}	idTask
 	 */
 	addIFrame: function(idTask) {
 		Todoyu.Form.addIFrame('asset-' + idTask);
@@ -140,7 +140,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Replace field inside assets upload form
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	replaceField: function(idTask) {
 		var old		= this.getField(idTask);
@@ -159,7 +159,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Show assets uploader
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 * @param	{String}		filename
 	 */
 	showProgressBar: function(idTask, filename) {
@@ -194,7 +194,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Hide upload field to prevent multiple uploads at the same time
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	hideUploadField: function(idTask) {
 		$('formElement-asset-' + idTask + '-field-file').hide();		
@@ -227,7 +227,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Asset upload finished handler
 	 *
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 * @param	{String}		filename
 	 */
 	uploadFinished: function(idTask, tabLabel) {
@@ -253,9 +253,9 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Check whether upload failed, determine reason (file too big / failure) and notify
 	 * 
-	 * @param	{Integer}		error		1 = filesize exceeded, 2 = failure
+	 * @param	{Number}		error		1 = filesize exceeded, 2 = failure
 	 * @param	{String}		filename
-	 * @param	{Integer}		maxFileSize
+	 * @param	{Number}		maxFileSize
 	 */
 	uploadFailed: function(error, filename, maxFileSize) {
 		this.active = false;

@@ -32,7 +32,7 @@ Todoyu.Ext.assets = {
 	/**
 	 * Download asset
 	 *
-	 * @param	{Integer}	idAsset
+	 * @param	{Number}	idAsset
 	 */
 	download: function(idAsset) {
 		var params	= {
@@ -48,7 +48,7 @@ Todoyu.Ext.assets = {
 	/**
 	 * Download (zipped) selection of assets of given task
 	 *
-	 * @param	{Integer}	idTask
+	 * @param	{Number}	idTask
 	 */
 	downloadSelection: function(idTask) {
 		var selectedAssets = this.List.getSelectedAssets(idTask);
@@ -75,7 +75,7 @@ Todoyu.Ext.assets = {
 	/**
 	 * Remove given asset
 	 *
-	 * @param	{Integer}	idAsset
+	 * @param	{Number}	idAsset
 	 */
 	remove: function(idAsset) {
 		if( confirm('[LLL:assets.delete.confirm]') ) {
@@ -97,7 +97,7 @@ Todoyu.Ext.assets = {
 	/**
 	 * Handler to be called after having deleted a file: updates file list
 	 * 
-	 * @param	{Integer}	idAsset
+	 * @param	{Number}	idAsset
 	 * @param	{Object}	response
 	 */
 	onRemoved: function(idAsset, response) {
@@ -115,7 +115,7 @@ Todoyu.Ext.assets = {
 	/**
 	 * Toggle given asset visibility (hide from customers?)
 	 *
-	 * @param	{Integer} 	idAsset
+	 * @param	{Number} 	idAsset
 	 */
 	toggleVisibility: function(idAsset) {
 		var url		= Todoyu.getUrl('assets', 'asset');
@@ -135,7 +135,7 @@ Todoyu.Ext.assets = {
 	/**
 	 * Update assets tab of given task
 	 * 
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	updateTab: function(idTask) {
 		var url		= Todoyu.getUrl('assets', 'tasktab');
@@ -155,7 +155,7 @@ Todoyu.Ext.assets = {
 	/**
 	 * Set label of task assets tab
 	 * 
-	 * @param	{Integer}	idTask
+	 * @param	{Number}	idTask
 	 * @param	{String}	label
 	 */
 	setTabLabel: function(idTask, label) {
@@ -167,7 +167,7 @@ Todoyu.Ext.assets = {
 	/**
 	 * Toggle assets list visibility
 	 * 
-	 * @param	{Integer}		idTask
+	 * @param	{Number}		idTask
 	 */
 	toggleList: function(idTask) {
 		this.List.toggle(idTask);
