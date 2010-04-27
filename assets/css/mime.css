@@ -3,6 +3,7 @@
 }
 
 .mimeXLS,
+.mimeXLSX
 .mimeODS {
 	background-position:0 -328px;
 }
@@ -12,8 +13,8 @@
 }
 
 .mimeDOC,
-.mimeODT,
-.mimeDOCX {
+.mimeDOCX,
+.mimeODT {
 	background-position:0 -388px;
 }
 
@@ -27,7 +28,8 @@
 
 .mimePNG,
 .mimeJPG,
-.mimeGIF  {
+.mimeGIF,
+.mimeBMP {
 	background-position:0 -448px;
 }
 
@@ -55,6 +57,13 @@
 }
 
 .mimeZIP,
-.mimeTAR {
+.mimeTAR,
+.mimeRAR,
+.mimeBZ2,
+.mimeGZ {
 	background-position:0 -148px;
+}
+
+.mimeEXE {
+	background-position:0 -718px;
 }
