@@ -46,10 +46,10 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 	 */
 	public function downloadAction(array $params) {
 		$idAsset	= intval($params['asset']);
-		$asset		= TodoyuAssetManager::getAsset($idAsset);
+		$asset		= TodoyuAssetManager::getAsset($idAsset);		
 
 			// If asset if not public, person need the right so see also not public assets
-		if( ! Todoyu::person()->isInternal() && ! $asset->isPublic() ) {
+		if( ! Todoyu::person()->isInternal() && ! $asset->isPublic() && ! $asset->isCurrentPersonCreator() ) {
 			restrict('assets', 'asset:seeAll');
 		}
 
