@@ -158,13 +158,9 @@ class TodoyuAssetRenderer {
 		$error		= intval($error);
 		$maxFileSize= intval(Todoyu::$CONFIG['EXT']['assets']['max_file_size']);
 
-		$tmpl	= 'core/view/htmldoc.tmpl';
-		$data	= array(
-			'title'		=> 'Uploader IFrame',
-			'content'	=> TodoyuString::wrapScript('window.parent.Todoyu.Ext.assets.Upload.uploadFailed(' . $error . ', \'' . $fileName . '\', ' . $maxFileSize . ');')
-		);
+		$commands	= 'window.parent.Todoyu.Ext.assets.Upload.uploadFailed(' . $error . ', \'' . $fileName . '\', ' . $maxFileSize . ');';
 
-		return render($tmpl, $data);
+		return TodoyuRenderer::renderUploadIFrameJsContent($commands);
 	}
 
 }
