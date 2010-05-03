@@ -27,7 +27,7 @@
 class TodoyuAssetManager {
 
 	/**
-	 * Default table for database requests
+	 * @var String		Default table for database requests	
 	 */
 	const TABLE = 'ext_assets_asset';
 
