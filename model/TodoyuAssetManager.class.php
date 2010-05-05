@@ -346,12 +346,16 @@ class TodoyuAssetManager {
 		$assetIDs	= TodoyuArray::intval($assetIDs);
 
 		$zipFile	= self::createAssetZip($idTask, $assetIDs);
+		
+		if( ! is_file($zipFile) ) {
+			die("Download of ZIP file failed");
+		}
 
 		$filename	= 'Assets_' . $idTask . '.zip';
 		$filesize	= filesize($zipFile);
 
 		TodoyuHeader::sendHeader('Content-type', 'application/octet-stream');
-		TodoyuHeader::sendHeader('Content-disposition', 'attachment; filename=' . $filename);
+		TodoyuHeader::sendHeader('Content-disposition', 'attachment; filename="' . $filename . '"');
 		TodoyuHeader::sendHeader('Content-length', $filesize);
 		TodoyuHeader::sendNoCacheHeaders();
 
