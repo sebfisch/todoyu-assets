@@ -10,7 +10,7 @@
 		<label index="alt.download">Download File</label>
 		<label index="alt.uploadedby">Uploaded By</label>
 		<label index="alt.delete">Delete File</label>
-		<label index="alt.changeVisibility">Change visibility for customer</label>
+		<label index="alt.changeVisibility">Change visibility to public</label>
 		<label index="alt.selectall">Select All/None</label>
 		<label index="upload.selectfile">Select a file to upload</label>
 		<label index="upload.filename">Filename</label>
@@ -34,7 +34,7 @@
 		<label index="alt.download">Datei herunterladen</label>
 		<label index="alt.uploadedby">Aktualisiert von</label>
 		<label index="alt.delete">Datei löschen</label>
-		<label index="alt.changeVisibility">Sichtbarkeit für Kunden ändern</label>
+		<label index="alt.changeVisibility">Sichtbarkeit auf "öffentlich" ändern</label>
 		<label index="alt.selectall">alle/keinen auswählen</label>
 		<label index="upload.selectfile">Datei für Upload auswählen</label>
 		<label index="upload.filename">Dateiname</label>
