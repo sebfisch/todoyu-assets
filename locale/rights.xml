@@ -28,4 +28,11 @@
 		<label index="asset.seeAll">Показать все активы</label>
 		<label index="asset.delete">Удалить актив</label>
 	</labels>
+	<labels lang="fr_FR">
+		<label index="general">Configuration générale</label>
+		<label index="general.use">Utiliser les documents</label>
+		<label index="asset">Documents</label>
+		<label index="asset.seeAll">Voir TOUT les documents</label>
+		<label index="asset.delete">Effacer un document</label>
+	</labels>
 </locallang>
