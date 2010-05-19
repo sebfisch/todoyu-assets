@@ -21,4 +21,11 @@
 		<label index="asset.seeAll">Exibir Todos os Recursos</label>
 		<label index="asset.delete">Excluir Recurso</label>
 	</labels>
+	<labels lang="ru_RU">
+		<label index="general">Общие установки</label>
+		<label index="general.use">Использовать активы</label>
+		<label index="asset">Активы</label>
+		<label index="asset.seeAll">Показать все активы</label>
+		<label index="asset.delete">Удалить актив</label>
+	</labels>
 </locallang>
