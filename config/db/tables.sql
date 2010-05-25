@@ -16,7 +16,7 @@ CREATE TABLE `ext_assets_asset` (
   `file_name` varchar(100) NOT NULL,
   `file_size` int(10) unsigned NOT NULL DEFAULT '0',
   `file_mime` varchar(20) NOT NULL,
-  `file_mime_sub` varchar(20) NOT NULL,
+  `file_mime_sub` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `parent` (`id_parent`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
