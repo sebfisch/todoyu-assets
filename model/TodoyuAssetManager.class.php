@@ -257,47 +257,16 @@ class TodoyuAssetManager {
 	 */
 	public static function downloadAsset($idAsset) {
 		$idAsset	= intval($idAsset);
-
-		self::sendAssetDownloadHeaders($idAsset);
-		self::sendAssetDownloadData($idAsset);
-	}
-
-
-
-	/**
-	 * Send asset file headers to the browser
-	 *
-	 * @param	Integer		$idAsset
-	 */
-	private static function sendAssetDownloadHeaders($idAsset) {
-		$idAsset	= intval($idAsset);
-		$asset		= TodoyuAssetManager::getAsset($idAsset);
-
-		$mimeType 	= $asset->getMimeType();
-		$filename	= $asset->getFilename();
-		$filesize	= $asset->getFilesize();
-		$fileModTime= $asset->get('date_update');
-
-		TodoyuHeader::sendDownloadHeaders($mimeType, $filename, $filesize, $fileModTime);
-	}
-
-
-
-	/**
-	 * Send asset file to the browser
-	 *
-	 * @param	Integer	$idAsset
-	 */
-	private static function sendAssetDownloadData($idAsset) {
-		$idAsset	= intval($idAsset);
 		$asset		= TodoyuAssetManager::getAsset($idAsset);
 		$filePath	= $asset->getFileStoragePath();
+		$mimeType 	= $asset->getMimeType();
+		$filename	= $asset->getFilename();
 
-		TodoyuFileManager::sendFile($filePath);
+		TodoyuFileManager::sendFile($filePath, $mimeType, $filename);
 	}
 
 
-
+	
 	/**
 	 * Delete an asset (file stays in file system)
 	 *
@@ -351,16 +320,11 @@ class TodoyuAssetManager {
 			die("Download of ZIP file failed");
 		}
 
-		$filename	= 'Assets_' . $idTask . '.zip';
-		$filesize	= filesize($zipFile);
-
-		TodoyuHeader::sendHeader('Content-type', 'application/octet-stream');
-		TodoyuHeader::sendHeader('Content-disposition', 'attachment; filename="' . $filename . '"');
-		TodoyuHeader::sendHeader('Content-length', $filesize);
-		TodoyuHeader::sendNoCacheHeaders();
+		$filename	= 'Assets_' . $idTask . '.zip';	
+		$mimeType	= 'application/octet-stream';
 
 			// Delete temporary zip file after download
-		TodoyuFileManager::sendFile($zipFile);
+		TodoyuFileManager::sendFile($zipFile, $mimeType, $filename);
 
 		unlink($zipFile);
 	}
