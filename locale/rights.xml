@@ -35,4 +35,11 @@
 		<label index="asset.seeAll">Voir TOUT les documents</label>
 		<label index="asset.delete">Effacer un document</label>
 	</labels>
+	<labels lang="nl_NL">
+		<label index="general">Algemene instellingen</label>
+		<label index="general.use">Bijlagen gebruiken</label>
+		<label index="asset">Bijlagen</label>
+		<label index="asset.seeAll">Alle bijlagen tonen</label>
+		<label index="asset.delete">Een bijlage tonen</label>
+	</labels>
 </locallang>
