@@ -28,14 +28,6 @@ Todoyu::$CONFIG['EXT']['assets']['deleteFiles'] = true;
 Todoyu::$CONFIG['sendFile']['allow'][] = Todoyu::$CONFIG['EXT']['assets']['basePath'];
 Todoyu::$CONFIG['sendFile']['allow'][] = Todoyu::$CONFIG['EXT']['assets']['cachePath'];
 
-	// Configure upload folders for types
-Todoyu::$CONFIG['EXT']['assets']['TYPES']['task'] = array(
-	'folder'	=> 'task'
-);
-Todoyu::$CONFIG['EXT']['assets']['TYPES']['project'] = array(
-	'folder'	=> 'project'
-);
-
 	// Set max upload file size
 Todoyu::$CONFIG['EXT']['assets']['max_file_size'] = 50000000; // 50MB
 
