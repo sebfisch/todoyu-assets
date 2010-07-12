@@ -10,7 +10,7 @@
 		<label index="alt.download">Download File</label>
 		<label index="alt.uploadedby">Uploaded By</label>
 		<label index="alt.delete">Delete File</label>
-		<label index="alt.changeVisibility">Change visibility to public</label>
+		<label index="alt.changeVisibility">Change visibility</label>
 		<label index="alt.selectall">Select All/None</label>
 		<label index="upload.selectfile">Select a file to upload</label>
 		<label index="upload.filename">Filename</label>
@@ -34,7 +34,7 @@
 		<label index="alt.download">Datei herunterladen</label>
 		<label index="alt.uploadedby">Aktualisiert von</label>
 		<label index="alt.delete">Datei löschen</label>
-		<label index="alt.changeVisibility">Sichtbarkeit auf "öffentlich" ändern</label>
+		<label index="alt.changeVisibility">Sichtbarkeit ändern</label>
 		<label index="alt.selectall">alle/keinen auswählen</label>
 		<label index="upload.selectfile">Datei für Upload auswählen</label>
 		<label index="upload.filename">Dateiname</label>
@@ -58,7 +58,7 @@
 		<label index="alt.download">Baixar Arquivo</label>
 		<label index="alt.uploadedby">Uploaded por</label>
 		<label index="alt.delete">Excluir Arquivo</label>
-		<label index="alt.changeVisibility">Alterar Visibilidade para o Cliente</label>
+		<label index="alt.changeVisibility">Alterar Visibilidade</label>
 		<label index="alt.selectall">Selecionar Todos/Nenhum</label>
 		<label index="upload.selectfile">Selecione o Arquivo para Upload</label>
 		<label index="upload.filename">Nome do Arquivo</label>
@@ -106,7 +106,7 @@
 		<label index="alt.download">Télécharger le fichier</label>
 		<label index="alt.uploadedby">Téléversé par</label>
 		<label index="alt.delete">Effacer le fichier</label>
-		<label index="alt.changeVisibility">Modifier la visibilité pour le client</label>
+		<label index="alt.changeVisibility">Modifier la visibilité</label>
 		<label index="alt.selectall">Sélectionner tout/aucun</label>
 		<label index="upload.selectfile">Sélectionner un fichier à téléverser</label>
 		<label index="upload.filename">Nom du fichier</label>
@@ -130,7 +130,7 @@
 		<label index="alt.download">Bestand downloaden</label>
 		<label index="alt.uploadedby">Geüpload door</label>
 		<label index="alt.delete">Bestand verwijderen</label>
-		<label index="alt.changeVisibility">Zichtbaarheid in publiek wijzigen</label>
+		<label index="alt.changeVisibility">Zichtbaarheid in wijzigen</label>
 		<label index="alt.selectall">Alles/niets selecteren</label>
 		<label index="upload.selectfile">Een bestand kiezen om te uploaden</label>
 		<label index="upload.filename">Bestandsnaam</label>

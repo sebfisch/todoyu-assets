@@ -2,7 +2,7 @@
 	<table id="task-{$idTask}-assettable" class="asset-table" width="100%">
 		<thead>
 			<tr class="assets-table-header">
-				<th class="assets-table-col-checkbox checkbox"><input type="checkbox" id="task-{$idTask}-assets-checkallbox" onchange="Todoyu.Ext.assets.List.selectAll({$idTask})" title="{Label assets.alt.selectall}"/></th>
+				<th class="assets-table-col-checkbox checkbox"><input type="checkbox" id="task-{$idTask}-assets-checkallbox" onclick="Todoyu.Ext.assets.List.selectAll({$idTask})" title="{Label assets.alt.selectall}"/></th>
 				<th class="assets-table-col-mime">&nbsp;</th>
 				<th class="assets-table-col-filename">{Label file.filename}</th>
 				<th class="assets-table-col-filesize">{Label file.filesize}</th>
