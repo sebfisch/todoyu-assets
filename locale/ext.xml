@@ -23,6 +23,7 @@
 		<label index="maxFileSizeExceeded">The file '#{filename}' has exceeded the maximum allowed filesize (#{maxFileSize}Bytes) to upload</label>
 		<label index="uploadFailed">The upload of the file '#{filename}' has failed</label>
 		<label index="uploadOk">The file has been uploaded</label>
+		<label index="locked">This task is locked. You can't add files</label>
 	</labels>
 	<labels lang="de_DE">
 		<label index="ext.title">Aufgaben-Anhänge</label>

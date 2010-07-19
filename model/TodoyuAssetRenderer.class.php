@@ -36,18 +36,40 @@ class TodoyuAssetRenderer {
 		restrict('assets', 'general:use');
 
 		$idTask		= intval($idTask);
-		$content	= '';
 		$numAssets	= TodoyuAssetManager::getNumTaskAssets($idTask);
+		$locked		= TodoyuTaskManager::isLocked($idTask);
 
-		if( $numAssets > 0 )	{
-			$content = self::renderListControll($idTask);
-			$content .= self::renderList($idTask);
+		if( $locked ) {
+			if( $numAssets === 0 ) {
+				$content = self::renderLockedMessage();
+			} else {
+				$content = self::renderList($idTask);
+			}
 		} else {
-			$content = self::renderUploadForm($idTask);
+			if( $numAssets === 0 ) {
+				$content = self::renderUploadForm($idTask);
+			} else {
+				$content = self::renderListControll($idTask);
+				$content .= self::renderList($idTask);
+			}
 		}
 
 		return $content;
 	}
+
+
+
+	/**
+	 * Render locked message
+	 *
+	 * @return	String
+	 */
+	public static function renderLockedMessage() {
+		$tmpl	= 'ext/comment/view/locked.tmpl';
+
+		return render($tmpl);
+	}
+
 
 
 

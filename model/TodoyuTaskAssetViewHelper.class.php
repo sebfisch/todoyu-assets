@@ -61,7 +61,7 @@ class TodoyuTaskAssetViewHelper {
 		$content	= '';
 		$numAssets	= TodoyuAssetManager::getNumTaskAssets($idTask);
 
-		if( $numAssets === 0 ) {
+		if( $numAssets === 0 && TodoyuTaskManager::isLocked($idTask) === false ) {
 			$content	= TodoyuAssetRenderer::renderUploadForm($idTask);
 		} else {
 			$content	= TodoyuAssetRenderer::renderTabContent($idTask);
