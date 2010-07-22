@@ -81,8 +81,8 @@ class TodoyuAssetRights {
 
 		switch($typeParent) {
 			case 'task':
-				if ( TodoyuTaskRights::isSeeAllowed($idParent) ) {
-					if ( allowed('asset', 'asset:delete') ) {
+				if( TodoyuTaskRights::isSeeAllowed($idParent) ) {
+					if( allowed('asset', 'asset:delete') ) {
 						return true;
 					}
 				}
