@@ -49,6 +49,13 @@
 		<label index="asset.seeAll">Zobrazit všechny přílohy</label>
 		<label index="asset.delete">Mazat přílohy</label>
 	</labels>
+	<labels lang="sr_RS">
+		<label index="general">Oпшта подешавања</label>
+		<label index="general.use">Употреби фајл додатак</label>
+		<label index="asset">Фајлови</label>
+		<label index="asset.seeAll">Покажи СВЕ фајлове</label>
+		<label index="asset.delete">Избриши фајлове</label>
+	</labels>
 	<labels lang="ja_JP">
 		<label index="general">一般的な設定</label>
 		<label index="general.use">資源の使用</label>
