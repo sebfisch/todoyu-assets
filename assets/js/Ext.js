@@ -52,7 +52,7 @@ Todoyu.Ext.assets = {
 	 */
 	downloadSelection: function(idTask) {
 		var selectedAssets = this.List.getSelectedAssets(idTask);
-				
+
 		if( selectedAssets.size() === 0 ) {
 			Todoyu.notifyError('[LLL:assets.error.minimumFile]', 3);
 		} else if( selectedAssets.size() === 1 ) {
@@ -146,7 +146,7 @@ Todoyu.Ext.assets = {
 			}
 		};
 		var target	= 'task-' + idTask + '-tabcontent-assets';
-		
+
 		Todoyu.Ui.update(target, url, options);
 	},
 

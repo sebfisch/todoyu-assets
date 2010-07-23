@@ -86,7 +86,7 @@ Todoyu.Ext.assets.Upload = {
 	 */
 	submit: function(idTask) {
 		this.active	= true;
-		
+
 		this.getForm(idTask).writeAttribute('target', 'upload-iframe-asset-' + idTask);
 		this.getForm(idTask).submit();
 	},
@@ -197,7 +197,7 @@ Todoyu.Ext.assets.Upload = {
 	 * @param	{Number}		idTask
 	 */
 	hideUploadField: function(idTask) {
-		$('formElement-asset-' + idTask + '-field-file').hide();		
+		$('formElement-asset-' + idTask + '-field-file').hide();
 	},
 
 
@@ -236,7 +236,7 @@ Todoyu.Ext.assets.Upload = {
 		this.removeProgressBar();
 		this.removeIFrame();
 		this.showUploadField();
-		
+
 		if( Todoyu.exists('task-' + idTask + '-assets-commands') ) {
 			Todoyu.Ext.assets.List.refresh(idTask);
 		} else {
@@ -263,7 +263,7 @@ Todoyu.Ext.assets.Upload = {
 		this.removeProgressBar();
 		this.removeIFrame();
 		this.showUploadField();
-		
+
 		var info	= {
 			'filename': 	filename,
 			'maxFileSize':	maxFileSize

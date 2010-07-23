@@ -27,7 +27,7 @@
 class TodoyuAssetManager {
 
 	/**
-	 * @var String		Default table for database requests	
+	 * @var String		Default table for database requests
 	 */
 	const TABLE = 'ext_assets_asset';
 
@@ -266,7 +266,7 @@ class TodoyuAssetManager {
 	}
 
 
-	
+
 	/**
 	 * Delete an asset (file stays in file system)
 	 *
@@ -315,12 +315,12 @@ class TodoyuAssetManager {
 		$assetIDs	= TodoyuArray::intval($assetIDs);
 
 		$zipFile	= self::createAssetZip($idTask, $assetIDs);
-		
+
 		if( ! is_file($zipFile) ) {
 			die("Download of ZIP file failed");
 		}
 
-		$filename	= 'Assets_' . $idTask . '.zip';	
+		$filename	= 'Assets_' . $idTask . '.zip';
 		$mimeType	= 'application/octet-stream';
 
 			// Delete temporary zip file after download
@@ -477,13 +477,13 @@ class TodoyuAssetManager {
 		$type		= intval($type);
 		$idParent	= intval($idParent);
 		$basePath	= self::getStorageBasePath();
-		
+
 		switch($type) {
 			case ASSET_PARENTTYPE_TASK:
 					// User project ID as parent folder
 				$folder 	= TodoyuTaskManager::getProjectID($idParent);;
 				break;
-			
+
 //			case ASSET_PARENTTYPE_PROJECT:
 //				$folder = Todoyu::$CONFIG['EXT']['assets']['TYPES']['project']['folder'];
 //				break;
@@ -496,7 +496,7 @@ class TodoyuAssetManager {
 
 			// Create storage folder if it doesn't exist
 		TodoyuFileManager::makeDirDeep($storagePath);
-		
+
 		return $storagePath;
 	}
 
