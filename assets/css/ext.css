@@ -1,7 +1,19 @@
+/* ----------------------------------------------
+	Extension icon: stand-alone and in heading
+   ---------------------------------------------- */
+span.extIconAssets {
+	background:url('../img/exticon.png') no-repeat 0 0px;
+}
+
 h1.extIconAssets .title {
 	background:url('../img/exticon.png') no-repeat 0 5px;
 }
 
+
+
+/* ----------------------------------------------
+	Asset form elements 
+   ---------------------------------------------- */
 .assetsButtons button.upload .icon {
 	background:url(../img/icons.png) no-repeat 0 -658px;
 }
@@ -31,6 +43,11 @@ h1.extIconAssets .title {
 	width:auto;
 }
 
+
+
+/* ----------------------------------------------
+	List
+   ---------------------------------------------- */
 .assetList .assets-table-header {
 	background:#E5E8DA url(../../../../core/assets/img/bg-tabheader.png) repeat-x 0 top;
 }
@@ -107,7 +124,7 @@ h1.extIconAssets .title {
 
 
 /* --------------------------
- 	Tasktab
+ 	Task tab
    --------------------------*/
 div.task div.taskTabs ul li.assets span.icon {
 	background:url(../img/icons.png) no-repeat 0 -23px;
