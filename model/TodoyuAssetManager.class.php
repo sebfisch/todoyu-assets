@@ -500,6 +500,44 @@ class TodoyuAssetManager {
 		return $storagePath;
 	}
 
+
+
+	/**
+	 * Check whether a task has assets
+	 * @param	Integer		$idTask
+	 * @return	Boolean
+	 */
+	public static function taskHasAssets($idTask) {
+		$idTask		= intval($idTask);
+		$assetIDs	= self::getTaskAssetIDs($idTask);
+
+		return sizeof($assetIDs) > 0;
+	}
+
+
+
+	/**
+	 * Add asset icon to task if it has assets
+	 *
+	 * @param	Array		$icons
+	 * @param	Integer		$idTask
+	 * @return	Array
+	 */
+	public static function hookAddTaskIcons(array $icons, $idTask) {
+		$idTask	= intval($idTask);
+
+		if( self::taskHasAssets($idTask) ) {
+			$icons['assets'] = array(
+				'id'		=> 'task-' . $idTask . '-assets',
+				'class'		=> 'assets',
+				'label'		=> 'LLL:assets.task.icon',
+				'position'	=> 80
+			);
+		}
+
+		return $icons;
+	}
+
 }
 
 ?>

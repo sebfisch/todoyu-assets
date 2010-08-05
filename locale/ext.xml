@@ -24,6 +24,7 @@
 		<label index="uploadFailed">The upload of the file '#{filename}' has failed</label>
 		<label index="uploadOk">The file has been uploaded</label>
 		<label index="locked">This task is locked. You can't add files</label>
+		<label index="task.icon">Task has assets</label>
 	</labels>
 	<labels lang="de_DE">
 		<label index="ext.title">Aufgaben-Anhänge</label>
@@ -48,6 +49,7 @@
 		<label index="maxFileSizeExceeded">Die Datei '#{filename}' hat die maximal zulässige Grösse für Uploads (#{maxFileSize}Bytes) überschritten</label>
 		<label index="uploadFailed">Das Hochladen der Datei '#{filename}' ist fehlgeschlagen</label>
 		<label index="uploadOk">Die Datei wurde erfolgreich hochgeladen</label>
+		<label index="task.icon">Aufgabe hat Dateianhänge</label>
 	</labels>
 	<labels lang="pt_BR">
 		<label index="ext.title">Recursos da Tarefa</label>

@@ -210,3 +210,7 @@ th.assetsFilelistHeaderFilenames {
 	position:relative;
 	left:5px;
 }
+
+.task span.taskIcons .assets {
+	background:url(../img/icons.png) no-repeat 0 -28px;
+}

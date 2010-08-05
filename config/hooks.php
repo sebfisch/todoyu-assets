@@ -18,24 +18,6 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-/**
- * Extension main file for assets extension
- *
- * @package		Todoyu
- * @subpackage	Assets
- */
-
-	// Declare ext ID, path
-define('EXTID_ASSETS', 101);
-define('PATH_EXT_ASSETS', PATH_EXT . '/assets');
-
-	// Register module locales
-TodoyuLanguage::register('assets', PATH_EXT_ASSETS . '/locale/ext.xml');
-
-	// Request configurations
-	// @notice	Auto-loaded configs if available: admin, assets, create, contextmenu, extinfo, filters, form, page, panelwidgets, rights, search
-require_once( PATH_EXT_ASSETS . '/config/constants.php' );
-require_once( PATH_EXT_ASSETS . '/config/extension.php' );
-require_once( PATH_EXT_ASSETS . '/config/hooks.php' );
+TodoyuHookManager::registerHook('project', 'taskIcons', 'TodoyuAssetManager::hookAddTaskIcons');
 
 ?>
