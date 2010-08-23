@@ -2,6 +2,7 @@
 <locallang>
 	<labels lang="en_GB">
 		<label index="ext.title">Task Assets</label>
+		<label index="search.label">Assets</label>
 		<label index="tab.noAssets">Add First Asset</label>
 		<label index="tab.asset">Asset</label>
 		<label index="tab.assets">Assets</label>
@@ -28,6 +29,7 @@
 	</labels>
 	<labels lang="de_DE">
 		<label index="ext.title">Aufgaben-Anhänge</label>
+		<label index="search.label">Anhänge</label>
 		<label index="tab.noAssets">Anhang anfügen</label>
 		<label index="tab.asset">Anhang</label>
 		<label index="tab.assets">Anhänge</label>
