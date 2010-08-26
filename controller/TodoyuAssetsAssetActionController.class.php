@@ -49,7 +49,7 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 		$asset		= TodoyuAssetManager::getAsset($idAsset);
 
 			// If asset if not public, person need the right so see also not public assets
-		if( ! Todoyu::person()->isInternal() && ! $asset->isPublic() && ! $asset->isCurrentPersonCreator() ) {
+		if( ! Todoyu::person()->isAdmin() && ! Todoyu::person()->isInternal() && ! $asset->isPublic() && ! $asset->isCurrentPersonCreator() ) {
 			restrict('assets', 'asset:seeAll');
 		}
 
