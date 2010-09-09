@@ -30,6 +30,7 @@ Todoyu::$CONFIG['sendFile']['allow'][] = Todoyu::$CONFIG['EXT']['assets']['cache
 
 	// Set max upload file size
 Todoyu::$CONFIG['EXT']['assets']['max_file_size'] = 50000000; // 50MB
+Todoyu::$CONFIG['EXT']['assets']['max_length_filename'] = 50;
 
 	// Add task tab
 if( allowed('assets', 'general:use') ) {

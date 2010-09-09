@@ -257,7 +257,7 @@ Todoyu.Ext.assets.Upload = {
 	 * @param	{String}		filename
 	 * @param	{Number}		maxFileSize
 	 */
-	uploadFailed: function(error, filename, maxFileSize) {
+	uploadFailed: function(error, filename, maxFileSize, maxLengthFileName) {
 		this.active = false;
 
 		this.removeProgressBar();
@@ -266,12 +266,17 @@ Todoyu.Ext.assets.Upload = {
 
 		var info	= {
 			'filename': 	filename,
-			'maxFileSize':	maxFileSize
+			'maxFileSize':	maxFileSize,
+			'maxLengthFileName': maxLengthFileName
 		};
 		var msg		= '';
 
+
+
 		if( error === 1 || error === 2 ) {
 			msg	= '[LLL:assets.maxFileSizeExceeded]';
+		} else if (error === 3) {
+			msg = '[LLL:assets.maxLengthFileNameExceeded]';
 		} else {
 			msg	= '[LLL:assets.uploadFailed]';
 		}

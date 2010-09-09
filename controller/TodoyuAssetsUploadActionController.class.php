@@ -48,6 +48,10 @@ class TodoyuAssetsUploadActionController extends TodoyuActionController {
 
 		$file	= TodoyuRequest::getUploadFile('file', 'asset');
 
+		if(strlen($file['name']) > Todoyu::$CONFIG['EXT']['assets']['max_length_filename'])	{
+			$file['error'] = 3;
+		}
+
 			// Render frame content. Success or error
 		if( $file === false || $file['error'] !== UPLOAD_ERR_OK ) {
 			Todoyu::log('File upload failed: ' . $file['name'] . ' (ERROR:' . $file['error'] . ')', TodoyuLogger::LEVEL_ERROR);

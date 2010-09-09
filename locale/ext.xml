@@ -22,6 +22,7 @@
 		<label index="download.compressed">The selected files have been packed into an archive for download</label>
 		<label index="error.minimumFile">Please select at least one file</label>
 		<label index="maxFileSizeExceeded">The file '#{filename}' has exceeded the maximum allowed filesize (#{maxFileSize}Bytes) to upload</label>
+		<label index="maxLengthFileNameExceeded">The file '#{filename}' has exceeded the maximum allowed length (#{maxLengthFileName}) of its name to upload</label>
 		<label index="uploadFailed">The upload of the file '#{filename}' has failed</label>
 		<label index="uploadOk">The file has been uploaded</label>
 		<label index="locked">This task is locked. You can't add files</label>
@@ -49,6 +50,7 @@
 		<label index="download.compressed">Die gewählten Dateien werden für den Download gepackt</label>
 		<label index="error.minimumFile">Bitte wählen Sie mindestens eine Datei</label>
 		<label index="maxFileSizeExceeded">Die Datei '#{filename}' hat die maximal zulässige Grösse für Uploads (#{maxFileSize}Bytes) überschritten</label>
+		<label index="maxLengthFileNameExceeded">Der Name der Datei '#{filename}' ist zu lang (max. #{maxLengthFileName} Zeichen)</label>
 		<label index="uploadFailed">Das Hochladen der Datei '#{filename}' ist fehlgeschlagen</label>
 		<label index="uploadOk">Die Datei wurde erfolgreich hochgeladen</label>
 		<label index="task.icon">Aufgabe hat Dateianhänge</label>
