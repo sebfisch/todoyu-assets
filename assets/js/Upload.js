@@ -89,6 +89,17 @@ Todoyu.Ext.assets.Upload = {
 
 		this.getForm(idTask).writeAttribute('target', 'upload-iframe-asset-' + idTask);
 		this.getForm(idTask).submit();
+
+		this.uploadFailingDetection.bind(this, idTask).delay(10);
+	},
+
+
+	uploadFailingDetection: function(idTask) {
+		var iframe = Todoyu.Form.getIFrame('asset-' + idTask);
+
+		if( this.active === true && iframe.contentDocument.URL !== 'about:blank' ) {
+			this.uploadFailed(0, 'unknown');
+		}
 	},
 
 
@@ -228,7 +239,7 @@ Todoyu.Ext.assets.Upload = {
 	 * Asset upload finished handler
 	 *
 	 * @param	{Number}		idTask
-	 * @param	{String}		filename
+	 * @param	{String}		tabLabel
 	 */
 	uploadFinished: function(idTask, tabLabel) {
 		this.active = false;
@@ -252,7 +263,7 @@ Todoyu.Ext.assets.Upload = {
 
 	/**
 	 * Check whether upload failed, determine reason (file too big / failure) and notify
-	 * 
+	 *
 	 * @param	{Number}		error		1 = filesize exceeded, 2 = failure
 	 * @param	{String}		filename
 	 * @param	{Number}		maxFileSize
