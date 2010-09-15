@@ -90,15 +90,23 @@ Todoyu.Ext.assets.Upload = {
 		this.getForm(idTask).writeAttribute('target', 'upload-iframe-asset-' + idTask);
 		this.getForm(idTask).submit();
 
-		this.uploadFailingDetection.bind(this, idTask).delay(10);
+			// Register callback to check after 20 seconds if upload failed
+		this.uploadFailingDetection.bind(this, idTask).delay(20);
 	},
 
 
+
+	/**
+	 * Check if upload iframe has loaded, but not set upload flag
+	 * This means an error page has been loaded and the upload failed
+	 *
+	 * @param	{Number}	idTask
+	 */
 	uploadFailingDetection: function(idTask) {
 		var iframe = Todoyu.Form.getIFrame('asset-' + idTask);
 
 		if( this.active === true && iframe.contentDocument.URL !== 'about:blank' ) {
-			this.uploadFailed(0, 'unknown');
+			this.uploadFailed(0, '');
 		}
 	},
 
