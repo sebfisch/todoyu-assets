@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="ext.title">Přílohy</label>
+	<label index="tab.noAssets">Přidat první přílohu</label>
+	<label index="tab.asset">Příloha</label>
+	<label index="tab.assets">Přílohy</label>
+	<label index="tab.toggle">Přílohy Vyp/ZAP</label>
+	<label index="list.header.uploaddate">Datum vložení</label>
+	<label index="alt.download">Stáhnout soubor</label>
+	<label index="alt.uploadedby">Nahráno</label>
+	<label index="alt.delete">Odstranit soubor</label>
+	<label index="alt.changeVisibility">Zveřejnit</label>
+	<label index="alt.selectall">Vybrat vše/nic</label>
+	<label index="upload.selectfile">Zvolte soubor k nahrání</label>
+	<label index="upload.filename">Jméno souboru</label>
+	<label index="upload.new">Přidat nový soubor</label>
+	<label index="delete.confirm">Opravdu chcete odstranit soubor?</label>
+	<label index="download.selection">Stáhnout vybrané</label>
+	<label index="download.normal">Vybrali jse pouze jeden soubor -> standardní stažení souboru</label>
+	<label index="download.compressed">Zvolené soubory byly zabaleny do archivu ke stažení</label>
+	<label index="error.minimumFile">Zvolte alespoň jeden soubor</label>
+	<label index="maxFileSizeExceeded">SOubor '#{filename}' překročil povolenou velikost (#{maxFileSize}bajtů) pro nahrání</label>
+	<label index="uploadFailed">Nahrání souboru '#{filename}' selhalo</label>
+	<label index="uploadOk">Soubor byl úspěšně nahrán</label>
+</labels>

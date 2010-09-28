@@ -30,7 +30,7 @@ define('EXTID_ASSETS', 101);
 define('PATH_EXT_ASSETS', PATH_EXT . '/assets');
 
 	// Register module locales
-TodoyuLanguage::register('assets', PATH_EXT_ASSETS . '/locale/ext.xml');
+TodoyuLabelManager::register('assets', 'assets', 'ext.xml');
 
 	// Request configurations
 	// @notice	Auto-loaded configs if available: admin, assets, create, contextmenu, extinfo, filters, form, page, panelwidgets, rights, search
