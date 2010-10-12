@@ -294,7 +294,7 @@ Todoyu.Ext.assets.Upload = {
 
 		if( error === 1 || error === 2 ) {
 			msg	= '[LLL:assets.maxFileSizeExceeded]';
-		} else if (error === 3) {
+		} else if( error === 3 ) {
 			msg = '[LLL:assets.maxLengthFileNameExceeded]';
 		} else {
 			msg	= '[LLL:assets.uploadFailed]';
