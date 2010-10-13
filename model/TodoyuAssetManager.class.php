@@ -34,7 +34,7 @@ class TodoyuAssetManager {
 
 
 	/**
-	 * Get project
+	 * Get asset record
 	 *
 	 * @param	Integer		$idAsset
 	 * @return	TodoyuAsset

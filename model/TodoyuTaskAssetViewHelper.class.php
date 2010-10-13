@@ -58,7 +58,6 @@ class TodoyuTaskAssetViewHelper {
 	 */
 	public static function getTabContent($idTask) {
 		$idTask		= intval($idTask);
-		$content	= '';
 		$numAssets	= TodoyuAssetManager::getNumTaskAssets($idTask);
 
 		if( $numAssets === 0 && TodoyuTaskManager::isLocked($idTask) === false ) {
