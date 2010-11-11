@@ -18,13 +18,25 @@
 *****************************************************************************/
 
 /**
- *	Ext: assets
+ * @module	Assets
  */
 
+/**
+ *	Main assets object
+ *
+ * @class		assets
+ * @namespace	Todoyu.Ext
+ */
 Todoyu.Ext.assets = {
 
+	/**
+	 * @property	PanelWidget
+	 */
 	PanelWidget: {},
 
+	/**
+	 * @property	Headlet
+	 */
 	Headlet: {},
 
 
@@ -32,6 +44,7 @@ Todoyu.Ext.assets = {
 	/**
 	 * Download asset
 	 *
+	 * @method	download
 	 * @param	{Number}	idAsset
 	 */
 	download: function(idAsset) {
@@ -48,6 +61,7 @@ Todoyu.Ext.assets = {
 	/**
 	 * Download (zipped) selection of assets of given task
 	 *
+	 * @method	downloadSelection
 	 * @param	{Number}	idTask
 	 */
 	downloadSelection: function(idTask) {
@@ -75,6 +89,7 @@ Todoyu.Ext.assets = {
 	/**
 	 * Remove given asset
 	 *
+	 * @method	remove
 	 * @param	{Number}	idAsset
 	 */
 	remove: function(idAsset) {
@@ -96,7 +111,8 @@ Todoyu.Ext.assets = {
 
 	/**
 	 * Handler to be called after having deleted a file: updates file list
-	 * 
+	 *
+	 * @method	onRemoved
 	 * @param	{Number}	idAsset
 	 * @param	{Object}	response
 	 */
@@ -115,6 +131,7 @@ Todoyu.Ext.assets = {
 	/**
 	 * Toggle given asset visibility (hide from customers?)
 	 *
+	 * @method	toggleVisibility
 	 * @param	{Number} 	idAsset
 	 */
 	toggleVisibility: function(idAsset) {
@@ -134,7 +151,8 @@ Todoyu.Ext.assets = {
 
 	/**
 	 * Update assets tab of given task
-	 * 
+	 *
+	 * @method	updateTab
 	 * @param	{Number}		idTask
 	 */
 	updateTab: function(idTask) {
@@ -154,7 +172,8 @@ Todoyu.Ext.assets = {
 
 	/**
 	 * Set label of task assets tab
-	 * 
+	 *
+	 * @method	setTabLabel
 	 * @param	{Number}	idTask
 	 * @param	{String}	label
 	 */
@@ -166,7 +185,8 @@ Todoyu.Ext.assets = {
 
 	/**
 	 * Toggle assets list visibility
-	 * 
+	 *
+	 * @method	toggleList
 	 * @param	{Number}		idTask
 	 */
 	toggleList: function(idTask) {

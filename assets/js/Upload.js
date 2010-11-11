@@ -18,27 +18,35 @@
 *****************************************************************************/
 
 /**
+ * @module	Assets
+ */
+
+/**
  * Asset upload methods
+ *
+ * @class		Upload
+ * @namespace	Todoyu.Ext.assets
  */
 Todoyu.Ext.assets.Upload = {
 
 	/**
 	 * Extension backlink
-	 * @var	{Object}	ext
+	 * @property	ext
 	 */
 	ext: Todoyu.Ext.assets,
 
 	/**
 	 * Upload activity flag
-	 * @var	{Boolean}
+	 * @property	active
+	 * @type		Boolean
 	 */
 	active: false,
 
 
-
-	 /**
+	/**
 	 * Show asset upload form of given task
 	 *
+	 * @method	showForm
 	 * @param	{Number}	idTask
 	 */
 	showForm: function(idTask) {
@@ -67,6 +75,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * onChange handler of assets upload form to given task
 	 *
+	 * @method	onChange
 	 * @param	{Number}	idTask
 	 */
 	onChange: function(idTask) {
@@ -82,6 +91,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Assets upload form submission handler
 	 *
+	 * @method	submit
 	 * @param	{Number}	idTask
 	 */
 	submit: function(idTask) {
@@ -100,6 +110,7 @@ Todoyu.Ext.assets.Upload = {
 	 * Check if upload iframe has loaded, but not set upload flag
 	 * This means an error page has been loaded and the upload failed
 	 *
+	 * @method	uploadFailingDetection
 	 * @param	{Number}	idTask
 	 */
 	uploadFailingDetection: function(idTask) {
@@ -115,6 +126,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Get asset upload form file field's value of given task
 	 *
+	 * @method	getField
 	 * @param	{Number}	idTask
 	 * @return	{Element}
 	 */
@@ -127,6 +139,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Get assets upload form
 	 *
+	 * @method	getForm
 	 * @param	{Number}	idTask
 	 * @return	{Element}
 	 */
@@ -139,6 +152,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Create iFrame for assets upload
 	 *
+	 * @method	addIFrame
 	 * @param	{Number}	idTask
 	 */
 	addIFrame: function(idTask) {
@@ -149,6 +163,8 @@ Todoyu.Ext.assets.Upload = {
 
 	/**
 	 * Remove the upload iframe
+	 *
+	 * @method	removeIFrame
 	 */
 	removeIFrame: function() {
 		$$('iframe.uploadIframe').first().remove();
@@ -159,6 +175,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Replace field inside assets upload form
 	 *
+	 * @method	replaceField
 	 * @param	{Number}		idTask
 	 */
 	replaceField: function(idTask) {
@@ -178,6 +195,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Show assets uploader
 	 *
+	 * @method	showProgressBar
 	 * @param	{Number}		idTask
 	 * @param	{String}		filename
 	 */
@@ -203,6 +221,8 @@ Todoyu.Ext.assets.Upload = {
 
 	/**
 	 * Remove uploader progress bar from DOM
+	 *
+	 * @method	removeProgressBar
 	 */
 	removeProgressBar: function() {
 		$('asset-uploader-element').remove();
@@ -213,6 +233,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Hide upload field to prevent multiple uploads at the same time
 	 *
+	 * @method	hideUploadField
 	 * @param	{Number}		idTask
 	 */
 	hideUploadField: function(idTask) {
@@ -223,6 +244,8 @@ Todoyu.Ext.assets.Upload = {
 
 	/**
 	 * Show upload field which was hidden during the upload process
+	 *
+	 * @method	showUploadField
 	 */
 	showUploadField: function() {
 		var fields	= $$('input[type=file][id^=asset-][id$=-field-file]');
@@ -246,6 +269,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Asset upload finished handler
 	 *
+	 * @method	uploadFinished
 	 * @param	{Number}		idTask
 	 * @param	{String}		tabLabel
 	 */
@@ -272,6 +296,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Check whether upload failed, determine reason (file too big / failure) and notify
 	 *
+	 * @method	uploadFailed
 	 * @param	{Number}		error		1 = filesize exceeded, 2 = failure
 	 * @param	{String}		filename
 	 * @param	{Number}		maxFileSize
@@ -289,8 +314,6 @@ Todoyu.Ext.assets.Upload = {
 			'maxLengthFileName': maxLengthFileName
 		};
 		var msg		= '';
-
-
 
 		if( error === 1 || error === 2 ) {
 			msg	= '[LLL:assets.maxFileSizeExceeded]';

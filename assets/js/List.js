@@ -18,13 +18,20 @@
 *****************************************************************************/
 
 /**
+ * @module	Assets
+ */
+
+/**
  * List assets
+ *
+ * @class		List
+ * @namespace	Todoyu.Ext.assets
  */
 Todoyu.Ext.assets.List = {
 
 	/**
 	 * Extension backlink
-	 * @var	{Object}	ext
+	 * @property	ext
 	 */
 	ext: Todoyu.Ext.assets,
 
@@ -32,7 +39,8 @@ Todoyu.Ext.assets.List = {
 
 	/**
 	 * Toggle display of assets list of given task
-	 * 
+	 *
+	 * @method	toggle
 	 * @param	{Number}		idTask
 	 */
 	toggle: function(idTask) {
@@ -44,6 +52,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Refresh assets list of given task
 	 *
+	 * @method	refresh
 	 * @param	{Number}	idTask
 	 */
 	refresh: function(idTask) {
@@ -69,6 +78,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Hover given asset
 	 *
+	 * @method	hover
 	 * @param	{Number}	idAsset
 	 */
 	hover: function(idAsset) {
@@ -80,6 +90,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Select given asset
 	 *
+	 * @method	select
 	 * @param	{Number}	idAsset
 	 */
 	select: function(idAsset) {
@@ -95,6 +106,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Set given asset checked
 	 *
+	 * @method	check
 	 * @param	{Number}	idAsset
 	 */
 	check: function(idAsset) {
@@ -107,6 +119,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Set asset unchecked
 	 *
+	 * @method	unCheck
 	 * @param	{Number}	idAsset
 	 */
 	unCheck: function(idAsset) {
@@ -119,6 +132,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Select all assets of given task
 	 *
+	 * @method	selectAll
 	 * @param	{Number}	idTask
 	 */
 	selectAll: function(idTask) {
@@ -150,6 +164,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Get selected assets of given task
 	 *
+	 * @method	getSelectedAssets
 	 * @param	{Number}	idTask
 	 * @return	Array
 	 */
