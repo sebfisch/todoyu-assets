@@ -18,6 +18,6 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-TodoyuHookManager::registerHook('project', 'taskIcons', 'TodoyuAssetManager::hookAddTaskIcons');
+
 
 ?>
