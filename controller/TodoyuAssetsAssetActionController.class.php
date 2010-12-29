@@ -97,7 +97,7 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 		restrictInternal();
 
 		$idAsset	= intval($params['asset']);
-		$asset		= TodoyuAssetManager::getAsset($idAsset);
+		TodoyuAssetManager::getAsset($idAsset);
 
 		TodoyuAssetManager::togglePublic($idAsset);
 	}

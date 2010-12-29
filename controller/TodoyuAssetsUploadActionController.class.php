@@ -58,7 +58,7 @@ class TodoyuAssetsUploadActionController extends TodoyuActionController {
 
 			return TodoyuAssetRenderer::renderUploadframeContentFailed($file['error'], $file['name']);
 		} else {
-			$idAsset	= TodoyuAssetManager::addTaskAsset($idTask, $file['tmp_name'], $file['name'], $file['type']);
+			TodoyuAssetManager::addTaskAsset($idTask, $file['tmp_name'], $file['name'], $file['type']);
 
 			return TodoyuAssetRenderer::renderUploadframeContent($idTask, $file['name']);
 		}
