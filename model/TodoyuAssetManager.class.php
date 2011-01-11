@@ -128,7 +128,7 @@ class TodoyuAssetManager {
 
 			// If person can't see all assets, limit to public and own
 		if( Todoyu::person()->isExternal()  && ! allowed('assets', 'asset:seeAll') ) {
-			$where .= ' AND (   is_public 		= 1
+			$where .= ' AND (	is_public 		= 1
 							 OR id_person_create	= ' . personid() . '
 						)';
 		}
