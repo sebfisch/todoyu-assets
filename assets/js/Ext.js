@@ -113,8 +113,8 @@ Todoyu.Ext.assets = {
 	 * Handler to be called after having deleted a file: updates file list
 	 *
 	 * @method	onRemoved
-	 * @param	{Number}	idAsset
-	 * @param	{Object}	response
+	 * @param	{Number}			idAsset
+	 * @param	{Ajax.Response}		response
 	 */
 	onRemoved: function(idAsset, response) {
 		Effect.Fade('asset-' + idAsset);
