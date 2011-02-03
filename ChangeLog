@@ -1,0 +1,44 @@
+todoyu assets extension changelog
+
+assets 1.0.6 - not released yet
+	* Feature: Added changelog
+
+assets 1.0.1 to 1.0.5 - 1.0.5 released 2011-01-17
+	* Updated year of copyright to 2011
+	* Changed: General cleanups
+	* Feature: Updated JsDoc comments
+	* Feature: Added italian translation
+ 	* Changed: Changed locale format
+	* Feature: Commented upload failure detection. Set 20 sec limit
+	* Feature: Added check for filename length to prevent non-downloadable files (max 50 signs)
+	* Feature: Upload failure detection
+	* Changed: Rights isAdmin Check changes for easier handling
+	* Feature: Added asset icon to task icons
+	* Feature: Added hooks documentation
+	* Feature: Added Serbian locales
+	* Changed: Moved styles from global.css to ext.css
+	* Feature: Added locked message
+	* Changed: SQL cleanups
+	* Feature: Added japanese translation
+	* Feature: Added czech translation
+	* Changed: Changed assets folder structure
+	* Feature: Added dutch translation
+	* Changed: Move header sending to sendFile function
+	* Feature: Added parts of french translation
+	* Feature: Added parts of russian translation
+	* Bugfix: Various wording and spelling fixes
+	* Changed: Removed manual requiring of auto-loaded config files
+	* Changed: Logger cleanup
+	* Feature: Added portuguese translation
+	* Changed: Unified background colors
+	* Feature: Added directory separator shorthand
+	* Changed: Switched license from GPL to BSD
+	* Feature: Added max upload size
+	* Changed: Moved the global $CONFIG variable to Todoyu class. Is now a public static member variable
+	* Changed: Asset handling (load all in one merge file)
+	* Bugfix: Refresh whole asset tab on delete an asset
+	* Changed: Updated rights xml config with new name format
+	* Feature: noAccess handling in ajax responses
+
+assets 1.0.0 - released 2010-05-10
+	* Changed: Declared state stable
