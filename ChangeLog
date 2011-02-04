@@ -1,7 +1,10 @@
 todoyu assets extension changelog
 
 assets 1.1.0 (requires core >= 2.1) - not released yet
+	* Feature: Cleanup (topical order and readability) of extension config (init.php) file
+	* Feature: Forms restyled
 	* Updated loading structure: (core: boot.php, init: request,) extensions: init.php
+	* Feature: Changed locale format
 
 
 assets 1.0.6 - not released yet
