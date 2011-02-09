@@ -360,7 +360,7 @@ class TodoyuAssetManager {
 		$fields	= 'file_name, file_storage';
 		$table	= self::TABLE;
 
-		if(count($assetIDs) > 0)	{
+		if( count($assetIDs) > 0 ) {
 			$where	= 'id IN(' . implode(',', $assetIDs) . ')';
 		} else {
 			$where = 'id_task = ' . $idTask . ' AND deleted = 0';
@@ -427,7 +427,7 @@ class TodoyuAssetManager {
 
 		$field	= 'date_create';
 		$table	= self::TABLE;
-		if(count($assetIDs) > 0)	{
+		if( count($assetIDs) > 0 ) {
 			$where	= 'id IN(' . implode(',', $assetIDs) . ')';
 		} else {
 			$where = 'id_task = '.intval($idTask).' AND deleted = 0';
