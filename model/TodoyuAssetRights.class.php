@@ -52,9 +52,9 @@ class TodoyuAssetRights {
 		$typeParent	= $asset->getParentType();
 
 		switch($typeParent) {
-			case 'task':
+			case ASSET_PARENTTYPE_TASK:
 				if( TodoyuTaskRights::isSeeAllowed($idParent) ) {
-					if( allowed('asset', 'asset:seeAll') ) {
+					if( allowed('asset', 'asset:seeAll') || $asset->isPublic() ) {
 						return true;
 					}
 				}
@@ -80,10 +80,12 @@ class TodoyuAssetRights {
 		$typeParent	= $asset->getParentType();
 
 		switch($typeParent) {
-			case 'task':
+			case ASSET_PARENTTYPE_TASK:
 				if( TodoyuTaskRights::isSeeAllowed($idParent) ) {
-					if( allowed('asset', 'asset:delete') ) {
-						return true;
+					if( self::isSeeAllowed($idAsset) ) {
+						if( allowed('asset', 'asset:delete') ) {
+							return true;
+						}
 					}
 				}
 				break;

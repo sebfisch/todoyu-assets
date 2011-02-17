@@ -26,6 +26,18 @@
  */
 class TodoyuAssetsTasktabActionController extends TodoyuActionController {
 
+
+	/**
+	 * Initialize controller: restrict access
+	 *
+	 * @param	Array	$params
+	 */
+	public function init(array $params) {
+		restrict('assets', 'general:use');
+	}
+
+	
+
 	/**
 	 * Get upload form
 	 *
@@ -47,8 +59,6 @@ class TodoyuAssetsTasktabActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function listAction(array $params) {
-		restrict('assets', 'general:use');
-
 		$idTask	= intval($params['task']);
 
 		return TodoyuAssetRenderer::renderList($idTask);

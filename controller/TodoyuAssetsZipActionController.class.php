@@ -27,6 +27,17 @@
 class TodoyuAssetsZipActionController extends TodoyuActionController {
 
 	/**
+	 * Initialize controller: restrict access
+	 *
+	 * @param	Array	$params
+	 */
+	public function init(array $params) {
+		restrict('assets', 'general:use');
+	}
+
+
+
+	/**
 	 * Download multiple assets in a zip archive
 	 *
 	 * @param	Array		$params
@@ -36,6 +47,12 @@ class TodoyuAssetsZipActionController extends TodoyuActionController {
 		$assetIDs	= TodoyuArray::intExplode(',', $params['assets'], true, true);
 
 		if( sizeof($assetIDs) > 0 ) {
+			foreach( $assetIDs as $idAsset)	{
+				if( ! TodoyuAssetRights::isSeeAllowed( $idAsset )) {
+					TodoyuAssetRights::restrictSee($idAsset);
+				}
+			}
+
 			TodoyuAssetManager::downloadAssetsZipped($idTask, $assetIDs);
 		} else {
 			die("NO ASSETS SELECTED");

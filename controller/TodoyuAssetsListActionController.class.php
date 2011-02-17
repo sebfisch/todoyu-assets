@@ -27,14 +27,22 @@
 class TodoyuAssetsListActionController extends TodoyuActionController {
 
 	/**
+	 * Initialize controller: restrict access
+	 *
+	 * @param	Array	$params
+	 */
+	public function init(array $params) {
+		restrict('assets', 'general:use');
+	}
+
+
+	/**
 	 * Default action: render list
 	 *
 	 * @param	Array		$params
 	 * @return	String
 	 */
 	public function defaultAction(array $params) {
-		restrict('assets', 'general:use');
-
 		$idTask		= intval($params['task']);
 
 		return TodoyuAssetRenderer::renderList($idTask);

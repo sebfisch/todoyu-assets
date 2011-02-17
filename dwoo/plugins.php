@@ -18,16 +18,42 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-	// Declare ext ID, path
-define('EXTID_ASSETS', 101);
-define('PATH_EXT_ASSETS', PATH_EXT . '/assets');
 
-require_once( PATH_EXT_ASSETS . '/config/constants.php' );
-require_once( PATH_EXT_ASSETS . '/dwoo/plugins.php');
+/**
+ * Asset specific Dwoo plugins
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ */
 
-	// Register module locales
-TodoyuLabelManager::register('assets', 'assets', 'ext.xml');
-	// Register hooks
-TodoyuHookManager::registerHook('project', 'taskIcons', 'TodoyuAssetManager::hookAddTaskIcons');
+/**
+ * Check right of current person to see given asset
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
+ * @param	Dwoo 		$dwoo
+ * @param	Integer		$idAsset
+ * @return	Boolean
+ */
+function Dwoo_Plugin_isAssetSeeAllowed(Dwoo $dwoo, $idAsset) {
+	return TodoyuAssetRights::isSeeAllowed($idAsset);
+}
 
-?>
+
+
+/**
+ * Check right of current person to delete given asset
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
+ * @param	Dwoo 		$dwoo
+ * @param	Integer		$idAsset
+ * @return	Boolean
+ */
+function Dwoo_Plugin_isAssetDeleteAllowed(Dwoo $dwoo, $idAsset) {
+	return TodoyuAssetRights::isDeleteAllowed($idAsset);
+}
+
+

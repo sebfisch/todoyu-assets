@@ -48,9 +48,9 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 		$idAsset	= intval($params['asset']);
 		$asset		= TodoyuAssetManager::getAsset($idAsset);
 
-			// If asset if not public, person need the right so see also not public assets
-		if( ! Todoyu::person()->isAdmin() && ! Todoyu::person()->isInternal() && ! $asset->isPublic() && ! $asset->isCurrentPersonCreator() ) {
-			restrict('assets', 'asset:seeAll');
+			// If asset is not public, person need the right so see also not public assets
+		if( TodoyuAssetRights::isSeeAllowed($idAsset) ) {
+			TodoyuAssetRights::restrictSee($idAsset);
 		}
 
 		TodoyuAssetManager::downloadAsset($idAsset);
@@ -68,8 +68,8 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 		$asset		= TodoyuAssetManager::getAsset($idAsset);
 
 			// If asset is not uploaded by current person, he needs delete rights
-		if( ! $asset->isCurrentPersonCreator() ) {
-			restrict('assets', 'asset:delete');
+		if( !TodoyuAssetRights::isDeleteAllowed($idAsset) ) {
+			TodoyuAssetRights::restrictDelete($idAsset);
 		}
 
 			// Delete the asset

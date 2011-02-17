@@ -37,11 +37,11 @@
 					<a id="asset-{$asset.id}-icon-download" onclick="Todoyu.Ext.assets.download({$asset.id})" href="javascript:void(0)" title="{Label assets.alt.download}" class="asset-icon-download">
 						<span class="hidden">{Label assets.alt.download}</span>
 					</a>
-					{restrict 'assets' 'asset:delete'}
+					{if isAssetDeleteAllowed($asset.id)}
 						<a id="asset-{$asset.id}-icon-delete" onclick="Todoyu.Ext.assets.remove({$asset.id})" href="javascript:void(0)" title="{Label assets.alt.delete}" class="asset-icon-delete">
 							<span class="hidden">{Label assets.alt.delete}</span>
 						</a>
-					{/restrict}
+					{/if}
 				</td>
 			</tr>
 		{/foreach}
