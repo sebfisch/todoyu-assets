@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Assets
  */
-class TodoyuTaskAsset extends TodoyuAsset {
+class TodoyuAssetsTaskAsset extends TodoyuAssetsAsset {
 
 	/**
 	 * Get task ID
@@ -43,7 +43,7 @@ class TodoyuTaskAsset extends TodoyuAsset {
 	 * @return	Task
 	 */
 	public function getTask() {
-		return TodoyuTaskManager::getTask($this->getTaskID());
+		return TodoyuProjectTaskManager::getTask($this->getTaskID());
 	}
 
 }

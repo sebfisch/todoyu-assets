@@ -46,14 +46,14 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 	 */
 	public function downloadAction(array $params) {
 		$idAsset	= intval($params['asset']);
-		$asset		= TodoyuAssetManager::getAsset($idAsset);
+		$asset		= TodoyuAssetsAssetManager::getAsset($idAsset);
 
 			// If asset is not public, person need the right so see also not public assets
-		if( TodoyuAssetRights::isSeeAllowed($idAsset) ) {
-			TodoyuAssetRights::restrictSee($idAsset);
+		if( TodoyuAssetsRights::isSeeAllowed($idAsset) ) {
+			TodoyuAssetsRights::restrictSee($idAsset);
 		}
 
-		TodoyuAssetManager::downloadAsset($idAsset);
+		TodoyuAssetsAssetManager::downloadAsset($idAsset);
 	}
 
 
@@ -65,22 +65,22 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 	 */
 	public function deleteAction(array $params) {
 		$idAsset	= intval($params['asset']);
-		$asset		= TodoyuAssetManager::getAsset($idAsset);
+		$asset		= TodoyuAssetsAssetManager::getAsset($idAsset);
 
 			// If asset is not uploaded by current person, he needs delete rights
-		if( !TodoyuAssetRights::isDeleteAllowed($idAsset) ) {
-			TodoyuAssetRights::restrictDelete($idAsset);
+		if( !TodoyuAssetsRights::isDeleteAllowed($idAsset) ) {
+			TodoyuAssetsRights::restrictDelete($idAsset);
 		}
 
 			// Delete the asset
-		TodoyuAssetManager::deleteAsset($idAsset);
+		TodoyuAssetsAssetManager::deleteAsset($idAsset);
 
 			/**
 			 * @todo	Currently this works, but if tasks can be in different parents, it could also be a project...
 			 */
 		$idTask		= $asset->getParentID();
 
-		$tabLabel	= TodoyuTaskAssetViewHelper::getTabLabel($idTask);
+		$tabLabel	= TodoyuAssetsTaskAssetViewHelper::getTabLabel($idTask);
 
 		TodoyuHeader::sendTodoyuHeader('idTask', $idTask);
 		TodoyuHeader::sendTodoyuHeader('tabLabel', $tabLabel);
@@ -97,9 +97,9 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 		restrictInternal();
 
 		$idAsset	= intval($params['asset']);
-		TodoyuAssetManager::getAsset($idAsset);
+		TodoyuAssetsAssetManager::getAsset($idAsset);
 
-		TodoyuAssetManager::togglePublic($idAsset);
+		TodoyuAssetsAssetManager::togglePublic($idAsset);
 	}
 }
 

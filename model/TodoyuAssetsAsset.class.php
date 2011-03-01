@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Assets
  */
-class TodoyuAsset extends TodoyuBaseObject {
+class TodoyuAssetsAsset extends TodoyuBaseObject {
 
 	/**
 	 * Initialize the asset object
@@ -73,7 +73,7 @@ class TodoyuAsset extends TodoyuBaseObject {
 	/**
 	 * Get uploader person object
 	 *
-	 * @return	TodoyuPerson
+	 * @return	TodoyuContactPerson
 	 */
 	public function getPerson() {
 		return parent::getPerson('create');
@@ -87,7 +87,7 @@ class TodoyuAsset extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getFileStoragePath() {
-		$basePath	= TodoyuAssetManager::getStorageBasePath();
+		$basePath	= TodoyuAssetsAssetManager::getStorageBasePath();
 		$filePath	= $this->get('file_storage');
 
 		return TodoyuFileManager::pathAbsolute($basePath . DIR_SEP . $filePath);

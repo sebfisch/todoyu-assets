@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Assets
  */
-class TodoyuAssetRenderer {
+class TodoyuAssetsAssetRenderer {
 
 	/**
 	 * Render content for the task tab
@@ -36,8 +36,8 @@ class TodoyuAssetRenderer {
 		restrict('assets', 'general:use');
 
 		$idTask		= intval($idTask);
-		$numAssets	= TodoyuAssetManager::getNumTaskAssets($idTask);
-		$locked		= TodoyuTaskManager::isLocked($idTask);
+		$numAssets	= TodoyuAssetsAssetManager::getNumTaskAssets($idTask);
+		$locked		= TodoyuProjectTaskManager::isLocked($idTask);
 
 		if( $locked ) {
 			if( $numAssets === 0 ) {
@@ -85,7 +85,7 @@ class TodoyuAssetRenderer {
 		$tmpl	= 'ext/assets/view/list.tmpl';
 		$data	= array(
 			'idTask'	=> $idTask,
-			'assets'	=> TodoyuAssetManager::getTaskAssets($idTask)
+			'assets'	=> TodoyuAssetsAssetManager::getTaskAssets($idTask)
 		);
 
 		return render($tmpl, $data);
@@ -156,7 +156,7 @@ class TodoyuAssetRenderer {
 	 */
 	public static function renderUploadframeContent($idTask, $fileName) {
 		$idTask		= intval($idTask);
-		$tabLabel	= TodoyuTaskAssetViewHelper::getTabLabel($idTask);
+		$tabLabel	= TodoyuAssetsTaskAssetViewHelper::getTabLabel($idTask);
 
 		$tmpl	= 'core/view/htmldoc.tmpl';
 		$data	= array(

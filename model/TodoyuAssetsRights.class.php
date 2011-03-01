@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Asset
  */
-class TodoyuAssetRights {
+class TodoyuAssetsRights {
 
 	/**
 	 * Deny access
@@ -46,14 +46,14 @@ class TodoyuAssetRights {
 	 */
 	public static function isSeeAllowed($idAsset) {
 		$idAsset	= intval($idAsset);
-		$asset		= TodoyuAssetManager::getAsset($idAsset);
+		$asset		= TodoyuAssetsAssetManager::getAsset($idAsset);
 
 		$idParent	= $asset->getParentID();
 		$typeParent	= $asset->getParentType();
 
 		switch($typeParent) {
 			case ASSET_PARENTTYPE_TASK:
-				if( TodoyuTaskRights::isSeeAllowed($idParent) ) {
+				if( TodoyuProjectTaskRights::isSeeAllowed($idParent) ) {
 					if( allowed('asset', 'asset:seeAll') || $asset->isPublic() ) {
 						return true;
 					}
@@ -74,14 +74,14 @@ class TodoyuAssetRights {
 	 */
 	public static function isDeleteAllowed($idAsset) {
 		$idAsset	= intval($idAsset);
-		$asset		= TodoyuAssetManager::getAsset($idAsset);
+		$asset		= TodoyuAssetsAssetManager::getAsset($idAsset);
 
 		$idParent	= $asset->getParentID();
 		$typeParent	= $asset->getParentType();
 
 		switch($typeParent) {
 			case ASSET_PARENTTYPE_TASK:
-				if( TodoyuTaskRights::isSeeAllowed($idParent) ) {
+				if( TodoyuProjectTaskRights::isSeeAllowed($idParent) ) {
 					if( self::isSeeAllowed($idAsset) ) {
 						if( allowed('asset', 'asset:delete') ) {
 							return true;

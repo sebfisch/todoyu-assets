@@ -37,7 +37,7 @@
  * @return	Boolean
  */
 function Dwoo_Plugin_isAssetSeeAllowed(Dwoo $dwoo, $idAsset) {
-	return TodoyuAssetRights::isSeeAllowed($idAsset);
+	return TodoyuAssetsRights::isSeeAllowed($idAsset);
 }
 
 
@@ -53,7 +53,7 @@ function Dwoo_Plugin_isAssetSeeAllowed(Dwoo $dwoo, $idAsset) {
  * @return	Boolean
  */
 function Dwoo_Plugin_isAssetDeleteAllowed(Dwoo $dwoo, $idAsset) {
-	return TodoyuAssetRights::isDeleteAllowed($idAsset);
+	return TodoyuAssetsRights::isDeleteAllowed($idAsset);
 }
 
 

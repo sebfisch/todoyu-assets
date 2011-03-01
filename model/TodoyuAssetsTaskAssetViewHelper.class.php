@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Assets
  */
-class TodoyuTaskAssetViewHelper {
+class TodoyuAssetsTaskAssetViewHelper {
 
 	/**
 	 * Get labeltext for the asset tab in the task
@@ -35,7 +35,7 @@ class TodoyuTaskAssetViewHelper {
 	public static function getTabLabel($idTask) {
 		$idTask	= intval($idTask);
 
-		$numAssets	= TodoyuAssetManager::getNumTaskAssets($idTask);
+		$numAssets	= TodoyuAssetsAssetManager::getNumTaskAssets($idTask);
 
 		if( $numAssets === 0 ) {
 			$label	= Label('assets.tab.noAssets');
@@ -58,12 +58,12 @@ class TodoyuTaskAssetViewHelper {
 	 */
 	public static function getTabContent($idTask) {
 		$idTask		= intval($idTask);
-		$numAssets	= TodoyuAssetManager::getNumTaskAssets($idTask);
+		$numAssets	= TodoyuAssetsAssetManager::getNumTaskAssets($idTask);
 
-		if( $numAssets === 0 && TodoyuTaskManager::isLocked($idTask) === false ) {
-			$content	= TodoyuAssetRenderer::renderUploadForm($idTask);
+		if( $numAssets === 0 && TodoyuProjectTaskManager::isLocked($idTask) === false ) {
+			$content	= TodoyuAssetsAssetRenderer::renderUploadForm($idTask);
 		} else {
-			$content	= TodoyuAssetRenderer::renderTabContent($idTask);
+			$content	= TodoyuAssetsAssetRenderer::renderTabContent($idTask);
 		}
 
 		return $content;

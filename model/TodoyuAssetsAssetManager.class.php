@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	Assets
  */
-class TodoyuAssetManager {
+class TodoyuAssetsAssetManager {
 
 	/**
 	 * @var String		Default table for database requests
@@ -37,12 +37,12 @@ class TodoyuAssetManager {
 	 * Get asset record
 	 *
 	 * @param	Integer		$idAsset
-	 * @return	TodoyuAsset
+	 * @return	TodoyuAssetsAsset
 	 */
 	public static function getAsset($idAsset) {
 		$idAsset	= intval($idAsset);
 
-		return TodoyuRecordManager::getRecord('TodoyuAsset', $idAsset);
+		return TodoyuRecordManager::getRecord('TodoyuAssetsAsset', $idAsset);
 	}
 
 
@@ -65,12 +65,12 @@ class TodoyuAssetManager {
 	 * Get a task asset
 	 *
 	 * @param	Integer				$idAsset
-	 * @return	TodoyuTaskAsset
+	 * @return	TodoyuAssetsTaskAsset
 	 */
 	public static function getTaskAsset($idAsset) {
 		$idAsset	= intval($idAsset);
 
-		return TodoyuRecordManager::getRecord('TodoyuTaskAsset', $idAsset);
+		return TodoyuRecordManager::getRecord('TodoyuAssetsTaskAsset', $idAsset);
 	}
 
 
@@ -255,7 +255,7 @@ class TodoyuAssetManager {
 	 */
 	public static function downloadAsset($idAsset) {
 		$idAsset	= intval($idAsset);
-		$asset		= TodoyuAssetManager::getAsset($idAsset);
+		$asset		= TodoyuAssetsAssetManager::getAsset($idAsset);
 		$filePath	= $asset->getFileStoragePath();
 		$mimeType 	= $asset->getMimeType();
 		$filename	= $asset->getFilename();
@@ -466,7 +466,7 @@ class TodoyuAssetManager {
 
 	/**
 	 * Get (root) storage path of assets
-	 * 
+	 *
 	 * @param	Integer		$type			type of parent element, e.g. task
 	 * @param	Integer		$idParent		ID of parent element
 	 * @return	String		Path to storage folder
@@ -479,7 +479,7 @@ class TodoyuAssetManager {
 		switch($type) {
 			case ASSET_PARENTTYPE_TASK:
 					// User project ID as parent folder
-				$folder 	= TodoyuTaskManager::getProjectID($idParent);;
+				$folder 	= TodoyuProjectTaskManager::getProjectID($idParent);;
 				break;
 
 //			case ASSET_PARENTTYPE_PROJECT:

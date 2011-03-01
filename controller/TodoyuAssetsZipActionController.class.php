@@ -48,12 +48,12 @@ class TodoyuAssetsZipActionController extends TodoyuActionController {
 
 		if( sizeof($assetIDs) > 0 ) {
 			foreach( $assetIDs as $idAsset)	{
-				if( ! TodoyuAssetRights::isSeeAllowed( $idAsset )) {
-					TodoyuAssetRights::restrictSee($idAsset);
+				if( ! TodoyuAssetsRights::isSeeAllowed( $idAsset )) {
+					TodoyuAssetsRights::restrictSee($idAsset);
 				}
 			}
 
-			TodoyuAssetManager::downloadAssetsZipped($idTask, $assetIDs);
+			TodoyuAssetsAssetManager::downloadAssetsZipped($idTask, $assetIDs);
 		} else {
 			die("NO ASSETS SELECTED");
 		}

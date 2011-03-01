@@ -56,11 +56,11 @@ class TodoyuAssetsUploadActionController extends TodoyuActionController {
 		if( $file === false || $file['error'] !== UPLOAD_ERR_OK ) {
 			Todoyu::log('File upload failed: ' . $file['name'] . ' (ERROR:' . $file['error'] . ')', TodoyuLogger::LEVEL_ERROR);
 
-			return TodoyuAssetRenderer::renderUploadframeContentFailed($file['error'], $file['name']);
+			return TodoyuAssetsAssetRenderer::renderUploadframeContentFailed($file['error'], $file['name']);
 		} else {
-			TodoyuAssetManager::addTaskAsset($idTask, $file['tmp_name'], $file['name'], $file['type']);
+			TodoyuAssetsAssetManager::addTaskAsset($idTask, $file['tmp_name'], $file['name'], $file['type']);
 
-			return TodoyuAssetRenderer::renderUploadframeContent($idTask, $file['name']);
+			return TodoyuAssetsAssetRenderer::renderUploadframeContent($idTask, $file['name']);
 		}
 	}
 

@@ -34,7 +34,7 @@ Todoyu::$CONFIG['EXT']['assets']['max_length_filename'] = 50;
 
 	// Add task tab
 if( allowed('assets', 'general:use') ) {
-	TodoyuTaskManager::addTaskTab('assets', 'TodoyuTaskAssetViewHelper::getTabLabel', 'TodoyuTaskAssetViewHelper::getTabContent', 30);
+	TodoyuProjectTaskManager::addTaskTab('assets', 'TodoyuAssetsTaskAssetViewHelper::getTabLabel', 'TodoyuAssetsTaskAssetViewHelper::getTabContent', 30);
 }
 
 ?>

@@ -36,7 +36,7 @@ class TodoyuAssetsTasktabActionController extends TodoyuActionController {
 		restrict('assets', 'general:use');
 	}
 
-	
+
 
 	/**
 	 * Get upload form
@@ -47,7 +47,7 @@ class TodoyuAssetsTasktabActionController extends TodoyuActionController {
 	public function uploadformAction(array $params) {
 		$idTask	= intval($params['task']);
 
-		return TodoyuAssetRenderer::renderUploadForm($idTask);
+		return TodoyuAssetsAssetRenderer::renderUploadForm($idTask);
 	}
 
 
@@ -61,7 +61,7 @@ class TodoyuAssetsTasktabActionController extends TodoyuActionController {
 	public function listAction(array $params) {
 		$idTask	= intval($params['task']);
 
-		return TodoyuAssetRenderer::renderList($idTask);
+		return TodoyuAssetsAssetRenderer::renderList($idTask);
 	}
 
 
@@ -75,7 +75,7 @@ class TodoyuAssetsTasktabActionController extends TodoyuActionController {
 	public function tabAction(array $params) {
 		$idTask	= intval($params['task']);
 
-		return TodoyuAssetRenderer::renderTabContent($idTask);
+		return TodoyuAssetsAssetRenderer::renderTabContent($idTask);
 	}
 
 }
