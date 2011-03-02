@@ -204,7 +204,7 @@ Todoyu.Ext.assets.Upload = {
 			'id':		'asset-uploader-element',
 			'class':	'formElement'
 		});
-		var loaderText = new Element('div').update('[LLL:assets.upload.filename]' + ': ' + filename);
+		var loaderText = new Element('div').update('[LLL:assets.ext.upload.filename]' + ': ' + filename);
 		var loaderImage = new Element('img', {
 			'src': 'core/assets/img/progress.gif'
 		});
@@ -286,7 +286,7 @@ Todoyu.Ext.assets.Upload = {
 			Todoyu.Ext.assets.updateTab(idTask);
 		}
 
-		Todoyu.notifySuccess('[LLL:assets.uploadOk]');
+		Todoyu.notifySuccess('[LLL:assets.ext.uploadOk]');
 
 		Todoyu.Ext.assets.setTabLabel(idTask, tabLabel);
 	},
@@ -316,11 +316,11 @@ Todoyu.Ext.assets.Upload = {
 		var msg		= '';
 
 		if( error === 1 || error === 2 ) {
-			msg	= '[LLL:assets.maxFileSizeExceeded]';
+			msg	= '[LLL:assets.ext.maxFileSizeExceeded]';
 		} else if( error === 3 ) {
-			msg = '[LLL:assets.maxLengthFileNameExceeded]';
+			msg = '[LLL:assets.ext.maxLengthFileNameExceeded]';
 		} else {
-			msg	= '[LLL:assets.uploadFailed]';
+			msg	= '[LLL:assets.ext.uploadFailed]';
 		}
 
 		Todoyu.notifyError(msg.interpolate(info), 10);

@@ -68,12 +68,12 @@ Todoyu.Ext.assets = {
 		var selectedAssets = this.List.getSelectedAssets(idTask);
 
 		if( selectedAssets.size() === 0 ) {
-			Todoyu.notifyError('[LLL:assets.error.minimumFile]', 3);
+			Todoyu.notifyError('[LLL:assets.ext.error.minimumFile]', 3);
 		} else if( selectedAssets.size() === 1 ) {
-			Todoyu.notifyInfo('[LLL:assets.download.normal]', 3);
+			Todoyu.notifyInfo('[LLL:assets.ext.download.normal]', 3);
 			this.download(selectedAssets.first());
 		} else {
-			Todoyu.notifyInfo('[LLL:assets.download.compressed]', 3);
+			Todoyu.notifyInfo('[LLL:assets.ext.download.compressed]', 3);
 			var params = {
 				'action':	'download',
 				'task':		idTask,
@@ -93,7 +93,7 @@ Todoyu.Ext.assets = {
 	 * @param	{Number}	idAsset
 	 */
 	remove: function(idAsset) {
-		if( confirm('[LLL:assets.delete.confirm]') ) {
+		if( confirm('[LLL:assets.ext.delete.confirm]') ) {
 			var url		= Todoyu.getUrl('assets', 'asset');
 			var options	= {
 				'parameters': {
