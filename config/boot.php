@@ -25,8 +25,6 @@ define('PATH_EXT_ASSETS', PATH_EXT . '/assets');
 require_once( PATH_EXT_ASSETS . '/config/constants.php' );
 require_once( PATH_EXT_ASSETS . '/dwoo/plugins.php');
 
-	// Register module locales
-//TodoyuLabelManager::register('assets', 'assets', 'ext.xml');
 	// Register hooks
 TodoyuHookManager::registerHook('project', 'taskIcons', 'TodoyuAssetsAssetManager::hookAddTaskIcons');
 
