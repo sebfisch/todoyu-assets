@@ -36,6 +36,7 @@ class TodoyuAssetsListActionController extends TodoyuActionController {
 	}
 
 
+
 	/**
 	 * Default action: render list
 	 *
