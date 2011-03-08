@@ -122,6 +122,7 @@ class TodoyuAssetsTaskEditRenderer {
 
 		return render($tmpl, $data);
 	}
+
 }
 
 ?>

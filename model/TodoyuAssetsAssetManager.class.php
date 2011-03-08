@@ -628,7 +628,6 @@ class TodoyuAssetsAssetManager {
 	 *
 	 * @param	Array		$data
 	 * @param	Integer		$idTask
-	 * @return void
 	 */
 	public static function hookTaskDataBeforeRendering(array $data, $idTask = 0) {
 		self::getTaskAssetsTempStoragePath(true);

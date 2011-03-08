@@ -74,7 +74,8 @@ class TodoyuAssetsTaskAssetViewHelper {
 	/**
 	 * Get selector options of task asset files
 	 *
-	 * @return void
+	 * @param	TodoyuFormElement	$field
+	 * @return	Array
 	 */
 	public static function getTaskAssetsFilesOptions(TodoyuFormElement $field) {
 		$formData	= $field->getForm()->getFormData();

@@ -91,7 +91,7 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 	/**
 	 * Toggle asset public visibilty
 	 *
-	 * @param array $params
+	 * @param	Array	$params
 	 */
 	public function togglevisibilityAction(array $params) {
 		restrictInternal();
