@@ -23,9 +23,7 @@ define('EXTID_ASSETS', 101);
 define('PATH_EXT_ASSETS', PATH_EXT . '/assets');
 
 require_once( PATH_EXT_ASSETS . '/config/constants.php' );
+require_once( PATH_EXT_ASSETS . '/config/hooks.php' );
 require_once( PATH_EXT_ASSETS . '/dwoo/plugins.php');
-
-	// Register hooks
-TodoyuHookManager::registerHook('project', 'taskIcons', 'TodoyuAssetsAssetManager::hookAddTaskIcons');
 
 ?>

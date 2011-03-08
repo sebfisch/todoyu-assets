@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Asset zip download action controller
+ * Asset ZIP download action controller
  *
  * @package		Todoyu
  * @subpackage	Assets
@@ -38,7 +38,7 @@ class TodoyuAssetsZipActionController extends TodoyuActionController {
 
 
 	/**
-	 * Download multiple assets in a zip archive
+	 * Download multiple assets in a ZIP archive
 	 *
 	 * @param	Array		$params
 	 */

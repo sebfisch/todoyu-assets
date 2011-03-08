@@ -14,7 +14,8 @@ h1.extIconAssets .title {
 /* ----------------------------------------------
 	Asset form elements 
    ---------------------------------------------- */
-.assetsButtons button.upload .icon {
+.assetsButtons button.upload .icon,
+button.buttonUploadAsset .icon {
 	background:url(../img/icons.png) no-repeat 0 -658px;
 }
 
@@ -22,6 +23,9 @@ h1.extIconAssets .title {
 	background:url(../img/icons.png) no-repeat 0 -688px;
 }
 
+button.buttonDeleteAsset .icon {
+	background:url(../../../../core/assets/img/icons.png) no-repeat 3px -327px;
+}
 
 
 /* ----------------------------------------------

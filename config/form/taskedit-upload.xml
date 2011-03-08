@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<attributes>
+		<attribute name="action">?ext=assets&amp;controller=taskEdit</attribute>
+		<attribute name="name">assetfile</attribute>
+		<attribute name="target">upload-iframe-assetfile</attribute>
+	</attributes>
+	<hiddenFields>
+		<field name="MAX_FILE_SIZE" value="100000000" noWrap="true" noStorage="true" />
+		<field name="id_task" />
+		<field name="action" value="uploadassetfile" noWrap="true" />
+	</hiddenFields>
+	<fieldsets>
+		<fieldset name="main">
+			<legend>Left form column</legend>
+			<class>main</class>
+			<elements>
+
+				<field type="upload" name="file">
+					<label>core.file.upload.selectfile</label>
+					<onchange>Todoyu.Ext.assets.TaskEdit.upload(this.form)</onchange>
+				</field>
+				<field type="button" name="cancel">
+					<text>LLL:core.global.cancel</text>
+					<class>buttonCancel cancel</class>
+					<hasIcon />
+					<onclick>Todoyu.Ext.assets.TaskEdit.removeUploadForm()</onclick>
+				</field>
+
+			</elements>
+		</fieldset>
+	</fieldsets>
+</form>

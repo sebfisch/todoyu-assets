@@ -39,6 +39,10 @@ Todoyu::$CONFIG['EXT']['assets']['assets'] = array(
 			'position'	=> 120
 		),
 		array(
+			'file'		=> 'ext/assets/assets/js/TaskEdit.js',
+			'position'	=> 120
+		),
+		array(
 			'file'		=> 'lib/js/md5.js',
 			'position'	=> 26
 		)

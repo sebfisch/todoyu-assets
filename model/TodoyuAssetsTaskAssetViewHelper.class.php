@@ -27,7 +27,7 @@
 class TodoyuAssetsTaskAssetViewHelper {
 
 	/**
-	 * Get labeltext for the asset tab in the task
+	 * Get label text for the asset tab in the task
 	 *
 	 * @param	Integer		$idTask
 	 * @return	String
@@ -67,6 +67,20 @@ class TodoyuAssetsTaskAssetViewHelper {
 		}
 
 		return $content;
+	}
+
+
+
+	/**
+	 * Get selector options of task asset files
+	 *
+	 * @return void
+	 */
+	public static function getTaskAssetsFilesOptions(TodoyuFormElement $field) {
+		$formData	= $field->getForm()->getFormData();
+		$idTask		= intval($formData['id']);
+
+		return TodoyuAssetsAssetManager::getTaskAssetFileOptions($idTask);
 	}
 
 }

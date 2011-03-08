@@ -26,4 +26,6 @@
 	<label index="uploadOk">The file has been uploaded</label>
 	<label index="locked">This task is locked. You can't add files</label>
 	<label index="task.icon">Task has assets</label>
+	<label index="taskform.assets.button.delete">Delete Selected Asset</label>
+	<label index="taskform.assets.button.upload">Upload New Asset</label>
 </labels>

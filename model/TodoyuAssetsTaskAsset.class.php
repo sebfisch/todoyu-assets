@@ -46,6 +46,40 @@ class TodoyuAssetsTaskAsset extends TodoyuAssetsAsset {
 		return TodoyuProjectTaskManager::getTask($this->getTaskID());
 	}
 
+
+
+//	/**
+//	 * Store a file as task asset
+//	 *
+//	 * @param	String		$path
+//	 * @param	String		$name
+//	 * @param	String		$mime
+//	 * @return	Integer
+//	 */
+//	public static function store($path, $name, $mime) {
+//		$pathFile	= self::storeFile($path, $name);
+//
+////		return self::addDocumentTemplate($pathFile, $name, $mime);
+//	}
+
+
+
+//	/**
+//	 * Store a file in the storage directory
+//	 *
+//	 * @param	String		$path			Path to (temporary) source file
+//	 * @param	String		$name			Filename
+//	 * @return	String|Boolean
+//	 */
+//	private static function storeFile($path, $name) {
+//		$storageBasePath	= TodoyuFileManager::pathAbsolute(Todoyu::$CONFIG['EXT']['assets']['basePath']);
+//		$storageCachePath	= TodoyuFileManager::pathAbsolute(Todoyu::$CONFIG['EXT']['assets']['cachePath']);
+//
+//		TodoyuFileManager::makeDirDeep($storageBasePath);
+//		TodoyuFileManager::makeDirDeep($storageCachePath);
+//
+//		return TodoyuFileManager::addFileToStorage($storageBasePath, $path, $name, true);
+//	}
 }
 
 ?>

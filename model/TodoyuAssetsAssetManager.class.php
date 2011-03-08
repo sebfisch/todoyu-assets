@@ -198,6 +198,36 @@ class TodoyuAssetsAssetManager {
 
 
 	/**
+	 * Add an uploaded file as temporary task asset (to be later attached to to-be created task)
+	 *
+	 * @param	String		$tempFile		Path to temporary file on server
+	 * @param	String		$fileName		Filename on browser system
+	 * @return	String|Boolean				New file path or FALSE
+	 */
+	public static function addTaskAssetTemporary($tempFile, $fileName) {
+			// Move temporary file to temporary assets storage
+		$storageDir	= self::getTaskAssetsTempStoragePath();
+
+		return TodoyuFileManager::addFileToStorage($storageDir, $tempFile, $fileName, false);
+	}
+
+
+
+	/**
+	 * Get array of currently temporary stored asset files of current user
+	 *
+	 * @param	Boolean		$getFileStats
+	 * @return	Array
+	 */
+	public static function getTemporaryAssets($getFileStats = false) {
+		$path	= self::getTaskAssetsTempStoragePath();
+
+		return TodoyuFileManager::getFolderContents($path, false, $getFileStats);
+	}
+
+
+
+	/**
 	 * Add a new file to the system.
 	 *  - Copy the file to the file structure
 	 *  - Add an asset record to the database
@@ -216,6 +246,10 @@ class TodoyuAssetsAssetManager {
 			// Move temporary file to asset storage
 		$storageDir	= self::getAssetStoragePath($type, $idParent);
 		$filePath	= TodoyuFileManager::addFileToStorage($storageDir, $tempFile, $fileName);
+
+		if( $filePath === false ) {
+			return false;
+		}
 
 			// Get storage path (relative to basePath)
 		$relStoragePath	= str_replace($basePath . DIR_SEP, '', $filePath);
@@ -290,6 +324,21 @@ class TodoyuAssetsAssetManager {
 
 
 	/**
+	 * Delete temporary (uploaded prior to creation of task) asset file
+	 *
+	 * @param	String	$filename
+	 * @return	Boolean
+	 */
+	public static function deleteTemporaryAsset($filename) {
+		$tempStoragePath= self::getTaskAssetsTempStoragePath();
+		$pathFile		= $tempStoragePath . DIR_SEP . $filename;
+
+		return TodoyuFileManager::deleteFile($pathFile);
+	}
+
+
+
+	/**
 	 * Toggle asset public flag
 	 *
 	 * @param	Integer		$idAsset
@@ -321,7 +370,7 @@ class TodoyuAssetsAssetManager {
 		$filename	= 'Assets_' . $idTask . '.zip';
 		$mimeType	= 'application/octet-stream';
 
-			// Delete temporary zip file after download
+			// Delete temporary ZIP file after download
 		TodoyuFileManager::sendFile($zipFile, $mimeType, $filename);
 
 		unlink($zipFile);
@@ -330,7 +379,7 @@ class TodoyuAssetsAssetManager {
 
 
 	/**
-	 * Create zip file from assets
+	 * Create ZIP file from assets
 	 *
 	 * @param	Integer		$idTask
 	 * @param	Array		$assetIDs
@@ -413,11 +462,47 @@ class TodoyuAssetsAssetManager {
 
 
 	/**
-	 * Generate filename for zip file
+	 * Get current temporary task assets storage path (if not setup yet: create, store in session)
 	 *
-	 * @param	Integer	$idTask
-	 * @param	Array	$assetIDs
-	 * @return	String	filename of zip
+	 * @param	Boolean		$forceCreateNew
+	 * @return	String
+	 */
+	public static function getTaskAssetsTempStoragePath($forceCreateNew = false) {
+		if( $forceCreateNew || ! TodoyuSession::isIn('assets/temppath/') ) {
+				// Create new randomly named temporary assets storage folder in cache
+			$randDirBasePath= 'files' . DIR_SEP . 'assets';
+			$randDirPrefix	= 'p' . personid() . '_';
+			$path			= TodoyuFileManager::makeRandomCacheDir($randDirBasePath, true, $randDirPrefix );
+
+			TodoyuSession::set('assets/temppath/', $path);
+		} else {
+			$path	= TodoyuSession::get('assets/temppath/');
+			TodoyuFileManager::makeDirDeep($path);
+		}
+
+		return $path;
+	}
+
+
+
+	/**
+	 * Delete temporary task asset storage folder from file system and session data
+	 */
+	public static function removeTaskAssetsTempStoragePath() {
+		$path	= self::getTaskAssetsTempStoragePath();
+		TodoyuFileManager::deleteFolder($path);
+
+		TodoyuSession::remove('assets/temppath/');
+	}
+
+
+
+	/**
+	 * Generate filename for ZIP file
+	 *
+	 * @param	Integer		$idTask
+	 * @param	Array		$assetIDs
+	 * @return	String		filename of ZIP
 	 */
 	private static function makeZipFileName($idTask, array $assetIDs) {
 		$idTask		= intval($idTask);
@@ -534,6 +619,127 @@ class TodoyuAssetsAssetManager {
 		}
 
 		return $icons;
+	}
+
+
+
+	/**
+	 * Before task form rendering: setup fresh temporary assets directory
+	 *
+	 * @param	Array		$data
+	 * @param	Integer		$idTask
+	 * @return void
+	 */
+	public static function hookTaskDataBeforeRendering(array $data, $idTask = 0) {
+		self::getTaskAssetsTempStoragePath(true);
+
+		return $data;
+	}
+
+
+
+	/**
+	 * Modify form for task creation - add assets fieldset
+	 *
+	 * @param	TodoyuForm		$form
+	 * @param	Integer			$idTask
+	 * @return	TodoyuForm
+	 */
+	public static function hookModifyTaskForm(TodoyuForm $form, $idTask) {
+		$idTask	= intval($idTask);
+
+		if( $idTask === 0 && TodoyuProjectTaskManager::getTask($idTask)->isTask() ) {
+				// Set encoding type, add initialization of file options, add hidden field MAX_FILE_SIZE
+			$form->setEnctype('multipart/form-data');
+			$form->setAttribute('extraOnDisplay', 'Todoyu.Ext.assets.TaskEdit.initFileOperationButtons(' . $idTask . ')' );
+			$form->addHiddenField('MAX_FILE_SIZE', 50000000);
+
+				// Setup folder for temporary assets storage of to-be created task
+			self::getTaskAssetsTempStoragePath();
+
+				// Add assets fieldset
+			$xmlPathSave	= 'ext/assets/config/form/taskedit-fieldset-assets.xml';
+			$assetForm		= TodoyuFormManager::getForm($xmlPathSave);
+			$assetFieldset	= $assetForm->getFieldset('assets');
+
+			$form->addFieldset('assets', $assetFieldset, 'before:buttons');
+		}
+
+		return $form;
+	}
+
+
+
+	/**
+	 * Save assets (uploaded inline from within task creation form) of new task
+	 *
+	 * @param	Array		$data
+	 * @param	Integer		$idTask
+	 * @return	Array
+	 */
+	public static function hookSaveTask(array $data, $idTask) {
+			// Remove asset fields from form data
+		unset($data['MAX_FILE_SIZE']);
+		unset($data['id_asset']);
+
+			// Add until now temporary assets to task
+		$tempAssets	= self::getTemporaryAssets();
+		$tempPath	= self::getTaskAssetsTempStoragePath();
+
+		foreach($tempAssets as $filename) {
+			$pathTmpFile= $tempPath . DIR_SEP . $filename;
+			$mimeType	= mime_content_type($pathTmpFile);
+
+			self::addTaskAsset($idTask, $pathTmpFile, $filename, $mimeType);
+		}
+
+		self::removeTaskAssetsTempStoragePath();
+
+		return $data;
+	}
+
+
+
+	/**
+	 * Get asset file select options (temporary uploaded assets to be attached to to-be created task)
+	 *
+	 * @param	Integer		$idTask
+	 * @return	Array
+	 */
+	public static function getTaskAssetFileOptions($idTask = 0) {
+		$idTask	= intval($idTask);
+
+		$options	= array();
+
+		if( $idTask > 0 ) {
+				// Get assets of task
+			$files	= TodoyuAssetsAssetManager::getTaskAssets($idTask);
+		} else {
+				// Get uploaded files to be attached to not-yet created task (ID:0)
+			$tempPath	= TodoyuSession::get('assets/temppath/');
+			$files		= TodoyuFileManager::getFolderContents($tempPath, false, true);
+		}
+
+		foreach($files as $file => $fileData) {
+			if( $idTask > 0 ) {
+				$fileCTime	= $fileData['date_create'];
+				$fileDate	= TodoyuTime::format($fileCTime, 'date');
+				$fileSize	= TodoyuString::formatSize($fileData['file_size']);
+
+				$optionValue= $fileData['id'];
+				$fileLabel	= $fileData['file_name'] . ' (' . $fileSize . ' / ' . $fileDate . ')';
+			} else {
+				$optionValue= $file;
+				$fileLabel	= $file;
+			}
+
+			$options[] = array(
+				'value'	=> $optionValue,
+				'label'	=> $fileLabel
+			);
+		}
+
+		return $options;
 	}
 
 }

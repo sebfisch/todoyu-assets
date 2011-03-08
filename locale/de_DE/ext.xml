@@ -25,4 +25,6 @@
 	<label index="uploadFailed">Das Hochladen der Datei '#{filename}' ist fehlgeschlagen</label>
 	<label index="uploadOk">Die Datei wurde erfolgreich hochgeladen</label>
 	<label index="task.icon">Aufgabe hat Dateianhänge</label>
+	<label index="taskform.assets.button.delete">Ausgewählten Dateianhang löschen</label>
+	<label index="taskform.assets.button.upload">Neue Datei anfügen</label>
 </labels>

@@ -16,7 +16,7 @@
 			<elements>
 				<field type="upload" name="file">
 					<label>assets.ext.upload.selectfile</label>
-					<onchange>Todoyu.Ext.assets.Upload.onChange(#id_task#);</onchange>
+					<onchange>Todoyu.Ext.assets.Upload.onChange(#id_task#)</onchange>
 				</field>
 			</elements>
 		</fieldset>

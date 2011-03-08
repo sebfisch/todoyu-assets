@@ -18,6 +18,9 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-
+TodoyuHookManager::registerHook('project', 'taskIcons', 'TodoyuAssetsAssetManager::hookAddTaskIcons');
+TodoyuHookManager::registerHook('project', 'taskDataBeforeRendering', 'TodoyuAssetsAssetManager::hookTaskDataBeforeRendering');
+TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuAssetsAssetManager::hookModifyTaskForm');
+TodoyuFormHook::registerSaveData('ext/project/config/form/task.xml', 'TodoyuAssetsAssetManager::hookSaveTask');
 
 ?>

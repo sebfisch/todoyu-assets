@@ -2,7 +2,7 @@
 	<table id="task-{$idTask}-assettable" class="asset-table" width="100%">
 		<thead>
 			<tr class="assets-table-header">
-				<th class="assets-table-col-checkbox checkbox"><input type="checkbox" id="task-{$idTask}-assets-checkallbox" onclick="Todoyu.Ext.assets.List.selectAll({$idTask})" title="{Label assets.alt.selectall}"/></th>
+				<th class="assets-table-col-checkbox checkbox"><input type="checkbox" id="task-{$idTask}-assets-checkallbox" onclick="Todoyu.Ext.assets.List.selectAll({$idTask})" title="{Label assets.ext.alt.selectall}"/></th>
 				<th class="assets-table-col-mime">&nbsp;</th>
 				<th class="assets-table-col-filename">{Label core.file.filename}</th>
 				<th class="assets-table-col-filesize">{Label core.file.filesize}</th>
@@ -18,7 +18,7 @@
 				<td class="mimetype mimeIcon mime{strtoupper $asset.file_ext}" >
 				</td>
 				<td class="filename">
-					<a onclick="Todoyu.Ext.assets.download({$asset.id})" href="javascript:void(0)" title="{Label assets.alt.download}">
+					<a onclick="Todoyu.Ext.assets.download({$asset.id})" href="javascript:void(0)" title="{Label assets.ext.alt.download}">
 						{$asset.file_name}
 					</a>
 				</td>
@@ -30,15 +30,15 @@
 				</td>
 				<td class="actions">
 					{if isInternal()}
-						<a id="asset-{$asset.id}-icon-public" onclick="Todoyu.Ext.assets.toggleVisibility({$asset.id})" href="javascript:void(0)" title="{Label assets.alt.changeVisibility}" class="asset-icon-public {if !$asset.is_public}not{/if}">
+						<a id="asset-{$asset.id}-icon-public" onclick="Todoyu.Ext.assets.toggleVisibility({$asset.id})" href="javascript:void(0)" title="{Label assets.ext.alt.changeVisibility}" class="asset-icon-public {if !$asset.is_public}not{/if}">
 							<span class="hidden">{Label assets.ext.alt.changeVisibility}</span>
 						</a>
 					{/if}
-					<a id="asset-{$asset.id}-icon-download" onclick="Todoyu.Ext.assets.download({$asset.id})" href="javascript:void(0)" title="{Label assets.alt.download}" class="asset-icon-download">
+					<a id="asset-{$asset.id}-icon-download" onclick="Todoyu.Ext.assets.download({$asset.id})" href="javascript:void(0)" title="{Label assets.ext.alt.download}" class="asset-icon-download">
 						<span class="hidden">{Label assets.ext.alt.download}</span>
 					</a>
 					{if isAssetDeleteAllowed($asset.id)}
-						<a id="asset-{$asset.id}-icon-delete" onclick="Todoyu.Ext.assets.remove({$asset.id})" href="javascript:void(0)" title="{Label assets.alt.delete}" class="asset-icon-delete">
+						<a id="asset-{$asset.id}-icon-delete" onclick="Todoyu.Ext.assets.remove({$asset.id})" href="javascript:void(0)" title="{Label assets.ext.alt.delete}" class="asset-icon-delete">
 							<span class="hidden">{Label assets.ext.alt.delete}</span>
 						</a>
 					{/if}
