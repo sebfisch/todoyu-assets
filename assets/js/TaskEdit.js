@@ -201,6 +201,7 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * Delete temporary asset file from server
 	 *
 	 * @method	removeTempAsset
+	 * @param	{Integer}	idTask
 	 */
 	removeTempAsset: function(idTask) {
 		var idAssetRecord	= this.getSelectedAssetFileID(idTask);
@@ -323,6 +324,7 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * Init asset file operation buttons (upload, delete)
 	 *
 	 * @method	initFileOperationButtons
+	 * @param	{Number}	idTask
 	 */
 	initFileOperationButtons: function(idTask) {
 		this.toggleButtons(idTask);
