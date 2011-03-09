@@ -30,17 +30,21 @@
 Todoyu.Ext.assets.Upload = {
 
 	/**
-	 * Extension backlink
+	 * Reference to extension
+	 *
 	 * @property	ext
+	 * @type		Object
 	 */
 	ext: Todoyu.Ext.assets,
 
 	/**
 	 * Upload activity flag
+	 *
 	 * @property	active
 	 * @type		Boolean
 	 */
 	active: false,
+
 
 
 	/**
