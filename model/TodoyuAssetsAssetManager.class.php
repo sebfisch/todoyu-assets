@@ -128,7 +128,8 @@ class TodoyuAssetsAssetManager {
 
 			// If person can't see all assets, limit to public and own
 		if( ! allowed('assets', 'asset:seeAll') ) {
-			$where .= ' AND is_public 		= 1';
+			$where .= ' AND (is_public 		= 1
+							 OR id_person_create    = ' . personid() . ')';
 		}
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
@@ -268,7 +269,7 @@ class TodoyuAssetsAssetManager {
 			'parenttype'			=> $type,
 			'id_parent'				=> $idParent,
 			'deleted'				=> 0,
-			'is_public'	=> 0,
+			'is_public'				=> 0,
 			'file_ext'				=> $info['extension'],
 			'file_mime'				=> $fileMime,
 			'file_mime_sub'			=> $fileMimeSub,
