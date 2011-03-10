@@ -42,6 +42,29 @@ Todoyu.Ext.assets = {
 
 
 	/**
+	 * Initialize assets
+	 *
+	 * @method	init
+	 */
+	init: function() {
+		this.registerHooks();
+	},
+
+
+
+	/**
+	 * Register JS hooks of assets
+	 *
+	 * @method	registerHooks
+	 */
+	registerHooks: function() {
+		Todoyu.Hook.add('project.task.edit.cancelled', this.TaskEdit.onCancelledTaskEdit.bind(this.TaskEdit));
+		Todoyu.Hook.add('project.quickTask.closePopup', this.TaskEdit.onCloseQuicktaskPopup.bind(this.TaskEdit));
+	},
+
+
+
+	/**
 	 * Download asset
 	 *
 	 * @method	download

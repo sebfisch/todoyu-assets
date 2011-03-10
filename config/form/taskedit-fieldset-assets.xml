@@ -30,7 +30,7 @@
 					<text>LLL:assets.ext.taskform.assets.button.delete</text>
 					<class>buttonDeleteAsset</class>
 					<hasIcon />
-					<onclick>Todoyu.Ext.assets.TaskEdit.removeTempAsset(this.id.split('-')[1])</onclick>
+					<onclick>Todoyu.Ext.assets.TaskEdit.removeSelectedTempAsset(this.id.split('-')[1])</onclick>
 				</field>
 
 				<field type="button" name="upload">

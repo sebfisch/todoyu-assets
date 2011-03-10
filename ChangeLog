@@ -1,6 +1,7 @@
 todoyu assets extension changelog
 
 assets 1.1.0 (requires core >= 2.1) - not released yet
+	* Feature: Added task asset upload to quicktask creation
 	* Feature: Added task asset upload to task creation form
 	* Feature: Cleanup of Rights Management
 	* Feature: Cleanup (topical order and readability) of extension config (init.php) file

@@ -172,43 +172,46 @@ Todoyu.Ext.assets.TaskEdit = {
 	onFileSelectionChange: function(selectField) {
 		var idTask	= selectField.id.split('-')[1];
 
-		this.toggleButtons(idTask);
+		this.toggleOptions(idTask);
 	},
 
 
 
 	/**
-	 * Toggle asset buttons (for adding / removing template file) visibility
+	 * Toggle asset options (file selector, delete option) visibility
 	 *
-	 * @method	toggleButtons
+	 * @method	toggleOptions
 	 * @param	{Number}	idTask
 	 */
-	toggleButtons: function(idTask) {
+	toggleOptions: function(idTask) {
 		idTask		= idTask ? parseInt(idTask, 10) : 0;
 
-		var action;
-		if( this.getAmountAssetFiles(idTask) == 0 || this.getSelectedAssetFilename(idTask) == '' ) {
-			action	= 'add';
-		} else {
-			action	= 'remove';
-		}
+		var isQuicktask				= this.isQuicktask(idTask);
+		var containerElementID		= isQuicktask ? 'quicktask' : 'content';
+		var amountAssets			= this.getAmountAssetFiles(idTask, isQuicktask);
+		var selectedAssetFilename	= this.getSelectedAssetFilename(idTask, isQuicktask);
 
-		$('content').down('div.fieldnameDelete')[action + 'ClassName']('displayNone');
+		var action	= ( amountAssets == 0 || selectedAssetFilename == '' ) ? 'addClassName' : 'removeClassName';
+
+			// Toggle asset file selector visibility
+		$(containerElementID).down('div.fieldnameIdasset')[action]('displayNone');
+			// Toggle delete button visibility
+		$(containerElementID).down('div.fieldnameDelete')[action]('displayNone');
 	},
 
 
 
 	/**
-	 * Delete temporary asset file from server
+	 * Delete selected temporary asset file from server
 	 *
-	 * @method	removeTempAsset
-	 * @param	{Integer}	idTask
+	 * @method	removeSelectedTempAsset
+	 * @param	{Number}	idTask
 	 */
-	removeTempAsset: function(idTask) {
+	removeSelectedTempAsset: function(idTask) {
 		var idAssetRecord	= this.getSelectedAssetFileID(idTask);
 		var filename 		= this.getSelectedAssetFilename(idTask);
 
-		if( confirm('[LLL:core.file.confirm.delete]' + ' ' + filename) ) {
+		if( filename && confirm('[LLL:core.file.confirm.delete]' + ' ' + filename) ) {
 			var url		= Todoyu.getUrl('assets', 'taskEdit');
 			var options	= {
 				'parameters': {
@@ -224,15 +227,66 @@ Todoyu.Ext.assets.TaskEdit = {
 	},
 
 
+
+	/**
+	 * Cleanup: remove all temporary uploaded asset files
+	 *
+	 * @method	removeAllTempAssets
+	 */
+	removeAllTempAssets: function() {
+		var url		= Todoyu.getUrl('assets', 'taskEdit');
+		var options	= {
+			'parameters': {
+				'action':		'deletealltempassetfiles'
+			}
+		};
+
+		Todoyu.send(url, options);
+	},
+
+
+
+	/**
+	 * Check whether task is being created via quicktask form
+	 *
+	 * @method	isQuicktask
+	 * @param	{Number}		idTask
+	 * @return	{Boolean}
+	 */
+	isQuicktask: function(idTask) {
+		return Todoyu.exists('quicktask-' + idTask + '-form');
+	},
+
+
+
+	/**
+	 * Get element ID of asset files selector in current task form
+	 *
+	 * @method	getAssetSelectorID
+	 * @param	{Number}	idTask
+	 * @param	{Boolean}	isQuicktask
+	 */
+	getAssetSelectorID: function(idTask, isQuicktask) {
+		isQuicktask	= isQuicktask ? isQuicktask : this.isQuicktask(idTask);
+
+		return (isQuicktask ? 'quicktask-' : 'task-') + idTask + '-field-id-asset';
+	},
+
+
+
 	/**
 	 * Get amount of asset file options
 	 *
 	 * @method	getAmountAssetFiles
 	 * @param	{Number}	idTask
+	 * @param	{Boolean}	isQuicktask
 	 * @return	{Number}
 	 */
-	getAmountAssetFiles: function(idTask) {
-		return $('task-' + idTask + '-field-id-asset').options.length;
+	getAmountAssetFiles: function(idTask, isQuicktask) {
+		idTask		= idTask ? idTask : 0;
+		isQuicktask	= isQuicktask ? isQuicktask : this.isQuicktask(idTask);
+
+		return $(this.getAssetSelectorID(idTask, isQuicktask)).options.length;
 	},
 
 
@@ -240,11 +294,15 @@ Todoyu.Ext.assets.TaskEdit = {
 	/**
 	 * Get ID of selected asset file (option value)
 	 *
-	 * @method	getSelectedAssetFile
+	 * @method	getSelectedAssetFileID
 	 * @param	{Number}	idTask
+	 * @param	{Boolean}	isQuicktask
+	 * @return	{String}
 	 */
-	getSelectedAssetFileID: function(idTask) {
-		return $F('task-' + idTask + '-field-id-asset');
+	getSelectedAssetFileID: function(idTask, isQuicktask) {
+		isQuicktask	= isQuicktask ? isQuicktask : this.isQuicktask(idTask);
+
+		return $F(this.getAssetSelectorID(idTask, isQuicktask));
 	},
 
 
@@ -254,15 +312,19 @@ Todoyu.Ext.assets.TaskEdit = {
 	 *
 	 * @method	getSelectedAssetFilename
 	 * @param	{Number}	idTask
+	 * @param	{Boolean}	isQuicktask
 	 * @return	{String}
 	 */
-	getSelectedAssetFilename: function(idTask) {
-		var idAsset	= this.getSelectedAssetFileID(idTask);
-		var option		= $('content').down('div.fieldnameIdasset select').down('[value=' + idAsset + ']');
-		var label		= option.innerHTML;
+	getSelectedAssetFilename: function(idTask, isQuicktask) {
+		isQuicktask	= isQuicktask ? isQuicktask : this.isQuicktask(idTask);
 
-			// Remove file size and date comment from option label
-		return label.split(' (')[0];
+		var idAsset				= this.getSelectedAssetFileID(idTask, isQuicktask);
+		var containerElementID	= isQuicktask ? 'quicktask' : 'content';
+		var optionSelector		= 'div.fieldnameIdasset select';
+
+		var option				= $(containerElementID).down(optionSelector); //.down('[value=' + idAsset + ']');
+
+		return $F(option);
 	},
 
 
@@ -301,9 +363,10 @@ Todoyu.Ext.assets.TaskEdit = {
 			},
 			'onComplete': this.onRefreshedFileOptions.bind(this, idTask)
 		};
-		var target	= $('content').down('div.fieldnameIdasset select').id;
 
-		Todoyu.Ui.update(target, url, options);
+		var targetID	= this.getAssetSelectorID(idTask);
+
+		Todoyu.Ui.update(targetID, url, options);
 	},
 
 
@@ -316,7 +379,7 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * @param	{Event}		event
 	 */
 	onRefreshedFileOptions: function(idTask, event) {
-		this.toggleButtons(idTask);
+		this.toggleOptions(idTask);
 	},
 
 
@@ -328,7 +391,31 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * @param	{Number}	idTask
 	 */
 	initFileOperationButtons: function(idTask) {
-		this.toggleButtons(idTask);
+		this.toggleOptions(idTask);
+	},
+
+
+
+	/**
+	 * Hooked handler when task edit or create is being cancelled: remove temporary uploaded assets
+	 *
+	 * @method	onCancelledTaskEdit
+	 * @hook	project.task.edit.cancelled
+	 */
+	onCancelledTaskEdit: function(idTask) {
+		this.removeAllTempAssets();
+	},
+
+
+
+	/**
+	 * Hooked handler when quicktask popup is being closed: remove temporary uploaded assets
+	 *
+	 * @method	onCloseQuicktaskPopup
+	 * @hook	project.quickTask.closePopup
+	 */
+	onCloseQuicktaskPopup: function() {
+		this.removeAllTempAssets();
 	}
 
 };

@@ -126,6 +126,17 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 		TodoyuHeader::sendTodoyuHeader('success', $success);
 	}
 
+
+
+	/**
+	 * Delete all temporary (uploaded prior to creation of task) asset files
+	 *
+	 * @param	Array	$params
+	 */
+	public static function deletealltempassetfilesAction(array $params) {
+		TodoyuAssetsAssetManager::deleteAllTemporaryAssets();
+	}
+
 }
 
 ?>

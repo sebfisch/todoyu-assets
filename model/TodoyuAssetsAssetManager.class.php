@@ -339,6 +339,17 @@ class TodoyuAssetsAssetManager {
 
 
 	/**
+	 * Delete all temporary (uploaded prior to creation of task) asset files of logged-in person
+	 */
+	public static function deleteAllTemporaryAssets() {
+		$tempStoragePath= self::getTaskAssetsTempStoragePath();
+
+		TodoyuFileManager::deleteFolder($tempStoragePath);
+	}
+
+
+
+	/**
 	 * Toggle asset public flag
 	 *
 	 * @param	Integer		$idAsset
@@ -642,12 +653,17 @@ class TodoyuAssetsAssetManager {
 	 *
 	 * @param	TodoyuForm		$form
 	 * @param	Integer			$idTask
+	 * @param	Boolean			$isTask		Type is task? (not container)
 	 * @return	TodoyuForm
 	 */
-	public static function hookModifyTaskForm(TodoyuForm $form, $idTask) {
+	public static function hookModifyTaskForm(TodoyuForm $form, $idTask, $isTask = false) {
 		$idTask	= intval($idTask);
 
-		if( $idTask === 0 && TodoyuProjectTaskManager::getTask($idTask)->isTask() ) {
+		if( TodoyuProjectTaskManager::getTask($idTask)->isTask() ) {
+			$isTask	= true;
+		}
+
+		if( $idTask === 0 && $isTask ) {
 				// Set encoding type, add initialization of file options, add hidden field MAX_FILE_SIZE
 			$form->setEnctype('multipart/form-data');
 			$form->setAttribute('extraOnDisplay', 'Todoyu.Ext.assets.TaskEdit.initFileOperationButtons(' . $idTask . ')' );
@@ -665,6 +681,19 @@ class TodoyuAssetsAssetManager {
 		}
 
 		return $form;
+	}
+
+
+
+	/**
+	 * Modify form for quicktask creation - add assets fieldset
+	 *
+	 * @param	TodoyuForm		$form
+	 * @param	Integer			$idTask
+	 * @return	TodoyuForm
+	 */
+	public static function hookModifyQuickTaskForm(TodoyuForm $form, $idTask) {
+		return self::hookModifyTaskForm($form, $idTask, true);
 	}
 
 

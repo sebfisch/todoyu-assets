@@ -19,8 +19,12 @@
 *****************************************************************************/
 
 TodoyuHookManager::registerHook('project', 'taskIcons', 'TodoyuAssetsAssetManager::hookAddTaskIcons');
+
 TodoyuHookManager::registerHook('project', 'taskDataBeforeRendering', 'TodoyuAssetsAssetManager::hookTaskDataBeforeRendering');
 TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuAssetsAssetManager::hookModifyTaskForm');
 TodoyuFormHook::registerSaveData('ext/project/config/form/task.xml', 'TodoyuAssetsAssetManager::hookSaveTask');
+
+TodoyuFormHook::registerBuildForm('ext/project/config/form/quicktask.xml', 'TodoyuAssetsAssetManager::hookModifyQuickTaskForm');
+TodoyuFormHook::registerSaveData('ext/project/config/form/quicktask.xml', 'TodoyuAssetsAssetManager::hookSaveTask');
 
 ?>

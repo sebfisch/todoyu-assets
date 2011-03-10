@@ -67,6 +67,3 @@ class TodoyuAssetsUploadActionController extends TodoyuActionController {
 }
 
 ?>
-
-
-
