@@ -109,6 +109,9 @@ button.buttonDeleteAsset .icon {
 /* --------------------------
  	Task tab
    --------------------------*/
+.tabContent .assetList {
+	padding-top: 5px;
+}
 div.task div.taskTabs ul li.assets span.icon {
 	background:url(../img/icons.png) no-repeat 0 -23px;
 }
