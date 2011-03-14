@@ -49,7 +49,7 @@ assets 1.0.1 to 1.0.5 - 1.0.5 released 2011-01-17
 	* Changed: Asset handling (load all in one merge file)
 	* Bugfix: Refresh whole asset tab on delete an asset
 	* Changed: Updated rights xml config with new name format
-	* Feature: noAccess handling in ajax responses
+	* Feature: noAccess handling in AJAX responses
 
 assets 1.0.0 - released 2010-05-10
 	* Changed: Declared state stable
