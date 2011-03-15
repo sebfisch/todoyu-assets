@@ -16,7 +16,7 @@ h1.extIconAssets .title {
    ---------------------------------------------- */
 .assetsButtons button.upload .icon,
 button.buttonUploadAsset .icon {
-	background:url(../img/icons.png) no-repeat 0 -658px;
+	background:url(../img/icons.png) no-repeat 0 -657px;
 }
 
 .assetsButtons button.downloadSelection .icon {
@@ -24,7 +24,7 @@ button.buttonUploadAsset .icon {
 }
 
 button.buttonDeleteAsset .icon {
-	background:url(../../../../core/assets/img/icons.png) no-repeat 3px -327px;
+	background:url(../img/icons.png) no-repeat 0 -746px;
 }
 
 
