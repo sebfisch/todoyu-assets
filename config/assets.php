@@ -27,19 +27,19 @@
 Todoyu::$CONFIG['EXT']['assets']['assets'] = array(
 	'js' => array(
 		array(
-			'file'		=> 'ext/assets/assets/js/Ext.js',
+			'file'		=> 'ext/assets/asset/js/Ext.js',
 			'position'	=> 100
 		),
 		array(
-			'file'		=> 'ext/assets/assets/js/List.js',
+			'file'		=> 'ext/assets/asset/js/List.js',
 			'position'	=> 110
 		),
 		array(
-			'file'		=> 'ext/assets/assets/js/Upload.js',
+			'file'		=> 'ext/assets/asset/js/Upload.js',
 			'position'	=> 120
 		),
 		array(
-			'file'		=> 'ext/assets/assets/js/TaskEdit.js',
+			'file'		=> 'ext/assets/asset/js/TaskEdit.js',
 			'position'	=> 120
 		),
 		array(
@@ -49,10 +49,10 @@ Todoyu::$CONFIG['EXT']['assets']['assets'] = array(
 	),
 	'css' => array(
 		array(
-			'file'	=> 'ext/assets/assets/css/ext.css'
+			'file'	=> 'ext/assets/asset/css/ext.css'
 		),
 		array(
-			'file'	=> 'ext/assets/assets/css/mime.css'
+			'file'	=> 'ext/assets/asset/css/mime.css'
 		)
 	)
 );

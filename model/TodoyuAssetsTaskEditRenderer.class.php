@@ -36,7 +36,7 @@ class TodoyuAssetsTaskEditRenderer {
 		$idTask	= intval($idTask);
 
 			// Construct form object
-		$xmlPath	= 'ext/assets/config/form/taskedit-upload.xml';
+		$xmlPath	= 'ext/asset/config/form/taskedit-upload.xml';
 		$form		= TodoyuFormManager::getForm($xmlPath);
 
 			// Set form data
@@ -55,7 +55,7 @@ class TodoyuAssetsTaskEditRenderer {
 		);
 
 			// Render form wrapped via dwoo template
-		return render('ext/assets/view/taskedit-uploadform.tmpl', $data);
+		return render('ext/asset/view/taskedit-uploadform.tmpl', $data);
 	}
 
 

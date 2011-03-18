@@ -210,7 +210,7 @@ Todoyu.Ext.assets.Upload = {
 		});
 		var loaderText = new Element('div').update('[LLL:assets.ext.upload.filename]' + ': ' + filename);
 		var loaderImage = new Element('img', {
-			'src': 'core/assets/img/progress.gif'
+			'src': 'core/asset/img/progress.gif'
 		});
 
 		formElement.insert(loaderText);

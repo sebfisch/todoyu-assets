@@ -12,7 +12,7 @@ h1.extIconAssets .title {
 
 
 /* ----------------------------------------------
-	Asset form elements 
+	Asset form elements
    ---------------------------------------------- */
 .assetsButtons button.upload .icon,
 button.buttonUploadAsset .icon {
@@ -32,7 +32,7 @@ button.buttonDeleteAsset .icon {
 	List
    ---------------------------------------------- */
 .assetList .assets-table-header {
-	background:#E5E8DA url(../../../../core/assets/img/bg-tabheader.png) repeat-x 0 top;
+	background:#E5E8DA url(../../../../core/asset/img/bg-tabheader.png) repeat-x 0 top;
 }
 
 .assetList th {
@@ -146,7 +146,7 @@ th.assetsFilelistHeaderFilenames {
 
 #taskList .activeTabContent .assetBox tr.assetsFilelistHeaderSFP {
 	position:relative;
-	background:#f7f9fa url(../../../../core/assets/img/hr-hor.png) repeat-x 0 bottom;
+	background:#f7f9fa url(../../../../core/asset/img/hr-hor.png) repeat-x 0 bottom;
 }
 
 #taskList .activeTabContent .assetBox tr.assetsFilelistHeaderSFP th {
