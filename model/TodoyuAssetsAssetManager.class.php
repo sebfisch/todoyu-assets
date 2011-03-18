@@ -674,7 +674,7 @@ class TodoyuAssetsAssetManager {
 			self::getTaskAssetsTempStoragePath();
 
 				// Add assets fieldset
-			$xmlPathSave	= 'ext/asset/config/form/taskedit-fieldset-assets.xml';
+			$xmlPathSave	= 'ext/assets/config/form/taskedit-fieldset-assets.xml';
 			$assetForm		= TodoyuFormManager::getForm($xmlPathSave);
 			$assetFieldset	= $assetForm->getFieldset('assets');
 
