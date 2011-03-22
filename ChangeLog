@@ -1,6 +1,7 @@
 todoyu assets extension changelog
 
 assets 1.1.0 (requires core >= 2.1) - not released yet
+	* Changed: Changed default ext setting to NOT physically delete asset files (only set deleted-flag in DB)
 	* Feature: Added task asset upload to quicktask creation
 	* Feature: Added task asset upload to task creation form
 	* Feature: Cleanup of Rights Management

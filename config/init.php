@@ -22,7 +22,7 @@
 Todoyu::$CONFIG['EXT']['assets']['basePath'] 	= PATH_FILES . DIR_SEP . 'assets';
 Todoyu::$CONFIG['EXT']['assets']['cachePath'] 	= PATH_CACHE . DIR_SEP . 'temp';
 	// Delete files on hard disk when deleted in database
-Todoyu::$CONFIG['EXT']['assets']['deleteFiles'] = true;
+Todoyu::$CONFIG['EXT']['assets']['deleteFiles'] = false;
 
 	// Add allowed paths where files can be downloaded from
 Todoyu::$CONFIG['sendFile']['allow'][] = Todoyu::$CONFIG['EXT']['assets']['basePath'];

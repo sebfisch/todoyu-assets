@@ -303,7 +303,7 @@ class TodoyuAssetsAssetManager {
 	/**
 	 * Delete an asset (file stays in file system)
 	 *
-	 * @param	Integer	$idAsset
+	 * @param	Integer		$idAsset
 	 */
 	public static function deleteAsset($idAsset) {
 		$idAsset	= intval($idAsset);
@@ -318,7 +318,7 @@ class TodoyuAssetsAssetManager {
 			$asset		= self::getAsset($idAsset);
 			$filePath	= $asset->getFileStoragePath();
 
-			unlink($filePath);
+			TodoyuFileManager::deleteFile($filePath);
 		}
 	}
 
