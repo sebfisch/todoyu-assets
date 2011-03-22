@@ -17,4 +17,4 @@ Assets Extension - PHP Hooks
 
 3. Form Hooks (Build Form, Load Data, Save Data)
 ------------------------------------------------
-	@see	all forms in ext/asset/config/form
+	@see	all forms in ext/assets/config/form

@@ -82,7 +82,7 @@ class TodoyuAssetsAssetRenderer {
 	public static function renderList($idTask) {
 		$idTask	= intval($idTask);
 
-		$tmpl	= 'ext/asset/view/list.tmpl';
+		$tmpl	= 'ext/assets/view/list.tmpl';
 		$data	= array(
 			'idTask'	=> $idTask,
 			'assets'	=> TodoyuAssetsAssetManager::getTaskAssets($idTask)
@@ -102,7 +102,7 @@ class TodoyuAssetsAssetRenderer {
 	public static function renderListControll($idTask) {
 		$idTask	= intval($idTask);
 
-		$tmpl	= 'ext/asset/view/list-controll.tmpl';
+		$tmpl	= 'ext/assets/view/list-controll.tmpl';
 		$data	= array(
 			'idTask' => $idTask
 		);
@@ -122,7 +122,7 @@ class TodoyuAssetsAssetRenderer {
 		$idTask		= intval($idTask);
 
 			// Construct form object
-		$xmlPath	= 'ext/asset/config/form/upload.xml';
+		$xmlPath	= 'ext/assets/config/form/upload.xml';
 		$form		= TodoyuFormManager::getForm($xmlPath, $idTask);
 
 			// Get form data
@@ -137,12 +137,13 @@ class TodoyuAssetsAssetRenderer {
 		$form->setRecordID($idTask);
 
 			// Render
+		$tmpl	= 'ext/assets/view/uploadform.tmpl';
 		$data	= array(
 			'idTask'	=> $idTask,
 			'formhtml'	=> $form->render()
 		);
 
-		return render('ext/asset/view/uploadform.tmpl', $data);
+		return render($tmpl, $data);
 	}
 
 

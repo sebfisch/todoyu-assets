@@ -36,7 +36,7 @@ class TodoyuAssetsTaskEditRenderer {
 		$idTask	= intval($idTask);
 
 			// Construct form object
-		$xmlPath	= 'ext/asset/config/form/taskedit-upload.xml';
+		$xmlPath	= 'ext/assets/config/form/taskedit-upload.xml';
 		$form		= TodoyuFormManager::getForm($xmlPath);
 
 			// Set form data
@@ -50,12 +50,13 @@ class TodoyuAssetsTaskEditRenderer {
 		$form->setUseRecordID(false);
 
 			// Render form
+		$tmpl	= 'ext/assets/view/taskedit-uploadform.tmpl';
 		$data	= array(
 			'formhtml'	=> $form->render()
 		);
 
 			// Render form wrapped via dwoo template
-		return render('ext/asset/view/taskedit-uploadform.tmpl', $data);
+		return render($tmpl, $data);
 	}
 
 
