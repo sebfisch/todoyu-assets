@@ -54,7 +54,7 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 
 		if( TodoyuAssetsAssetManager::downloadAsset($idAsset) == false ) {
 				// Download failed, reload current page instead
-			TodoyuHeader::location(TodoyuRequest::getReferrer());
+			TodoyuHeader::location(TodoyuRequest::getReferer());
 		}
 	}
 
