@@ -287,6 +287,7 @@ class TodoyuAssetsAssetManager {
 	 * Download an asset. Send headers and data to the browser
 	 *
 	 * @param	Integer		$idAsset
+	 * @return	Boolean
 	 */
 	public static function downloadAsset($idAsset) {
 		$idAsset	= intval($idAsset);
@@ -295,7 +296,7 @@ class TodoyuAssetsAssetManager {
 		$mimeType 	= $asset->getMimeType();
 		$filename	= $asset->getFilename();
 
-		TodoyuFileManager::sendFile($filePath, $mimeType, $filename);
+		return TodoyuFileManager::sendFile($filePath, $mimeType, $filename);
 	}
 
 

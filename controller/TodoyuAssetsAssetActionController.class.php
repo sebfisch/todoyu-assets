@@ -40,20 +40,22 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 	/**
 	 * Asset download request
 	 * Send file headers and binary data to the browser
-	 * This action can't be called over AJAX
+	 * This action can't be called via AJAX
 	 *
 	 * @param	Array		$params
 	 */
 	public function downloadAction(array $params) {
 		$idAsset	= intval($params['asset']);
-		$asset		= TodoyuAssetsAssetManager::getAsset($idAsset);
 
 			// If asset is not public, person need the right so see also not public assets
 		if( TodoyuAssetsRights::isSeeAllowed($idAsset) ) {
 			TodoyuAssetsRights::restrictSee($idAsset);
 		}
 
-		TodoyuAssetsAssetManager::downloadAsset($idAsset);
+		if( TodoyuAssetsAssetManager::downloadAsset($idAsset) == false ) {
+				// Download failed, reload current page instead
+			TodoyuHeader::location(TodoyuRequest::getReferrer());
+		}
 	}
 
 
