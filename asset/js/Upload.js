@@ -63,8 +63,8 @@ Todoyu.Ext.assets.Upload = {
 		if( ! Todoyu.exists(form) ) {
 			var url		= Todoyu.getUrl('assets', 'tasktab');
 			var options	= {
-				'parameters': {
-					'action':	'uploadform',
+				parameters: {
+					action:	'uploadform',
 					'task':		idTask
 				}
 			};

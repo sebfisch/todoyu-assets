@@ -72,7 +72,7 @@ Todoyu.Ext.assets = {
 	 */
 	download: function(idAsset) {
 		var params	= {
-			'action': 'download',
+			action: 'download',
 			'asset': idAsset
 		};
 
@@ -98,7 +98,7 @@ Todoyu.Ext.assets = {
 		} else {
 			Todoyu.notifyInfo('[LLL:assets.ext.download.compressed]', 3);
 			var params = {
-				'action':	'download',
+				action:	'download',
 				'task':		idTask,
 				'assets':	selectedAssets.join(',')
 			};
@@ -119,11 +119,11 @@ Todoyu.Ext.assets = {
 		if( confirm('[LLL:assets.ext.delete.confirm]') ) {
 			var url		= Todoyu.getUrl('assets', 'asset');
 			var options	= {
-				'parameters': {
-					'action':	'delete',
+				parameters: {
+					action:	'delete',
 					'asset':	idAsset
 				},
-				'onComplete': this.onRemoved.bind(this, idAsset)
+				onComplete: this.onRemoved.bind(this, idAsset)
 			};
 
 			Todoyu.send(url, options);
@@ -160,8 +160,8 @@ Todoyu.Ext.assets = {
 	toggleVisibility: function(idAsset) {
 		var url		= Todoyu.getUrl('assets', 'asset');
 		var options	= {
-			'parameters': {
-				'action':	'togglevisibility',
+			parameters: {
+				action:	'togglevisibility',
 				'asset':	idAsset
 			}
 		};
@@ -181,8 +181,8 @@ Todoyu.Ext.assets = {
 	updateTab: function(idTask) {
 		var url		= Todoyu.getUrl('assets', 'tasktab');
 		var options	= {
-			'parameters': {
-				'action':	'tab',
+			parameters: {
+				action:	'tab',
 				'task':		idTask
 			}
 		};

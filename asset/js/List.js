@@ -61,8 +61,8 @@ Todoyu.Ext.assets.List = {
 		var list	= 'task-' + idTask + '-assets-list';
 		var url		= Todoyu.getUrl('assets', 'tasktab');
 		var options	= {
-			'parameters': {
-				'action':	'list',
+			parameters: {
+				action:	'list',
 				'task':		idTask
 			}
 		};

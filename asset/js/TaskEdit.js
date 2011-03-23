@@ -79,9 +79,9 @@ Todoyu.Ext.assets.TaskEdit = {
 
 		var url		= Todoyu.getUrl('assets', 'taskEdit');
 		var options	= {
-			'parameters': {
+			parameters: {
 				'task':		idTask,
-				'action':	'assetsuploadform'
+				action:	'assetsuploadform'
 			}
 		};
 		var target	= $$('button.buttonUploadAsset')[0].id;
@@ -214,12 +214,12 @@ Todoyu.Ext.assets.TaskEdit = {
 		if( filename && confirm('[LLL:core.file.confirm.delete]' + ' ' + filename) ) {
 			var url		= Todoyu.getUrl('assets', 'taskEdit');
 			var options	= {
-				'parameters': {
-					'action':		'deletetempassetfile',
+				parameters: {
+					action:		'deletetempassetfile',
 					'record':		idAssetRecord,
 					'filename':		filename
 				},
-				'onComplete': this.onRemovedAsset.bind(this, filename, idTask)
+				onComplete: this.onRemovedAsset.bind(this, filename, idTask)
 			};
 
 			Todoyu.send(url, options);
@@ -236,8 +236,8 @@ Todoyu.Ext.assets.TaskEdit = {
 	removeAllTempAssets: function() {
 		var url		= Todoyu.getUrl('assets', 'taskEdit');
 		var options	= {
-			'parameters': {
-				'action':		'deletealltempassetfiles'
+			parameters: {
+				action:		'deletealltempassetfiles'
 			}
 		};
 
@@ -357,11 +357,11 @@ Todoyu.Ext.assets.TaskEdit = {
 	refreshFileOptions: function(idTask) {
 		var url		= Todoyu.getUrl('assets', 'taskEdit');
 		var options	= {
-			'parameters': {
+			parameters: {
 				'id_task':	idTask,
-				'action':	'assetfileoptions'
+				action:	'assetfileoptions'
 			},
-			'onComplete': this.onRefreshedFileOptions.bind(this, idTask)
+			onComplete: this.onRefreshedFileOptions.bind(this, idTask)
 		};
 
 		var targetID	= this.getAssetSelectorID(idTask);
