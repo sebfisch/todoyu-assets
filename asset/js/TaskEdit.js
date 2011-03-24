@@ -186,18 +186,20 @@ Todoyu.Ext.assets.TaskEdit = {
 	toggleOptions: function(idTask) {
 		idTask		= idTask ? parseInt(idTask, 10) : 0;
 
-		var isQuicktask				= this.isQuicktask(idTask);
-		var containerElementID		= isQuicktask ? 'quicktask' : 'content';
-		var amountAssets			= this.getAmountAssetFiles(idTask, isQuicktask);
-		var selectedAssetFilename	= this.getSelectedAssetFilename(idTask, isQuicktask);
+		var amountAssets			= this.getAmountAssetFiles();
+		var selectedAssetFilename	= this.getSelectedAssetFilename();
+		var assetSelector			= this.getAssetSelector();
 
-		var action	= ( amountAssets == 0 || selectedAssetFilename == '' ) ? 'addClassName' : 'removeClassName';
+		var action	= amountAssets == 0 || selectedAssetFilename == '' ? 'addClassName' : 'removeClassName';
 
 			// Toggle asset file selector visibility
-		$(containerElementID).down('div.fieldnameIdasset')[action]('displayNone');
+		assetSelector[action]('displayNone');
 			// Toggle delete button visibility
-		$(containerElementID).down('div.fieldnameDelete')[action]('displayNone');
+		assetSelector.up('fieldset').down('div.fieldnameDelete')[action]('displayNone');
 	},
+
+
+
 
 
 
@@ -250,11 +252,21 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * Check whether task is being created via quicktask form
 	 *
 	 * @method	isQuicktask
-	 * @param	{Number}		idTask
 	 * @return	{Boolean}
 	 */
-	isQuicktask: function(idTask) {
-		return Todoyu.exists('quicktask-' + idTask + '-form');
+	isQuicktask: function() {
+		return Todoyu.exists('quicktask');
+	},
+
+
+
+	/**
+	 * Check whether quick create popup is open
+	 *
+	 * @return	{Boolean}
+	 */
+	isQuickCreate: function() {
+		return Todoyu.exists('quickcreate');
 	},
 
 
@@ -275,18 +287,33 @@ Todoyu.Ext.assets.TaskEdit = {
 
 
 	/**
+	 * Get asset selector element
+	 *
+	 * @return	{Element}
+	 */
+	getAssetSelector: function() {
+		var container;
+		if( this.isQuicktask() ) {
+			container	= $('quicktask');
+		} else if( this.isQuickCreate() ) {
+			container	= $('quickcreate');
+		} else {
+			container	= $('content');
+		}
+
+		return container.down('div.fieldnameIdasset select');
+	},
+
+
+
+	/**
 	 * Get amount of asset file options
 	 *
 	 * @method	getAmountAssetFiles
-	 * @param	{Number}	idTask
-	 * @param	{Boolean}	isQuicktask
 	 * @return	{Number}
 	 */
-	getAmountAssetFiles: function(idTask, isQuicktask) {
-		idTask		= idTask ? idTask : 0;
-		isQuicktask	= isQuicktask ? isQuicktask : this.isQuicktask(idTask);
-
-		return $(this.getAssetSelectorID(idTask, isQuicktask)).options.length;
+	getAmountAssetFiles: function() {
+		return this.getAssetSelector().options.length;
 	},
 
 
@@ -311,20 +338,16 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * Get selected template file (option label)
 	 *
 	 * @method	getSelectedAssetFilename
-	 * @param	{Number}	idTask
-	 * @param	{Boolean}	isQuicktask
 	 * @return	{String}
 	 */
-	getSelectedAssetFilename: function(idTask, isQuicktask) {
-		isQuicktask	= isQuicktask ? isQuicktask : this.isQuicktask(idTask);
+	getSelectedAssetFilename: function() {
+		var selectElement		= this.getAssetSelector();
 
-		var idAsset				= this.getSelectedAssetFileID(idTask, isQuicktask);
-		var containerElementID	= isQuicktask ? 'quicktask' : 'content';
-		var optionSelector		= 'div.fieldnameIdasset select';
-
-		var option				= $(containerElementID).down(optionSelector); //.down('[value=' + idAsset + ']');
-
-		return $F(option);
+		if( selectElement ) {
+			return $F(selectElement);
+		} else {
+			return '';
+		}
 	},
 
 
