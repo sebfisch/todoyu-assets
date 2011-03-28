@@ -16,6 +16,7 @@
 	<label index="upload.filename">Dateiname</label>
 	<label index="upload.new">Neue Datei anfügen</label>
 	<label index="delete.confirm">Wollen Sie diese Datei wirklich löschen?</label>
+	<label index="delete.notifiy.success">Die Datei wurde gelöscht.</label>
 	<label index="download.selection">Auswahl herunterladen</label>
 	<label index="download.normal">Sie haben nur eine Datei gewählt. Normaler Dateidownload</label>
 	<label index="download.compressed">Die gewählten Dateien werden für den Download gepackt</label>
