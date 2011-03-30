@@ -503,7 +503,6 @@ class TodoyuAssetsAssetManager {
 		if( $forceCreateNew || ! self::hasSessionTempPath() ) {
 				// Create new randomly named temporary assets storage folder in cache
 			$path	= self::makeTempStoragePath();
-			TodoyuDebug::printInFireBug('make');
 			self::saveSessionTempPath($path);
 		} else {
 			$path	= self::getSessionTempPath();
@@ -764,7 +763,6 @@ class TodoyuAssetsAssetManager {
 		} else {
 				// Get uploaded files to be attached to not-yet created task (ID:0)
 			$files	= self::getTemporaryAssets(true);
-			TodoyuDebug::printInFireBug($files, 'files');
 		}
 
 		foreach($files as $file => $fileData) {
@@ -797,7 +795,6 @@ class TodoyuAssetsAssetManager {
 	 * @param	String		$path
 	 */
 	public static function saveSessionTempPath($path) {
-		TodoyuDebug::printInFireBug('set new path');
 		TodoyuSession::set(self::$sessionTempPath, $path);
 	}
 
