@@ -1,19 +1,14 @@
 todoyu assets extension changelog
 
-assets 1.1.0 (requires core >= 2.1) - not released yet
-	* Bugfix: Added missing notification after deletion of asset file
-	* Changed: Changed default ext setting to NOT physically delete asset files (only set deleted-flag in DB)
-	* Feature: Added task asset upload to quicktask creation
+assets 1.1.0 - beta release
+	* Changed: Requires core 2.1
+	* Changed: Structure for 2.1
+	* Changed: All classes are prefixed with extension name
+ 	* Feature: Added task asset upload to quicktask creation
 	* Feature: Added task asset upload to task creation form
 	* Feature: Cleanup of Rights Management
-	* Feature: Cleanup (topical order and readability) of extension config (init.php) file
-	* Feature: Forms restyled
-	* Updated loading structure: (core: boot.php, init: request,) extensions: init.php
-	* Feature: Changed locale format
-
-
-assets 1.0.6 - not released yet
-	* Feature: Added changelog
+	* Changed: Changed default ext setting to NOT physically delete asset files (only set deleted-flag in DB)
+	* Changed: Added missing notification after deletion of asset file
 
 
 assets 1.0.1 to 1.0.5 - 1.0.5 released 2011-01-17
