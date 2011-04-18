@@ -824,7 +824,6 @@ class TodoyuAssetsAssetManager {
 
 	/**
 	 * Remove temp path from session
-	 *
 	 */
 	public static function removeSessionTempPath() {
 		TodoyuSession::remove(self::$sessionTempPath);
@@ -834,8 +833,8 @@ class TodoyuAssetsAssetManager {
 
 	/**
 	 * Hook removes available temp files and session for a new task
-	 * @param  $idProject
-	 * @return void
+	 *
+	 * @param	Integer		$idProject
 	 */
 	public static function hookRemoveTempSessionFiles($idProject) {
 			// Force a new temp folder for quickcreate task (always new)
