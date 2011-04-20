@@ -19,4 +19,4 @@ CREATE TABLE `ext_assets_asset` (
   	`file_mime_sub` varchar(50) NOT NULL,
 	PRIMARY KEY (`id`),
 	KEY `parent` (`id_parent`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
