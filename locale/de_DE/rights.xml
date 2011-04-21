@@ -3,6 +3,6 @@
 	<label index="general">Allgemeine Einstellungen</label>
 	<label index="general.use">Dateianhänge benutzen</label>
 	<label index="asset">Dateien</label>
-	<label index="asset.seeAll">Zeige ALLE Dateien</label>
-	<label index="asset.delete">Datei löschen</label>
+	<label index="asset.seeAll">Zeige Alle Dateien</label>
+	<label index="asset.delete">Dateien löschen</label>
 </labels>

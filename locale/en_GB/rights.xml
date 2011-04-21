@@ -3,6 +3,6 @@
 	<label index="general">General Settings</label>
 	<label index="general.use">Use Assets</label>
 	<label index="asset">Assets</label>
-	<label index="asset.seeAll">Show All Assets</label>
-	<label index="asset.delete">Delete An Asset</label>
+	<label index="asset.seeAll">See All Assets</label>
+	<label index="asset.delete">Delete Asset</label>
 </labels>

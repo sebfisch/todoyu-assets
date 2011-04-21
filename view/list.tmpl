@@ -5,6 +5,7 @@
 				<th class="assets-table-col-checkbox checkbox"><input type="checkbox" id="task-{$idTask}-assets-checkallbox" onclick="Todoyu.Ext.assets.List.selectAll({$idTask})" title="{Label assets.ext.alt.selectall}"/></th>
 				<th class="assets-table-col-mime">&nbsp;</th>
 				<th class="assets-table-col-filename">{Label core.file.filename}</th>
+				<th class="assets-table-col-person">{Label core.global.id_person_create}</th>
 				<th class="assets-table-col-filesize">{Label core.file.filesize}</th>
 				<th class="assets-table-col-uploaddate" colspan="2">{Label assets.ext.list.header.uploaddate}</th>
 			</tr>
@@ -21,6 +22,9 @@
 					<a onclick="Todoyu.Ext.assets.download({$asset.id})" href="javascript:void(0)" title="{Label assets.ext.alt.download}">
 						{$asset.file_name}
 					</a>
+				</td>
+				<td class="person">
+					{name $asset.id_person_create}
 				</td>
 				<td class="filesize">
 					{fileSize $asset.file_size}
