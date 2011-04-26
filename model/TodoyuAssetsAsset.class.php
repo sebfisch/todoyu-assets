@@ -38,7 +38,7 @@ class TodoyuAssetsAsset extends TodoyuBaseObject {
 
 
 	/**
-	 * Get parenttype of the asset (ex: task)
+	 * Get parent type of the asset (ex: task)
 	 *
 	 * @return	Integer
 	 */
@@ -49,7 +49,7 @@ class TodoyuAssetsAsset extends TodoyuBaseObject {
 
 
 	/**
-	 * Get id of parent element
+	 * Get ID of parent element
 	 *
 	 * @return	Integer
 	 */
