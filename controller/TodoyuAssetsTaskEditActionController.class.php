@@ -105,7 +105,7 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 			return TodoyuAssetsTaskEditRenderer::renderUploadframeContent($file['name'], $idTask);
 		} else {
 				// Notify upload failure
-			Todoyu::log('File upload failed: ' . $file['name'] . ' (ERROR:' . $error . ')', TodoyuLogger::LEVEL_ERROR);
+			TodoyuLogger::logError('File upload failed: ' . $file['name'] . ' (ERROR:' . $error . ')');
 
 			return TodoyuAssetsTaskEditRenderer::renderUploadframeContentFailed($error, $file['name'], $idTask);
 		}

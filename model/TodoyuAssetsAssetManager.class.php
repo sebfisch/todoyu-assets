@@ -426,7 +426,7 @@ class TodoyuAssetsAssetManager {
 		$status	= $zip->open($zipPath, ZIPARCHIVE::CREATE);
 
 		if( $status !== true ) {
-			Todoyu::log('Can\'t create zip archive: ' . $zipPath, TodoyuLogger::LEVEL_ERROR);
+			TodoyuLogger::logError('Can\'t create zip archive: ' . $zipPath);
 		}
 
 			// Get asset data
@@ -461,7 +461,12 @@ class TodoyuAssetsAssetManager {
 
 				// Log error if adding failed
 			if( $success !== true ) {
-				Todoyu::log('Failed to add asset to zipfile', TodoyuLogger::LEVEL_ERROR, Todoyu::$CONFIG['EXT']['assets']['asset_dir'] . $asset['file_storage'], $asset['file_name']);
+				$data	= array(
+					'dir'		=> Todoyu::$CONFIG['EXT']['assets']['asset_dir'],
+					'storage'	=> $asset['file_storage'],
+					'file'		=> $asset['file_name']
+				);
+				TodoyuLogger::logError('Failed to add asset to zipfile', $data);
 			}
 
 				// Count filename (check for duplicates)

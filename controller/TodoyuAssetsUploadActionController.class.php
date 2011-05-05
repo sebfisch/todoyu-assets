@@ -54,7 +54,7 @@ class TodoyuAssetsUploadActionController extends TodoyuActionController {
 
 			// Render frame content. Success or error
 		if( $file === false || $file['error'] !== UPLOAD_ERR_OK ) {
-			Todoyu::log('File upload failed: ' . $file['name'] . ' (ERROR:' . $file['error'] . ')', TodoyuLogger::LEVEL_ERROR);
+			TodoyuLogger::logError('File upload failed: ' . $file['name'] . ' (ERROR:' . $file['error'] . ')');
 
 			return TodoyuAssetsAssetRenderer::renderUploadframeContentFailed($file['error'], $file['name']);
 		} else {
