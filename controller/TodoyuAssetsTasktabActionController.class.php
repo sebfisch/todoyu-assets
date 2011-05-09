@@ -33,7 +33,7 @@ class TodoyuAssetsTasktabActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function init(array $params) {
-		restrict('assets', 'general:use');
+		Todoyu::restrict('assets', 'general:use');
 	}
 
 

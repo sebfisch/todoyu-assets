@@ -38,11 +38,11 @@ class TodoyuAssetsTaskAssetViewHelper {
 		$numAssets	= TodoyuAssetsAssetManager::getNumTaskAssets($idTask);
 
 		if( $numAssets === 0 ) {
-			$label	= Label('assets.ext.tab.noAssets');
+			$label	= Todoyu::Label('assets.ext.tab.noAssets');
 		} elseif( $numAssets === 1 ) {
-			$label	= '1 ' . Label('assets.ext.tab.asset');
+			$label	= '1 ' . Todoyu::Label('assets.ext.tab.asset');
 		} else {
-			$label	= $numAssets . ' ' . Label('assets.ext.tab.assets');
+			$label	= $numAssets . ' ' . Todoyu::Label('assets.ext.tab.assets');
 		}
 
 		return $label;

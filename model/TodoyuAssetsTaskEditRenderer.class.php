@@ -56,7 +56,7 @@ class TodoyuAssetsTaskEditRenderer {
 		);
 
 			// Render form wrapped via dwoo template
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -76,7 +76,7 @@ class TodoyuAssetsTaskEditRenderer {
 			'content'	=> TodoyuString::wrapScript('window.parent.Todoyu.Ext.assets.TaskEdit.uploadFinished(' . $idTask . ');')
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -100,7 +100,7 @@ class TodoyuAssetsTaskEditRenderer {
 			'content'	=> TodoyuString::wrapScript('window.parent.Todoyu.Ext.assets.TaskEdit.uploadFailed(' . $error . ', \'' . $fileName . '\', ' . $maxFileSize . ', ' . $idTask . ');')
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -121,7 +121,7 @@ class TodoyuAssetsTaskEditRenderer {
 			'value'		=> array()
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 }

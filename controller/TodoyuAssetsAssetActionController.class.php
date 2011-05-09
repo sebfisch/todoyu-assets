@@ -32,7 +32,7 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function init(array $params) {
-		restrict('assets', 'general:use');
+		Todoyu::restrict('assets', 'general:use');
 	}
 
 
@@ -96,7 +96,7 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public function togglevisibilityAction(array $params) {
-		restrictInternal();
+		Todoyu::restrictInternal();
 
 		$idAsset	= intval($params['asset']);
 		TodoyuAssetsAssetManager::getAsset($idAsset);

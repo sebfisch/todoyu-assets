@@ -134,9 +134,9 @@ class TodoyuAssetsAssetManager {
 		$order	= 'date_create DESC';
 
 			// If person can't see all assets, limit to public and own
-		if( ! allowed('assets', 'asset:seeAll') ) {
-			$where .= ' AND (is_public 				= 1
-							 OR id_person_create	= ' . personid() . ')';
+		if( ! Todoyu::allowed('assets', 'asset:seeAll') ) {
+			$where .= ' AND (is_public 		= 1
+							 OR id_person_create    = ' . Todoyu::personid() . ')';
 		}
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
@@ -541,7 +541,7 @@ class TodoyuAssetsAssetManager {
 	 */
 	public static function makeTempStoragePath() {
 		$randDirBasePath= 'files' . DIR_SEP . 'assets';
-		$randDirPrefix	= 'p' . personid() . '_';
+		$randDirPrefix	= 'p' . Todoyu::personid() . '_';
 
 		return TodoyuFileManager::makeRandomCacheDir($randDirBasePath, true, $randDirPrefix);
 	}

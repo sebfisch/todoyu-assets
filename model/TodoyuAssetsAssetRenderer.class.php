@@ -33,7 +33,7 @@ class TodoyuAssetsAssetRenderer {
 	 * @return	String
 	 */
 	public static function renderTabContent($idTask) {
-		restrict('assets', 'general:use');
+		Todoyu::restrict('assets', 'general:use');
 
 		$idTask		= intval($idTask);
 		$numAssets	= TodoyuAssetsAssetManager::getNumTaskAssets($idTask);
@@ -67,7 +67,7 @@ class TodoyuAssetsAssetRenderer {
 	public static function renderLockedMessage() {
 		$tmpl	= 'ext/comment/view/locked.tmpl';
 
-		return render($tmpl);
+		return Todoyu::render($tmpl);
 	}
 
 
@@ -88,7 +88,7 @@ class TodoyuAssetsAssetRenderer {
 			'assets'	=> TodoyuAssetsAssetManager::getTaskAssets($idTask)
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -107,7 +107,7 @@ class TodoyuAssetsAssetRenderer {
 			'idTask' => $idTask
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -143,7 +143,7 @@ class TodoyuAssetsAssetRenderer {
 			'formhtml'	=> $form->render()
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -165,7 +165,7 @@ class TodoyuAssetsAssetRenderer {
 			'content'	=> TodoyuString::wrapScript('window.parent.Todoyu.Ext.assets.Upload.uploadFinished(' . $idTask . ', \'' . $tabLabel . '\');')
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
