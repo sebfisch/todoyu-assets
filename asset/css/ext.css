@@ -32,7 +32,7 @@ button.buttonDeleteAsset .icon {
 	List
    ---------------------------------------------- */
 .assetList .assets-table-header {
-	background:#E5E8DA url(../../../../core/asset/img/bg-tabheader.png) repeat-x 0 top;
+	background:#e5e8da url(../../../../core/asset/img/bg-tabheader.png) repeat-x 0 top;
 }
 
 .assetList th {
@@ -41,7 +41,7 @@ button.buttonDeleteAsset .icon {
 }
 
 .assetList td {
-	padding:3px 0;
+	padding:3px 0 0 0;
 }
 
 .assetList .checkbox {
@@ -54,7 +54,7 @@ button.buttonDeleteAsset .icon {
 }
 
 .assetList .filename {
-	width:300px;
+	width:270px;
 }
 
 .assetList .filesize {

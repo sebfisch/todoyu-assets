@@ -1,9 +1,14 @@
 .mimeIcon {
 	background:url('../img/icons.png') no-repeat 0 -87px;
+	background-repeat:no-repeat;
+}
+
+.mimeTXT {
+	background-position:0 -780px;
 }
 
 .mimeXLS,
-.mimeXLSX
+.mimeXLSX,
 .mimeODS {
 	background-position:0 -328px;
 }
@@ -14,6 +19,7 @@
 
 .mimeDOC,
 .mimeDOCX,
+.mimeSXW,
 .mimeODT {
 	background-position:0 -388px;
 }
