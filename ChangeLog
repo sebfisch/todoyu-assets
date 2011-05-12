@@ -1,7 +1,11 @@
 todoyu assets extension changelog
 
 assets 1.1.0 - beta release
-	* Changed: Requires core 2.1
+	* Feature: Added mimetype icon for .txt files, extended range of office mimetpyes
+	* Bugfix: Spelling mistake in rights check when deleting asset file
+	* Feature: Added creator attribute column in assets listing
+	* Changed: Increased filename max length (from 100 to 255 chars)
+ 	* Changed: Requires core 2.1
 	* Changed: Structure for 2.1
 	* Changed: All classes are prefixed with extension name
  	* Feature: Added task asset upload to quicktask creation
@@ -47,6 +51,7 @@ assets 1.0.1 to 1.0.5 - 1.0.5 released 2011-01-17
 	* Bugfix: Refresh whole asset tab on delete an asset
 	* Changed: Updated rights xml config with new name format
 	* Feature: noAccess handling in AJAX responses
+
 
 assets 1.0.0 - released 2010-05-10
 	* Changed: Declared state stable
