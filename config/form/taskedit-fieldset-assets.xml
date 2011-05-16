@@ -12,7 +12,7 @@
 	</hiddenFields>
 	<fieldsets>
 		<fieldset name="assets">
-			<legend>Task Assets</legend>
+			<legend>assets.form.legend.basics</legend>
 			<class>right</class>
 			<elements>
 
