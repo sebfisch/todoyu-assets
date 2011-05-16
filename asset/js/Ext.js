@@ -145,6 +145,8 @@ Todoyu.Ext.assets = {
 		var idTask	= response.getTodoyuHeader('idTask');
 		var label	= response.getTodoyuHeader('tabLabel');
 
+		Todoyu.Ext.project.Task.refreshHeader(idTask);
+
 		Todoyu.Notification.notifySuccess('[LLL:assets.ext.delete.notifiy.success]');
 
 		this.setTabLabel(idTask, label);

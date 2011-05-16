@@ -284,6 +284,8 @@ Todoyu.Ext.assets.Upload = {
 		this.removeIFrame();
 		this.showUploadField();
 
+		Todoyu.Ext.project.Task.refreshHeader(idTask);
+
 		if( Todoyu.exists('task-' + idTask + '-assets-commands') ) {
 			Todoyu.Ext.assets.List.refresh(idTask);
 		} else {
