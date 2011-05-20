@@ -329,7 +329,7 @@ Todoyu.Ext.assets.Upload = {
 			msg	= '[LLL:assets.ext.uploadFailed]';
 		}
 
-		Todoyu.notifyError(msg.interpolate(info), 10);
+		Todoyu.notifyError(msg.interpolate(info));
 	}
 
 };

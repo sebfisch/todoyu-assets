@@ -158,7 +158,7 @@ Todoyu.Ext.assets.TaskEdit = {
 			msg	= '[LLL:core.file.upload.error.uploadfailed]';
 		}
 
-		Todoyu.notifyError(msg.interpolate(info), 10);
+		Todoyu.notifyError(msg.interpolate(info));
 	},
 
 
