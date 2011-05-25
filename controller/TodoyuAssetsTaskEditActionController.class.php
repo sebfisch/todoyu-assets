@@ -55,6 +55,7 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 	 * Get upload form for assets
 	 *
 	 * @param	Array	$params
+	 * @return	String
 	 */
 	public static function assetsuploadformAction(array $params) {
 		$idTask	= intval($params['task']);
