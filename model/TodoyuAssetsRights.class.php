@@ -115,8 +115,8 @@ class TodoyuAssetsRights {
 	/**
 	 * Restrict access to persons which are allowed to delete assets from this task
 	 *
+	 * @param	Integer		$idAsset
 	 * @todo	state deny message more precisely
-	 * @param	Integer		$idComment
 	 */
 	public static function restrictDelete($idAsset) {
 		if( ! self::isDeleteAllowed($idAsset) ) {

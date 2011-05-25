@@ -246,7 +246,8 @@ class TodoyuAssetsAssetManager {
 	 *  - Copy the file to the file structure
 	 *  - Add an asset record to the database
 	 *
-	 * @param	Integer		$idTask			Task ID
+	 * @param	Integer		$type
+	 * @param	Integer		$idParent
 	 * @param	String		$tempFile		Absolute path to the temporary file
 	 * @param	String		$fileName		Original file name
 	 * @param	String		$mimeType		File mime type
@@ -679,6 +680,7 @@ class TodoyuAssetsAssetManager {
 	 *
 	 * @param	TodoyuForm		$form
 	 * @param	Integer			$idTask
+	 * @param	Array			$params
 	 * @param	Boolean			$isTask		Type is task? (not container)
 	 * @return	TodoyuForm
 	 */
@@ -713,6 +715,7 @@ class TodoyuAssetsAssetManager {
 	 *
 	 * @param	TodoyuForm		$form
 	 * @param	Integer			$idTask
+	 * @param	Array			$params
 	 * @return	TodoyuForm
 	 */
 	public static function hookModifyQuickTaskForm(TodoyuForm $form, $idTask, array $params = array()) {

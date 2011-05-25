@@ -65,6 +65,7 @@ class TodoyuAssetsTaskEditRenderer {
 	 * Render asset upload iFrame content
 	 *
 	 * @param	String		$fileName
+	 * @param	Integer		$idTask
 	 * @return	String
 	 */
 	public static function renderUploadframeContent($fileName, $idTask) {
@@ -108,6 +109,7 @@ class TodoyuAssetsTaskEditRenderer {
 	/**
 	 * Render asset files select options
 	 *
+	 * @param	Integer	$idTask
 	 * @return	String
 	 */
 	public static function renderAssetFileOptions($idTask = 0) {
