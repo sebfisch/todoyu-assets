@@ -39,8 +39,8 @@ Todoyu::$CONFIG['EXT']['assets']['info'] = array(
 		),
 		'conflicts' => array(
 		)
-	)
+	),
+	'urlDocumentation'	=> 'http://doc.todoyu.com/?assets'
 );
-
 
 ?>
