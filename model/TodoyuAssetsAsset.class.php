@@ -96,7 +96,7 @@ class TodoyuAssetsAsset extends TodoyuBaseObject {
 
 
 	/**
-	 * Get filesize
+	 * Get file size
 	 *
 	 * @return	Integer
 	 */

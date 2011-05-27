@@ -49,7 +49,7 @@ class TodoyuAssetsAssetRenderer {
 			if( $numAssets === 0 ) {
 				$content = self::renderUploadForm($idTask);
 			} else {
-				$content = self::renderListControll($idTask);
+				$content = self::renderListControl($idTask);
 				$content .= self::renderList($idTask);
 			}
 		}
@@ -94,12 +94,12 @@ class TodoyuAssetsAssetRenderer {
 
 
 	/**
-	 * Render list controll elements
+	 * Render list control elements
 	 *
 	 * @param	Integer		$idTask
 	 * @return	String
 	 */
-	public static function renderListControll($idTask) {
+	public static function renderListControl($idTask) {
 		$idTask	= intval($idTask);
 
 		$tmpl	= 'ext/assets/view/list-controll.tmpl';

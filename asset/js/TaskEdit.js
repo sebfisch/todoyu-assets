@@ -218,8 +218,8 @@ Todoyu.Ext.assets.TaskEdit = {
 			var options	= {
 				parameters: {
 					action:		'deletetempassetfile',
-					'record':		idAssetRecord,
-					'filename':		filename
+					'record':	idAssetRecord,
+					'filename':	filename
 				},
 				onComplete: this.onRemovedAsset.bind(this, filename, idTask)
 			};

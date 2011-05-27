@@ -165,7 +165,7 @@ Todoyu.Ext.assets = {
 		var url		= Todoyu.getUrl('assets', 'asset');
 		var options	= {
 			parameters: {
-				action:	'togglevisibility',
+				action:		'togglevisibility',
 				'asset':	idAsset
 			}
 		};
@@ -187,7 +187,7 @@ Todoyu.Ext.assets = {
 		var options	= {
 			parameters: {
 				action:	'tab',
-				'task':		idTask
+				'task':	idTask
 			}
 		};
 		var target	= 'task-' + idTask + '-tabcontent-assets';

@@ -303,7 +303,7 @@ Todoyu.Ext.assets.Upload = {
 	 * Check whether upload failed, determine reason (file too big / failure) and notify
 	 *
 	 * @method	uploadFailed
-	 * @param	{Number}		error		1 = filesize exceeded, 2 = failure
+	 * @param	{Number}		error		1 = file size exceeded, 2 = failure
 	 * @param	{String}		filename
 	 * @param	{Number}		maxFileSize
 	 */

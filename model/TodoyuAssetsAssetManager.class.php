@@ -467,7 +467,7 @@ class TodoyuAssetsAssetManager {
 					'storage'	=> $asset['file_storage'],
 					'file'		=> $asset['file_name']
 				);
-				TodoyuLogger::logError('Failed to add asset to zipfile', $data);
+				TodoyuLogger::logError('Failed to add asset to zip file', $data);
 			}
 
 				// Count filename (check for duplicates)
