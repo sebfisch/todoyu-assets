@@ -26,15 +26,28 @@
  */
 class TodoyuAssetsSetup implements TodoyuSysmanagerExtensionSetupInterface {
 
+	/**
+	 * @todo	implement
+	 */
 	public static function install() {
 
 	}
 
+
+
+	/**
+	 * @todo	implement
+	 * @param	unknown	$previousVersion
+	 */
 	public static function update($previousVersion) {
-		TodoyuDebug::printInFireBug('update assets');
+
 	}
 
 
+
+	/**
+	 * @todo	implement
+	 */
 	public static function uninstall() {
 
 	}
