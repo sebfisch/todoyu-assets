@@ -20,9 +20,9 @@
 					<label>core.file.files</label>
 					<source type="function">
 						<function>TodoyuAssetsTaskAssetViewHelper::getTaskAssetsFilesOptions</function>
-						<lazyInit/>
+						<lazyInit />
 					</source>
-					<noPleaseSelect/>
+					<noPleaseSelect />
 					<extraAttributes>onchange="Todoyu.Ext.assets.TaskEdit.onFileSelectionChange(this)"</extraAttributes>
 				</field>
 
