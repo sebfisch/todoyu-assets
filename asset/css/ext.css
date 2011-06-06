@@ -36,7 +36,7 @@ button.buttonDeleteAsset .icon {
 }
 
 .assetList th {
-	padding:5px 0;
+	padding:5px 5px 5px 0;
 	text-transform:uppercase;
 }
 
@@ -56,10 +56,11 @@ button.buttonDeleteAsset .icon {
 .assetList .filename {
 	width:270px;
 }
-
+/*
 .assetList .filesize {
 	width:60px;
 }
+*/
 
 .assetList .uploaddate {
 	width:80px;
