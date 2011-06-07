@@ -38,6 +38,34 @@ Todoyu.Ext.assets.List = {
 	ext: Todoyu.Ext.assets,
 
 
+	/**
+	 * Add observers for list
+	 *
+	 * @param	{Number}	idTask
+	 */
+	addObservers: function(idTask) {
+			// Check all button
+		$('task-' + idTask + '-assets-checkallbox').on('click', this.selectAll.bind(this, idTask));
+			// Select asset row
+		$('task-' + idTask + '-assets-tablebody').on('click', 'tr', this.select.bind(this));
+			// Download file
+		$('task-' + idTask + '-assets-tablebody').on('click', '.filename a', this.handleDownloadClick.bind(this));
+			// Actions
+		$('task-' + idTask + '-assets-tablebody').select('td.actions').each(function(cell){
+			var idAsset	= cell.up('.asset').id.split('-').last();
+			if( cell.down('a.visibility') ) {
+				cell.down('a.visibility').on('click', 'a', this.handleVisibilityToggle.bind(this, idAsset));
+			}
+			if( cell.down('a.download') ) {
+				cell.down('a.download').on('click', 'td', this.handleDownloadClick.bind(this, idAsset));
+			}
+			if( cell.down('a.delete') ) {
+				cell.down('a.delete').on('click', 'td', this.handleRemoveClick.bind(this, idAsset));
+			}
+		}, this);
+	},
+
+
 
 	/**
 	 * Toggle display of assets list of given task
@@ -63,7 +91,7 @@ Todoyu.Ext.assets.List = {
 		var options	= {
 			parameters: {
 				action:	'list',
-				'task':		idTask
+				task:	idTask
 			}
 		};
 
@@ -78,29 +106,71 @@ Todoyu.Ext.assets.List = {
 
 
 	/**
-	 * Hover given asset
+	 * Select given asset
 	 *
-	 * @method	hover
-	 * @param	{Number}	idAsset
+	 * @method	select
+	 * @param	{Event}		event
+	 * @param	{Element}	row
 	 */
-	hover: function(idAsset) {
-		$('asset-' + idAsset).toggleClassName('hover');
+	select: function(event, row) {
+		console.log('select');
+		var idAsset	= $(row).id.split('-').last();
+
+		if( row.hasClassName('selected') ) {
+			this.unCheck(idAsset);
+		} else {
+			this.check(idAsset);
+		}
 	},
 
 
 
 	/**
-	 * Select given asset
+	 * Toggle given asset visibility (hide from customers?)
 	 *
-	 * @method	select
-	 * @param	{Number}	idAsset
+	 * @method	handleVisibilityToggle
+	 * @param	{Number} 	idAsset
+	 * @param	{Event}		event
+	 * @param	{Element}	link
 	 */
-	select: function(idAsset) {
-		if( $('asset-' + idAsset + '-checkbox').checked ) {
-			this.unCheck(idAsset);
-		} else {
-			this.check(idAsset);
-		}
+	handleVisibilityToggle: function(idAsset, event, link) {
+		event.stop();
+
+		link.toggleClassName('not');
+
+		this.ext.toggleVisibility(idAsset);
+	},
+
+
+
+	/**
+	 * Download handler when clicking on a filename
+	 *
+	 * @param	{Number}	idAsset
+	 * @param	{Event}		event
+	 * @param	{Element}	cell
+	 */
+	handleDownloadClick: function(idAsset, event, cell) {
+		event.stop();
+
+		this.unCheck(idAsset);
+
+		this.ext.download(idAsset);
+	},
+
+
+
+	/**
+	 * Handle download click
+	 *
+	 * @param	{Number}	idAsset
+	 * @param	{Event}		event
+	 * @param	{Element}	cell
+	 */
+	handleRemoveClick: function(idAsset, event, cell) {
+		event.stop();
+
+		this.ext.remove(idAsset);
 	},
 
 
@@ -136,8 +206,9 @@ Todoyu.Ext.assets.List = {
 	 *
 	 * @method	selectAll
 	 * @param	{Number}	idTask
+	 * @param	{Event}		event
 	 */
-	selectAll: function(idTask) {
+	selectAll: function(idTask, event) {
 		var list 	= $('task-' + idTask + '-assets-tablebody');
 		var boxes	= list.select('input');
 
@@ -156,7 +227,7 @@ Todoyu.Ext.assets.List = {
 			} else {
 				this.unCheck(item.value);
 			}
-		}.bind(this));
+		}, this);
 
 		$('task-' + idTask + '-assets-checkallbox').checked = notAll;
 	},

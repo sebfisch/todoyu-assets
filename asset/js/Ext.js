@@ -73,7 +73,7 @@ Todoyu.Ext.assets = {
 	download: function(idAsset) {
 		var params	= {
 			action: 'download',
-			'asset': idAsset
+			asset:	idAsset
 		};
 
 		Todoyu.goTo('assets', 'asset', params);
@@ -110,6 +110,25 @@ Todoyu.Ext.assets = {
 
 
 	/**
+	 * Toggle visibility of an asset
+	 *
+	 * @param	{Number}	idAsset
+	 */
+	toggleVisibility: function(idAsset) {
+		var url		= Todoyu.getUrl('assets', 'asset');
+		var options	= {
+			parameters: {
+				action:	'togglevisibility',
+				asset:	idAsset
+			}
+		};
+
+		Todoyu.send(url, options);
+	},
+
+
+
+	/**
 	 * Remove given asset
 	 *
 	 * @method	remove
@@ -121,7 +140,7 @@ Todoyu.Ext.assets = {
 			var options	= {
 				parameters: {
 					action:	'delete',
-					'asset':	idAsset
+					asset:	idAsset
 				},
 				onComplete: this.onRemoved.bind(this, idAsset)
 			};
@@ -155,24 +174,6 @@ Todoyu.Ext.assets = {
 
 
 
-	/**
-	 * Toggle given asset visibility (hide from customers?)
-	 *
-	 * @method	toggleVisibility
-	 * @param	{Number} 	idAsset
-	 */
-	toggleVisibility: function(idAsset) {
-		var url		= Todoyu.getUrl('assets', 'asset');
-		var options	= {
-			parameters: {
-				action:		'togglevisibility',
-				'asset':	idAsset
-			}
-		};
-
-		Todoyu.send(url, options);
-		$('asset-' + idAsset + '-icon-public').toggleClassName('not');
-	},
 
 
 
@@ -187,7 +188,7 @@ Todoyu.Ext.assets = {
 		var options	= {
 			parameters: {
 				action:	'tab',
-				'task':	idTask
+				task:	idTask
 			}
 		};
 		var target	= 'task-' + idTask + '-tabcontent-assets';
