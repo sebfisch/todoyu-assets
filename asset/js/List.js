@@ -113,7 +113,6 @@ Todoyu.Ext.assets.List = {
 	 * @param	{Element}	row
 	 */
 	select: function(event, row) {
-		console.log('select');
 		var idAsset	= $(row).id.split('-').last();
 
 		if( row.hasClassName('selected') ) {
