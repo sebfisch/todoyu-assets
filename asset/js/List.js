@@ -49,18 +49,19 @@ Todoyu.Ext.assets.List = {
 			// Select asset row
 		$('task-' + idTask + '-assets-tablebody').on('click', 'tr', this.select.bind(this));
 			// Download file
-		$('task-' + idTask + '-assets-tablebody').on('click', '.filename a', this.handleDownloadClick.bind(this));
+//		$('task-' + idTask + '-assets-tablebody').on('click', '.filename', this.handleFilenameClick.bind(this));
 			// Actions
-		$('task-' + idTask + '-assets-tablebody').select('td.actions').each(function(cell){
-			var idAsset	= cell.up('.asset').id.split('-').last();
-			if( cell.down('a.visibility') ) {
-				cell.down('a.visibility').on('click', 'a', this.handleVisibilityToggle.bind(this, idAsset));
+		$('task-' + idTask + '-assets-tablebody').select('tr').each(function(row){
+			var idAsset	= row.id.split('-').last();
+			row.down('.filename a').on('click', 'td', this.handleDownloadClick.bind(this, idAsset));
+			if( row.down('a.visibility') ) {
+				row.down('a.visibility').on('click', 'a', this.handleVisibilityToggle.bind(this, idAsset));
 			}
-			if( cell.down('a.download') ) {
-				cell.down('a.download').on('click', 'td', this.handleDownloadClick.bind(this, idAsset));
+			if( row.down('a.download') ) {
+				row.down('a.download').on('click', 'td', this.handleDownloadClick.bind(this, idAsset));
 			}
-			if( cell.down('a.delete') ) {
-				cell.down('a.delete').on('click', 'td', this.handleRemoveClick.bind(this, idAsset));
+			if( row.down('a.delete') ) {
+				row.down('a.delete').on('click', 'td', this.handleRemoveClick.bind(this, idAsset));
 			}
 		}, this);
 	},
@@ -151,8 +152,6 @@ Todoyu.Ext.assets.List = {
 	 */
 	handleDownloadClick: function(idAsset, event, cell) {
 		event.stop();
-
-		this.unCheck(idAsset);
 
 		this.ext.download(idAsset);
 	},
