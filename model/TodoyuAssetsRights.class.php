@@ -54,7 +54,7 @@ class TodoyuAssetsRights {
 		switch($typeParent) {
 			case ASSET_PARENTTYPE_TASK:
 				if( TodoyuProjectTaskRights::isSeeAllowed($idParent) ) {
-					if( Todoyu::allowed('assets', 'asset:seeAll') || $asset->isPublic() ) {
+					if( Todoyu::allowed('assets', 'asset:seeAll') || $asset->isPublic() || $asset->isCurrentPersonCreator() ) {
 						return true;
 					}
 				}
