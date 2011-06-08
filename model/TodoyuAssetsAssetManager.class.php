@@ -684,14 +684,10 @@ class TodoyuAssetsAssetManager {
 	 * @param	Boolean			$isTask		Type is task? (not container)
 	 * @return	TodoyuForm
 	 */
-	public static function hookAddAssetUploadToTaskCreateForm(TodoyuForm $form, $idTask, array $params, $isTask = true) {
+	public static function hookAddAssetUploadToTaskCreateForm(TodoyuForm $form, $idTask, array $params) {
 		$idTask	= intval($idTask);
 
-		if( $idTask > 0 && TodoyuProjectTaskManager::getTask($idTask)->isTask() ) {
-			$isTask	= true;
-		}
-
-		if( $idTask === 0 && $isTask ) {
+		if( $idTask === 0 && TodoyuProjectTaskManager::getTask($idTask)->isTask() ) {
 				// Set encoding type, add initialization of file options, add hidden field MAX_FILE_SIZE
 			$form->setEnctype('multipart/form-data');
 			$form->setAttribute('extraOnDisplay', 'Todoyu.Ext.assets.TaskEdit.initFileOperationButtons(' . $idTask . ')' );
