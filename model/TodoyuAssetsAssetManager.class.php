@@ -681,7 +681,6 @@ class TodoyuAssetsAssetManager {
 	 * @param	TodoyuForm		$form
 	 * @param	Integer			$idTask
 	 * @param	Array			$params
-	 * @param	Boolean			$isTask		Type is task? (not container)
 	 * @return	TodoyuForm
 	 */
 	public static function hookAddAssetUploadToTaskCreateForm(TodoyuForm $form, $idTask, array $params) {
