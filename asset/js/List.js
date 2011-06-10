@@ -48,18 +48,20 @@ Todoyu.Ext.assets.List = {
 		$('task-' + idTask + '-assets-checkallbox').on('click', this.selectAll.bind(this, idTask));
 			// Select asset row
 		$('task-' + idTask + '-assets-tablebody').on('click', 'tr', this.select.bind(this));
-			// Download file
-//		$('task-' + idTask + '-assets-tablebody').on('click', '.filename', this.handleFilenameClick.bind(this));
 			// Actions
 		$('task-' + idTask + '-assets-tablebody').select('tr').each(function(row){
 			var idAsset	= row.id.split('-').last();
+				// Filename
 			row.down('.filename a').on('click', 'td', this.handleDownloadClick.bind(this, idAsset));
+				// Visibility
 			if( row.down('a.visibility') ) {
 				row.down('a.visibility').on('click', 'a', this.handleVisibilityToggle.bind(this, idAsset));
 			}
+				// Download
 			if( row.down('a.download') ) {
 				row.down('a.download').on('click', 'td', this.handleDownloadClick.bind(this, idAsset));
 			}
+				// Delete
 			if( row.down('a.delete') ) {
 				row.down('a.delete').on('click', 'td', this.handleRemoveClick.bind(this, idAsset));
 			}
