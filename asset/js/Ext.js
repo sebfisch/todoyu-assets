@@ -31,11 +31,13 @@ Todoyu.Ext.assets = {
 
 	/**
 	 * @property	PanelWidget
+	 * @type		Object
 	 */
 	PanelWidget: {},
 
 	/**
 	 * @property	Headlet
+	 * @type		Object
 	 */
 	Headlet: {},
 
