@@ -47,7 +47,7 @@ class TodoyuAssetsZipActionController extends TodoyuActionController {
 		$assetIDs	= TodoyuArray::intExplode(',', $params['assets'], true, true);
 
 		if( sizeof($assetIDs) > 0 ) {
-			foreach( $assetIDs as $idAsset)	{
+			foreach( $assetIDs as $idAsset) {
 				if( ! TodoyuAssetsRights::isSeeAllowed( $idAsset )) {
 					TodoyuAssetsRights::restrictSee($idAsset);
 				}
