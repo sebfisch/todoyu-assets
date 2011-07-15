@@ -21,7 +21,7 @@
 					<onchange>Todoyu.Ext.assets.TaskEdit.upload(this.form)</onchange>
 				</field>
 				<field type="button" name="cancel">
-					<text>LLL:core.global.cancel</text>
+					<text>core.global.cancel</text>
 					<class>buttonCancel cancel</class>
 					<hasIcon />
 					<onclick>Todoyu.Ext.assets.TaskEdit.removeUploadForm()</onclick>

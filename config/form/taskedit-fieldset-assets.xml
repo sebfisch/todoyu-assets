@@ -27,14 +27,14 @@
 				</field>
 
 				<field type="button" name="delete">
-					<text>LLL:assets.ext.taskform.assets.button.delete</text>
+					<text>assets.ext.taskform.assets.button.delete</text>
 					<class>buttonDeleteAsset</class>
 					<hasIcon />
 					<onclick>Todoyu.Ext.assets.TaskEdit.removeSelectedTempAsset(this.id.split('-')[1])</onclick>
 				</field>
 
 				<field type="button" name="upload">
-					<text>LLL:assets.ext.taskform.assets.button.upload</text>
+					<text>assets.ext.taskform.assets.button.upload</text>
 					<class>buttonUploadAsset</class>
 					<hasIcon />
 					<onclick>Todoyu.Ext.assets.TaskEdit.showUploadForm(this.form)</onclick>
