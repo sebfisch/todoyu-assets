@@ -361,11 +361,13 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * @param	{Ajax.Response}		response
 	 */
 	onRemovedAsset: function(filename, idTask, response) {
+		var notificationIdentifier	= 'assets.taskedit.onremovedasset';
+
 		if( response.getTodoyuHeader('success') == 1 ) {
 			this.refreshFileOptions(idTask);
-			Todoyu.notifySuccess('[LLL:core.file.notify.delete.success]' + ' ' + filename);
+			Todoyu.notifySuccess('[LLL:core.file.notify.delete.success]' + ' ' + filename, notificationIdentifier);
 		} else {
-			Todoyu.notifyError('[LLL:core.file.notify.delete.error]' + ' ' + filename);
+			Todoyu.notifyError('[LLL:core.file.notify.delete.error]' + ' ' + filename, notificationIdentifier);
 		}
 	},
 
