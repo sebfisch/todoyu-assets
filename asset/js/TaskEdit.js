@@ -263,6 +263,7 @@ Todoyu.Ext.assets.TaskEdit = {
 	/**
 	 * Check whether quick create popup is open
 	 *
+	 * @method	isQuickCreate
 	 * @return	{Boolean}
 	 */
 	isQuickCreate: function() {
@@ -289,6 +290,7 @@ Todoyu.Ext.assets.TaskEdit = {
 	/**
 	 * Get asset selector element
 	 *
+	 * @method	getAssetSelector
 	 * @return	{Element}
 	 */
 	getAssetSelector: function() {

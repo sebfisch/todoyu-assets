@@ -41,6 +41,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Add observers for list
 	 *
+	 * @method	addObservers
 	 * @param	{Number}	idTask
 	 */
 	addObservers: function(idTask) {
@@ -148,6 +149,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Download handler when clicking on a filename
 	 *
+	 * @method	handleDownloadClick
 	 * @param	{Number}	idAsset
 	 * @param	{Event}		event
 	 * @param	{Element}	cell
@@ -163,6 +165,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Handle download click
 	 *
+	 * @method	handleRemoveClick
 	 * @param	{Number}	idAsset
 	 * @param	{Event}		event
 	 * @param	{Element}	cell

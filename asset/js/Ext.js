@@ -114,6 +114,7 @@ Todoyu.Ext.assets = {
 	/**
 	 * Toggle visibility of an asset
 	 *
+	 * @method	toggleVisibility
 	 * @param	{Number}	idAsset
 	 */
 	toggleVisibility: function(idAsset) {
