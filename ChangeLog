@@ -1,6 +1,6 @@
 todoyu assets extension changelog
 
-assets 1.1.0 - beta release
+assets 1.1.0 - not released yet
 	* Feature: Added mimetype icon for .txt files, extended range of office mimetpyes
 	* Bugfix: Spelling mistake in rights check when deleting asset file
 	* Feature: Added creator attribute column in assets listing
