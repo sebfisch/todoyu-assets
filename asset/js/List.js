@@ -38,6 +38,7 @@ Todoyu.Ext.assets.List = {
 	ext: Todoyu.Ext.assets,
 
 
+
 	/**
 	 * Add observers for list
 	 *

@@ -177,9 +177,6 @@ Todoyu.Ext.assets = {
 
 
 
-
-
-
 	/**
 	 * Update assets tab of given task
 	 *
