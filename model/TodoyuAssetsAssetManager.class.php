@@ -522,7 +522,6 @@ class TodoyuAssetsAssetManager {
 
 	/**
 	 * Remove temp files and session key
-	 *
 	 */
 	public static function clearTempSession() {
 		if( self::hasSessionTempPath() ) {
