@@ -38,15 +38,25 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 
 
 	/**
-	 * Refresh options of asset file selector
+	 * Default action: upload an asset
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
+	public function defaultAction(array $params) {
+		return $this->uploadassetfileAction($params);
+	}
+
+
+
+	/**
+	 * Render <option> tags for uploaded files in this session
 	 *
 	 * @param	Array	$params
 	 * @return	String
 	 */
-	public static function assetfileoptionsAction(array $params) {
-		$idTask	= intval($params['id_task']);
-
-		return TodoyuAssetsTaskEditRenderer::renderAssetFileOptions($idTask);
+	public function sessionFilesAction(array $params) {
+		return TodoyuAssetsTaskEditRenderer::renderSessionFileOptions();
 	}
 
 
@@ -57,22 +67,8 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 * @return	String
 	 */
-	public static function assetsuploadformAction(array $params) {
-		$idTask	= intval($params['task']);
-
-		return TodoyuAssetsTaskEditRenderer::renderAssetUploadForm($idTask);
-	}
-
-
-
-	/**
-	 * Default action: upload an asset
-	 *
-	 * @param	Array		$params
-	 * @return	String
-	 */
-	public function defaultAction(array $params) {
-		return $this->uploadassetfileAction($params);
+	public static function uploadformAction(array $params) {
+		return TodoyuAssetsTaskEditRenderer::renderAssetUploadForm();
 	}
 
 
@@ -101,7 +97,7 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 
 			// Render frame content. Success or error
 		if( $error === UPLOAD_ERR_OK && ! $file['error'] ) {
-			TodoyuAssetsAssetManager::addTaskAssetTemporary($file['tmp_name'], $file['name'], $file['type']);
+			TodoyuAssetsTemporaryUploadManager::addFile($file);
 
 			return TodoyuAssetsTaskEditRenderer::renderUploadframeContent($file['name'], $idTask);
 		} else {
@@ -118,13 +114,14 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 	 * Delete temporary (uploaded prior to creation of task) asset file
 	 *
 	 * @param	Array	$params
+	 * @return	String	Session file option elements
 	 */
-	public static function deletetempassetfileAction(array $params) {
-		$filename	= $params['filename'];
+	public static function deletesessionfileAction(array $params) {
+		$fileKey	= trim($params['filekey']);
 
-		$success	= TodoyuAssetsAssetManager::deleteTemporaryAsset($filename);
+		TodoyuAssetsTemporaryUploadManager::deleteFile($fileKey);
 
-		TodoyuHeader::sendTodoyuHeader('success', $success);
+		return TodoyuAssetsTaskEditRenderer::renderSessionFileOptions();
 	}
 
 
@@ -134,8 +131,8 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 	 *
 	 * @param	Array	$params
 	 */
-	public static function deletealltempassetfilesAction(array $params) {
-		TodoyuAssetsAssetManager::deleteAllTemporaryAssets();
+	public static function deleteuploadsAction(array $params) {
+		TodoyuAssetsTemporaryUploadManager::destroy();
 	}
 
 }

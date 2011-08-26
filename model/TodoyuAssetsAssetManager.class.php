@@ -205,21 +205,6 @@ class TodoyuAssetsAssetManager {
 
 
 
-	/**
-	 * Add an uploaded file as temporary task asset (to be later attached to to-be created task)
-	 *
-	 * @param	String		$tempFile		Path to temporary file on server
-	 * @param	String		$fileName		Filename on browser system
-	 * @return	String|Boolean				New file path or FALSE
-	 */
-	public static function addTaskAssetTemporary($tempFile, $fileName) {
-			// Move temporary file to temporary assets storage
-		$storageDir	= self::getTaskAssetsTempStoragePath();
-
-		return TodoyuFileManager::addFileToStorage($storageDir, $tempFile, $fileName, false);
-	}
-
-
 
 	/**
 	 * Get array of currently temporary stored asset files of current user
@@ -229,12 +214,6 @@ class TodoyuAssetsAssetManager {
 	 */
 	public static function getTemporaryAssets($getFileStats = false) {
 		$assets	= array();
-
-		if( self::hasSessionTempPath() ) {
-			$path	= self::getSessionTempPath();
-
-			$assets	= TodoyuFileManager::getFolderContents($path, false, $getFileStats);
-		}
 
 		return $assets;
 	}
@@ -337,33 +316,7 @@ class TodoyuAssetsAssetManager {
 		}
 	}
 
-
-
-	/**
-	 * Delete temporary (uploaded prior to creation of task) asset file
-	 *
-	 * @param	String	$filename
-	 * @return	Boolean
-	 */
-	public static function deleteTemporaryAsset($filename) {
-		$tempStoragePath= self::getTaskAssetsTempStoragePath();
-		$pathFile		= $tempStoragePath . DIR_SEP . $filename;
-
-		return TodoyuFileManager::deleteFile($pathFile);
-	}
-
-
-
-	/**
-	 * Delete all temporary (uploaded prior to creation of task) asset files of logged-in person
-	 */
-	public static function deleteAllTemporaryAssets() {
-		$tempStoragePath= self::getTaskAssetsTempStoragePath();
-
-		TodoyuFileManager::deleteFolder($tempStoragePath);
-	}
-
-
+	
 
 	/**
 	 * Toggle asset public flag
@@ -489,61 +442,6 @@ class TodoyuAssetsAssetManager {
 	 */
 	public static function getStoragePath($storageFileName) {
 		return Todoyu::$CONFIG['EXT']['assets']['basePath'] . DIR_SEP . $storageFileName;
-	}
-
-
-
-	/**
-	 * Get current temporary task assets storage path (if not setup yet: create, store in session)
-	 *
-	 * @param	Boolean		$forceCreateNew
-	 * @return	String
-	 */
-	public static function getTaskAssetsTempStoragePath($forceCreateNew = false) {
-			// Delete old folder is new is forced and old exists
-		if( $forceCreateNew && self::hasSessionTempPath() ) {
-			self::clearTempSession();
-		}
-
-			// Get from session or create new
-		if( $forceCreateNew || ! self::hasSessionTempPath() ) {
-				// Create new randomly named temporary assets storage folder in cache
-			$path	= self::makeTempStoragePath();
-			self::saveSessionTempPath($path);
-		} else {
-			$path	= self::getSessionTempPath();
-			TodoyuFileManager::makeDirDeep($path);
-		}
-
-		return $path;
-	}
-
-
-
-	/**
-	 * Remove temp files and session key
-	 */
-	public static function clearTempSession() {
-		if( self::hasSessionTempPath() ) {
-			$path	= self::getSessionTempPath();
-			TodoyuFileManager::deleteFolder($path);
-			self::removeSessionTempPath();
-		}
-	}
-
-
-
-
-	/**
-	 * Make a new temporary storage path in cache
-	 *
-	 * @return	String|Boolean
-	 */
-	public static function makeTempStoragePath() {
-		$randDirBasePath= 'files' . DIR_SEP . 'assets';
-		$randDirPrefix	= 'p' . Todoyu::personid() . '_';
-
-		return TodoyuFileManager::makeRandomCacheDir($randDirBasePath, true, $randDirPrefix);
 	}
 
 
@@ -725,23 +623,20 @@ class TodoyuAssetsAssetManager {
 	 * @param	Integer		$idTask
 	 * @return	Array
 	 */
-	public static function hookSaveTask(array $data, $idTask) {
+	public static function hookAddUplodedAssetsToTask(array $data, $idTask) {
+		$idTask	= intval($idTask);
+
 			// Remove asset fields from form data
 		unset($data['MAX_FILE_SIZE']);
 		unset($data['id_asset']);
 
-			// Add until now temporary assets to task
-		$tempAssets	= self::getTemporaryAssets();
-		$tempPath	= self::getTaskAssetsTempStoragePath();
+		$assets	= TodoyuAssetsTemporaryUploadManager::getFiles();
 
-		foreach($tempAssets as $filename) {
-			$pathTmpFile= $tempPath . DIR_SEP . $filename;
-			$mimeType	= mime_content_type($pathTmpFile);
-
-			self::addTaskAsset($idTask, $pathTmpFile, $filename, $mimeType);
+		foreach($assets as $asset) {
+			self::addTaskAsset($idTask, $asset['path'], $asset['name'], $asset['type']);
 		}
 
-		self::clearTempSession();
+		TodoyuAssetsTemporaryUploadManager::destroy();
 
 		return $data;
 	}
@@ -755,34 +650,15 @@ class TodoyuAssetsAssetManager {
 	 * @return	Array
 	 */
 	public static function getTaskAssetFileOptions($idTask = 0) {
-		$idTask	= intval($idTask);
+		$files	= TodoyuAssetsTemporaryUploadManager::getFiles();
+		$options= array();
 
-		$options	= array();
+		$files	= TodoyuArray::sortByLabel($files, 'time', true);
 
-		if( $idTask > 0 ) {
-				// Get assets of task
-			$files	= TodoyuAssetsAssetManager::getTaskAssets($idTask);
-		} else {
-				// Get uploaded files to be attached to not-yet created task (ID:0)
-			$files	= self::getTemporaryAssets(true);
-		}
-
-		foreach($files as $file => $fileData) {
-			if( $idTask > 0 ) {
-				$fileCTime	= $fileData['date_create'];
-				$fileDate	= TodoyuTime::format($fileCTime, 'date');
-				$fileSize	= TodoyuString::formatSize($fileData['file_size']);
-
-				$optionValue= $fileData['id'];
-				$fileLabel	= $fileData['file_name'] . ' (' . $fileSize . ' / ' . $fileDate . ')';
-			} else {
-				$optionValue= $file;
-				$fileLabel	= $file;
-			}
-
+		foreach($files as $file) {
 			$options[] = array(
-				'value'	=> $optionValue,
-				'label'	=> $fileLabel
+				'value'	=> $file['key'],
+				'label'	=> $file['name'] . ' (' . TodoyuTime::format($file['time'], 'timesec') . ')'
 			);
 		}
 
@@ -820,27 +696,6 @@ class TodoyuAssetsAssetManager {
 	 */
 	public static function hasSessionTempPath() {
 		return TodoyuSession::isIn(self::$sessionTempPath);
-	}
-
-
-
-	/**
-	 * Remove temp path from session
-	 */
-	public static function removeSessionTempPath() {
-		TodoyuSession::remove(self::$sessionTempPath);
-	}
-
-
-
-	/**
-	 * Hook removes available temp files and session for a new task
-	 *
-	 * @param	Integer		$idProject
-	 */
-	public static function hookRemoveTempSessionFiles($idProject) {
-			// Force a new temp folder for quickcreate task (always new)
-		self::clearTempSession();
 	}
 
 }

@@ -30,14 +30,14 @@
 					<text>assets.ext.taskform.assets.button.delete</text>
 					<class>buttonDeleteAsset</class>
 					<hasIcon />
-					<onclick>Todoyu.Ext.assets.TaskEdit.removeSelectedTempAsset(this.id.split('-')[1])</onclick>
+					<onclick>Todoyu.Ext.assets.TaskEdit.removeSelectedTempAsset(#id#)</onclick>
 				</field>
 
 				<field type="button" name="upload">
 					<text>assets.ext.taskform.assets.button.upload</text>
 					<class>buttonUploadAsset</class>
 					<hasIcon />
-					<onclick>Todoyu.Ext.assets.TaskEdit.showUploadForm(this.form)</onclick>
+					<onclick>Todoyu.Ext.assets.TaskEdit.showUploadForm(this)</onclick>
 				</field>
 
 			</elements>

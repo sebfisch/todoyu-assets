@@ -1,5 +1,9 @@
 todoyu assets extension changelog
 
+assets 1.1.1 - not released yet
+	* Added new class to handle temporary uploaded files
+	* Refactored handling of temporary uploaded files (store file infos in session)
+
 assets 1.1.0 - 2011-06-17
 	* Feature: Added mimetype icon for .txt files, extended range of office mimetpyes
 	* Bugfix: Spelling mistake in rights check when deleting asset file

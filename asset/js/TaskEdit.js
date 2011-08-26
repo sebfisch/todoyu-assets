@@ -45,11 +45,12 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * @method	showUploadForm
 	 * @param	{Element}	form
 	 */
-	showUploadForm: function(form) {
-		var idTask	= form.id.split('-')[1];
+	showUploadForm: function(button) {
+		//var idTask	= form.id.split('-')[1];
 
-		this.addUploadForm(idTask);
-		$$('button.buttonUploadAsset')[0].hide();
+		this.addUploadForm();
+		button.hide();
+		//$$('button.buttonUploadAsset')[0].hide();
 	},
 
 
@@ -60,10 +61,10 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * @method	removeUploadForm
 	 */
 	removeUploadForm: function() {
-		if( Object.isElement( $('assets-uploadform') ) ) {
+		if( $('assets-uploadform') ) {
 			$('assets-uploadform').remove();
 		}
-		$$('button.buttonUploadAsset').first().show();
+		$('task-0-field-upload').show();
 	},
 
 
@@ -74,17 +75,16 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * @method	addUploadForm
 	 * @param	{Number}	idTask
 	 */
-	addUploadForm: function(idTask) {
-		idTask	=	idTask ? idTask : 0;
+	addUploadForm: function() {
+	//	idTask	=	idTask ? idTask : 0;
 
 		var url		= Todoyu.getUrl('assets', 'taskEdit');
 		var options	= {
 			parameters: {
-				'task':		idTask,
-				action:	'assetsuploadform'
+				action:	'uploadform'
 			}
 		};
-		var target	= $$('button.buttonUploadAsset')[0].id;
+		var target	= 'task-0-field-upload';
 		Todoyu.Ui.append(target, url, options);
 	},
 
@@ -94,16 +94,14 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * Upload asset file
 	 *
 	 * @method	upload
-	 * @param	{Element}	form
+	 * @param	{Element}	field
 	 */
-	upload: function(form) {
-		var field	= $(form).down('input[type=file]');
-
-		if( field.value !== '' ) {
+	upload: function(field) {
+		if( $F(field) !== '' ) {
 				// Create iFrame for asset file upload
 			Todoyu.Form.addIFrame('assetfile');
 
-			$(form).submit();
+			$(field).form.submit();
 		}
 	},
 
@@ -210,23 +208,23 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * @param	{Number}	idTask
 	 */
 	removeSelectedTempAsset: function(idTask) {
-		var idAssetRecord	= this.getSelectedAssetFileID(idTask);
-		var filename 		= this.getSelectedAssetFilename(idTask);
+		var fileKey		= this.getSelectedAssetFileID(idTask);
+		var filename 	= this.getSelectedAssetFilename(idTask);
 
-		if( filename && confirm('[LLL:core.file.confirm.delete]' + ' ' + filename) ) {
+		if( confirm('[LLL:core.file.confirm.delete]' + ' ' + filename) ) {
 			var url		= Todoyu.getUrl('assets', 'taskEdit');
 			var options	= {
 				parameters: {
-					action:		'deletetempassetfile',
-					'record':	idAssetRecord,
-					'filename':	filename
+					action:		'deletesessionfile',
+					filekey:	fileKey
 				},
 				onComplete: this.onRemovedAsset.bind(this, filename, idTask)
 			};
 
-			Todoyu.send(url, options);
+			Todoyu.Ui.update(this.getAssetSelector(), url, options);
 		}
 	},
+
 
 
 
@@ -239,7 +237,7 @@ Todoyu.Ext.assets.TaskEdit = {
 		var url		= Todoyu.getUrl('assets', 'taskEdit');
 		var options	= {
 			parameters: {
-				action:		'deletealltempassetfiles'
+				action:	'deleteuploads'
 			}
 		};
 
@@ -343,10 +341,10 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * @return	{String}
 	 */
 	getSelectedAssetFilename: function() {
-		var selectElement		= this.getAssetSelector();
+		var select		= this.getAssetSelector();
 
-		if( selectElement ) {
-			return $F(selectElement);
+		if( select.selectedIndex >= 0 ) {
+			return select.options[select.selectedIndex].text;
 		} else {
 			return '';
 		}
@@ -363,14 +361,9 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * @param	{Ajax.Response}		response
 	 */
 	onRemovedAsset: function(filename, idTask, response) {
-		var notificationIdentifier	= 'assets.taskedit.onremovedasset';
+		Todoyu.notifySuccess('[LLL:core.file.notify.delete.success]' + ' ' + filename, 'assets.taskedit.onremovedasset');
 
-		if( response.getTodoyuHeader('success') == 1 ) {
-			this.refreshFileOptions(idTask);
-			Todoyu.notifySuccess('[LLL:core.file.notify.delete.success]' + ' ' + filename, notificationIdentifier);
-		} else {
-			Todoyu.notifyError('[LLL:core.file.notify.delete.error]' + ' ' + filename, notificationIdentifier);
-		}
+		this.toggleOptions();
 	},
 
 
@@ -385,15 +378,15 @@ Todoyu.Ext.assets.TaskEdit = {
 		var url		= Todoyu.getUrl('assets', 'taskEdit');
 		var options	= {
 			parameters: {
-				'id_task':	idTask,
-				action:	'assetfileoptions'
+				action:	'sessionFiles',
+				task:	idTask
 			},
 			onComplete: this.onRefreshedFileOptions.bind(this, idTask)
 		};
 
-		var targetID	= this.getAssetSelectorID(idTask);
+		var target	= this.getAssetSelectorID(idTask);
 
-		Todoyu.Ui.update(targetID, url, options);
+		Todoyu.Ui.update(target, url, options);
 	},
 
 
@@ -402,10 +395,10 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * Evoked upon completion of refresh of template file selector options: refresh file option buttons
 	 *
 	 * @method	onRefreshedFileOptions
-	 * @param	{Number}	idTask
-	 * @param	{Event}		event
+	 * @param	{Number}		idTask
+	 * @param	{Ajax.Response}	response
 	 */
-	onRefreshedFileOptions: function(idTask, event) {
+	onRefreshedFileOptions: function(idTask, response) {
 		this.toggleOptions(idTask);
 	},
 
