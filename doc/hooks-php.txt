@@ -1,4 +1,4 @@
-Assets PHP Hooks
+Assets Extension - PHP Hooks
 ============================
 
 
