@@ -237,7 +237,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Get selected assets of given task
 	 *
-	 * @method	getSelectedAssetsIDs
+	 * @method	getSelectedAssets
 	 * @param	{Number}	idTask
 	 * @return	Array
 	 */
