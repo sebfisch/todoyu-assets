@@ -20,7 +20,7 @@
 
 TodoyuHookManager::registerHook('project', 'taskIcons', 'TodoyuAssetsAssetManager::hookAddTaskIcons');
 TodoyuHookManager::registerHook('project', 'quickcreatetask', 'TodoyuAssetsTemporaryUploadManager::hookRemoveTempSessionFiles');
-TodoyuHookManager::registerHook('project', 'task.create', 'TodoyuAssetsTemporaryUploadManager::hookTaskCreate');
+TodoyuHookManager::registerHook('project', 'task.create.render', 'TodoyuAssetsTemporaryUploadManager::hookTaskCreate');
 
 TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuAssetsAssetManager::hookAddAssetUploadToTaskCreateForm');
 TodoyuFormHook::registerSaveData('ext/project/config/form/task.xml', 'TodoyuAssetsAssetManager::hookAddUplodedAssetsToTask');
