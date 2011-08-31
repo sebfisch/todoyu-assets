@@ -205,21 +205,6 @@ class TodoyuAssetsAssetManager {
 
 
 
-
-	/**
-	 * Get array of currently temporary stored asset files of current user
-	 *
-	 * @param	Boolean		$getFileStats
-	 * @return	Array
-	 */
-	public static function getTemporaryAssets($getFileStats = false) {
-		$assets	= array();
-
-		return $assets;
-	}
-
-
-
 	/**
 	 * Add a new file to the system.
 	 *  - Copy the file to the file structure
@@ -271,7 +256,11 @@ class TodoyuAssetsAssetManager {
 			'file_size'				=> $fileSize
 		);
 
-		return TodoyuRecordManager::addRecord(self::TABLE, $data);
+		$idAsset = TodoyuRecordManager::addRecord(self::TABLE, $data);
+
+		TodoyuHookManager::callHook('assets', 'asset.add', array($idAsset));
+
+		return $idAsset;
 	}
 
 
@@ -288,6 +277,8 @@ class TodoyuAssetsAssetManager {
 		$filePath	= $asset->getFileStoragePath();
 		$mimeType 	= $asset->getMimeType();
 		$filename	= $asset->getFilename();
+
+		TodoyuHookManager::callHook('assets', 'asset.download', array($idAsset));
 
 		return TodoyuFileManager::sendFile($filePath, $mimeType, $filename);
 	}
@@ -314,6 +305,8 @@ class TodoyuAssetsAssetManager {
 
 			TodoyuFileManager::deleteFile($filePath);
 		}
+
+		TodoyuHookManager::callHook('assets', 'asset.delete', array($idAsset));
 	}
 
 	
@@ -354,6 +347,8 @@ class TodoyuAssetsAssetManager {
 		TodoyuFileManager::sendFile($zipFile, $mimeType, $filename);
 
 		unlink($zipFile);
+
+		TodoyuHookManager::callHook('assets', 'asset.download.zip', array($idTask, $assetIDs));
 	}
 
 
