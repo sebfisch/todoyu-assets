@@ -46,11 +46,8 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * @param	{Element}	form
 	 */
 	showUploadForm: function(button) {
-		//var idTask	= form.id.split('-')[1];
-
 		this.addUploadForm();
 		button.hide();
-		//$$('button.buttonUploadAsset')[0].hide();
 	},
 
 
@@ -343,11 +340,7 @@ Todoyu.Ext.assets.TaskEdit = {
 	getSelectedAssetFilename: function() {
 		var select		= this.getAssetSelector();
 
-		if( select.selectedIndex >= 0 ) {
-			return select.options[select.selectedIndex].text;
-		} else {
-			return '';
-		}
+		return ( select.selectedIndex >= 0 ) ? select.options[select.selectedIndex].text : '';
 	},
 
 

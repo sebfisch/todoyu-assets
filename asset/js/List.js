@@ -217,23 +217,19 @@ Todoyu.Ext.assets.List = {
 		var boxes	= list.select('input');
 
 			// All already checked?
-		var notAll = false;
-		boxes.each(function(item){
-			if( ! item.checked ) {
-				notAll = true;
-				return;
-			}
+		var notAllChecked	= boxes.all(function(box){
+			return box.checked
 		});
 
 		boxes.each(function(item){
-			if( notAll === true ) {
+			if( notAllChecked === true ) {
 				this.check(item.value);
 			} else {
 				this.unCheck(item.value);
 			}
 		}, this);
 
-		$('task-' + idTask + '-assets-checkallbox').checked = notAll;
+		$('task-' + idTask + '-assets-checkallbox').checked = notAllChecked;
 	},
 
 
@@ -241,19 +237,16 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Get selected assets of given task
 	 *
-	 * @method	getSelectedAssets
+	 * @method	getSelectedAssetsIDs
 	 * @param	{Number}	idTask
 	 * @return	Array
 	 */
 	getSelectedAssets: function(idTask) {
 		var list 	= $('task-' + idTask + '-assets-tablebody');
-		var boxes	= list.select('input');
-		var assetIDs= [];
+		var boxes	= list.select('input:checked');
 
-		boxes.each(function(item){
-			if( item.checked ) {
-				assetIDs.push(item.value);
-			}
+		var assetIDs = boxes.collect(function(box) {
+			return box.value;
 		});
 
 		return assetIDs;
