@@ -26,7 +26,6 @@
  */
 class TodoyuAssetsTasktabActionController extends TodoyuActionController {
 
-
 	/**
 	 * Initialize controller: restrict access
 	 *
