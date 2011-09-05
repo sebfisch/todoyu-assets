@@ -3,14 +3,23 @@
 	background-repeat:no-repeat;
 }
 
-.mimeTXT {
+.mimeTXT,
+.mimeRTF {
 	background-position:0 -780px;
+}
+
+.mimeEML {
+	background-position:0 -300px;
 }
 
 .mimeXLS,
 .mimeXLSX,
 .mimeODS {
 	background-position:0 -328px;
+}
+
+.mimeCSV {
+	background-position:0 -882px;
 }
 
 .mimePDF {
@@ -35,8 +44,30 @@
 .mimePNG,
 .mimeJPG,
 .mimeGIF,
-.mimeBMP {
+.mimeBMP,
+.mimePSD,
+.mimeTIF,
+.mimeTIFF {
 	background-position:0 -448px;
+}
+
+.mimeAI,
+.mimeSVG,
+.mimeEPS,
+.mimeDXF,
+.mimeWMF {
+	background-position:0 -814px;
+}
+
+.mimeAVI,
+.mimeMOV,
+.mimeRM,
+.mimeRAM,
+.mimeWMV,
+.mimeMPEG,
+.mimeMPG,
+.mimeMP4 {
+	background-position:0 -848px;
 }
 
 .mimeHTML,
@@ -66,10 +97,13 @@
 .mimeTAR,
 .mimeRAR,
 .mimeBZ2,
-.mimeGZ {
+.mimeGZ,
+.mime7Z {
 	background-position:0 -148px;
 }
 
-.mimeEXE {
+.mimeEXE,
+.mimeBIN,
+.mimeCONF {
 	background-position:0 -718px;
 }
