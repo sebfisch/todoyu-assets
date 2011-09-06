@@ -56,11 +56,6 @@ button.buttonDeleteAsset .icon {
 .assetList .filename {
 	width:270px;
 }
-/*
-.assetList .filesize {
-	width:60px;
-}
-*/
 
 .assetList .uploaddate {
 	width:80px;
@@ -114,7 +109,7 @@ button.buttonDeleteAsset .icon {
 	padding-top:5px;
 }
 div.task div.taskTabs ul li.assets span.icon {
-	background:url(../img/icons.png) no-repeat 0 -23px;
+	background:url(../img/icons.png) no-repeat 0 -25px;
 }
 
 th.assetsFilelistHeaderFilenames {
