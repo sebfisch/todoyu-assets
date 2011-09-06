@@ -557,7 +557,7 @@ class TodoyuAssetsAssetManager {
 			$icons['assets'] = array(
 				'id'		=> 'task-' . $idTask . '-assets',
 				'class'		=> 'assets',
-				'label'		=> 'LLL:assets.ext.task.icon',
+				'label'		=> 'assets.ext.task.icon',
 				'position'	=> 80
 			);
 		}
