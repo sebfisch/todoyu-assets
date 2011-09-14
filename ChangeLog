@@ -7,7 +7,7 @@ assets 1.1.1 - not released yet
 	* Change: Refactored handling of temporary uploaded files (store file infos in session)
 
 assets 1.1.0 - 2011-06-17
-	* Feature: Added mimetype icon for .txt files, extended range of office mimetpyes
+	* Feature: Added mime type icon for .txt files, extended range of office mime types
 	* Bugfix: Spelling mistake in rights check when deleting asset file
 	* Feature: Added creator attribute column in assets listing
 	* Changed: Increased filename max length (from 100 to 255 chars)
