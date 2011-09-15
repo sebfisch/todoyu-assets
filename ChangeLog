@@ -1,10 +1,10 @@
 todoyu assets extension changelog
 
-assets 1.1.1 - not released yet
+assets 1.1.1 - 2011-09-15
 	* Added: Mime type icons (rtf, eml, csv, pds, tif, tiff, ai, svg, eps, dxf, wmf, avi, mov, rm, ram, wmv, mpeg, mpg, mp4, 7z, bin, conf) 
 	* Added: New class to handle temporary uploaded files
 	* Added: Hooks: asset.add, asset.download, asset.delete, asset.download.zip
-	* Change: Refactored handling of temporary uploaded files (store file infos in session)
+	* Changed: Refactored handling of temporary uploaded files (store file infos in session)
 
 assets 1.1.0 - 2011-06-17
 	* Feature: Added mime type icon for .txt files, extended range of office mime types
