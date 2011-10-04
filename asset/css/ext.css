@@ -118,82 +118,10 @@ th.assetsFilelistHeaderFilenames {
 	width:50%;
 }
 
-#taskList .activeTabContent .assetBox .assetsUploader .assetsULfile label {
-	margin-left:10px;
-}
-
-#taskList .activeTabContent .assetBox .assetsUploader input.button {
-	margin-top:5px;
-}
-
-#taskList .activeTabContent .assetBox table.assFilelistHeaderTablPortal,
-#taskList .activeTabContent .assetBox table.assFilelistHeaderTablNonPortal {
-	width:616px;
-	margin:-5px -5px 0;
-	table-layout:fixed;
-}
-
 .assetFilesList {
 	margin-top:-4px !important;
 }
 
-.expanded #taskList .activeTabContent .assetBox table.assFilelistHeaderTablPortal,
-.expanded #taskList .activeTabContent .assetBox table.assFilelistHeaderTablNonPortal {
-	width:895px;
-}
-
-#taskList .activeTabContent .assetBox tr.assetsFilelistHeaderSFP {
-	position:relative;
-	background:#f7f9fa url(../../../../core/asset/img/hr-hor.png) repeat-x 0 bottom;
-}
-
-#taskList .activeTabContent .assetBox tr.assetsFilelistHeaderSFP th {
-	padding:5px;
-}
-
-#taskList .activeTabContent .assetBox tr.assetsFilelistHeaderSFP th.assetsFilelistTHfullSel {
-	width:60px;
-	text-align:center;
-}
-
-#taskList .activeTabContent .assetBox tr.assetsFilelistHeaderSFP th.assetsFilelistHeaderFilensizes {
-	width:70px;
-}
-
-#taskList .activeTabContent .assetBox tr.assetsFilelistHeaderSFP th.assetsFilelistHeaderDates {
-	width:100px;
-}
-
-#taskList .activeTabContent .assetBox td {
-	padding:3px 5px 0;
-}
-
-#taskList .activeTabContent .assetBox td.assetsFileListEntryTD a {
-	display:block;
-	float:left;
-	width:20px;
-	margin:2px 0 0 3px;
-}
-
-
-#taskList .activeTabContent .assetBox td.assetsFileListEntryTD span.customerinvisible_icon,
-#taskList .activeTabContent .assetBox td.assetsFileListEntryTD span.customervisible_icon {
-	left:0;
-}
-
-#taskList .activeTabContent .assetBox td.assetsFileListEntryTD a img {
-	position:static;
-}
-
-#taskList .activeTabContent .assetBox td.assetsFileListEntryTD input.assetsSel {
-	position:relative;
-	top:-5px;
-}
-
-#taskList .activeTabContent .assetBox td.assetsFileListEntryTD img {
-	position:relative;
-	left:5px;
-}
 
 .task span.taskIcons .assets {
 	background:url(../img/icons.png) no-repeat 0 -28px;
