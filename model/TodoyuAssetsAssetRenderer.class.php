@@ -179,9 +179,9 @@ class TodoyuAssetsAssetRenderer {
 	 */
 	public static function renderUploadframeContentFailed($error, $fileName) {
 		$error		= intval($error);
-		$maxFileSize= intval(Todoyu::$CONFIG['EXT']['assets']['max_file_size']);
+		$maxFileSize= TodoyuString::formatSize(intval(Todoyu::$CONFIG['EXT']['assets']['max_file_size']));
 
-		$commands	= 'window.parent.Todoyu.Ext.assets.Upload.uploadFailed(' . $error . ', \'' . $fileName . '\', ' . $maxFileSize . ');';
+		$commands	= 'window.parent.Todoyu.Ext.assets.Upload.uploadFailed(' . $error . ', \'' . $fileName . '\', \'' . $maxFileSize . '\');';
 
 		return TodoyuRenderer::renderUploadIFrameJsContent($commands);
 	}

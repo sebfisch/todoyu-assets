@@ -21,7 +21,7 @@
 	<label index="download.normal">Sie haben nur eine Datei gewählt. Normaler Dateidownload</label>
 	<label index="download.compressed">Die gewählten Dateien werden für den Download gepackt</label>
 	<label index="error.minimumFile">Bitte wählen Sie mindestens eine Datei</label>
-	<label index="maxFileSizeExceeded">Die Datei '#{filename}' hat die maximal zulässige Grösse für Uploads (#{maxFileSize}Bytes) überschritten</label>
+	<label index="maxFileSizeExceeded">Die Datei '#{filename}' hat die maximal zulässige Grösse für Uploads (#{maxFileSize}) überschritten</label>
 	<label index="maxLengthFileNameExceeded">Der Name der Datei '#{filename}' ist zu lang (max. #{maxLengthFileName} Zeichen)</label>
 	<label index="uploadFailed">Das Hochladen der Datei '#{filename}' ist fehlgeschlagen</label>
 	<label index="uploadOk">Die Datei wurde erfolgreich hochgeladen</label>

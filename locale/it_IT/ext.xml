@@ -20,7 +20,7 @@
 	<label index="download.normal">Solo un file selezionato -> scaricamento normale del file</label>
 	<label index="download.compressed">I file selezionati sono stati inseriti un un archivio da scaricare</label>
 	<label index="error.minimumFile">Selezionare almeno un file</label>
-	<label index="maxFileSizeExceeded">Il file '#{filename}' supera le dimensioni massime permesse (#{maxFileSize}Bytes) per il caricamento</label>
+	<label index="maxFileSizeExceeded">Il file '#{filename}' supera le dimensioni massime permesse (#{maxFileSize}) per il caricamento</label>
 	<label index="maxLengthFileNameExceeded">Il nome del file '#{filename}' è più lungo del massimo consentito (#{maxLengthFileName})</label>
 	<label index="uploadFailed">Il caricamento del file '#{filename}' è fallito</label>
 	<label index="uploadOk">Il file è stato caricato</label>

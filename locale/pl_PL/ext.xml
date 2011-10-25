@@ -21,7 +21,7 @@
 	<label index="download.normal">Wybrałeś tylko jeden plik -> normalne pobieranie pliku</label>
 	<label index="download.compressed">Wybrane pliki zostały spakowane do pobrania</label>
 	<label index="error.minimumFile">Proszę wybrać przynajmniej jeden plik</label>
-	<label index="maxFileSizeExceeded">Plik '#{filename}' przekroczył maksymalny dozwolony rozmiar (#{maxFileSize}Bytes)</label>
+	<label index="maxFileSizeExceeded">Plik '#{filename}' przekroczył maksymalny dozwolony rozmiar (#{maxFileSize})</label>
 	<label index="maxLengthFileNameExceeded">Plik '#{filename}' przekroczył dopuszczalną długość (#{maxLengthFileName}) nazwy</label>
 	<label index="uploadFailed">Przesyłanie pliku '#{filename}' nie powiodło się</label>
 	<label index="uploadOk">Plik został przesłany</label>

@@ -19,7 +19,7 @@
 	<label index="download.normal">Vous avez sélectionné un seul fichier, téléchargement standard</label>
 	<label index="download.compressed">Les fichiers sélectionnés ont été compressés pour les télécharger</label>
 	<label index="error.minimumFile">SVP, sélectionner au moins un fichier</label>
-	<label index="maxFileSizeExceeded">Le fichier '#{filename}' dépasse la limite de (#{maxFileSize}Bytes) pour le téléversement</label>
+	<label index="maxFileSizeExceeded">Le fichier '#{filename}' dépasse la limite de (#{maxFileSize}) pour le téléversement</label>
 	<label index="uploadFailed">Le téléversement du fichier '#{filename}' a échoué</label>
 	<label index="uploadOk">Le fichier a été téléversé</label>
 </labels>

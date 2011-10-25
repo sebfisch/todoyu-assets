@@ -90,12 +90,12 @@ class TodoyuAssetsTaskEditRenderer {
 	public static function renderUploadframeContentFailed($error, $fileName, $idTask) {
 		$idTask	= intval($idTask);
 
-		$maxFileSize	= intval(Todoyu::$CONFIG['EXT']['assets']['max_file_size']);
+		$maxFileSize	= TodoyuString::formatSize(intval(Todoyu::$CONFIG['EXT']['assets']['max_file_size']));
 
 		$tmpl	= 'core/view/htmldoc.tmpl';
 		$data	= array(
 			'title'		=> 'Uploader IFrame',
-			'content'	=> TodoyuString::wrapScript('window.parent.Todoyu.Ext.assets.TaskEdit.uploadFailed(' . $error . ', \'' . $fileName . '\', ' . $maxFileSize . ', ' . $idTask . ');')
+			'content'	=> TodoyuString::wrapScript('window.parent.Todoyu.Ext.assets.TaskEdit.uploadFailed(' . $error . ', \'' . $fileName . '\', \'' . $maxFileSize . '\', ' . $idTask . ');')
 		);
 
 		return Todoyu::render($tmpl, $data);

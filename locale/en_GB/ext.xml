@@ -21,7 +21,7 @@
 	<label index="download.normal">You only selected one file -> normal file download</label>
 	<label index="download.compressed">The selected files have been packed into an archive for download</label>
 	<label index="error.minimumFile">Please select at least one file</label>
-	<label index="maxFileSizeExceeded">The file '#{filename}' has exceeded the maximum allowed filesize (#{maxFileSize}Bytes) to upload</label>
+	<label index="maxFileSizeExceeded">The file '#{filename}' has exceeded the maximum allowed filesize (#{maxFileSize}) to upload</label>
 	<label index="maxLengthFileNameExceeded">The file '#{filename}' has exceeded the maximum allowed length (#{maxLengthFileName}) of its name to upload</label>
 	<label index="uploadFailed">The upload of the file '#{filename}' has failed</label>
 	<label index="uploadOk">The file has been uploaded</label>
