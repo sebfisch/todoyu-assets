@@ -123,7 +123,7 @@ Todoyu.Ext.assets.TaskEdit = {
 			}
 		}
 
-		Todoyu.notifySuccess('[LLL:core.file.upload.succeeded]');
+		Todoyu.notifySuccess('[LLL:core.file.upload.succeeded]', 'fileupload');
 	},
 
 
@@ -153,7 +153,7 @@ Todoyu.Ext.assets.TaskEdit = {
 			msg	= '[LLL:core.file.upload.error.uploadfailed]';
 		}
 
-		Todoyu.notifyError(msg.interpolate(info));
+		Todoyu.notifyError(msg.interpolate(info), 'fileupload');
 	},
 
 
