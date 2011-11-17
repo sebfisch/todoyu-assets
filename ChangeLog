@@ -11,56 +11,56 @@ assets 1.1.1 - 2011-09-15
 	* Changed: Refactored handling of temporary uploaded files (store file infos in session)
 
 assets 1.1.0 - 2011-06-17
-	* Feature: Added mime type icon for .txt files, extended range of office mime types
 	* Bugfix: Spelling mistake in rights check when deleting asset file
+	* Feature: Added mime type icon for .txt files, extended range of office mime types
 	* Feature: Added creator attribute column in assets listing
+ 	* Feature: Added task asset upload to quicktask creation
+	* Feature: Added task asset upload to task creation form
+	* Feature: Cleanup of Rights Management
 	* Changed: Increased filename max length (from 100 to 255 chars)
  	* Changed: Requires core 2.1
 	* Changed: Structure for 2.1
 	* Changed: All classes are prefixed with extension name
- 	* Feature: Added task asset upload to quicktask creation
-	* Feature: Added task asset upload to task creation form
-	* Feature: Cleanup of Rights Management
 	* Changed: Changed default ext setting to NOT physically delete asset files (only set deleted-flag in DB)
 	* Changed: Added missing notification after deletion of asset file
 
 
 assets 1.0.1 to 1.0.5 - 1.0.5 released 2011-01-17
-	* Updated year of copyright to 2011
-	* Changed: General cleanups
+	* Bugfix: Various wording and spelling fixes
+	* Bugfix: Refresh whole asset tab on delete an asset
 	* Feature: Updated JsDoc comments
 	* Feature: Added italian translation
- 	* Changed: Changed locale format
 	* Feature: Commented upload failure detection. Set 20 sec limit
 	* Feature: Added check for filename length to prevent non-downloadable files (max 50 signs)
 	* Feature: Upload failure detection
-	* Changed: Rights isAdmin Check changes for easier handling
 	* Feature: Added asset icon to task icons
 	* Feature: Added hooks documentation
 	* Feature: Added Serbian locales
-	* Changed: Moved styles from global.css to ext.css
 	* Feature: Added locked message
-	* Changed: SQL cleanups
 	* Feature: Added japanese translation
 	* Feature: Added czech translation
-	* Changed: Changed assets folder structure
 	* Feature: Added dutch translation
-	* Changed: Move header sending to sendFile function
 	* Feature: Added parts of french translation
 	* Feature: Added parts of russian translation
-	* Bugfix: Various wording and spelling fixes
+	* Feature: Added portuguese translation
+	* Feature: Added directory separator shorthand
+	* Feature: Added max upload size
+	* Feature: noAccess handling in AJAX responses
+	* Changed: Updated year of copyright to 2011
+	* Changed: General cleanups
+ 	* Changed: Changed locale format
+	* Changed: Rights isAdmin Check changes for easier handling
+	* Changed: Moved styles from global.css to ext.css
+	* Changed: SQL cleanups
+	* Changed: Changed assets folder structure
+	* Changed: Move header sending to sendFile function
 	* Changed: Removed manual requiring of auto-loaded config files
 	* Changed: Logger cleanup
-	* Feature: Added portuguese translation
 	* Changed: Unified background colors
-	* Feature: Added directory separator shorthand
 	* Changed: Switched license from GPL to BSD
-	* Feature: Added max upload size
 	* Changed: Moved the global $CONFIG variable to Todoyu class. Is now a public static member variable
 	* Changed: Asset handling (load all in one merge file)
-	* Bugfix: Refresh whole asset tab on delete an asset
 	* Changed: Updated rights xml config with new name format
-	* Feature: noAccess handling in AJAX responses
 
 
 assets 1.0.0 - released 2010-05-10
