@@ -56,7 +56,7 @@ class TodoyuAssetsTemporaryUploadManager {
 			'type'	=> $file['type'],
 			'size'	=> $file['size'],
 			'path'	=> $storagePath,
-			'time'	=> time(),
+			'time'	=> NOW,
 			'key'	=> md5($storagePath)
 		);
 
@@ -140,7 +140,7 @@ class TodoyuAssetsTemporaryUploadManager {
 	private static function storeFile($sourceFile) {
 		$sourceFile		= TodoyuFileManager::pathAbsolute($sourceFile);
 		$storagePath	= self::getStoragePath();
-		$randomName		= md5(time() . $sourceFile . uniqid());
+		$randomName		= md5(NOW . $sourceFile . uniqid());
 		$targetFile		= TodoyuFileManager::pathAbsolute($storagePath . '/' . $randomName);
 
 		TodoyuFileManager::makeDirDeep(dirname($targetFile));
@@ -182,7 +182,7 @@ class TodoyuAssetsTemporaryUploadManager {
 	 */
 	private static function getStoragePath() {
 		if( ! self::hasPath() ) {
-			$random			= md5(time().Todoyu::personid().uniqid());
+			$random			= md5(NOW . Todoyu::personid() . uniqid());
 			$storagePath	= TodoyuFileManager::pathAbsolute(PATH_CACHE . '/files/assets/' . $random);
 			self::setPath($storagePath);
 		}
