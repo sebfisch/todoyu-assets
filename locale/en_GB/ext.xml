@@ -29,4 +29,5 @@
 	<label index="task.icon">Task has assets</label>
 	<label index="taskform.assets.button.delete">Delete Selected Asset</label>
 	<label index="taskform.assets.button.upload">Upload New Asset</label>
+	<label index="contextmenu.task.addasset">Asset</label>
 </labels>

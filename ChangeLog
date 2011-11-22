@@ -1,7 +1,10 @@
 todoyu assets extension changelog
 
+assets 1.2 - not released yet
+	* Added: Task contextmenu item "add new asset"
+
 assets 1.1.2 - 2011-11-17
-	* Bugfix: formatted file size for error message
+	* Bugfix: Formatted file size for error message
 	* Translation: Polish
 
 assets 1.1.1 - 2011-09-15

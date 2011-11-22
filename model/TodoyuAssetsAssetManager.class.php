@@ -693,6 +693,31 @@ class TodoyuAssetsAssetManager {
 		return TodoyuSession::isIn(self::$sessionTempPath);
 	}
 
+
+
+	/**
+	 * Get items for the task context menu
+	 *
+	 * @param	Integer		$idTask
+	 * @param	Array		$items
+	 * @return	Array
+	 */
+	public static function getTaskContextMenuItems($idTask, array $items) {
+		$idTask	= intval($idTask);
+		$task	= TodoyuProjectTaskManager::getTask($idTask);
+		$allowed= array();
+
+		if( $task->isTask() ) {
+			$ownItems	=& Todoyu::$CONFIG['EXT']['asset']['ContextMenu']['Task'];
+
+			if( array_key_exists('add', $items) ) {
+				$allowed['add']['submenu']['add-asset'] = $ownItems['add']['submenu']['add-asset'];
+			}
+		}
+
+		return array_merge_recursive($items, $allowed);
+	}
+
 }
 
 ?>

@@ -219,6 +219,33 @@ Todoyu.Ext.assets = {
 	 */
 	toggleList: function(idTask) {
 		this.List.toggle(idTask);
+	},
+
+
+
+	/**
+	 * Add new asset to given task: expand task details and open assets tab with new asset form
+	 *
+	 * @method	addTaskAsset
+	 * @param	{Number}	idTask
+	 */
+	addTaskAsset: function(idTask) {
+		Todoyu.Ext.project.Task.showDetails(idTask, 'assets', this.onTaskAssetTabLoaded.bind(this));
+	},
+
+
+
+	/**
+	 * Handler when task asset tab is loaded: show asset upload form
+	 *
+	 * @method	onTaskAssetTabLoaded
+	 * @param	{Number}	idTask
+	 * @param	{String}	tab
+	 */
+	onTaskAssetTabLoaded: function(idTask, tab) {
+		if( ! Todoyu.exists('formElement-asset-' + idTask + '-field-file') ) {
+			this.Upload.showForm(idTask);
+		}
 	}
 
 };
