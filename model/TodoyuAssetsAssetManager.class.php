@@ -707,7 +707,11 @@ class TodoyuAssetsAssetManager {
 		$task	= TodoyuProjectTaskManager::getTask($idTask);
 		$allowed= array();
 
-		if( $task->isTask() ) {
+		$allowUse	= Todoyu::allowed('assets', 'general:use');
+		$isLocked	= $task->isLocked();
+		$isTask		= $task->isTask();
+
+		if( $allowUse && !$isLocked && $isTask ) {
 			$ownItems	=& Todoyu::$CONFIG['EXT']['asset']['ContextMenu']['Task'];
 
 			if( array_key_exists('add', $items) ) {
