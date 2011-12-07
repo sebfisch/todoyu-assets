@@ -24,6 +24,6 @@ define('PATH_EXT_ASSETS', PATH_EXT . '/assets');
 
 require_once( PATH_EXT_ASSETS . '/config/constants.php' );
 require_once( PATH_EXT_ASSETS . '/config/hooks.php' );
-require_once( PATH_EXT_ASSETS . '/dwoo/plugins.php');
+require_once( PATH_EXT_ASSETS . '/dwoo/plugins.php' );
 
 ?>

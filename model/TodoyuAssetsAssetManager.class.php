@@ -581,7 +581,7 @@ class TodoyuAssetsAssetManager {
 		if( $idTask === 0 && TodoyuProjectTaskManager::getTask($idTask)->isTask() ) {
 				// Set encoding type, add initialization of file options, add hidden field MAX_FILE_SIZE
 			$form->setEnctype('multipart/form-data');
-			$form->setAttribute('extraOnDisplay', 'Todoyu.Ext.assets.TaskEdit.initFileOperationButtons(' . $idTask . ')' );
+			$form->setAttribute('extraOnDisplay', 'Todoyu.Ext.assets.TaskEdit.initFileOperationButtons(' . $idTask . ')');
 			$form->addHiddenField('MAX_FILE_SIZE', 50000000, true, true);
 
 				// Add assets fieldset
