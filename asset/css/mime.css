@@ -1,109 +1,111 @@
-.mimeIcon {
-	background:url('../img/icons.png') no-repeat 0 -87px;
+.mimetype span.icon {
+	background:url('../img/icons.png') no-repeat 0 -88px;
 	background-repeat:no-repeat;
 }
 
-.mimeTXT,
-.mimeRTF {
+.mimeINI span.icon,
+.mimeTXT span.icon,
+.mimeRTF span.icon {
 	background-position:0 -780px;
 }
 
-.mimeEML {
+.mimeEML span.icon {
 	background-position:0 -300px;
 }
 
-.mimeXLS,
-.mimeXLSX,
-.mimeODS {
+.mimeXLS span.icon,
+.mimeXLSX span.icon,
+.mimeODS span.icon {
 	background-position:0 -328px;
 }
 
-.mimeCSV {
+.mimeCSV span.icon {
 	background-position:0 -882px;
 }
 
-.mimePDF {
+.mimePDF span.icon {
 	background-position:0 -118px;
 }
 
-.mimeDOC,
-.mimeDOCX,
-.mimeSXW,
-.mimeODT {
+.mimeDOC span.icon,
+.mimeDOCX span.icon,
+.mimeSXW span.icon,
+.mimeODT span.icon{
 	background-position:0 -388px;
 }
 
-.mimeT3X {
+.mimeT3X span.icon {
 	background-position:0 -418px;
 }
 
-.mimePHP {
+.mimePHP span.icon {
 	background-position:0 -358px;
 }
 
-.mimePNG,
-.mimeJPG,
-.mimeGIF,
-.mimeBMP,
-.mimePSD,
-.mimeTIF,
-.mimeTIFF {
+.mimePNG span.icon,
+.mimeJPG span.icon,
+.mimeGIF span.icon,
+.mimeBMP span.icon,
+.mimePSD span.icon,
+.mimeTIF span.icon,
+.mimeTIFF span.icon {
 	background-position:0 -448px;
 }
 
-.mimeAI,
-.mimeSVG,
-.mimeEPS,
-.mimeDXF,
-.mimeWMF {
+.mimeAI span.icon,
+.mimeSVG span.icon,
+.mimeEPS span.icon,
+.mimeDXF span.icon,
+.mimeWMF span.icon{
 	background-position:0 -814px;
 }
 
-.mimeAVI,
-.mimeMOV,
-.mimeRM,
-.mimeRAM,
-.mimeWMV,
-.mimeMPEG,
-.mimeMPG,
-.mimeMP4 {
+.mimeAVI span.icon,
+.mimeMOV span.icon,
+.mimeRM span.icon,
+.mimeRAM span.icon,
+.mimeWMV span.icon,
+.mimeMPEG span.icon,
+.mimeMPG span.icon,
+.mimeMP4 span.icon{
 	background-position:0 -848px;
 }
 
-.mimeHTML,
-.mimeHTM,
-.mimeTMPL {
+.mimeHTML span.icon,
+.mimeHTM span.icon,
+.mimeTMPL span.icon{
 	background-position:0 -478px;
 }
 
-.mimeXML {
+.mimeXML  span.icon{
 	background-position:0 -508px;
 }
 
-.mimeJS {
+.mimeJS span.icon {
 	background-position:0 -538px;
 }
 
-.mimeCSS {
+.mimeCSS span.icon {
 	background-position:0 -568px;
 }
 
-.mimePPT,
-.mimePPS {
+.mimePPT span.icon,
+.mimePPS  span.icon {
 	background-position:0 -598px;
 }
 
-.mimeZIP,
-.mimeTAR,
-.mimeRAR,
-.mimeBZ2,
-.mimeGZ,
-.mime7Z {
+.mimeZIP span.icon,
+.mimeTAR span.icon,
+.mimeRAR span.icon,
+.mimeBZ2 span.icon,
+.mimeGZ span.icon,
+.mime7Z span.icon{
 	background-position:0 -148px;
 }
 
-.mimeEXE,
-.mimeBIN,
-.mimeCONF {
+.mimeEXE span.icon,
+.mimeBIN span.icon,
+.mimeDLL span.icon,
+.mimeCONF span.icon{
 	background-position:0 -718px;
 }
