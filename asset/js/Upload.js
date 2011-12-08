@@ -208,12 +208,12 @@ Todoyu.Ext.assets.Upload = {
 			'id':		'asset-uploader-element',
 			'class':	'formElement'
 		});
-		var loaderText = new Element('div').update('[LLL:assets.ext.upload.filename]' + ': ' + filename);
+		var loaderDiv = new Element('div');
 		var loaderImage = new Element('img', {
 			'src': 'core/asset/img/progress.gif'
 		});
 
-		formElement.insert(loaderText);
+		formElement.insert(loaderDiv);
 		formElement.insert(loaderImage);
 
 		$('formElement-asset-' + idTask + '-field-file').insert({
