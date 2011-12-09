@@ -47,7 +47,7 @@ Todoyu.Ext.assets.List = {
 	 */
 	addObservers: function(idTask) {
 			// Check all button
-		$('task-' + idTask + '-assets-checkallbox').on('click', this.selectAll.bind(this, idTask));
+		$('task-' + idTask + '-assets-checkallbox').on('click', this.toggleSelectAll.bind(this, idTask));
 			// Select asset row
 		$('task-' + idTask + '-assets-tablebody').on('click', 'tr', this.select.bind(this));
 			// Actions
@@ -206,30 +206,16 @@ Todoyu.Ext.assets.List = {
 
 
 	/**
-	 * Select all assets of given task
+	 * Get all assets checkbox elements of given task
 	 *
-	 * @method	selectAll
+	 * @method	getAllAssetsCheckboxes
 	 * @param	{Number}	idTask
-	 * @param	{Event}		event
+	 * @return	{Element[]}
 	 */
-	selectAll: function(idTask, event) {
-		var list 	= $('task-' + idTask + '-assets-tablebody');
-		var boxes	= list.select('input');
+	getAllAssetsCheckboxes: function(idTask) {
+		var list	= $('task-' + idTask + '-assets-tablebody');
 
-			// All already checked?
-		var notAllChecked	= boxes.all(function(box){
-			return box.checked
-		});
-
-		boxes.each(function(item){
-			if( notAllChecked === true ) {
-				this.check(item.value);
-			} else {
-				this.unCheck(item.value);
-			}
-		}, this);
-
-		$('task-' + idTask + '-assets-checkallbox').checked = notAllChecked;
+		return list.select('input');
 	},
 
 
@@ -239,17 +225,55 @@ Todoyu.Ext.assets.List = {
 	 *
 	 * @method	getSelectedAssets
 	 * @param	{Number}	idTask
-	 * @return	Array
+	 * @return	Array				Asset IDs
 	 */
 	getSelectedAssets: function(idTask) {
-		var list 	= $('task-' + idTask + '-assets-tablebody');
-		var boxes	= list.select('input:checked');
+		var boxes 	= this.getAllAssetsCheckboxes(idTask);
 
-		var assetIDs = boxes.collect(function(box) {
+		return boxes.collect(function(box) {
 			return box.value;
 		});
+	},
 
-		return assetIDs;
+
+
+	/**
+	 * Check whether all assets of the given task are selected
+	 *
+	 * @method	areAllAssetsSelected
+	 * @param	{Number}	idTask
+	 */
+	areAllAssetsSelected: function(idTask) {
+		var boxes 	= this.getAllAssetsCheckboxes(idTask);
+
+		return boxes.all(function(box){
+			return box.checked
+		});
+	},
+
+
+
+	/**
+	 * De/Select all assets of given task
+	 *
+	 * @method	selectAll
+	 * @param	{Number}	idTask
+	 * @param	{Event}		event
+	 */
+	toggleSelectAll: function(idTask, event) {
+		var allChecked	= this.areAllAssetsSelected(idTask);
+
+		var boxes = this.getAllAssetsCheckboxes(idTask);
+
+		boxes.each(function(item){
+			if( allChecked !== true ) {
+				this.check(item.value);
+			} else {
+				this.unCheck(item.value);
+			}
+		}, this);
+
+		$('task-' + idTask + '-assets-checkallbox').checked = ! allChecked;
 	}
 
 };
