@@ -48,10 +48,13 @@ Todoyu.Ext.assets.List = {
 	addObservers: function(idTask) {
 			// Check all button
 		$('task-' + idTask + '-assets-checkallbox').on('click', this.toggleSelectAll.bind(this, idTask));
+
 			// Select asset row
-		$('task-' + idTask + '-assets-tablebody').on('click', 'tr', this.select.bind(this));
+		var assetsTableBody	= $('task-' + idTask + '-assets-tablebody');
+		assetsTableBody.on('click', 'tr', this.select.bind(this));
+
 			// Actions
-		$('task-' + idTask + '-assets-tablebody').select('tr').each(function(row){
+		assetsTableBody.select('tr').each(function(row){
 			var idAsset	= row.id.split('-').last();
 				// Filename
 			row.down('.filename a').on('click', 'td', this.handleDownloadClick.bind(this, idAsset));
@@ -141,7 +144,6 @@ Todoyu.Ext.assets.List = {
 		event.stop();
 
 		link.toggleClassName('not');
-
 		this.ext.toggleVisibility(idAsset);
 	},
 
@@ -206,16 +208,21 @@ Todoyu.Ext.assets.List = {
 
 
 	/**
-	 * Get all assets checkbox elements of given task
+	 * Get assets checkbox elements of given task
 	 *
 	 * @method	getAllAssetsCheckboxes
 	 * @param	{Number}	idTask
+	 * @param	{Boolean}	checkedOnly
 	 * @return	{Element[]}
 	 */
-	getAllAssetsCheckboxes: function(idTask) {
+	getAssetsCheckboxes: function(idTask, checkedOnly) {
+		checkedOnly	= checkedOnly ? checkedOnly : false;
+
 		var list	= $('task-' + idTask + '-assets-tablebody');
 
-		return list.select('input');
+		var selector	= checkedOnly ? 'input:checked' : 'input';
+
+		return list.select(selector);
 	},
 
 
@@ -228,7 +235,7 @@ Todoyu.Ext.assets.List = {
 	 * @return	Array				Asset IDs
 	 */
 	getSelectedAssets: function(idTask) {
-		var boxes 	= this.getAllAssetsCheckboxes(idTask);
+		var boxes 	= this.getAssetsCheckboxes(idTask, true);
 
 		return boxes.collect(function(box) {
 			return box.value;
@@ -244,7 +251,7 @@ Todoyu.Ext.assets.List = {
 	 * @param	{Number}	idTask
 	 */
 	areAllAssetsSelected: function(idTask) {
-		var boxes 	= this.getAllAssetsCheckboxes(idTask);
+		var boxes 	= this.getAssetsCheckboxes(idTask, false);
 
 		return boxes.all(function(box){
 			return box.checked
@@ -262,8 +269,7 @@ Todoyu.Ext.assets.List = {
 	 */
 	toggleSelectAll: function(idTask, event) {
 		var allChecked	= this.areAllAssetsSelected(idTask);
-
-		var boxes = this.getAllAssetsCheckboxes(idTask);
+		var boxes 		= this.getAssetsCheckboxes(idTask, false);
 
 		boxes.each(function(item){
 			if( allChecked !== true ) {
