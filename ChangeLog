@@ -1,6 +1,7 @@
 todoyu assets extension changelog
 
 assets 1.1.3 - not released yet
+	* Bugfix: Content-type was empty when downloading assets
 	* Bugfix: Download of empty selection downloaded all assets of task instead
 	* Bugfix: Toggle select all assets select did not work
 	* Bugfix: Asset file mimetype icons were displayed possibly to high (long filenames)

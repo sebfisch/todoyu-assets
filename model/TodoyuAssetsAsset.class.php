@@ -112,7 +112,7 @@ class TodoyuAssetsAsset extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getMimeType() {
-		return $this->get('file_type') . '/' . $this->get('file_subtype');
+		return $this->get('file_mime') . '/' . $this->get('file_ext');
 	}
 
 
