@@ -39,7 +39,7 @@ Todoyu::$CONFIG['EXT']['assets']['max_length_filename'] = 256;
    -------------------------------------------- */
 if( Todoyu::allowed('assets', 'general:use') ) {
 		// Add assets tab into task
-	TodoyuProjectTaskManager::addTaskTab('assets', 'TodoyuAssetsTaskAssetViewHelper::getTabLabel', 'TodoyuAssetsTaskAssetViewHelper::getTabContent', 30);
+	TodoyuProjectTaskManager::addTaskTab(TASK_TYPE_TASK, 'assets', 'TodoyuAssetsTaskAssetViewHelper::getTabLabel', 'TodoyuAssetsTaskAssetViewHelper::getTabContent', 30);
 		// Add "Add New > Asset" to task context menu
 	TodoyuContextMenuManager::addFunction('Task', 'TodoyuAssetsAssetManager::getTaskContextMenuItems', 150);
 }

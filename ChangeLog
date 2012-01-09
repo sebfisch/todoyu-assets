@@ -5,6 +5,7 @@ assets 1.1.3 - 2011-12-13
 	* Bugfix: Download of empty selection downloaded all assets of task instead
 	* Bugfix: Toggle select all assets select did not work
 	* Bugfix: Asset file mimetype icons were displayed possibly to high (long filenames)
+	* Changed: Used task type differentiated task tabs registration, incremented project dependency to 1.3.0
 	* Changed: Removed source filename from upload progress message
 	* Changed: Maximum upload filename length from 50 to 256 characters
 	* Added: Task contextmenu item "add new asset"
