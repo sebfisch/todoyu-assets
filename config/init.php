@@ -19,18 +19,18 @@
 *****************************************************************************/
 
 	// Basic paths
-Todoyu::$CONFIG['EXT']['assets']['basePath'] 	= PATH_FILES . DIR_SEP . 'assets';
-Todoyu::$CONFIG['EXT']['assets']['cachePath'] 	= PATH_CACHE . DIR_SEP . 'temp';
+Todoyu::$CONFIG['EXT']['assets']['basePath']	= PATH_FILES . DIR_SEP . 'assets';
+Todoyu::$CONFIG['EXT']['assets']['cachePath']	= PATH_CACHE . DIR_SEP . 'temp';
 	// Delete files on hard disk when deleted in database
-Todoyu::$CONFIG['EXT']['assets']['deleteFiles'] = false;
+Todoyu::$CONFIG['EXT']['assets']['deleteFiles']	= false;
 
 	// Add allowed paths where files can be downloaded from
-Todoyu::$CONFIG['sendFile']['allow'][] = Todoyu::$CONFIG['EXT']['assets']['basePath'];
-Todoyu::$CONFIG['sendFile']['allow'][] = Todoyu::$CONFIG['EXT']['assets']['cachePath'];
+Todoyu::$CONFIG['sendFile']['allow'][]	= Todoyu::$CONFIG['EXT']['assets']['basePath'];
+Todoyu::$CONFIG['sendFile']['allow'][]	= Todoyu::$CONFIG['EXT']['assets']['cachePath'];
 
 	// Set max upload file size
-Todoyu::$CONFIG['EXT']['assets']['max_file_size'] = 50000000; // 50MB
-Todoyu::$CONFIG['EXT']['assets']['max_length_filename'] = 256;
+Todoyu::$CONFIG['EXT']['assets']['max_file_size']	= 50000000; // 50MB
+Todoyu::$CONFIG['EXT']['assets']['max_length_filename']	= 256;
 
 
 
@@ -39,7 +39,7 @@ Todoyu::$CONFIG['EXT']['assets']['max_length_filename'] = 256;
    -------------------------------------------- */
 if( Todoyu::allowed('assets', 'general:use') ) {
 		// Add assets tab into task
-	TodoyuProjectTaskManager::addTaskTab(TASK_TYPE_TASK, 'assets', 'TodoyuAssetsTaskAssetViewHelper::getTabLabel', 'TodoyuAssetsTaskAssetViewHelper::getTabContent', 30);
+	TodoyuContentItemTabManager::registerTab('project', 'task', 'assets', 'TodoyuAssetsTaskAssetViewHelper::getTabLabel', 'TodoyuAssetsTaskAssetViewHelper::getTabContent', 30);
 		// Add "Add New > Asset" to task context menu
 	TodoyuContextMenuManager::addFunction('Task', 'TodoyuAssetsAssetManager::getTaskContextMenuItems', 150);
 }

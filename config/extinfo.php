@@ -22,7 +22,7 @@
  * Various assets extension info data
  */
 
-Todoyu::$CONFIG['EXT']['assets']['info'] = array(
+Todoyu::$CONFIG['EXT']['assets']['info']	= array(
 	'title'				=> 'Task Assets',
 	'description' 		=> 'Task Assets Listing, Upload, Download, etc.',
 	'author' 			=> array(
@@ -33,11 +33,11 @@ Todoyu::$CONFIG['EXT']['assets']['info'] = array(
 	'state' 		=> 'stable',
 	'version' 		=> '1.1.3',
 	'constraints'	=> array(
-		'depends' 	=> array(
+		'depends'	=> array(
 			'contact'	=> '1.1.0',
-			'project' 	=> '1.3.0',
+			'project'	=> '1.3.0',
 		),
-		'conflicts' => array(
+		'conflicts'	=> array(
 		)
 	),
 	'urlDocumentation'	=> 'http://doc.todoyu.com/?assets'

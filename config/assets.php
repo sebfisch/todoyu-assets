@@ -24,8 +24,8 @@
  * @package		Todoyu
  * @subpackage	Assets
  */
-Todoyu::$CONFIG['EXT']['assets']['assets'] = array(
-	'js' => array(
+Todoyu::$CONFIG['EXT']['assets']['assets']	= array(
+	'js'	=> array(
 		array(
 			'file'		=> 'ext/assets/asset/js/Ext.js',
 			'position'	=> 100
@@ -47,7 +47,7 @@ Todoyu::$CONFIG['EXT']['assets']['assets'] = array(
 			'position'	=> 26
 		)
 	),
-	'css' => array(
+	'css'	=> array(
 		array(
 			'file'	=> 'ext/assets/asset/css/ext.css'
 		),

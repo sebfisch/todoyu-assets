@@ -18,10 +18,10 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-Todoyu::$CONFIG['EXT']['asset']['ContextMenu']['Task'] = array(
-	'add' => array(
-		'submenu' => array(
-			'add-asset' => array(
+Todoyu::$CONFIG['EXT']['asset']['ContextMenu']['Task']	= array(
+	'add'	=> array(
+		'submenu'	=> array(
+			'add-asset'	=> array(
 				'key'		=> 'add-asset',
 				'label'		=> 'assets.ext.contextmenu.task.addasset',
 				'jsAction'	=> 'Todoyu.Ext.assets.addTaskAsset(#ID#)',
