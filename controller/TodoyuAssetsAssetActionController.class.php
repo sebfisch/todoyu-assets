@@ -103,6 +103,7 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 
 		TodoyuAssetsAssetManager::togglePublic($idAsset);
 	}
+
 }
 
 ?>

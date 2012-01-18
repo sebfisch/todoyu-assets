@@ -34,7 +34,6 @@ assets 1.1.0 - 2011-06-17
 	* Changed: Changed default ext setting to NOT physically delete asset files (only set deleted-flag in DB)
 	* Changed: Added missing notification after deletion of asset file
 
-
 assets 1.0.1 to 1.0.5 - 1.0.5 released 2011-01-17
 	* Bugfix: Various wording and spelling fixes
 	* Bugfix: Refresh whole asset tab on delete an asset
@@ -71,7 +70,6 @@ assets 1.0.1 to 1.0.5 - 1.0.5 released 2011-01-17
 	* Changed: Moved the global $CONFIG variable to Todoyu class. Is now a public static member variable
 	* Changed: Asset handling (load all in one merge file)
 	* Changed: Updated rights xml config with new name format
-
 
 assets 1.0.0 - released 2010-05-10
 	* Changed: Declared state stable
