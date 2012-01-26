@@ -65,7 +65,7 @@ Todoyu.Ext.assets.Upload = {
 			var options	= {
 				parameters: {
 					action:	'uploadform',
-					'task':		idTask
+					task:	idTask
 				}
 			};
 			var target	= 'task-' + idTask + '-assets-commands';
@@ -185,10 +185,10 @@ Todoyu.Ext.assets.Upload = {
 	replaceField: function(idTask) {
 		var old		= this.getField(idTask);
 		var field	= new Element('input', {
-			'id':		old.readAttribute('id'),
-			'type':		old.readAttribute('type'),
-			'onchange':	old.readAttribute('onchange'),
-			'name':		old.readAttribute('name')
+			id:		old.readAttribute('id'),
+			type:		old.readAttribute('type'),
+			onchange:	old.readAttribute('onchange'),
+			name:		old.readAttribute('name')
 		});
 
 		old.replace(field);
@@ -205,12 +205,12 @@ Todoyu.Ext.assets.Upload = {
 	 */
 	showProgressBar: function(idTask, filename) {
 		var formElement = new Element('div', {
-			'id':		'asset-uploader-element',
-			'class':	'formElement'
+			id:		'asset-uploader-element',
+			'class':'formElement'
 		});
 		var loaderDiv = new Element('div');
 		var loaderImage = new Element('img', {
-			'src': 'core/asset/img/progress.gif'
+			src: 'core/asset/img/progress.gif'
 		});
 
 		formElement.insert(loaderDiv);
@@ -315,9 +315,9 @@ Todoyu.Ext.assets.Upload = {
 		this.showUploadField();
 
 		var info	= {
-			'filename': 	filename,
-			'maxFileSize':	maxFileSize,
-			'maxLengthFileName': maxLengthFileName
+			filename: 			filename,
+			maxFileSize:		maxFileSize,
+			maxLengthFileName: 	maxLengthFileName
 		};
 		var msg		= '';
 

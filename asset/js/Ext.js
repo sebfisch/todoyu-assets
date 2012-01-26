@@ -101,8 +101,8 @@ Todoyu.Ext.assets = {
 			Todoyu.notifyInfo('[LLL:assets.ext.download.compressed]');
 			var params = {
 				action:	'download',
-				'task':		idTask,
-				'assets':	selectedAssets.join(',')
+				task:		idTask,
+				assets:	selectedAssets.join(',')
 			};
 
 			Todoyu.goTo('assets', 'zip', params);

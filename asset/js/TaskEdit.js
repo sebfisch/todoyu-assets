@@ -141,9 +141,9 @@ Todoyu.Ext.assets.TaskEdit = {
 		this.removeUploadForm();
 
 		var info	= {
-			'filename': 	filename,
-			'maxFileSize':	maxFileSize,
-			'id_task':		idTask
+			filename: 		filename,
+			maxFileSize:	maxFileSize,
+			id_task:		idTask
 		};
 		var msg		= '';
 
