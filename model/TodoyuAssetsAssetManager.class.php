@@ -226,7 +226,7 @@ class TodoyuAssetsAssetManager {
 		$storageDir	= self::getAssetStoragePath($type, $idParent);
 		$filePath	= TodoyuFileManager::addFileToStorage($storageDir, $tempFile, $fileName);
 
-		if( $filePath === false ) {
+		if( !$filePath ) {
 			return false;
 		}
 
@@ -299,7 +299,7 @@ class TodoyuAssetsAssetManager {
 		TodoyuRecordManager::updateRecord(self::TABLE, $idAsset, $update);
 
 			// Delete file on hard disk?
-		if( Todoyu::$CONFIG['EXT']['assets']['deleteFiles'] === true ) {
+		if( Todoyu::$CONFIG['EXT']['assets']['deleteFiles'] ) {
 			$asset		= self::getAsset($idAsset);
 			$filePath	= $asset->getFileStoragePath();
 
