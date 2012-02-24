@@ -5,15 +5,14 @@
 		<attribute name="name">asset</attribute>
 		<attribute name="enctype">multipart/form-data</attribute>
 		<attribute name="id_task">0</attribute>
-		<attribute name="extraOnDisplay">Todoyu.Ext.assets.TaskEdit.initFileOperationButtons()</attribute>
 	</attributes>
 	<hiddenFields>
 		<field name="MAX_FILE_SIZE" value="50000000" noWrap="true" noStorage="true" />
 	</hiddenFields>
 	<fieldsets>
 		<fieldset name="assets">
-			<legend>assets.form.legend.basics</legend>
-			<class>right</class>
+			<legend>assets.form.legend.inlineAssetUpload</legend>
+			<class>inlineAssetUpload</class>
 			<elements>
 
 				<field type="select" name="id_asset">
@@ -26,18 +25,18 @@
 					<extraAttributes>onchange="Todoyu.Ext.assets.TaskEdit.onFileSelectionChange(this)"</extraAttributes>
 				</field>
 
-				<field type="button" name="delete">
-					<text>assets.ext.taskform.assets.button.delete</text>
-					<class>buttonDeleteAsset</class>
-					<hasIcon />
-					<onclick>Todoyu.Ext.assets.TaskEdit.removeSelectedTempAsset(#id#)</onclick>
-				</field>
-
 				<field type="button" name="upload">
 					<text>assets.ext.taskform.assets.button.upload</text>
 					<class>buttonUploadAsset</class>
 					<hasIcon />
 					<onclick>Todoyu.Ext.assets.TaskEdit.showUploadForm(this)</onclick>
+				</field>
+
+				<field type="button" name="delete">
+					<text>assets.ext.taskform.assets.button.delete</text>
+					<class>buttonDeleteAsset</class>
+					<hasIcon />
+					<onclick>Todoyu.Ext.assets.TaskEdit.removeSelectedTempAsset(#id#)</onclick>
 				</field>
 
 			</elements>

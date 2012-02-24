@@ -31,6 +31,39 @@ button.buttonDeleteAsset .icon {
 
 
 /* ----------------------------------------------
+	Task inline upload form
+   ---------------------------------------------- */
+.inlineAssetUpload .fieldnameDelete,
+.inlineAssetUpload .fieldnameUpload {
+	float:left;
+	width:auto;
+}
+.inlineAssetUpload .fieldnameDelete .fField,
+.inlineAssetUpload .fieldnameUpload .fField {
+	width:auto;
+}
+.inlineAssetUpload .fieldnameDelete .fLabel {
+	width:0;
+}
+.inlineAssetUpload  .assetUploadForm {
+	margin-left: 140px;
+	float: left;
+}
+.inlineAssetUpload .assetUploadForm .fForm {
+	background: none;
+}
+.inlineAssetUpload .assetUploadForm .fForm fieldset.main {
+	margin-top:0;
+}
+.inlineAssetUpload .assetUploadForm .fForm .fieldnameFile .fLabel {
+	width:160px;
+}
+.inlineAssetUpload .assetUploadForm .fForm .fieldnameFile .fField {
+	width:250px;
+}
+
+
+/* ----------------------------------------------
 	List
    ---------------------------------------------- */
 .assetList .assets-table-header {

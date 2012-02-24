@@ -20,12 +20,9 @@
 					<label>core.file.upload.selectfile</label>
 					<onchange>Todoyu.Ext.assets.TaskEdit.upload(this)</onchange>
 				</field>
-				
-				<field type="button" name="cancel">
-					<text>core.global.cancel</text>
-					<class>buttonCancel cancel</class>
-					<hasIcon />
-					<onclick>Todoyu.Ext.assets.TaskEdit.removeUploadForm()</onclick>
+
+				<field type="cancelButton" name="cancel">
+					<onclick>Todoyu.Ext.assets.TaskEdit.cancelUpload(#id_task#)</onclick>
 				</field>
 
 			</elements>

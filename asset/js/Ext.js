@@ -61,6 +61,7 @@ Todoyu.Ext.assets = {
 	 */
 	registerHooks: function() {
 		Todoyu.Hook.add('project.task.edit.cancelled', this.TaskEdit.onCancelledTaskEdit.bind(this.TaskEdit));
+		Todoyu.Hook.add('project.task.formLoaded', this.TaskEdit.onTaskEditFormLoaded.bind(this.TaskEdit));
 		Todoyu.Hook.add('project.quickTask.closePopup', this.TaskEdit.onCloseQuicktaskPopup.bind(this.TaskEdit));
 	},
 

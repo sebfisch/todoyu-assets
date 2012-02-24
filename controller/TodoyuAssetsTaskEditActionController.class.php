@@ -56,7 +56,9 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function sessionFilesAction(array $params) {
-		return TodoyuAssetsTaskEditRenderer::renderSessionFileOptions();
+		$idTask	= intval($params['task']);
+
+		return TodoyuAssetsTaskEditRenderer::renderSessionFileOptions($idTask);
 	}
 
 
@@ -68,7 +70,9 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public static function uploadformAction(array $params) {
-		return TodoyuAssetsTaskEditRenderer::renderAssetUploadForm();
+		$idTask	= intval($params['task']);
+
+		return TodoyuAssetsTaskEditRenderer::renderAssetUploadForm($idTask);
 	}
 
 
@@ -97,7 +101,8 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 
 			// Render frame content. Success or error
 		if( $error === UPLOAD_ERR_OK && ! $file['error'] ) {
-			TodoyuAssetsTemporaryUploadManager::addFile($file);
+			$uploader	= new TodoyuAssetsTempUploaderTask($idTask);
+			$uploader->addFile($file);
 
 			return TodoyuAssetsTaskEditRenderer::renderUploadframeContent($file['name'], $idTask);
 		} else {
@@ -118,10 +123,12 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 	 */
 	public static function deletesessionfileAction(array $params) {
 		$fileKey	= trim($params['filekey']);
+		$idTask		= intval($params['task']);
 
-		TodoyuAssetsTemporaryUploadManager::deleteFile($fileKey);
+		$uploader	= new TodoyuAssetsTempUploaderTask($idTask);
+		$uploader->removeFile($fileKey);
 
-		return TodoyuAssetsTaskEditRenderer::renderSessionFileOptions();
+		return TodoyuAssetsTaskEditRenderer::renderSessionFileOptions($idTask);
 	}
 
 
@@ -132,7 +139,10 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public static function deleteuploadsAction(array $params) {
-		TodoyuAssetsTemporaryUploadManager::destroy();
+		$idTask		= intval($params['task']);
+
+		$uploader	= new TodoyuAssetsTempUploaderTask($idTask);
+		$uploader->clear();
 	}
 
 }

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
 	<label index="legend.basics">Task assets</label>
+	<label index="legend.inlineAssetUpload">Attach files to this task</label>
 </labels>

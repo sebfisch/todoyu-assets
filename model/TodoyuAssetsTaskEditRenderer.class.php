@@ -29,26 +29,27 @@ class TodoyuAssetsTaskEditRenderer {
 	/**
 	 * Render upload form for assets
 	 *
+	 * @param	Integer		$idTask
 	 * @return	String
 	 */
-	public static function renderAssetUploadForm() {
+	public static function renderAssetUploadForm($idTask) {
 			// Construct form object
-		$xmlPath	= 'ext/assets/config/form/taskedit-upload.xml';
-		$form		= TodoyuFormManager::getForm($xmlPath);
+		$xmlPath	= 'ext/assets/config/form/task-inline-upload.xml';
+		$form		= TodoyuFormManager::getForm($xmlPath, $idTask);
 
 			// Set form data
 		$formData	= array(
-			'id_task'		=> 0,
+			'id_task'		=> $idTask,
 			'MAX_FILE_SIZE'	=> intval(Todoyu::$CONFIG['EXT']['assets']['max_file_size'])
 		);
 		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData);
 
 		$form->setFormData($formData);
-		$form->setUseRecordID(false);
 
 			// Render form
 		$tmpl	= 'ext/assets/view/taskedit-uploadform.tmpl';
 		$data	= array(
+			'idTask'	=> $idTask,
 			'formhtml'	=> $form->render()
 		);
 
@@ -106,15 +107,16 @@ class TodoyuAssetsTaskEditRenderer {
 	/**
 	 * Render options for files uploaded during task creation
 	 *
+	 * @param	Integer		$idTask
 	 * @return	String		Rendered <option> elements
 	 */
-	public static function renderSessionFileOptions() {
-		$files	= TodoyuAssetsTemporaryUploadManager::getFiles();
-		$options= array();
+	public static function renderSessionFileOptions($idTask) {
+		$uploader	= new TodoyuAssetsTempUploaderTask($idTask);
+		$fileInfos	= $uploader->getFilesInfos();
+		$options	= array();
+		$fileInfos	= TodoyuArray::sortByLabel($fileInfos, 'time', true);
 
-		$files	= TodoyuArray::sortByLabel($files, 'time', true);
-
-		foreach($files as $file) {
+		foreach($fileInfos as $file) {
 			$options[] = array(
 				'value'	=> $file['key'],
 				'label'	=> $file['name'] . ' (' . TodoyuTime::format($file['time'], 'timesec') . ', ' . TodoyuString::formatSize($file['size']) . ')'

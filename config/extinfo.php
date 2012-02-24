@@ -31,11 +31,11 @@ Todoyu::$CONFIG['EXT']['assets']['info']	= array(
 		'company'	=> 'snowflake productions GmbH, Zurich'
 	),
 	'state' 		=> 'stable',
-	'version' 		=> '1.1.3',
+	'version' 		=> '1.2.0a',
 	'constraints'	=> array(
 		'depends'	=> array(
 			'contact'	=> '1.1.0',
-			'project'	=> '1.3.0',
+			'project'	=> '1.3.0a',
 		),
 		'conflicts'	=> array(
 		)

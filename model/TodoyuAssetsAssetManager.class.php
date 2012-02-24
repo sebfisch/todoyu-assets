@@ -577,15 +577,11 @@ class TodoyuAssetsAssetManager {
 	 */
 	public static function hookAddAssetUploadToTaskCreateForm(TodoyuForm $form, $idTask, array $params) {
 		$idTask	= intval($idTask);
+		$task	= TodoyuProjectTaskManager::getTask($idTask);
 
-		if( $idTask === 0 && TodoyuProjectTaskManager::getTask($idTask)->isTask() ) {
-				// Set encoding type, add initialization of file options, add hidden field MAX_FILE_SIZE
-			$form->setEnctype('multipart/form-data');
-			$form->setAttribute('extraOnDisplay', 'Todoyu.Ext.assets.TaskEdit.initFileOperationButtons(' . $idTask . ')');
-			$form->addHiddenField('MAX_FILE_SIZE', 50000000, true, true);
-
+		if( $task->isTask() ) {
 				// Add assets fieldset
-			$xmlPathSave	= 'ext/assets/config/form/taskedit-fieldset-assets.xml';
+			$xmlPathSave	= 'ext/assets/config/form/task-inline-fieldset.xml';
 			$assetForm		= TodoyuFormManager::getForm($xmlPathSave);
 			$assetFieldset	= $assetForm->getFieldset('assets');
 
@@ -618,20 +614,20 @@ class TodoyuAssetsAssetManager {
 	 * @param	Integer		$idTask
 	 * @return	Array
 	 */
-	public static function hookAddUplodedAssetsToTask(array $data, $idTask) {
-		$idTask	= intval($idTask);
+	public static function hookStoreUplodedTaskAssets(array $data, $idTask) {
+		$idTaskOld	= intval($data['id']);
+		$uploader	= new TodoyuAssetsTempUploaderTask($idTaskOld);
+		$fileInfos	= $uploader->getFilesInfos();
 
 			// Remove asset fields from form data
 		unset($data['MAX_FILE_SIZE']);
 		unset($data['id_asset']);
 
-		$assets	= TodoyuAssetsTemporaryUploadManager::getFiles();
-
-		foreach($assets as $asset) {
+		foreach($fileInfos as $asset) {
 			self::addTaskAsset($idTask, $asset['path'], $asset['name'], $asset['type']);
 		}
 
-		TodoyuAssetsTemporaryUploadManager::destroy();
+		$uploader->clear();
 
 		return $data;
 	}
@@ -645,12 +641,12 @@ class TodoyuAssetsAssetManager {
 	 * @return	Array
 	 */
 	public static function getTaskAssetFileOptions($idTask = 0) {
-		$files	= TodoyuAssetsTemporaryUploadManager::getFiles();
-		$options= array();
+		$options	= array();
+		$uploader	= new TodoyuAssetsTempUploaderTask($idTask);
+		$fileInfos	= $uploader->getFilesInfos();
+		$fileInfos	= TodoyuArray::sortByLabel($fileInfos, 'time', true);
 
-		$files	= TodoyuArray::sortByLabel($files, 'time', true);
-
-		foreach($files as $file) {
+		foreach($fileInfos as $file) {
 			$options[] = array(
 				'value'	=> $file['key'],
 				'label'	=> $file['name'] . ' (' . TodoyuTime::format($file['time'], 'timesec') . ')'

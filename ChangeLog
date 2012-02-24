@@ -1,24 +1,8 @@
 todoyu assets extension changelog
 
-assets 1.1.3 - 2011-12-13
-	* Bugfix: Content-type was empty when downloading assets
-	* Bugfix: Download of empty selection downloaded all assets of task instead
-	* Bugfix: Toggle select all assets select did not work
-	* Bugfix: Asset file mimetype icons were displayed possibly to high (long filenames)
-	* Changed: Used task type differentiated task tabs registration, incremented project dependency to 1.3.0
-	* Changed: Removed source filename from upload progress message
-	* Changed: Maximum upload filename length from 50 to 256 characters
-	* Added: Task contextmenu item "add new asset"
-
-assets 1.1.2 - 2011-11-17
-	* Bugfix: Formatted file size for error message
-	* Translation: Polish
-
-assets 1.1.1 - 2011-09-15
-	* Added: Mime type icons (rtf, eml, csv, pds, tif, tiff, ai, svg, eps, dxf, wmf, avi, mov, rm, ram, wmv, mpeg, mpg, mp4, 7z, bin, conf) 
-	* Added: New class to handle temporary uploaded files
-	* Added: Hooks: asset.add, asset.download, asset.delete, asset.download.zip
-	* Changed: Refactored handling of temporary uploaded files (store file infos in session)
+assets 1.2.0 - not released yet
+	* Feature: Add assets also during task edit
+	* Changed: Optimized styling to save space
 
 assets 1.1.0 - 2011-06-17
 	* Bugfix: Spelling mistake in rights check when deleting asset file
