@@ -94,19 +94,18 @@ button.buttonDeleteAsset .icon {
 	padding-left:5px;
 	width:20px;
 }
-
 .assetList .mimetype {
 	width:20px;
 }
-
-.assetList .filename {
-	width:270px;
+.assetList .person {
+	width:120px;
 }
-
+.assetList .filesize {
+	width:50px;
+}
 .assetList .uploaddate {
-	width:80px;
+	width:90px;
 }
-
 .assetList .actions {
 	width:60px;
 }
