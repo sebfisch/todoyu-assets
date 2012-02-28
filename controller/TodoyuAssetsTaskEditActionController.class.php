@@ -64,29 +64,14 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 
 
 	/**
-	 * Get upload form for assets
-	 *
-	 * @param	Array	$params
-	 * @return	String
-	 */
-	public static function uploadformAction(array $params) {
-		$idTask	= intval($params['task']);
-
-		return TodoyuAssetsTaskEditRenderer::renderAssetUploadForm($idTask);
-	}
-
-
-
-	/**
 	 * Upload an asset file
 	 *
 	 * @param	Array		$params
 	 * @return	String
 	 */
 	public function uploadassetfileAction(array $params) {
-		$idTask	= intval($params['assetfile']['id_task']);
-
-		$file	= TodoyuRequest::getUploadFile('file', 'assetfile');
+		$idTask	= intval($params['task']['id']);
+		$file	= TodoyuRequest::getUploadFile('file', 'task');
 		$error	= intval($file['error']);
 
 			// Check again for file limit

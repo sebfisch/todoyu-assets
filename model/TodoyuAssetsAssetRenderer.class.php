@@ -46,12 +46,8 @@ class TodoyuAssetsAssetRenderer {
 				$content = self::renderList($idTask);
 			}
 		} else {
-			if( $numAssets === 0 ) {
-				$content = self::renderUploadForm($idTask);
-			} else {
-				$content = self::renderListControl($idTask);
-				$content .= self::renderList($idTask);
-			}
+			$content = self::renderListControl($idTask);
+			$content .= self::renderList($idTask);
 		}
 
 		return $content;
@@ -105,42 +101,6 @@ class TodoyuAssetsAssetRenderer {
 		$tmpl	= 'ext/assets/view/list-controll.tmpl';
 		$data	= array(
 			'idTask' => $idTask
-		);
-
-		return Todoyu::render($tmpl, $data);
-	}
-
-
-
-	/**
-	 * Render upload form
-	 *
-	 * @param	Integer		$idTask
-	 * @return	String
-	 */
-	public static function renderUploadForm($idTask) {
-		$idTask		= intval($idTask);
-
-			// Construct form object
-		$xmlPath	= 'ext/assets/config/form/upload.xml';
-		$form		= TodoyuFormManager::getForm($xmlPath, $idTask);
-
-			// Get form data
-		$formData	= array(
-			'id_task'		=> $idTask,
-			'MAX_FILE_SIZE'	=> intval(Todoyu::$CONFIG['EXT']['assets']['max_file_size'])
-		);
-		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, $idTask);
-
-			// Set form data
-		$form->setFormData($formData);
-		$form->setRecordID($idTask);
-
-			// Render
-		$tmpl	= 'ext/assets/view/uploadform.tmpl';
-		$data	= array(
-			'idTask'	=> $idTask,
-			'formhtml'	=> $form->render()
 		);
 
 		return Todoyu::render($tmpl, $data);

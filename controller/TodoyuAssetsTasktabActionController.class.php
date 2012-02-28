@@ -38,20 +38,6 @@ class TodoyuAssetsTasktabActionController extends TodoyuActionController {
 
 
 	/**
-	 * Get upload form
-	 *
-	 * @param	Array		$params
-	 * @return	String
-	 */
-	public function uploadformAction(array $params) {
-		$idTask	= intval($params['task']);
-
-		return TodoyuAssetsAssetRenderer::renderUploadForm($idTask);
-	}
-
-
-
-	/**
 	 * Get asset list
 	 *
 	 * @param	Array		$params

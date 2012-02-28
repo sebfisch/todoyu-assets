@@ -57,16 +57,7 @@ class TodoyuAssetsTaskAssetViewHelper {
 	 * @return	String
 	 */
 	public static function getTabContent($idTask) {
-		$idTask		= intval($idTask);
-		$numAssets	= TodoyuAssetsAssetManager::getNumTaskAssets($idTask);
-
-		if( $numAssets === 0 && !TodoyuProjectTaskManager::isLocked($idTask) ) {
-			$content	= TodoyuAssetsAssetRenderer::renderUploadForm($idTask);
-		} else {
-			$content	= TodoyuAssetsAssetRenderer::renderTabContent($idTask);
-		}
-
-		return $content;
+		return TodoyuAssetsAssetRenderer::renderTabContent($idTask);
 	}
 
 

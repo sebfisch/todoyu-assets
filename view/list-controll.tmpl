@@ -1,4 +1,18 @@
 <div class="tabBlock overflow assetsButtons" id="task-{$idTask}-assets-commands">
-	{Button label="assets.ext.upload.new" class="upload" onclick="Todoyu.Ext.assets.Upload.showForm($idTask)"}
+	{* Hidden upload form over the button *}
+	<form name="asset" id="task-{$idTask}-asset-form" class="directUploadForm" method="post" enctype="multipart/form-data" action="index.php?ext=assets&amp;controller=upload">
+		<input type="hidden" 	name="MAX_FILE_SIZE" 	value="50000000" />
+		<input type="hidden" 	name="asset[id_task]" 	value="{$idTask}" />
+		<input type="file" 		name="asset[file]"		id="task-{$idTask}-asset-file"		onchange="Todoyu.Ext.assets.Upload.onChange({$idTask})" />
+	</form>
+
+	{* Buttons *}
+	{Button label="assets.ext.upload.new" class="upload"}
 	{Button label="assets.ext.download.selection" class="downloadSelection" onclick="Todoyu.Ext.assets.downloadSelection($idTask)"}
+
+	{* Progress bar *}
+	<div id="task-{$idTask}-asset-progress" class="uploadProgress" style="display: none">
+		<img src="core/asset/img/progress.gif" alt="Upload" width="128" height="15" />
+	</div>
+
 </div>

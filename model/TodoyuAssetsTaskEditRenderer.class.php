@@ -27,39 +27,6 @@
 class TodoyuAssetsTaskEditRenderer {
 
 	/**
-	 * Render upload form for assets
-	 *
-	 * @param	Integer		$idTask
-	 * @return	String
-	 */
-	public static function renderAssetUploadForm($idTask) {
-			// Construct form object
-		$xmlPath	= 'ext/assets/config/form/task-inline-upload.xml';
-		$form		= TodoyuFormManager::getForm($xmlPath, $idTask);
-
-			// Set form data
-		$formData	= array(
-			'id_task'		=> $idTask,
-			'MAX_FILE_SIZE'	=> intval(Todoyu::$CONFIG['EXT']['assets']['max_file_size'])
-		);
-		$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData);
-
-		$form->setFormData($formData);
-
-			// Render form
-		$tmpl	= 'ext/assets/view/taskedit-uploadform.tmpl';
-		$data	= array(
-			'idTask'	=> $idTask,
-			'formhtml'	=> $form->render()
-		);
-
-			// Render form wrapped via dwoo template
-		return Todoyu::render($tmpl, $data);
-	}
-
-
-
-	/**
 	 * Render asset upload iFrame content
 	 *
 	 * @param	String		$fileName

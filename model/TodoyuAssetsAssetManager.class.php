@@ -581,7 +581,7 @@ class TodoyuAssetsAssetManager {
 
 		if( $task->isTask() ) {
 				// Add assets fieldset
-			$xmlPathSave	= 'ext/assets/config/form/task-inline-fieldset.xml';
+			$xmlPathSave	= 'ext/assets/config/form/task-inline-upload.xml';
 			$assetForm		= TodoyuFormManager::getForm($xmlPathSave);
 			$assetFieldset	= $assetForm->getFieldset('assets');
 
@@ -621,7 +621,8 @@ class TodoyuAssetsAssetManager {
 
 			// Remove asset fields from form data
 		unset($data['MAX_FILE_SIZE']);
-		unset($data['id_asset']);
+		unset($data['assetlist']);
+		unset($data['file']);
 
 		foreach($fileInfos as $asset) {
 			self::addTaskAsset($idTask, $asset['path'], $asset['name'], $asset['type']);

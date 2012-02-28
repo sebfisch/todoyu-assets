@@ -62,7 +62,6 @@ Todoyu.Ext.assets = {
 	registerHooks: function() {
 		Todoyu.Hook.add('project.task.edit.cancelled', this.TaskEdit.onCancelledTaskEdit.bind(this.TaskEdit));
 		Todoyu.Hook.add('project.task.formLoaded', this.TaskEdit.onTaskEditFormLoaded.bind(this.TaskEdit));
-		Todoyu.Hook.add('project.quickTask.closePopup', this.TaskEdit.onCloseQuicktaskPopup.bind(this.TaskEdit));
 	},
 
 
@@ -244,9 +243,7 @@ Todoyu.Ext.assets = {
 	 * @param	{String}	tab
 	 */
 	onTaskAssetTabLoaded: function(idTask, tab) {
-		if( ! Todoyu.exists('formElement-asset-' + idTask + '-field-file') ) {
-			this.Upload.showForm(idTask);
-		}
+
 	}
 
 };

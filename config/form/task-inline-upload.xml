@@ -2,27 +2,43 @@
 <form>
 	<attributes>
 		<attribute name="action">?ext=assets&amp;controller=taskEdit</attribute>
-		<attribute name="name">assetfile</attribute>
-		<attribute name="target">upload-iframe-assetfile</attribute>
+		<attribute name="name">asset</attribute>
+		<attribute name="enctype">multipart/form-data</attribute>
+		<attribute name="id_task">0</attribute>
 	</attributes>
 	<hiddenFields>
-		<field name="MAX_FILE_SIZE" value="100000000" noWrap="true" noStorage="true" />
-		<field name="id_task" />
-		<field name="action" value="uploadassetfile" noWrap="true" />
+		<field name="MAX_FILE_SIZE" value="50000000" noWrap="true" noStorage="true" />
 	</hiddenFields>
 	<fieldsets>
-		<fieldset name="main">
-			<legend>Left form column</legend>
-			<class>main</class>
+		<fieldset name="assets">
+			<legend>assets.form.legend.inlineAssetUpload</legend>
+			<class>inlineAssetUpload</class>
 			<elements>
 
-				<field type="upload" name="file">
-					<label>core.file.upload.selectfile</label>
-					<onchange>Todoyu.Ext.assets.TaskEdit.upload(this)</onchange>
+				<field type="select" name="assetlist">
+					<label>core.file.files</label>
+					<source type="function">
+						<function>TodoyuAssetsTaskAssetViewHelper::getTaskAssetsFilesOptions</function>
+						<lazyInit />
+					</source>
+					<noPleaseSelect />
 				</field>
 
-				<field type="cancelButton" name="cancel">
-					<onclick>Todoyu.Ext.assets.TaskEdit.cancelUpload(#id_task#)</onclick>
+				<field type="upload" name="file">
+					<onchange>Todoyu.Ext.assets.TaskEdit.uploadFileInline(this)</onchange>
+				</field>
+
+				<field type="button" name="upload">
+					<text>assets.ext.taskform.assets.button.upload</text>
+					<class>buttonUploadAsset</class>
+					<hasIcon />
+				</field>
+
+				<field type="button" name="delete">
+					<text>assets.ext.taskform.assets.button.delete</text>
+					<class>buttonDeleteAsset</class>
+					<hasIcon />
+					<onclick>Todoyu.Ext.assets.TaskEdit.removeSelectedTempAsset(#id#)</onclick>
 				</field>
 
 			</elements>

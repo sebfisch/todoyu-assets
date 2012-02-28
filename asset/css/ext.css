@@ -29,10 +29,37 @@ button.buttonDeleteAsset .icon {
 	background:url(../img/icons.png) no-repeat 0 -746px;
 }
 
+.directUploadForm {
+	opacity: 0.001;
+	overflow: hidden;
+	position: absolute;
+	width: 140px;
+}
+
+.directUploadForm input {
+	cursor: pointer;
+}
+
+.uploadProgress {
+	display: inline-block;
+	margin-left: 50px;
+}
+
+
 
 /* ----------------------------------------------
 	Task inline upload form
    ---------------------------------------------- */
+.inlineAssetUpload .fElement.typeUpload .fField {
+	overflow: hidden;
+	position: absolute;
+	top:15px;
+	left:140px;
+	width:130px;
+	z-index: 100;
+	opacity: 0.001;
+}
+
 .inlineAssetUpload .fieldnameDelete,
 .inlineAssetUpload .fieldnameUpload {
 	float:left;
@@ -44,22 +71,6 @@ button.buttonDeleteAsset .icon {
 }
 .inlineAssetUpload .fieldnameDelete .fLabel {
 	width:0;
-}
-.inlineAssetUpload  .assetUploadForm {
-	margin-left: 140px;
-	float: left;
-}
-.inlineAssetUpload .assetUploadForm .fForm {
-	background: none;
-}
-.inlineAssetUpload .assetUploadForm .fForm fieldset.main {
-	margin-top:0;
-}
-.inlineAssetUpload .assetUploadForm .fForm .fieldnameFile .fLabel {
-	width:160px;
-}
-.inlineAssetUpload .assetUploadForm .fForm .fieldnameFile .fField {
-	width:250px;
 }
 
 
