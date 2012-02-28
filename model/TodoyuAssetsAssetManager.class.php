@@ -710,7 +710,7 @@ class TodoyuAssetsAssetManager {
 		if( $allowUse && !$isLocked && $isTask ) {
 			$ownItems	=& Todoyu::$CONFIG['EXT']['asset']['ContextMenu']['Task'];
 
-			if( array_key_exists('add', $items) ) {
+			if( isset($items['add']) ) {
 				$allowed['add']['submenu']['add-asset'] = $ownItems['add']['submenu']['add-asset'];
 			}
 		}
