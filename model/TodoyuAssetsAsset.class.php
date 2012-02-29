@@ -76,7 +76,7 @@ class TodoyuAssetsAsset extends TodoyuBaseObject {
 	 * @return	TodoyuContactPerson
 	 */
 	public function getPerson() {
-		return parent::getPerson('create');
+		return $this->getPersonCreate();
 	}
 
 
