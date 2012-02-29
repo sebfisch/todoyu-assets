@@ -212,18 +212,6 @@ Todoyu.Ext.assets = {
 
 
 	/**
-	 * Toggle assets list visibility
-	 *
-	 * @method	toggleList
-	 * @param	{Number}		idTask
-	 */
-	toggleList: function(idTask) {
-		this.List.toggle(idTask);
-	},
-
-
-
-	/**
 	 * Add new asset to given task: expand task details and open assets tab with new asset form
 	 *
 	 * @method	addTaskAsset

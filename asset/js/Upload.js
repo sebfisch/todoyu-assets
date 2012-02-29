@@ -133,29 +133,6 @@ Todoyu.Ext.assets.Upload = {
 
 
 	/**
-	 * Show upload field which was hidden during the upload process
-	 *
-	 * @method	showUploadField
-	 */
-	showUploadField: function() {
-		var fields	= $$('input[type=file][id^=asset-][id$=-field-file]');
-
-		fields.each(function(element){
-			var formElement	= element.up('div.typeUpload');
-
-				// If is in a form element
-			if( formElement ) {
-					// If form element is in an asset form and is hidden
-				if( formElement.up('form.formAsset') && !formElement.visible() ) {
-					formElement.show();
-				}
-			}
-		});
-	},
-
-
-
-	/**
 	 * Asset upload finished handler
 	 *
 	 * @method	uploadFinished
@@ -166,7 +143,6 @@ Todoyu.Ext.assets.Upload = {
 		this.active = false;
 
 		this.showProgressBar(idTask, false);
-		this.showUploadField();
 
 		Todoyu.Ext.project.Task.refreshHeader(idTask);
 
@@ -196,7 +172,6 @@ Todoyu.Ext.assets.Upload = {
 		this.active = false;
 
 		this.showProgressBar(idTask, false);
-		this.showUploadField();
 
 		var info	= {
 			filename: 			filename,

@@ -37,17 +37,21 @@ class TodoyuAssetsAssetRenderer {
 
 		$idTask		= intval($idTask);
 		$numAssets	= TodoyuAssetsAssetManager::getNumTaskAssets($idTask);
+		$hasAssets	= $numAssets > 0;
 		$locked		= TodoyuProjectTaskManager::isLocked($idTask);
 
 		if( $locked ) {
-			if( $numAssets === 0 ) {
+			if( !$hasAssets ) {
 				$content = self::renderLockedMessage();
 			} else {
 				$content = self::renderList($idTask);
 			}
 		} else {
 			$content = self::renderListControl($idTask);
-			$content .= self::renderList($idTask);
+
+			if( $hasAssets ) {
+				$content .= self::renderList($idTask);
+			}
 		}
 
 		return $content;
@@ -98,9 +102,9 @@ class TodoyuAssetsAssetRenderer {
 	public static function renderListControl($idTask) {
 		$idTask	= intval($idTask);
 
-		$tmpl	= 'ext/assets/view/list-controll.tmpl';
+		$tmpl	= 'ext/assets/view/list-control.tmpl';
 		$data	= array(
-			'idTask' => $idTask
+			'idTask'	=> $idTask
 		);
 
 		return Todoyu::render($tmpl, $data);

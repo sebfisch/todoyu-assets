@@ -40,12 +40,66 @@ Todoyu.Ext.assets.List = {
 
 
 	/**
+	 * Initialize list
+	 *
+	 * @param	{Number}	idTask
+	 */
+	initList: function(idTask) {
+		this.addListObservers(idTask);
+	},
+
+
+
+	/**
+	 * Initialize control
+	 *
+	 * @param	{Number}	idTask
+	 */
+	initControl: function(idTask) {
+		this.toggleButtons(idTask);
+	},
+
+
+
+	/**
+	 * Toggle control buttons
+	 * Hide download selection if no files available
+	 *
+	 * @param	{Number}	idTask
+	 */
+	toggleButtons: function(idTask) {
+		var method	= this.hasListElements(idTask) ? 'show' : 'hide';
+
+		$('task-'+ idTask + '-asset-button-downloadselection')[method]();
+	},
+
+
+
+	/**
+	 * Check whether list exists and contains elements
+	 *
+	 * @param	{Number}	idTask
+	 * @return
+	 */
+	hasListElements: function(idTask) {
+		var list = $('task-' + idTask + '-assets-list');
+
+		if( list ) {
+			return !!list.down('tbody tr');
+		}
+
+		return false;
+	},
+
+
+
+	/**
 	 * Add observers for list
 	 *
 	 * @method	addObservers
 	 * @param	{Number}	idTask
 	 */
-	addObservers: function(idTask) {
+	addListObservers: function(idTask) {
 			// Check all button
 		$('task-' + idTask + '-assets-checkallbox').on('click', this.toggleSelectAll.bind(this, idTask));
 
@@ -76,18 +130,6 @@ Todoyu.Ext.assets.List = {
 
 
 	/**
-	 * Toggle display of assets list of given task
-	 *
-	 * @method	toggle
-	 * @param	{Number}		idTask
-	 */
-	toggle: function(idTask) {
-		Todoyu.Ui.toggle('task-' + idTask + '-assets-list');
-	},
-
-
-
-	/**
 	 * Refresh assets list of given task
 	 *
 	 * @method	refresh
@@ -100,15 +142,28 @@ Todoyu.Ext.assets.List = {
 			parameters: {
 				action:	'list',
 				task:	idTask
-			}
+			},
+			onComplete: this.onRefreshed.bind(this, idTask)
 		};
 
 		if( Todoyu.exists(list) ) {
 			Todoyu.Ui.replace(list, url, options);
 		} else {
 			var target	= 'task-' + idTask + '-tabcontent-assets';
-			Todoyu.Ui.update(target, url, options);
+			Todoyu.Ui.insert(target, url, options);
 		}
+	},
+
+
+
+	/**
+	 * Re-init after refresh
+	 *
+	 * @param	{Number}		idTask
+	 * @param	{Ajax.Response}	response
+	 */
+	onRefreshed: function(idTask, response) {
+		this.initControl(idTask);
 	},
 
 
