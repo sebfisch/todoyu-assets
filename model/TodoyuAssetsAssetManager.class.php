@@ -280,7 +280,14 @@ class TodoyuAssetsAssetManager {
 
 		TodoyuHookManager::callHook('assets', 'asset.download', array($idAsset));
 
-		return TodoyuFileManager::sendFile($filePath, $mimeType, $filename);
+		try {
+			$status = TodoyuFileManager::sendFile($filePath, $mimeType, $filename);
+		} catch(TodoyuExceptionFileDownload $e) {
+			// @todo	Catch error
+			$status = false;
+		}
+
+		return $status;
 	}
 
 
@@ -343,12 +350,13 @@ class TodoyuAssetsAssetManager {
 		$filename	= 'Assets_' . $idTask . '.zip';
 		$mimeType	= 'application/octet-stream';
 
-			// Delete temporary ZIP file after download
-		TodoyuFileManager::sendFile($zipFile, $mimeType, $filename);
-
-		unlink($zipFile);
-
-		TodoyuHookManager::callHook('assets', 'asset.download.zip', array($idTask, $assetIDs));
+		try {
+			TodoyuFileManager::sendFile($zipFile, $mimeType, $filename);
+			unlink($zipFile);
+			TodoyuHookManager::callHook('assets', 'asset.download.zip', array($idTask, $assetIDs));
+		} catch(TodoyuExceptionFileDownload $e) {
+			// @todo catch error
+		}
 	}
 
 

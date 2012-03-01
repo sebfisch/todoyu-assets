@@ -46,14 +46,20 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 	 */
 	public function downloadAction(array $params) {
 		$idAsset	= intval($params['asset']);
+		$status		= false;
 
 			// If asset is not public, person need the right so see also not public assets
 		if( TodoyuAssetsRights::isSeeAllowed($idAsset) ) {
 			TodoyuAssetsRights::restrictSee($idAsset);
 		}
 
-		if( TodoyuAssetsAssetManager::downloadAsset($idAsset) == false ) {
-				// Download failed, reload current page instead
+		$asset	= TodoyuAssetsAssetManager::getAsset($idAsset);
+
+		if( $asset->isFileAvailable() ) {
+			$status = $asset->sendAsDownload();
+		}
+
+		if( !$status) {
 			TodoyuHeader::location(TodoyuRequest::getReferer());
 		}
 	}

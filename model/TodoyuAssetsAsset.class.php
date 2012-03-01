@@ -54,29 +54,7 @@ class TodoyuAssetsAsset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getParentID() {
-		return $this->get('id_parent');
-	}
-
-
-
-	/**
-	 * Get ID of the uploader
-	 *
-	 * @return	Integer
-	 */
-	public function getPersonID() {
-		return parent::getPersonID('create');
-	}
-
-
-
-	/**
-	 * Get uploader person object
-	 *
-	 * @return	TodoyuContactPerson
-	 */
-	public function getPerson() {
-		return $this->getPersonCreate();
+		return $this->getInt('id_parent');
 	}
 
 
@@ -101,7 +79,7 @@ class TodoyuAssetsAsset extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getFilesize() {
-		return $this->get('file_size');
+		return $this->getInt('file_size');
 	}
 
 
@@ -134,7 +112,44 @@ class TodoyuAssetsAsset extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isPublic() {
-		return $this->get('is_public') == 1;
+		return $this->getInt('is_public') === 1;
+	}
+
+
+
+	/**
+	 * Check whether file exists in storage
+	 *
+	 * @return	Boolean
+	 */
+	public function isFileAvailable() {
+		$pathFileStorage	= $this->getFileStoragePath();
+
+		return TodoyuFileManager::isFile($pathFileStorage);
+	}
+
+
+
+	/**
+	 * Send asset as download
+	 *
+	 * @return	Boolean		Success
+	 */
+	public function sendAsDownload() {
+		$filePath	= $this->getFileStoragePath();
+		$mimeType 	= $this->getMimeType();
+		$filename	= $this->getFilename();
+
+		TodoyuHookManager::callHook('assets', 'asset.download', array($this->getID()));
+
+		try {
+			$status = TodoyuFileManager::sendFile($filePath, $mimeType, $filename);
+		} catch(TodoyuExceptionFileDownload $e) {
+			// @todo catch error
+			$status = false;
+		}
+
+		return $status;
 	}
 
 }
