@@ -55,13 +55,48 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 
 		$asset	= TodoyuAssetsAssetManager::getAsset($idAsset);
 
-		if( $asset->isFileAvailable() ) {
+		if( $asset->canDownload() === true ) {
 			$status = $asset->sendAsDownload();
 		}
 
 		if( !$status) {
 			TodoyuHeader::location(TodoyuRequest::getReferer());
 		}
+	}
+
+
+
+	/**
+	 * Check download status
+	 *
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public function downloadStatusAction(array $params) {
+		$idAsset	= intval($params['asset']);
+		$asset		= TodoyuAssetsAssetManager::getAsset($idAsset);
+
+			// Check file access and download problems
+		if( TodoyuAssetsRights::isSeeAllowed($idAsset) ) {
+			$status	= $asset->canDownload();
+		} else {
+			$status = Todoyu::Label('assets.ext.error.access');
+		}
+
+		if( $status === true ) {
+			$response = array(
+				'status' => true
+			);
+		} else {
+			$response = array(
+				'status'=> false,
+				'error'	=> $status
+			);
+		}
+
+		TodoyuHeader::sendTypeJSON();
+
+		return json_encode($response);
 	}
 
 

@@ -68,11 +68,62 @@ Todoyu.Ext.assets = {
 
 	/**
 	 * Download asset
+	 * Checks first if download is possible
 	 *
 	 * @method	download
 	 * @param	{Number}	idAsset
 	 */
 	download: function(idAsset) {
+		this.checkDownloadStatus(idAsset);
+	},
+
+
+
+	/**
+	 * Send check request to determine whether the file can be downloaded
+	 *
+	 * @param	{Number}	idAsset
+	 */
+	checkDownloadStatus: function(idAsset) {
+		var url		= Todoyu.getUrl('assets', 'asset');
+		var options	= {
+			parameters: {
+				action: 'downloadStatus',
+				asset:	idAsset
+			},
+			onComplete: this.onDownloadStatusChecked.bind(this, idAsset)
+		};
+
+		Todoyu.send(url, options);
+	},
+
+
+
+	/**
+	 * Handle download check result
+	 *
+	 * @param	{Number}		idAsset
+	 * @param	{Ajax.Response}	response
+	 */
+	onDownloadStatusChecked: function(idAsset, response) {
+		var status	= response.responseJSON;
+
+		if( status.status ) {
+			this.downloadAsset(idAsset);
+		} else {
+			Todoyu.notifyError('[LLL:assets.ext.error.download]: ' + status.error, 'assets.downloadError');
+		}
+	},
+
+
+
+	/**
+	 * Download the asset
+	 * Redirect the browser to the real download URL
+	 *
+	 * @param	{Number}	idAsset
+	 */
+	downloadAsset: function(idAsset) {
 		var params	= {
 			action: 'download',
 			asset:	idAsset

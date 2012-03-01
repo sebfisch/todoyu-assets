@@ -152,6 +152,18 @@ class TodoyuAssetsAsset extends TodoyuBaseObject {
 		return $status;
 	}
 
+
+
+	/**
+	 * Check whether the asset can be downloaded
+	 * Only checks for problems with the file. No access checking
+	 *
+	 * @return	Boolean|String		True or the error message
+	 */
+	public function canDownload() {
+		return TodoyuFileManager::canSendFile($this->getFileStoragePath());
+	}
+
 }
 
 ?>
