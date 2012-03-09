@@ -79,7 +79,7 @@ Todoyu.Ext.assets.List = {
 	 * Check whether list exists and contains elements
 	 *
 	 * @param	{Number}	idTask
-	 * @return
+	 * @return	{Boolean}
 	 */
 	hasListElements: function(idTask) {
 		var list = $('task-' + idTask + '-assets-list');
@@ -287,7 +287,7 @@ Todoyu.Ext.assets.List = {
 	 *
 	 * @method	getSelectedAssets
 	 * @param	{Number}	idTask
-	 * @return	Array				Asset IDs
+	 * @return	{Number[]}	Asset IDs
 	 */
 	getSelectedAssets: function(idTask) {
 		var boxes 	= this.getAssetsCheckboxes(idTask, true);
