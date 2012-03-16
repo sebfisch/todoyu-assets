@@ -10,11 +10,11 @@ assets 1.1.0 - 2011-06-17
 	* Bugfix: Spelling mistake in rights check when deleting asset file
 	* Feature: Added mime type icon for .txt files, extended range of office mime types
 	* Feature: Added creator attribute column in assets listing
- 	* Feature: Added task asset upload to quicktask creation
+	* Feature: Added task asset upload to quicktask creation
 	* Feature: Added task asset upload to task creation form
 	* Feature: Cleanup of Rights Management
 	* Changed: Increased filename max length (from 100 to 255 chars)
- 	* Changed: Requires core 2.1
+	* Changed: Requires core 2.1
 	* Changed: Structure for 2.1
 	* Changed: All classes are prefixed with extension name
 	* Changed: Changed default ext setting to NOT physically delete asset files (only set deleted-flag in DB)
@@ -43,7 +43,7 @@ assets 1.0.1 to 1.0.5 - 1.0.5 released 2011-01-17
 	* Feature: noAccess handling in AJAX responses
 	* Changed: Updated year of copyright to 2011
 	* Changed: General cleanups
- 	* Changed: Changed locale format
+	* Changed: Changed locale format
 	* Changed: Rights isAdmin Check changes for easier handling
 	* Changed: Moved styles from global.css to ext.css
 	* Changed: SQL cleanups

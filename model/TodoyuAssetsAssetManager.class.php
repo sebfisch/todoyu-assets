@@ -135,7 +135,7 @@ class TodoyuAssetsAssetManager {
 
 			// If person can't see all assets, limit to public and own
 		if( ! Todoyu::allowed('assets', 'asset:seeAll') ) {
-			$where .= ' AND (is_public 		= 1
+			$where .= ' AND (is_public		= 1
 							 OR id_person_create	= ' . Todoyu::personid() . ')';
 		}
 
@@ -275,7 +275,7 @@ class TodoyuAssetsAssetManager {
 		$idAsset	= intval($idAsset);
 		$asset		= TodoyuAssetsAssetManager::getAsset($idAsset);
 		$filePath	= $asset->getFileStoragePath();
-		$mimeType 	= $asset->getMimeType();
+		$mimeType	= $asset->getMimeType();
 		$filename	= $asset->getFilename();
 
 		TodoyuHookManager::callHook('assets', 'asset.download', array($idAsset));
@@ -300,7 +300,7 @@ class TodoyuAssetsAssetManager {
 	public static function deleteAsset($idAsset) {
 		$idAsset	= intval($idAsset);
 		$update		= array(
-			'deleted' 		=> 1
+			'deleted'		=> 1
 		);
 
 		TodoyuRecordManager::updateRecord(self::TABLE, $idAsset, $update);
@@ -516,7 +516,7 @@ class TodoyuAssetsAssetManager {
 		switch($type) {
 			case ASSET_PARENTTYPE_TASK:
 					// User project ID as parent folder
-				$folder 	= TodoyuProjectTaskManager::getProjectID($idParent);;
+				$folder		= TodoyuProjectTaskManager::getProjectID($idParent);;
 				break;
 
 //			case ASSET_PARENTTYPE_PROJECT:

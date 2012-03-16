@@ -24,14 +24,14 @@
 
 Todoyu::$CONFIG['EXT']['assets']['info']	= array(
 	'title'				=> 'Task Assets',
-	'description' 		=> 'Task Assets Listing, Upload, Download, etc.',
-	'author' 			=> array(
+	'description'		=> 'Task Assets Listing, Upload, Download, etc.',
+	'author'			=> array(
 		'name'		=> 'todoyu Core Developer Team',
 		'email'		=> 'team@todoyu.com',
 		'company'	=> 'snowflake productions GmbH, Zurich'
 	),
-	'state' 		=> 'stable',
-	'version' 		=> '1.2.0a',
+	'state'			=> 'stable',
+	'version'		=> '1.2.0a',
 	'constraints'	=> array(
 		'depends'	=> array(
 			'contact'	=> '1.1.0',

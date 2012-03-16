@@ -174,9 +174,9 @@ Todoyu.Ext.assets.Upload = {
 		this.showProgressBar(idTask, false);
 
 		var info	= {
-			filename: 			filename,
+			filename:			filename,
 			maxFileSize:		maxFileSize,
-			maxLengthFileName: 	maxLengthFileName
+			maxLengthFileName:	maxLengthFileName
 		};
 		var msg		= '';
 

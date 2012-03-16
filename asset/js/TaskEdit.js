@@ -110,7 +110,7 @@ Todoyu.Ext.assets.TaskEdit = {
 		this.toggleFormElements(idTask);
 
 		var info	= {
-			filename: 		filename,
+			filename:		filename,
 			maxFileSize:	maxFileSize,
 			id_task:		idTask
 		};
@@ -135,7 +135,7 @@ Todoyu.Ext.assets.TaskEdit = {
 	 */
 	removeSelectedTempAsset: function(idTask) {
 		var fileKey		= this.getSelectedAssetFileID(idTask);
-		var filename 	= this.getSelectedAssetFilename(idTask);
+		var filename	= this.getSelectedAssetFilename(idTask);
 
 		if( confirm('[LLL:core.file.confirm.delete]' + ' ' + filename) ) {
 			var url		= Todoyu.getUrl('assets', 'taskEdit');

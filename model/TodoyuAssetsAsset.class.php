@@ -137,7 +137,7 @@ class TodoyuAssetsAsset extends TodoyuBaseObject {
 	 */
 	public function sendAsDownload() {
 		$filePath	= $this->getFileStoragePath();
-		$mimeType 	= $this->getMimeType();
+		$mimeType	= $this->getMimeType();
 		$filename	= $this->getFilename();
 
 		TodoyuHookManager::callHook('assets', 'asset.download', array($this->getID()));

@@ -32,7 +32,7 @@
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param	Dwoo 		$dwoo
+ * @param	Dwoo		$dwoo
  * @param	Integer		$idAsset
  * @return	Boolean
  */
@@ -48,7 +48,7 @@ function Dwoo_Plugin_isAssetSeeAllowed(Dwoo $dwoo, $idAsset) {
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param	Dwoo 		$dwoo
+ * @param	Dwoo		$dwoo
  * @param	Integer		$idAsset
  * @return	Boolean
  */

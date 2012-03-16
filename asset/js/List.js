@@ -191,7 +191,7 @@ Todoyu.Ext.assets.List = {
 	 * Toggle given asset visibility (hide from customers?)
 	 *
 	 * @method	handleVisibilityToggle
-	 * @param	{Number} 	idAsset
+	 * @param	{Number}	idAsset
 	 * @param	{Event}		event
 	 * @param	{Element}	link
 	 */
@@ -290,7 +290,7 @@ Todoyu.Ext.assets.List = {
 	 * @return	{Number[]}	Asset IDs
 	 */
 	getSelectedAssets: function(idTask) {
-		var boxes 	= this.getAssetsCheckboxes(idTask, true);
+		var boxes	= this.getAssetsCheckboxes(idTask, true);
 
 		return boxes.collect(function(box) {
 			return box.value;
@@ -306,7 +306,7 @@ Todoyu.Ext.assets.List = {
 	 * @param	{Number}	idTask
 	 */
 	areAllAssetsSelected: function(idTask) {
-		var boxes 	= this.getAssetsCheckboxes(idTask, false);
+		var boxes	= this.getAssetsCheckboxes(idTask, false);
 
 		return boxes.all(function(box){
 			return box.checked
@@ -324,7 +324,7 @@ Todoyu.Ext.assets.List = {
 	 */
 	toggleSelectAll: function(idTask, event) {
 		var allChecked	= this.areAllAssetsSelected(idTask);
-		var boxes 		= this.getAssetsCheckboxes(idTask, false);
+		var boxes		= this.getAssetsCheckboxes(idTask, false);
 
 		boxes.each(function(item){
 			if( allChecked !== true ) {
