@@ -15,8 +15,6 @@
 	<label index="upload.selectfile">Select a file to upload</label>
 	<label index="upload.filename">Filename</label>
 	<label index="upload.new">Add New File</label>
-	<label index="uploadFailed">The upload of the file '#{filename}' has failed</label>
-	<label index="uploadOk">The file has been uploaded</label>
 	<label index="delete.confirm">Do you really want to delete this file?</label>
 	<label index="delete.notifiy.success">The file has been deleted.</label>
 	<label index="download.selection">Download Selection</label>
@@ -27,6 +25,8 @@
 	<label index="error.access">No access to this asset</label>
 	<label index="maxFileSizeExceeded">The file '#{filename}' has exceeded the maximum allowed filesize (#{maxFileSize}) to upload</label>
 	<label index="maxLengthFileNameExceeded">The file '#{filename}' has exceeded the maximum allowed length (#{maxLengthFileName}) of its name to upload</label>
+	<label index="uploadFailed">The upload of the file '#{filename}' has failed</label>
+	<label index="uploadOk">The file has been uploaded</label>
 	<label index="locked">This task is locked. You can't add files</label>
 	<label index="task.icon">Task has assets</label>
 	<label index="taskform.assets.button.delete">Delete Selected Asset</label>

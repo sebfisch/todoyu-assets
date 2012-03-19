@@ -31,4 +31,5 @@
 	<label index="task.icon">Aufgabe hat Dateianhänge</label>
 	<label index="taskform.assets.button.delete">Ausgewählte Datei löschen</label>
 	<label index="taskform.assets.button.upload">Neue Datei anfügen</label>
+	<label index="contextmenu.task.addasset">Dateianhang</label>
 </labels>
