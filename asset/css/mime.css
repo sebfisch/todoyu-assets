@@ -1,5 +1,5 @@
 .mimetype span.icon {
-	background:url('../img/icons.png') no-repeat 0 -88px;
+	background:url('../img/icons.png') no-repeat 0 -90px;
 	background-repeat:no-repeat;
 }
 
@@ -16,7 +16,7 @@
 .mimeXLS span.icon,
 .mimeXLSX span.icon,
 .mimeODS span.icon {
-	background-position:0 -328px;
+	background-position:0 -330px;
 }
 
 .mimeCSV span.icon {
@@ -24,22 +24,22 @@
 }
 
 .mimePDF span.icon {
-	background-position:0 -118px;
+	background-position:0 -120px;
 }
 
 .mimeDOC span.icon,
 .mimeDOCX span.icon,
 .mimeSXW span.icon,
 .mimeODT span.icon{
-	background-position:0 -388px;
+	background-position:0 -390px;
 }
 
 .mimeT3X span.icon {
-	background-position:0 -418px;
+	background-position:0 -420px;
 }
 
 .mimePHP span.icon {
-	background-position:0 -358px;
+	background-position:0 -360px;
 }
 
 .mimeBMP span.icon,
@@ -50,7 +50,7 @@
 .mimeTIF span.icon,
 .mimeTIFF span.icon,
 .mimeXCF span.icon {
-	background-position:0 -448px;
+	background-position:0 -450px;
 }
 
 .mimeAI span.icon,
@@ -75,24 +75,24 @@ background-position:0 -848px;
 .mimeHTML span.icon,
 .mimeHTM span.icon,
 .mimeTMPL span.icon{
-	background-position:0 -478px;
+	background-position:0 -480px;
 }
 
 .mimeXML  span.icon{
-	background-position:0 -508px;
+	background-position:0 -510px;
 }
 
 .mimeJS span.icon {
-	background-position:0 -538px;
+	background-position:0 -540px;
 }
 
 .mimeCSS span.icon {
-	background-position:0 -568px;
+	background-position:0 -570px;
 }
 
 .mimePPT span.icon,
 .mimePPS  span.icon {
-	background-position:0 -598px;
+	background-position:0 -600px;
 }
 
 .mimeZIP span.icon,
@@ -101,12 +101,12 @@ background-position:0 -848px;
 .mimeBZ2 span.icon,
 .mimeGZ span.icon,
 .mime7Z span.icon{
-	background-position:0 -148px;
+	background-position:0 -150px;
 }
 
 .mimeEXE span.icon,
 .mimeBIN span.icon,
 .mimeDLL span.icon,
 .mimeCONF span.icon{
-	background-position:0 -718px;
+	background-position:0 -720px;
 }
