@@ -82,6 +82,7 @@ Todoyu.Ext.assets = {
 	/**
 	 * Send check request to determine whether the file can be downloaded
 	 *
+	 * @method	checkDownloadStatus
 	 * @param	{Number}	idAsset
 	 */
 	checkDownloadStatus: function(idAsset) {
@@ -102,6 +103,7 @@ Todoyu.Ext.assets = {
 	/**
 	 * Handle download check result
 	 *
+	 * @method	onDownloadStatusChecked
 	 * @param	{Number}		idAsset
 	 * @param	{Ajax.Response}	response
 	 */
@@ -121,6 +123,7 @@ Todoyu.Ext.assets = {
 	 * Download the asset
 	 * Redirect the browser to the real download URL
 	 *
+	 * @method	downloadAsset
 	 * @param	{Number}	idAsset
 	 */
 	downloadAsset: function(idAsset) {
@@ -174,10 +177,30 @@ Todoyu.Ext.assets = {
 			parameters: {
 				action:	'togglevisibility',
 				asset:	idAsset
-			}
+			},
+			onComplete: this.onToggledVisibility(idAsset)
 		};
 
 		Todoyu.send(url, options);
+	},
+
+
+
+	/**
+	 * Callend after asset visibility has been toggled: notify success
+	 *
+	 * @method	onToggledVisibility
+	 * @param	{Number}			idAsset
+	 * @param	{Ajax.Response}		response
+	 */
+	onToggledVisibility: function(idAsset, response) {
+		var isPublic	= ! $('asset-' + idAsset + '-icon-public').hasClassName('not');
+
+		if( isPublic ) {
+			Todoyu.Notification.notifySuccess('[LLL:assets.ext.togglepublic.notifiy.ispublic]');
+		} else {
+			Todoyu.Notification.notifySuccess('[LLL:assets.ext.togglepublic.notifiy.notpublic]');
+		}
 	},
 
 

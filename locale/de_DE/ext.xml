@@ -16,6 +16,8 @@
 	<label index="upload.filename">Dateiname</label>
 	<label index="upload.new">Neue Datei anfügen</label>
 	<label index="delete.confirm">Wollen Sie diese Datei wirklich löschen?</label>
+	<label index="togglepublic.notifiy.ispublic">Die Datei ist nun für Kunden welche die Aufgabe sehen dürfen, sichtbar.</label>
+	<label index="togglepublic.notifiy.notpublic">Die Datei ist nun für Kunden welche die Aufgabe sehen dürfen, nicht sichtbar.</label>
 	<label index="delete.notifiy.success">Die Datei wurde gelöscht.</label>
 	<label index="download.selection">Auswahl herunterladen</label>
 	<label index="download.normal">Sie haben nur eine Datei gewählt. Normaler Dateidownload</label>

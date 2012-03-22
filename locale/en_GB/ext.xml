@@ -17,6 +17,8 @@
 	<label index="upload.new">Add New File</label>
 	<label index="delete.confirm">Do you really want to delete this file?</label>
 	<label index="delete.notifiy.success">The file has been deleted.</label>
+	<label index="togglepublic.notifiy.ispublic">The file is now visible also for customers that can see the task.</label>
+	<label index="togglepublic.notifiy.notpublic">The file is now not visible for customers that can see the task.</label>
 	<label index="download.selection">Download Selection</label>
 	<label index="download.normal">You only selected one file -> normal file download</label>
 	<label index="download.compressed">The selected files have been packed into an archive for download</label>
