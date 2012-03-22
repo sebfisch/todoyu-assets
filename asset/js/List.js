@@ -268,7 +268,7 @@ Todoyu.Ext.assets.List = {
 		this.toggleSelectionDownload(idTask);
 	},
 
-	
+
 
 	/**
 	 * Toggle status of download selection button depending on the amount of selected assets
