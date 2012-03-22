@@ -245,6 +245,10 @@ Todoyu.Ext.assets.List = {
 	check: function(idAsset) {
 		$('asset-' + idAsset).addClassName('selected');
 		$('asset-' + idAsset + '-checkbox').checked = true;
+
+		var idTask = $('asset-' + idAsset).up('tbody').id.split('-')[1];
+
+		this.toggleSelectionDownload(idTask);
 	},
 
 
@@ -258,6 +262,25 @@ Todoyu.Ext.assets.List = {
 	unCheck: function(idAsset) {
 		$('asset-' + idAsset).removeClassName('selected');
 		$('asset-' + idAsset + '-checkbox').checked = false;
+
+		var idTask = $('asset-' + idAsset).up('tbody').id.split('-')[1];
+
+		this.toggleSelectionDownload(idTask);
+	},
+
+	
+
+	/**
+	 * Toggle status of download selection button depending on the amount of selected assets
+	 * Disable if no asset is selected
+	 *
+	 * @param	{Number}	idTask
+	 */
+	toggleSelectionDownload: function(idTask) {
+		var oneSelected = $('task-' + idTask + '-assets-tablebody').select(':checkbox:checked').size() > 0;
+		var method		= oneSelected ? 'enable' : 'disable';
+
+		$('task-' + idTask + '-asset-button-downloadselection')[method]();
 	},
 
 
