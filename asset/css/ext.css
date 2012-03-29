@@ -83,7 +83,7 @@ button.buttonDeleteAsset .icon {
 
 .assetList th {
 	padding:5px 5px 5px 0;
-	/*text-transform:uppercase;*/
+	text-transform:uppercase;
 }
 
 .assetList td {
