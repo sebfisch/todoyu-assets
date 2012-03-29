@@ -197,9 +197,9 @@ Todoyu.Ext.assets = {
 		var isPublic	= ! $('asset-' + idAsset + '-icon-public').hasClassName('not');
 
 		if( isPublic ) {
-			Todoyu.Notification.notifySuccess('[LLL:assets.ext.togglepublic.notifiy.ispublic]');
+			Todoyu.notifySuccess('[LLL:assets.ext.togglepublic.notifiy.ispublic]', 'assets.public.toggle');
 		} else {
-			Todoyu.Notification.notifySuccess('[LLL:assets.ext.togglepublic.notifiy.notpublic]');
+			Todoyu.notifySuccess('[LLL:assets.ext.togglepublic.notifiy.notpublic]', 'assets.public.toggle');
 		}
 	},
 
