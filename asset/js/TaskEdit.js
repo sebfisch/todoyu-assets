@@ -296,6 +296,8 @@ Todoyu.Ext.assets.TaskEdit = {
 	/**
 	 * Handle task edit form loading
 	 *
+	 * @method	onTaskEditFormLoaded
+	 * @hook	project.task.formLoaded
 	 * @param	{Number}	idTask
 	 * @param	{Object}	options
 	 */
