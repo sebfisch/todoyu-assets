@@ -18,15 +18,17 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-TodoyuHookManager::registerHook('project', 'taskIcons', 'TodoyuAssetsAssetManager::hookAddTaskIcons');
-TodoyuHookManager::registerHook('project', 'quickcreatetask', 'TodoyuAssetsTempUploaderTask::hookClearNewTaskFiles');
-TodoyuHookManager::registerHook('project', 'task.create', 'TodoyuAssetsTempUploaderTask::hookTaskCreate');
-TodoyuHookManager::registerHook('project', 'task.edit', 'TodoyuAssetsTempUploaderTask::hookTaskEdit');
+if( Todoyu::allowed('assets', 'general:use') ) {
+	TodoyuHookManager::registerHook('project', 'taskIcons', 'TodoyuAssetsAssetManager::hookAddTaskIcons');
+	TodoyuHookManager::registerHook('project', 'quickcreatetask', 'TodoyuAssetsTempUploaderTask::hookClearNewTaskFiles');
+	TodoyuHookManager::registerHook('project', 'task.create', 'TodoyuAssetsTempUploaderTask::hookTaskCreate');
+	TodoyuHookManager::registerHook('project', 'task.edit', 'TodoyuAssetsTempUploaderTask::hookTaskEdit');
 
-TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuAssetsAssetManager::hookAddAssetUploadToTaskCreateForm');
-TodoyuFormHook::registerSaveData('ext/project/config/form/task.xml', 'TodoyuAssetsAssetManager::hookStoreUplodedTaskAssets');
+	TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuAssetsAssetManager::hookAddAssetUploadToTaskCreateForm');
+	TodoyuFormHook::registerSaveData('ext/project/config/form/task.xml', 'TodoyuAssetsAssetManager::hookStoreUplodedTaskAssets');
 
-TodoyuFormHook::registerBuildForm('ext/project/config/form/quicktask.xml', 'TodoyuAssetsAssetManager::hookModifyQuickTaskForm');
-TodoyuFormHook::registerSaveData('ext/project/config/form/quicktask.xml', 'TodoyuAssetsAssetManager::hookAddUplodedAssetsToTask');
+	TodoyuFormHook::registerBuildForm('ext/project/config/form/quicktask.xml', 'TodoyuAssetsAssetManager::hookModifyQuickTaskForm');
+	TodoyuFormHook::registerSaveData('ext/project/config/form/quicktask.xml', 'TodoyuAssetsAssetManager::hookAddUplodedAssetsToTask');
+}
 
 ?>
