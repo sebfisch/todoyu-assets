@@ -46,7 +46,9 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * @param	{Number}	idTask
 	 */
 	toggleFormElements: function(idTask) {
-		var hasFiles= this.getAssetSelector(idTask).select('option').size() > 0;
+		var assetSelector	= this.getAssetSelector(idTask);
+
+		var hasFiles= assetSelector.select('option').size() > 0;
 		var method	= hasFiles ? 'show' : 'hide';
 
 		$('formElement-task-' + idTask + '-field-assetlist')[method]();
@@ -174,6 +176,17 @@ Todoyu.Ext.assets.TaskEdit = {
 	},
 
 
+	/**
+	 * Check whether the task has an assets tab. Missing if user does not have the right to use assets.
+	 *
+	 * @method	hasAssetsTab
+	 * @param	{Number}		idTask
+	 */
+	hasAssetsTab: function(idTask) {
+		return Todoyu.exists('task-' + idTask + '-tab-assets');
+	},
+
+
 
 	/**
 	 * Get asset selector element
@@ -208,7 +221,7 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * @return	{String}
 	 */
 	getSelectedAssetFilename: function(idTask) {
-		var select		= this.getAssetSelector(idTask);
+		var select	= this.getAssetSelector(idTask);
 
 		return select.selectedIndex >= 0 ? select.options[select.selectedIndex].text : '';
 	},
@@ -238,6 +251,7 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * @param	{Number}	idTask
 	 */
 	refreshFileOptions: function(idTask) {
+		var target	= this.getAssetSelector(idTask);
 		var url		= Todoyu.getUrl('assets', 'taskEdit');
 		var options	= {
 			parameters: {
@@ -246,8 +260,6 @@ Todoyu.Ext.assets.TaskEdit = {
 			},
 			onComplete: this.onRefreshedFileOptions.bind(this, idTask)
 		};
-
-		var target	= this.getAssetSelector(idTask);
 
 		Todoyu.Ui.update(target, url, options);
 	},
@@ -274,7 +286,9 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * @hook	project.task.edit.cancelled
 	 */
 	onCancelledTaskEdit: function(idTask) {
-		this.removeAllTempAssets(idTask);
+		if( this.hasAssetsTab(idTask) ) {
+			this.removeAllTempAssets(idTask);
+		}
 	},
 
 
@@ -286,7 +300,9 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * @param	{Object}	options
 	 */
 	onTaskEditFormLoaded: function(idTask, options) {
-		this.toggleFormElements(idTask);
+		if( this.getAssetSelector(idTask) ) {
+			this.toggleFormElements(idTask);
+		}
 	}
 
 };
