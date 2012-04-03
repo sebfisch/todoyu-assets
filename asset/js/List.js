@@ -42,6 +42,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Initialize list
 	 *
+	 * @method	initList
 	 * @param	{Number}	idTask
 	 */
 	initList: function(idTask) {
@@ -53,6 +54,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Initialize control
 	 *
+	 * @method	initControl
 	 * @param	{Number}	idTask
 	 */
 	initControl: function(idTask) {
@@ -65,6 +67,7 @@ Todoyu.Ext.assets.List = {
 	 * Toggle control buttons
 	 * Hide download selection if no files available
 	 *
+	 * @method	toggleButtons
 	 * @param	{Number}	idTask
 	 */
 	toggleButtons: function(idTask) {
@@ -78,6 +81,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Check whether list exists and contains elements
 	 *
+	 * @method	hasListElements
 	 * @param	{Number}	idTask
 	 * @return	{Boolean}
 	 */
@@ -159,6 +163,7 @@ Todoyu.Ext.assets.List = {
 	/**
 	 * Re-init after refresh
 	 *
+	 * @method	onRefreshed
 	 * @param	{Number}		idTask
 	 * @param	{Ajax.Response}	response
 	 */
@@ -274,6 +279,7 @@ Todoyu.Ext.assets.List = {
 	 * Toggle status of download selection button depending on the amount of selected assets
 	 * Disable if no asset is selected
 	 *
+	 * @method	toggleSelectionDownload
 	 * @param	{Number}	idTask
 	 */
 	toggleSelectionDownload: function(idTask) {

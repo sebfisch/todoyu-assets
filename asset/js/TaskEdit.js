@@ -43,6 +43,7 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * Toggle all form elements depending on current state
 	 * Elements: file list, delete button
 	 *
+	 * @method	toggleFormElements
 	 * @param	{Number}	idTask
 	 */
 	toggleFormElements: function(idTask) {
