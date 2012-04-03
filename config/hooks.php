@@ -28,7 +28,7 @@ if( Todoyu::allowed('assets', 'general:use') ) {
 	TodoyuFormHook::registerSaveData('ext/project/config/form/task.xml', 'TodoyuAssetsAssetManager::hookStoreUplodedTaskAssets');
 
 	TodoyuFormHook::registerBuildForm('ext/project/config/form/quicktask.xml', 'TodoyuAssetsAssetManager::hookModifyQuickTaskForm');
-	TodoyuFormHook::registerSaveData('ext/project/config/form/quicktask.xml', 'TodoyuAssetsAssetManager::hookAddUplodedAssetsToTask');
+	TodoyuFormHook::registerSaveData('ext/project/config/form/quicktask.xml', 'TodoyuAssetsAssetManager::hookStoreUplodedTaskAssets');
 }
 
 ?>
