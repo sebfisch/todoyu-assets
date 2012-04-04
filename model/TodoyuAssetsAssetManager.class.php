@@ -587,7 +587,7 @@ class TodoyuAssetsAssetManager {
 		$idTask	= intval($idTask);
 		$task	= TodoyuProjectTaskManager::getTask($idTask);
 
-		if( $task->isTask() ) {
+		if( !$task->isContainer() ) {
 				// Add assets fieldset
 			$xmlPathSave	= 'ext/assets/config/form/task-inline-upload.xml';
 			$assetForm		= TodoyuFormManager::getForm($xmlPathSave);
