@@ -67,13 +67,12 @@ Todoyu.Ext.assets.TaskEdit = {
 	uploadFileInline: function(field) {
 		if( $F(field) !== '' ) {
 			var url	= Todoyu.getUrl('assets', 'taskedit', {
-				action: 'uploadassetfile'
+				action:		'uploadassetfile'
 			});
 
 			Todoyu.Form.submitFileUploadForm(field.form, url);
 		}
 	},
-
 
 
 	/**

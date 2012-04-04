@@ -602,20 +602,6 @@ class TodoyuAssetsAssetManager {
 
 
 	/**
-	 * Modify form for quicktask creation - add assets fieldset
-	 *
-	 * @param	TodoyuForm		$form
-	 * @param	Integer			$idTask
-	 * @param	Array			$params
-	 * @return	TodoyuForm
-	 */
-	public static function hookModifyQuickTaskForm(TodoyuForm $form, $idTask, array $params = array()) {
-		return self::hookAddAssetUploadToTaskCreateForm($form, $idTask, $params, true);
-	}
-
-
-
-	/**
 	 * Save assets (uploaded inline from within task creation form) of new task
 	 *
 	 * @param	Array		$data
