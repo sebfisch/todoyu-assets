@@ -30,16 +30,26 @@ button.buttonDeleteAsset .icon {
 }
 
 .directUploadForm {
+	/*opacity:0.001;*/
+	/*overflow:hidden;*/
+	/*position:absolute;*/
+	/*width:340px;*/
+	/*left: -200px;*/
+	left: -200px;
+}
+
+.directUpload input[type=file] {
+	cursor:pointer;
+	font-size: 18px;
+}
+
+form.directUploadBox,
+div.directUploadBox .fField {
 	opacity:0.001;
 	overflow:hidden;
 	position:absolute;
 	width:340px;
-	left: -200px;
-}
-
-.directUploadForm input {
-	cursor:pointer;
-	font-size: 18px;
+	z-index: 50;
 }
 
 .uploadProgress {
@@ -49,17 +59,14 @@ button.buttonDeleteAsset .icon {
 
 
 
+
+
 /* ----------------------------------------------
 	Task inline upload form
    ---------------------------------------------- */
 .inlineAssetUpload .fElement.typeUpload .fField {
-	overflow:hidden;
-	position:absolute;
-	top:15px;
-	left:140px;
-	width:130px;
-	z-index:100;
-	opacity:0.001;
+	top:10px;
+	left:-60px;
 }
 
 .inlineAssetUpload .fieldnameDelete,

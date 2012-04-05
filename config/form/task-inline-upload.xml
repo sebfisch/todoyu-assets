@@ -12,7 +12,7 @@
 	<fieldsets>
 		<fieldset name="assets">
 			<legend>assets.form.legend.inlineAssetUpload</legend>
-			<class>inlineAssetUpload</class>
+			<class>inlineAssetUpload directUpload</class>
 			<elements>
 
 				<field type="select" name="assetlist">
@@ -26,6 +26,7 @@
 
 				<field type="upload" name="file">
 					<onchange>Todoyu.Ext.assets.TaskEdit.uploadFileInline(this)</onchange>
+					<class>directUploadBox</class>
 				</field>
 
 				<field type="button" name="upload">

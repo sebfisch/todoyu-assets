@@ -1,7 +1,7 @@
 <div class="tabBlock overflow assetsButtons" id="task-{$idTask}-assets-commands">
 
 	{* Hidden upload form over the button *}
-	<form name="asset" id="task-{$idTask}-asset-form" class="directUploadForm" method="post" enctype="multipart/form-data" action="index.php?ext=assets&amp;controller=upload">
+	<form name="asset" id="task-{$idTask}-asset-form" class="directUploadForm directUpload directUploadBox" method="post" enctype="multipart/form-data" action="index.php?ext=assets&amp;controller=upload">
 		<input type="hidden"	name="MAX_FILE_SIZE"	value="50000000" />
 		<input type="hidden"	name="asset[id_task]"	value="{$idTask}" />
 		<input type="file"		name="asset[file]"		id="task-{$idTask}-asset-file"		onchange="Todoyu.Ext.assets.Upload.onChange({$idTask})" />
