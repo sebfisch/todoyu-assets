@@ -33,11 +33,13 @@ button.buttonDeleteAsset .icon {
 	opacity:0.001;
 	overflow:hidden;
 	position:absolute;
-	width:140px;
+	width:340px;
+	left: -200px;
 }
 
 .directUploadForm input {
 	cursor:pointer;
+	font-size: 18px;
 }
 
 .uploadProgress {
