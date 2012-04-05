@@ -75,6 +75,7 @@ Todoyu.Ext.assets.TaskEdit = {
 	},
 
 
+
 	/**
 	 * Asset upload finished handler
 	 *
@@ -174,6 +175,7 @@ Todoyu.Ext.assets.TaskEdit = {
 
 		Todoyu.send(url, options);
 	},
+
 
 
 	/**
