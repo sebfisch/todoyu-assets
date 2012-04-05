@@ -273,7 +273,7 @@ class TodoyuAssetsAssetManager {
 	 */
 	public static function downloadAsset($idAsset) {
 		$idAsset	= intval($idAsset);
-		$asset		= TodoyuAssetsAssetManager::getAsset($idAsset);
+		$asset		= self::getAsset($idAsset);
 		$filePath	= $asset->getFileStoragePath();
 		$mimeType	= $asset->getMimeType();
 		$filename	= $asset->getFilename();

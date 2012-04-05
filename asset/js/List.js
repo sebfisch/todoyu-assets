@@ -64,8 +64,7 @@ Todoyu.Ext.assets.List = {
 
 
 	/**
-	 * Toggle control buttons
-	 * Hide download selection if no files available
+	 * Toggle control buttons: hide download selection if no files available
 	 *
 	 * @method	toggleButtons
 	 * @param	{Number}	idTask

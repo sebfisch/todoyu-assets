@@ -304,6 +304,7 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * @param	{Object}	options
 	 */
 	onTaskEditFormLoaded: function(idTask, options) {
+
 		if( this.getAssetSelector(idTask) ) {
 			this.toggleFormElements(idTask);
 		}
