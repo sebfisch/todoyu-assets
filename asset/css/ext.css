@@ -30,12 +30,12 @@ button.buttonDeleteAsset .icon {
 }
 
 .directUploadForm {
-	left: -200px;
+	left:-200px;
 }
 
 .directUpload input[type=file] {
 	cursor:pointer;
-	font-size: 18px;
+	font-size:18px;
 }
 
 form.directUploadBox,
@@ -44,7 +44,7 @@ div.directUploadBox .fField {
 	overflow:hidden;
 	position:absolute;
 	width:340px;
-	z-index: 50;
+	z-index:50;
 }
 
 .uploadProgress {
