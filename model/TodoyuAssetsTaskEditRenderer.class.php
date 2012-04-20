@@ -63,7 +63,7 @@ class TodoyuAssetsTaskEditRenderer {
 		$tmpl	= 'core/view/htmldoc.tmpl';
 		$data	= array(
 			'title'		=> 'Uploader IFrame',
-			'content'	=> TodoyuString::wrapScript('window.parent.Todoyu.Ext.assets.TaskEdit.uploadFailed(' . $error . ', \'' . $fileName . '\', \'' . $maxFileSize . '\', ' . $idTask . ');')
+			'content'	=> TodoyuString::wrapScript('window.parent.Todoyu.Ext.assets.TaskEdit.uploadFailed(' . $idTask . ', ' . $error . ', \'' . $fileName . '\', \'' . $maxFileSize . '\');')
 		);
 
 		return Todoyu::render($tmpl, $data);

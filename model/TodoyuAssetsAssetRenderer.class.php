@@ -137,15 +137,16 @@ class TodoyuAssetsAssetRenderer {
 	/**
 	 * Render upload-frame content if upload has failed
 	 *
+	 * @param	Integer		$idTask
 	 * @param	Integer		$error
 	 * @param	String		$fileName
 	 * @return	String
 	 */
-	public static function renderUploadframeContentFailed($error, $fileName) {
+	public static function renderUploadframeContentFailed($idTask, $error, $fileName) {
 		$error		= intval($error);
 		$maxFileSize= TodoyuString::formatSize(intval(Todoyu::$CONFIG['EXT']['assets']['max_file_size']));
 
-		$commands	= 'window.parent.Todoyu.Ext.assets.Upload.uploadFailed(' . $error . ', \'' . $fileName . '\', \'' . $maxFileSize . '\');';
+		$commands	= 'window.parent.Todoyu.Ext.assets.Upload.uploadFailed(' . $idTask . ', ' . $error . ', \'' . $fileName . '\', \'' . $maxFileSize . '\');';
 
 		return TodoyuRenderer::renderUploadIFrameJsContent($commands);
 	}
