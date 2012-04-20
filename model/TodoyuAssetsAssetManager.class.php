@@ -31,6 +31,8 @@ class TodoyuAssetsAssetManager {
 	 */
 	const TABLE = 'ext_assets_asset';
 
+
+
 	/**
 	 * Session path for temporary storage path
 	 *
