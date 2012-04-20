@@ -29,6 +29,7 @@
 	<label index="maxLengthFileNameExceeded">Der Name der Datei '#{filename}' ist zu lang (max. #{maxLengthFileName} Zeichen)</label>
 	<label index="uploadFailed">Das Hochladen der Datei '#{filename}' ist fehlgeschlagen</label>
 	<label index="uploadOk">Die Datei wurde erfolgreich hochgeladen.</label>
+	<label index="uploadCanceled">Das Hochladen wurde abgebrochen</label>
 	<label index="locked">Die Aufgabe ist gesperrt. Es können keine Dateien angefügt werden</label>
 	<label index="task.icon">Aufgabe hat Dateianhänge</label>
 	<label index="taskform.assets.button.delete">Ausgewählte Datei löschen</label>
