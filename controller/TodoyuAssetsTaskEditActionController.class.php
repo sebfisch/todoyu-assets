@@ -85,7 +85,7 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 		}
 
 			// Render frame content. Success or error
-		if( $error === UPLOAD_ERR_OK && ! $file['error'] ) {
+		if( $error === UPLOAD_ERR_OK && is_array($file) && !$file['error'] ) {
 			$uploader	= new TodoyuAssetsTempUploaderTask($idTask);
 			$uploader->addFile($file);
 
