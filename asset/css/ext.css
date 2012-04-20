@@ -52,6 +52,11 @@ div.directUploadBox .fField {
 	margin-left:50px;
 }
 
+.uploadProgress .cancelUpload {
+	background:url(../../../../core/asset/img/icons.png) no-repeat 0 -360px;
+	cursor: pointer;
+}
+
 
 
 

@@ -45,6 +45,14 @@ Todoyu.Ext.assets.Upload = {
 	 */
 	active: false,
 
+	/**
+	 * Upload iframges
+	 *
+	 * @property	iframes
+	 * @type		Element[]
+	 */
+	iframes: {},
+
 
 
 	/**
@@ -54,7 +62,7 @@ Todoyu.Ext.assets.Upload = {
 	 * @param	{Number}	idTask
 	 */
 	onChange: function(idTask) {
-		this.showProgressBar(idTask, this.getField(idTask).value);
+		this.showProgressBar(idTask);
 		this.submit(idTask);
 	},
 
@@ -70,6 +78,8 @@ Todoyu.Ext.assets.Upload = {
 		this.active	= true;
 		var form	= this.getForm(idTask);
 		var iFrame	= Todoyu.Form.submitFileUploadForm(form);
+
+		this.iframes[idTask] = iFrame;
 
 			// Register callback to check after 20 seconds if upload failed
 		this.uploadFailingDetection.bind(this, idTask, iFrame).delay(20);
@@ -87,7 +97,7 @@ Todoyu.Ext.assets.Upload = {
 	 */
 	uploadFailingDetection: function(idTask, iFrame) {
 		if( this.active === true && iFrame.contentDocument.URL !== 'about:blank' ) {
-			this.uploadFailed(idTask, 0, '');
+			this.uploadFailed(idTask);
 		}
 	},
 
@@ -127,7 +137,13 @@ Todoyu.Ext.assets.Upload = {
 	 * @param	{Boolean}	show
 	 */
 	showProgressBar: function(idTask, show) {
-		$('task-' + idTask + '-asset-progress')[show?'show':'hide']();
+		show	= show !== false;
+
+		if( idTask == 0 && !show ) {
+			$$('.uploadProgress').invoke('hide');
+		} else {
+			$('task-' + idTask + '-asset-progress')[show?'show':'hide']();
+		}
 	},
 
 
@@ -141,6 +157,8 @@ Todoyu.Ext.assets.Upload = {
 	 */
 	uploadFinished: function(idTask, tabLabel) {
 		this.active = false;
+
+		delete this.iframes[idTask];
 
 		this.showProgressBar(idTask, false);
 
@@ -164,19 +182,23 @@ Todoyu.Ext.assets.Upload = {
 	 *
 	 * @method	uploadFailed
 	 * @param	{Number}		idTask
-	 * @param	{Number}		error		1 = file size exceeded, 2 = failure
-	 * @param	{String}		filename
-	 * @param	{Number}		maxFileSize
+	 * @param	{Number}		[error]			1 = file size exceeded, 2 = failure
+	 * @param	{String}		[filename]
+	 * @param	{Number}		[maxFileSize]
 	 */
-	uploadFailed: function(idTask, error, filename, maxFileSize, maxLengthFileName) {
+	uploadFailed: function(idTask, error, filename, maxFileSize) {
+		error	= error || 0;
+		filename= filename || '';
+
 		this.active = false;
+
+		delete this.iframes[idTask];
 
 		this.showProgressBar(idTask, false);
 
 		var info	= {
-			filename:			filename,
-			maxFileSize:		maxFileSize,
-			maxLengthFileName:	maxLengthFileName
+			filename:		filename,
+			maxFileSize:	maxFileSize
 		};
 		var msg		= '';
 
@@ -189,6 +211,25 @@ Todoyu.Ext.assets.Upload = {
 		}
 
 		Todoyu.notifyError(msg.interpolate(info), 'fileupload');
+	},
+
+
+
+	/**
+	 * Cancel file upload
+	 *
+	 * @param	{Number}	idTask
+	 */
+	cancelUpload: function(idTask) {
+		var iFrame	= this.iframes[idTask];
+
+		if( iFrame ) {
+			iFrame.src = 'about:blank';
+			delete this.iframes[idTask];
+		}
+
+		this.showProgressBar(idTask, false);
+		Todoyu.notifyInfo('[LLL:assets.ext.uploadCanceled]');
 	}
 
 };

@@ -49,11 +49,13 @@ Todoyu.Ext.assets.TaskEdit = {
 	toggleFormElements: function(idTask) {
 		var assetSelector	= this.getAssetSelector(idTask);
 
-		var hasFiles= assetSelector.select('option').size() > 0;
-		var method	= hasFiles ? 'show' : 'hide';
+		if( assetSelector ) {
+			var hasFiles= assetSelector.select('option').size() > 0;
+			var method	= hasFiles ? 'show' : 'hide';
 
-		$('formElement-task-' + idTask + '-field-assetlist')[method]();
-		$('formElement-task-' + idTask + '-field-delete')[method]();
+			$('formElement-task-' + idTask + '-field-assetlist')[method]();
+			$('formElement-task-' + idTask + '-field-delete')[method]();
+		}
 	},
 
 
@@ -104,12 +106,12 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * Check whether upload failed, determine reason (file too big / failure) and notify
 	 *
 	 * @method	uploadFailed
+	 * @param	{Number}		idTask
 	 * @param	{Number}		error		1 = file size exceeded, 2 = failure
 	 * @param	{String}		filename
 	 * @param	{Number}		maxFileSize
-	 * @param	{Number}		idTask
 	 */
-	uploadFailed: function(error, filename, maxFileSize, idTask) {
+	uploadFailed: function(idTask, error, filename, maxFileSize) {
 		this.toggleFormElements(idTask);
 
 		var info	= {
@@ -304,7 +306,6 @@ Todoyu.Ext.assets.TaskEdit = {
 	 * @param	{Object}	options
 	 */
 	onTaskEditFormLoaded: function(idTask, options) {
-
 		if( this.getAssetSelector(idTask) ) {
 			this.toggleFormElements(idTask);
 		}
