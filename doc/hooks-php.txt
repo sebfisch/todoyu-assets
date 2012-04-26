@@ -11,7 +11,7 @@ Event Hooks
 
 
 #assets.asset.download
-	An asset was downloaded
+	An asset will be downloaded downloaded
 	@param	Integer		$idAsset
 
 
@@ -21,6 +21,8 @@ Event Hooks
 
 
 #assets.asset.download.zip
-	Multiple assets were downloaded as zip archive
+	Multiple assets will be downloaded as zip archive
 	@param	Integer		$idTask
 	@param	Array		$assetIDs
+	@param	String		$pathZipFile
+	@param	String		$filename
