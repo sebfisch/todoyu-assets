@@ -276,20 +276,8 @@ class TodoyuAssetsAssetManager {
 	public static function downloadAsset($idAsset) {
 		$idAsset	= intval($idAsset);
 		$asset		= self::getAsset($idAsset);
-		$filePath	= $asset->getFileStoragePath();
-		$mimeType	= $asset->getMimeType();
-		$filename	= $asset->getFilename();
 
-		TodoyuHookManager::callHook('assets', 'asset.download', array($idAsset));
-
-		try {
-			$status = TodoyuFileManager::sendFile($filePath, $mimeType, $filename);
-		} catch(TodoyuExceptionFileDownload $e) {
-			// @todo	Catch error
-			$status = false;
-		}
-
-		return $status;
+		return $asset->sendAsDownload();
 	}
 
 
@@ -343,9 +331,9 @@ class TodoyuAssetsAssetManager {
 		$idTask		= intval($idTask);
 		$assetIDs	= TodoyuArray::intval($assetIDs);
 
-		$zipFile	= self::createAssetZip($idTask, $assetIDs);
+		$pathZipFile= self::createAssetZip($idTask, $assetIDs);
 
-		if( ! is_file($zipFile) ) {
+		if( ! is_file($pathZipFile) ) {
 			die("Download of ZIP file failed");
 		}
 
@@ -353,9 +341,9 @@ class TodoyuAssetsAssetManager {
 		$mimeType	= 'application/octet-stream';
 
 		try {
-			TodoyuFileManager::sendFile($zipFile, $mimeType, $filename);
-			unlink($zipFile);
-			TodoyuHookManager::callHook('assets', 'asset.download.zip', array($idTask, $assetIDs));
+			TodoyuHookManager::callHook('assets', 'asset.download.zip', array($idTask, $assetIDs, $pathZipFile, $filename));
+			TodoyuFileManager::sendFile($pathZipFile, $mimeType, $filename);
+			unlink($pathZipFile);
 		} catch(TodoyuExceptionFileDownload $e) {
 			// @todo catch error
 		}
