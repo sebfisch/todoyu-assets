@@ -54,10 +54,8 @@ div.directUploadBox .fField {
 
 .uploadProgress .cancelUpload {
 	background:url(../../../../core/asset/img/icons.png) no-repeat 0 -360px;
-	cursor: pointer;
+	cursor:pointer;
 }
-
-
 
 
 
@@ -81,6 +79,7 @@ div.directUploadBox .fField {
 .inlineAssetUpload .fieldnameDelete .fLabel {
 	width:0;
 }
+
 
 
 /* ----------------------------------------------
@@ -184,7 +183,6 @@ th.assetsFilelistHeaderFilenames {
 .assetFilesList {
 	margin-top:-4px !important;
 }
-
 
 .task span.taskIcons .assets {
 	background:url(../img/icons.png) no-repeat 0 -28px;

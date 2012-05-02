@@ -19,8 +19,6 @@
 *****************************************************************************/
 
 /**
- * [Enter Class Description]
- *
  * @package		Todoyu
  * @subpackage	Assets
  */
@@ -37,7 +35,7 @@ class TodoyuAssetsSetup implements TodoyuSysmanagerExtensionSetupInterface {
 
 	/**
 	 * @todo	implement
-	 * @param	unknown	$previousVersion
+	 * @param	String	$previousVersion
 	 */
 	public static function update($previousVersion) {
 
