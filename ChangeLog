@@ -1,6 +1,6 @@
 todoyu assets extension changelog
 
-assets 1.2.0 - not released yet
+assets 1.2.0 - 2012-05-03
 	* Feature: Add assets also during task edit
 	* Feature: No upload form required anymore. Dialog is opened directly on button click
 	* Feature: Check first if download of asset is possible. Show error message if a problem occurs
