@@ -67,7 +67,7 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 
 
 	/**
-	 * Check download status
+	 * Check download status - can the file be downloaded?
 	 *
 	 * @param	Array	$params
 	 * @return	String

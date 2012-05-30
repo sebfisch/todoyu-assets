@@ -101,7 +101,7 @@ Todoyu.Ext.assets = {
 
 
 	/**
-	 * Handle download check result
+	 * Handle download check result - initiate sending file / notify error
 	 *
 	 * @method	onDownloadStatusChecked
 	 * @param	{Number}		idAsset
