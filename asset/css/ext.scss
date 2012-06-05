@@ -187,3 +187,16 @@ th.assetsFilelistHeaderFilenames {
 .task span.taskIcons .assets {
 	background:url(../img/icons.png) no-repeat 0 -28px;
 }
+
+/* --------------------------
+ 	Field types
+   --------------------------*/
+.fElement.typeRecords {
+	&.recordsAsset,
+	&.recordsTaskAsset,
+	&.recordsProjectAsset {
+		.recordIcon {
+			background:url(../img/icons.png) no-repeat 3px -28px;
+		}
+	}
+}

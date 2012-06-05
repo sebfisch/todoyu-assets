@@ -189,11 +189,11 @@ class TodoyuAssetsAsset extends TodoyuBaseObject {
 			$this->getFilename(),
 			$this->getFilesizeFormatted(),
 			$this->getPersonCreate()->getFullName(),
-			$this->getDateCreate()
+			TodoyuTime::format($this->getDateCreate(), 'datetime')
 		);
 		$format	= '%1$s - %2$s, %3$s, %4$s';
 
-		return vprintf($format, $data);
+		return vsprintf($format, $data);
 	}
 
 }

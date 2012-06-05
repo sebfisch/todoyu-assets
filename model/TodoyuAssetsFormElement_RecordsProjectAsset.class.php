@@ -30,7 +30,7 @@ class TodoyuAssetsFormElement_RecordsProjectAsset extends TodoyuAssetsFormElemen
 	 * Init the object with special person config
 	 */
 	protected function init() {
-		$this->initRecords('projectAssets', 'assets', 'asset', 'projectAssetList');
+		$this->initRecords('projectAsset', 'assets', 'asset', 'projectAssetList');
 	}
 
 

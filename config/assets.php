@@ -49,7 +49,7 @@ Todoyu::$CONFIG['EXT']['assets']['assets']	= array(
 	),
 	'css'	=> array(
 		array(
-			'file'	=> 'ext/assets/asset/css/ext.css'
+			'file'	=> 'ext/assets/asset/css/ext.scss'
 		),
 		array(
 			'file'	=> 'ext/assets/asset/css/mime.css'
