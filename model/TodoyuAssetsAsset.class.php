@@ -85,6 +85,19 @@ class TodoyuAssetsAsset extends TodoyuBaseObject {
 
 
 	/**
+	 * Get formatted file size
+	 *
+	 * @param	Array|null		$alternativeLabels
+	 * @param	Boolean			$noLabel
+	 * @return	String
+	 */
+	public function getFilesizeFormatted(array $alternativeLabels = null, $noLabel = false) {
+		return TodoyuString::formatSize($this->getFilesize(), $alternativeLabels, $noLabel);
+	}
+
+
+
+	/**
 	 * Get mime type
 	 *
 	 * @return	String
@@ -162,6 +175,25 @@ class TodoyuAssetsAsset extends TodoyuBaseObject {
 	 */
 	public function canDownload() {
 		return TodoyuFileManager::canSendFile($this->getFileStoragePath());
+	}
+
+
+
+	/**
+	 * Get label for asset
+	 *
+	 * @return String
+	 */
+	public function getLabel() {
+		$data = array(
+			$this->getFilename(),
+			$this->getFilesizeFormatted(),
+			$this->getPersonCreate()->getFullName(),
+			$this->getDateCreate()
+		);
+		$format	= '%1$s - %2$s, %3$s, %4$s';
+
+		return vprintf($format, $data);
 	}
 
 }

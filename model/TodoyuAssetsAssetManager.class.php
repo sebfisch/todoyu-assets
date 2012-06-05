@@ -703,6 +703,97 @@ class TodoyuAssetsAssetManager {
 		return array_merge_recursive($items, $allowed);
 	}
 
+
+
+	/**
+	 * Get asset label
+	 *
+	 * @param	Integer		$idAsset
+	 * @return	String
+	 */
+	public static function getLabel($idAsset) {
+		return self::getAsset($idAsset)->getLabel();
+	}
+
+
+
+	/**
+	 * Get matching assets
+	 *
+	 * @param	Array		$searchWords
+	 * @param	Array		$ignoreIDs
+	 * @param	Integer		$idTask
+	 * @param	Integer		$idProject
+	 * @return	Array
+	 */
+	public static function getMatchingAssets(array $searchWords, array $ignoreIDs = array(), $idTask = 0, $idProject = 0) {
+		$assetIDs	= self::searchAssets($searchWords, 30, 0, $ignoreIDs, $idTask, $idProject);
+		$assetItems	= array();
+
+		foreach($assetIDs as $idAsset) {
+			$asset	= self::getAsset($idAsset);
+
+			$assetItems[] = array(
+				'id'	=> $idAsset,
+				'label'	=> $asset->getLabel()
+			);
+		}
+
+		return $assetItems;
+	}
+
+
+
+	/**
+	 * Search assets and get matching IDS
+	 *
+	 * @param	String[]		$searchWords			Search keywords
+	 * @param	Integer			$size					Maximum amount of results
+	 * @param	Integer			$offset					Search offset
+	 * @param	Integer[]		$ignoreIDs				Ignore assets with these IDs
+	 * @param	Integer			$idTask					Limit search to assets of this task
+	 * @param	Integer			$idProject				Limit search task assets of tasks in this project
+	 * @return	Integer[]		Asset IDs
+	 */
+	public static function searchAssets(array $searchWords, $size = 100, $offset = 0, array $ignoreIDs = array(), $idTask = 0, $idProject = 0) {
+		$ignoreIDs	= TodoyuArray::intval($ignoreIDs, true, true);
+		$idTask		= intval($idTask);
+		$idProject	= intval($idProject);
+
+		$field	= '	a.id';
+		$table	= self::TABLE . ' a';
+		$where	= ' a.deleted = 0';
+		$order	= '	a.file_name';
+		$limit	= ($size != '') ? intval($offset) . ',' . intval($size) : '';
+
+		if( sizeof($searchWords) > 0 ) {
+			$searchFields	= array('a.file_ext', 'a.file_name');
+			$where			.= ' AND ' . TodoyuSql::buildLikeQueryPart($searchWords, $searchFields);
+		}
+
+			// Add ignore IDs
+		if( sizeof($ignoreIDs) > 0 ) {
+			$where .= ' AND ' . TodoyuSql::buildInListQueryPart($ignoreIDs, 'a.id', true, true);
+		}
+
+		if( !Todoyu::allowed('assets', 'asset:seeAll') ) {
+			$where .= ' AND a.is_public = 1';
+		}
+
+		// @todo Rights check for parent task/project
+
+		if( $idTask !== 0 ) {
+			$where .= ' AND a.parenttype = 1 AND a.id_parent = ' . $idTask;
+		}
+		if( $idProject !== 0 ) {
+			$table .= ', ext_project_task t';
+			$where .= ' AND a.id_task	= t.id'
+					. ' AND t.id_project= ' . $idProject;
+		}
+
+		return Todoyu::db()->getColumn($field, $table, $where, '', $order, $limit, 'id');
+	}
+
 }
 
 ?>

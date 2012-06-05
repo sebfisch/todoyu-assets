@@ -45,4 +45,12 @@ if( Todoyu::allowed('assets', 'general:use') ) {
 	TodoyuContextMenuManager::addFunction('Task', 'TodoyuAssetsAssetManager::getTaskContextMenuItems', 150);
 }
 
+
+	// Asset selector
+TodoyuFormManager::addFieldTypeRecords('recordsAsset', 'TodoyuAssetsFormElement_RecordsAsset');
+	// Task asset selector
+TodoyuFormManager::addFieldTypeRecords('recordsTaskAsset', 'TodoyuAssetsFormElement_RecordsTaskAsset');
+	// Project asset selector
+TodoyuFormManager::addFieldTypeRecords('recordsProjectAsset', 'TodoyuAssetsFormElement_RecordsProjectAsset');
+
 ?>

@@ -145,6 +145,65 @@ class TodoyuAssetsAssetActionController extends TodoyuActionController {
 		TodoyuAssetsAssetManager::togglePublic($idAsset);
 	}
 
+
+
+	/**
+	 * Get record list for matching assets
+	 *
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public function assetListAction(array $params) {
+		$search			= trim($params['search']);
+		$searchWords	= TodoyuArray::trimExplode(' ', $search, true);
+		$ignoreIDs		= TodoyuArray::intExplode(',', $params['ignore']);
+		$assets			= TodoyuAssetsAssetManager::getMatchingAssets($searchWords, $ignoreIDs);
+
+		TodoyuHeader::sendTypeJSON();
+
+		return json_encode($assets);
+	}
+
+
+
+	/**
+	 * Get record list of matching task assets
+	 *
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public function taskAssetListAction(array $params) {
+		$search			= trim($params['search']);
+		$searchWords	= TodoyuArray::trimExplode(' ', $search, true);
+		$ignoreIDs		= TodoyuArray::intExplode(',', $params['ignore']);
+		$extraParams	= TodoyuArray::assureFromJSON($params['params']);
+		$idTask			= intval($extraParams['task']);
+		$assets			= TodoyuAssetsAssetManager::getMatchingAssets($searchWords, $ignoreIDs, $idTask);
+
+		TodoyuHeader::sendTypeJSON();
+
+		return json_encode($assets);
+	}
+
+
+
+	/*
+	 * Get record list of matching project assets
+	 *
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public function projectAssetListAction(array $params) {
+		$search			= trim($params['search']);
+		$searchWords	= TodoyuArray::trimExplode(' ', $search, true);
+		$ignoreIDs		= TodoyuArray::intExplode(',', $params['ignore']);
+		$idProject		= intval($params['project']);
+		$assets			= TodoyuAssetsAssetManager::getMatchingAssets($searchWords, $ignoreIDs, 0, $idProject);
+
+		TodoyuHeader::sendTypeJSON();
+
+		return json_encode($assets);
+	}
 }
 
 ?>
