@@ -1,3 +1,7 @@
+@import "../../../../core/config/theme.scss";
+
+
+
 /* ----------------------------------------------
 	Extension icon: stand-alone and in heading
    ---------------------------------------------- */
@@ -40,7 +44,7 @@ button.buttonDeleteAsset .icon {
 
 form.directUploadBox,
 div.directUploadBox .fField {
-	opacity:0.001;
+	opacity:0.0;/*0.001;*/
 	overflow:hidden;
 	position:absolute;
 	width:340px;
