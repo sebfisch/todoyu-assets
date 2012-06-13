@@ -125,7 +125,7 @@ class TodoyuAssetsAsset extends TodoyuBaseObject {
 	 * @return	Boolean
 	 */
 	public function isPublic() {
-		return $this->getInt('is_public') === 1;
+		return $this->isFlagSet('is_public');
 	}
 
 
