@@ -169,7 +169,15 @@ class TodoyuAssetsAssetManager {
 	public static function getTaskAssets($idTask) {
 		$idTask	= intval($idTask);
 
-		return self::getElementAssets($idTask, ASSET_PARENTTYPE_TASK);
+		$taskAssets	= self::getElementAssets($idTask, ASSET_PARENTTYPE_TASK);
+
+		$commentIDs	= TodoyuCommentCommentManager::getTaskCommentIDs($idTask);
+
+		foreach($commentIDs as $idCommment) {
+			$taskAssets = array_merge($taskAssets, self::getElementAssets($idCommment, ASSET_PARENTTYPE_COMMENT));
+		}
+
+		return $taskAssets;
 	}
 
 

@@ -22,7 +22,7 @@
 				</td>
 				<td class="filename">
 					<a href="javascript:void(0)" title="{Label assets.ext.alt.download}">
-						{$asset.file_name}
+						{$asset.file_name} {if $asset.parenttype == constant(ASSET_PARENTTYPE_COMMENT)}(c{$asset.id_parent}){/if}
 					</a>
 				</td>
 				<td class="person">

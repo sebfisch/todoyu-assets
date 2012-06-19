@@ -96,6 +96,15 @@ class TodoyuAssetsRights {
 					}
 				}
 				break;
+			case ASSET_PARENTTYPE_COMMENT:
+				if( TodoyuCommentRights::isSeeAllowed($idParent) ) {
+					if( self::isSeeAllowed($idAsset) ) {
+						if( Todoyu::allowed('assets', 'asset:delete') ) {
+							return true;
+						}
+					}
+				}
+				break;
 		}
 
 		return false;
