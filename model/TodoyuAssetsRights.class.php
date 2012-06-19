@@ -59,6 +59,13 @@ class TodoyuAssetsRights {
 					}
 				}
 				break;
+			case ASSET_PARENTTYPE_COMMENT:
+				if( TodoyuCommentRights::isSeeAllowed($idParent) ) {
+					if( Todoyu::allowed('assets', 'asset:seeAll') || $asset->isPublic() || $asset->isCurrentPersonCreator() ) {
+						return true;
+					}
+				}
+				break;
 		}
 
 		return false;
