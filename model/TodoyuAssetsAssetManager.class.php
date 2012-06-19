@@ -506,12 +506,18 @@ class TodoyuAssetsAssetManager {
 		switch($type) {
 			case ASSET_PARENTTYPE_TASK:
 					// User project ID as parent folder
-				$folder		= TodoyuProjectTaskManager::getProjectID($idParent);;
+				$folder		= TodoyuProjectTaskManager::getProjectID($idParent);
 				break;
 
 //			case ASSET_PARENTTYPE_PROJECT:
 //				$folder = Todoyu::$CONFIG['EXT']['assets']['TYPES']['project']['folder'];
 //				break;
+
+			case ASSET_PARENTTYPE_COMMENT:
+				$idTask		= TodoyuCommentCommentManager::getTaskID($idParent);
+				$idProject	= TodoyuProjectTaskManager::getProjectID($idTask);
+				$folder		= $idProject . DIR_SEP . $idTask;
+				break;
 
 			default:
 				die('INVALID ASSET TYPE');
