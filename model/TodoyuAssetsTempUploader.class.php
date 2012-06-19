@@ -65,6 +65,15 @@ abstract class TodoyuAssetsTempUploader {
 
 
 	/**
+	 * @return	String
+	 */
+	protected function getSessionKey() {
+		return $this->sessionKey;
+	}
+
+
+
+	/**
 	 * Get type
 	 *
 	 * @return	String
@@ -122,6 +131,8 @@ abstract class TodoyuAssetsTempUploader {
 		);
 
 		$this->saveFileInfo($fileInfo);
+
+		return $fileInfo['key'];
 	}
 
 

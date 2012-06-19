@@ -1,6 +1,7 @@
 todoyu assets extension changelog
 
 assets 1.3.0 - not released yet
+	* Added: Added record selector with dropdown instead of autocompleter
 	* Added: Added parenttype comment for assets
 	* Added: New form field types: recordsAsset, recordsTaskAsset, recordsProjectAsset
 	* Added: TodoyuAssetsAssetManager::getLabel(), ::getMatchingAssets(), ::searchAssets() for the new field types

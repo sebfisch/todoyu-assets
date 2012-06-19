@@ -52,5 +52,7 @@ TodoyuFormManager::addFieldTypeRecords('recordsAsset', 'TodoyuAssetsFormElement_
 TodoyuFormManager::addFieldTypeRecords('recordsTaskAsset', 'TodoyuAssetsFormElement_RecordsTaskAsset');
 	// Project asset selector
 TodoyuFormManager::addFieldTypeRecords('recordsProjectAsset', 'TodoyuAssetsFormElement_RecordsProjectAsset');
+	// General asset selector
+TodoyuFormManager::addFieldType('recordsSelectAsset', 'TodoyuAssetsFormElement_RecordSelectAsset', 'ext/assets/view/form/FormElement_SelectAsset.tmpl');
 
 ?>

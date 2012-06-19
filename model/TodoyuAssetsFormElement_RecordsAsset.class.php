@@ -63,6 +63,18 @@ class TodoyuAssetsFormElement_RecordsAsset extends TodoyuFormElement_Records {
 
 
 	/**
+	 * @return	Integer
+	 */
+	protected function getCommentID() {
+		$string = $this->getForm()->getRecordID();
+		list($idTask, $idComment) = explode('-', $string);
+
+		return intval($idComment);
+	}
+
+
+
+	/**
 	 * Get record data
 	 *
 	 * @return	Array[]

@@ -45,6 +45,10 @@ Todoyu::$CONFIG['EXT']['assets']['assets']	= array(
 		array(
 			'file'		=> 'lib/js/md5.js',
 			'position'	=> 26
+		),
+		array(
+			'file'		=> 'ext/assets/asset/js/RecordSelectAsset.js',
+			'position'	=> 130
 		)
 	),
 	'css'	=> array(
