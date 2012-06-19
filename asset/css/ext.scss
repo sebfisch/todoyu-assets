@@ -18,16 +18,21 @@ h1.extIconAssets .title {
 /* ----------------------------------------------
 	Asset form elements
    ---------------------------------------------- */
-.assetsButtons button.upload .icon,
-button.buttonUploadAsset .icon {
-	background:url(../../../../core/asset/img/icons.png) no-repeat 5px -1692px;
-	width:24px;
+.assetsButtons {
+	button {
+		&.upload .icon,
+		button.buttonUploadAsset .icon {
+			background:url(../../../../core/asset/img/icons.png) no-repeat 5px -1692px;
+			width:24px;
+		}
+
+		&.downloadSelection .icon {
+			background:url(../img/icons.png) no-repeat 5px -687px;
+			width:22px;
+		}
+	}
 }
 
-.assetsButtons button.downloadSelection .icon {
-	background:url(../img/icons.png) no-repeat 5px -687px;
-	width:22px;
-}
 
 button.buttonDeleteAsset .icon {
 	background:url(../img/icons.png) no-repeat 0 -746px;
@@ -35,16 +40,16 @@ button.buttonDeleteAsset .icon {
 
 .directUploadForm {
 	left:-200px;
-}
 
-.directUpload input[type=file] {
-	cursor:pointer;
-	font-size:18px;
+	input[type=file] {
+		cursor:pointer;
+		font-size:18px;
+	}
 }
 
 form.directUploadBox,
 div.directUploadBox .fField {
-	opacity:0.0;/*0.001;*/
+	opacity:0.0;	//0.001;
 	overflow:hidden;
 	position:absolute;
 	width:340px;
@@ -54,11 +59,11 @@ div.directUploadBox .fField {
 .uploadProgress {
 	display:inline-block;
 	margin-left:50px;
-}
 
-.uploadProgress .cancelUpload {
-	background:url(../../../../core/asset/img/icons.png) no-repeat 0 -360px;
-	cursor:pointer;
+	.cancelUpload {
+		background:url(../../../../core/asset/img/icons.png) no-repeat 0 -360px;
+		cursor:pointer;
+	}
 }
 
 
@@ -66,22 +71,26 @@ div.directUploadBox .fField {
 /* ----------------------------------------------
 	Task inline upload form
    ---------------------------------------------- */
-.inlineAssetUpload .fElement.typeUpload .fField {
-	top:10px;
-	left:-60px;
-}
+.inlineAssetUpload {
+	.fElement.typeUpload .fField {
+		top:10px;
+		left:-60px;
+	}
 
-.inlineAssetUpload .fieldnameDelete,
-.inlineAssetUpload .fieldnameUpload {
-	float:left;
-	width:auto;
-}
-.inlineAssetUpload .fieldnameDelete .fField,
-.inlineAssetUpload .fieldnameUpload .fField {
-	width:auto;
-}
-.inlineAssetUpload .fieldnameDelete .fLabel {
-	width:0;
+	.fieldnameDelete,
+	.inlineAssetUpload .fieldnameUpload {
+		float:left;
+		width:auto;
+	}
+
+	.fieldnameDelete .fField,
+	.inlineAssetUpload .fieldnameUpload .fField {
+		width:auto;
+	}
+
+	.fieldnameDelete .fLabel {
+		width:0;
+	}
 }
 
 
@@ -89,72 +98,82 @@ div.directUploadBox .fField {
 /* ----------------------------------------------
 	List
    ---------------------------------------------- */
-.assetList .assets-table-header {
-	background:$colorCorporate01 url(../../../../core/asset/img/bg-tabheader.png) repeat-x 0 top;
-}
+.assetList {
+	.assets-table-header {
+		background:$colorCorporate01 url(../../../../core/asset/img/bg-tabheader.png) repeat-x 0 top;
+	}
 
-.assetList th {
-	padding:5px 5px 5px 0;
-	text-transform:uppercase;
-}
+	.checkbox {
+		padding-left:5px;
+		width:20px;
+	}
 
-.assetList td {
-	padding:3px 0 0 0;
-}
+	.mimetype {
+		width:20px;
+	}
 
-.assetList .checkbox {
-	padding-left:5px;
-	width:20px;
-}
-.assetList .mimetype {
-	width:20px;
-}
-.assetList .person {
-	width:120px;
-}
-.assetList .filesize {
-	width:50px;
-}
-.assetList .uploaddate {
-	width:90px;
-}
-.assetList .actions {
-	width:60px;
-}
+	.person {
+		width:120px;
+	}
 
-.assetList .actions a {
-	background-image:url(../img/icons.png);
-	width:16px;
-	height:16px;
-	display:block;
-	float:left;
-	clear:none;
-	margin-right:3px;
-}
+	.filesize {
+		width:50px;
+	}
 
-.assetList .asset-icon-download {
-	background-position:0 -30px;
-}
+	.uploaddate {
+		width:90px;
+	}
 
-.assetList .asset-icon-delete {
-	background-position:0 0;
-}
+	.asset-icon-download {
+		background-position:0 -30px;
+	}
 
-.assetList .asset-icon-public {
-	background-position:0 -60px;
-}
+	.asset-icon-delete {
+		background-position:0 0;
+	}
 
-.assetList .asset-icon-public.not {
-	background-position:0 -630px;
-}
+	.asset-icon-public {
+		background-position:0 -60px;
 
-/* Background colors of the rows in the list */
-.assetList tr th {
-	border-bottom:1px solid white;
-}
+		&.not {
+			background-position:0 -630px;
+		}
+	}
 
-.assetList tr.selected td {
-	background-color:$colorCorporate02;
+
+	.actions {
+		width:60px;
+
+		a {
+			background-image:url(../img/icons.png);
+			width:16px;
+			height:16px;
+			display:block;
+			float:left;
+			clear:none;
+			margin-right:3px;
+		}
+	}
+
+	th {
+		padding:5px 5px 5px 0;
+		text-transform:uppercase;
+	}
+
+	td {
+		padding:3px 0 0 0;
+	}
+
+	tr {
+		/* Background colors of the rows in the list */
+		th {
+			border-bottom:1px solid white;
+		}
+
+		&.selected td {
+			background-color:$colorCorporate02;
+		}
+	}
 }
 
 
@@ -191,6 +210,8 @@ th.assetsFilelistHeaderFilenames {
 .task span.taskIcons .assets {
 	background:url(../img/icons.png) no-repeat 0 -28px;
 }
+
+
 
 /* --------------------------
  	Field types
