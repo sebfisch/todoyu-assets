@@ -60,7 +60,7 @@ class TodoyuAssetsAsset extends TodoyuBaseObject {
 
 
 	/**
-	 * Get file storage path
+	 * Get absolute path to file in storage directory on the server
 	 *
 	 * @return	String
 	 */

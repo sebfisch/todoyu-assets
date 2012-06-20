@@ -56,6 +56,12 @@ div.directUploadBox .fField {
 	z-index:50;
 }
 
+.directUploadBox {
+	input.upload {
+		cursor: pointer;
+	}
+}
+
 .uploadProgress {
 	display:inline-block;
 	margin-left:50px;
