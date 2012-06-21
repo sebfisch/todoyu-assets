@@ -27,7 +27,7 @@ h1.extIconAssets .title {
 		}
 
 		&.downloadSelection .icon {
-			background:url(../img/icons.png) no-repeat 5px -687px;
+			background:url(../../../../core/asset/img/icons.png) no-repeat 5px -237px;
 			width:22px;
 		}
 	}
@@ -35,7 +35,7 @@ h1.extIconAssets .title {
 
 
 button.buttonDeleteAsset .icon {
-	background:url(../img/icons.png) no-repeat 0 -746px;
+	background:url(../../../../core/asset/img/icons.png) no-repeat 0 -357px;
 }
 
 .directUploadForm {
@@ -131,18 +131,18 @@ div.directUploadBox .fField {
 	}
 
 	.asset-icon-download {
-		background-position:0 -30px;
+		background:url(../../../../core/asset/img/icons.png) no-repeat 0 -210px;
 	}
 
 	.asset-icon-delete {
-		background-position:0 0;
+		background:url(../../../../core/asset/img/icons.png) no-repeat 0 -359px;
 	}
 
 	.asset-icon-public {
-		background-position:0 -60px;
+		background:url(../../../../core/asset/img/icons.png) no-repeat 0 -1081px;
 
 		&.not {
-			background-position:0 -630px;
+			opacity: 0.3;
 		}
 	}
 
@@ -151,7 +151,6 @@ div.directUploadBox .fField {
 		width:60px;
 
 		a {
-			background-image:url(../img/icons.png);
 			width:16px;
 			height:16px;
 			display:block;
