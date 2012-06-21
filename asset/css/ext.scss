@@ -110,12 +110,15 @@ div.directUploadBox .fField {
 	}
 
 	.checkbox {
-		padding-left:5px;
 		width:20px;
 	}
 
 	.mimetype {
 		width:20px;
+	}
+
+	.filename {
+		width:265px
 	}
 
 	.person {
@@ -148,20 +151,18 @@ div.directUploadBox .fField {
 
 
 	.actions {
-		width:60px;
 
 		a {
-			width:16px;
+			width:22px;
 			height:16px;
 			display:block;
 			float:left;
 			clear:none;
-			margin-right:3px;
 		}
 	}
 
 	th {
-		padding:5px 5px 5px 0;
+		padding:5px 0 5px 0;
 		text-transform:uppercase;
 	}
 
@@ -172,7 +173,7 @@ div.directUploadBox .fField {
 	tr {
 		/* Background colors of the rows in the list */
 		th {
-			border-bottom:1px solid white;
+
 		}
 
 		&.selected td {
@@ -215,7 +216,6 @@ th.assetsFilelistHeaderFilenames {
 .task span.taskIcons .assets {
 	background:url(../img/icons.png) no-repeat 0 -28px;
 }
-
 
 
 /* --------------------------
