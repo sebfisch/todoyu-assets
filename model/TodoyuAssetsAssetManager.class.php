@@ -610,9 +610,10 @@ class TodoyuAssetsAssetManager {
 	 *
 	 * @param	Array		$data
 	 * @param	Integer		$idTask
+	 * @param	Array		$params
 	 * @return	Array
 	 */
-	public static function hookStoreUplodedTaskAssets(array $data, $idTask) {
+	public static function hookStoreUplodedTaskAssets(array $data, $idTask, array $params) {
 		$idTaskOld	= intval($data['id']);
 		$uploader	= new TodoyuAssetsTempUploaderTask($idTaskOld);
 		$fileInfos	= $uploader->getFilesInfos();
