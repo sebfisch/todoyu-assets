@@ -94,7 +94,13 @@ class TodoyuAssetsAssetManager {
 		$idTask	= intval($idTask);
 		$assets	= self::getTaskAssets($idTask);
 
-		return sizeof($assets);
+		$amount = 0;
+
+		foreach($assets as $typeAssets) {
+			$amount += sizeof($typeAssets);
+		}
+
+		return $amount;
 	}
 
 
@@ -169,12 +175,14 @@ class TodoyuAssetsAssetManager {
 	public static function getTaskAssets($idTask) {
 		$idTask	= intval($idTask);
 
-		$taskAssets	= self::getElementAssets($idTask, ASSET_PARENTTYPE_TASK);
+		$taskAssets['task']	= self::getElementAssets($idTask, ASSET_PARENTTYPE_TASK);
 
 		$commentIDs	= TodoyuCommentCommentManager::getTaskCommentIDs($idTask);
 
+
+		$taskAssets['comment'] = array();
 		foreach($commentIDs as $idCommment) {
-			$taskAssets = array_merge($taskAssets, self::getElementAssets($idCommment, ASSET_PARENTTYPE_COMMENT));
+			$taskAssets['comment'] = array_merge($taskAssets['comment'], self::getElementAssets($idCommment, ASSET_PARENTTYPE_COMMENT));
 		}
 
 		return $taskAssets;

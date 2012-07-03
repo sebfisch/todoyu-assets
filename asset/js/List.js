@@ -111,7 +111,7 @@ Todoyu.Ext.assets.List = {
 		assetsTableBody.on('click', 'tr', this.select.bind(this));
 
 			// Actions
-		assetsTableBody.select('tr').each(function(row){
+		assetsTableBody.select('tr.asset').each(function(row){
 			var idAsset	= row.id.split('-').last();
 				// Filename
 			row.down('.filename a').on('click', 'td', this.handleDownloadClick.bind(this, idAsset));

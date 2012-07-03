@@ -35,4 +35,6 @@
 	<label index="taskform.assets.button.delete">Ausgewählte Datei löschen</label>
 	<label index="taskform.assets.button.upload">Neue Datei anfügen</label>
 	<label index="contextmenu.task.addasset">Dateianhang</label>
+	<label index="type.task">Aufgaben-Anhänge</label>
+	<label index="type.comment">Kommentar-Anhänge</label>
 </labels>

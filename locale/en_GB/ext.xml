@@ -35,4 +35,6 @@
 	<label index="taskform.assets.button.delete">Delete Selected Asset</label>
 	<label index="taskform.assets.button.upload">Upload New Asset</label>
 	<label index="contextmenu.task.addasset">Asset</label>
+	<label index="type.task">Task Assets</label>
+	<label index="type.comment">Comment Assets</label>
 </labels>

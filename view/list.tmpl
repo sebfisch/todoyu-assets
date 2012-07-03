@@ -5,6 +5,7 @@
 				<th class="checkbox checkbox"><input type="checkbox" id="task-{$idTask}-assets-checkallbox" title="{Label assets.ext.alt.selectall}"/></th>
 				<th class="mimetype">&nbsp;</th>
 				<th class="filename">{Label core.file.filename}</th>
+				<th class="parent">&nbsp;</th>
 				<th class="person">{Label core.global.id_person_create}</th>
 				<th class="filesize">&nbsp;</th>
 				<th class="uploaddate">&nbsp;</th>
@@ -12,44 +13,60 @@
 			</tr>
 		</thead>
 		<tbody id="task-{$idTask}-assets-tablebody">
-		{foreach $assets key asset assetlist}
-			<tr id="asset-{$asset.id}" class="{cycle values="odd,even"} asset">
-				<td class="checkbox">
-					<input type="checkbox" id="asset-{$asset.id}-checkbox" value="{$asset.id}" />
-				</td>
-				<td class="mimetype mime{strtoupper $asset.file_ext}">
-					<span class="icon"></span>
-				</td>
-				<td class="filename">
-					<a href="javascript:void(0)" title="{Label assets.ext.alt.download}">
-						{$asset.file_name} {if $asset.parenttype == constant(ASSET_PARENTTYPE_COMMENT)}(c{$asset.id_parent}){/if}
-					</a>
-				</td>
-				<td class="person">
-					{name $asset.id_person_create}
-				</td>
-				<td class="filesize">
-					{fileSize $asset.file_size}
-				</td>
-				<td class="uploaddate">
-					<span title="{Label assets.ext.alt.uploadedby} {name $asset.id_person_create}">{dateFormat $asset.date_create datetime}</span>
-				</td>
-				<td class="actions">
-					{if isInternal()}
-						<a id="asset-{$asset.id}-icon-public" href="javascript:void(0)" title="{Label assets.ext.alt.changeVisibility}" class="visibility asset-icon-public {if !$asset.is_public}not{/if}">
-							<span class="hidden">{Label assets.ext.alt.changeVisibility}</span>
+		{foreach $assets type typeAssets}
+			{foreach $typeAssets key asset assetList}
+				{if $.foreach.assetList.first}
+					<tr class="typeHeadline">
+						<td colspan="8">
+							<h4>{Label assets.ext.type.$type}</h4>
+						</td>
+					</tr>
+				{/if}
+
+				<tr id="asset-{$asset.id}" class="{cycle values="odd,even"} asset">
+					<td class="checkbox">
+						<input type="checkbox" id="asset-{$asset.id}-checkbox" value="{$asset.id}" />
+					</td>
+					<td class="mimetype mime{strtoupper $asset.file_ext}">
+						<span class="icon"></span>
+					</td>
+					<td class="filename">
+						<a href="javascript:void(0)" title="{Label assets.ext.alt.download}">
+							{$asset.file_name}
 						</a>
-					{/if}
-					<a id="asset-{$asset.id}-icon-download" href="javascript:void(0)" title="{Label assets.ext.alt.download}" class="download asset-icon-download">
-						<span class="hidden">{Label assets.ext.alt.download}</span>
-					</a>
-					{if isAssetDeleteAllowed($asset.id)}
-						<a id="asset-{$asset.id}-icon-delete" href="javascript:void(0)" title="{Label assets.ext.alt.delete}" class="delete asset-icon-delete">
-							<span class="hidden">{Label assets.ext.alt.delete}</span>
+					</td>
+					<td class="parent">
+						{if $asset.parenttype == constant(ASSET_PARENTTYPE_COMMENT)}
+							{linkComments 'c$asset.id_parent'}
+						{/if}
+					</td>
+					<td class="person">
+						{name $asset.id_person_create}
+					</td>
+					<td class="filesize">
+						{fileSize $asset.file_size}
+					</td>
+					<td class="uploaddate">
+						<span title="{Label assets.ext.alt.uploadedby} {name $asset.id_person_create}">{dateFormat $asset.date_create datetime}</span>
+					</td>
+					<td class="actions">
+						{if isAssetDeleteAllowed($asset.id)}
+							<a id="asset-{$asset.id}-icon-delete" href="javascript:void(0)" title="{Label assets.ext.alt.delete}" class="delete asset-icon-delete">
+								<span class="hidden">{Label assets.ext.alt.delete}</span>
+							</a>
+						{/if}
+						<a id="asset-{$asset.id}-icon-download" href="javascript:void(0)" title="{Label assets.ext.alt.download}" class="download asset-icon-download">
+							<span class="hidden">{Label assets.ext.alt.download}</span>
 						</a>
-					{/if}
-				</td>
-			</tr>
+
+						{if isInternal()}
+							<a id="asset-{$asset.id}-icon-public" href="javascript:void(0)" title="{Label assets.ext.alt.changeVisibility}" class="visibility asset-icon-public {if !$asset.is_public}not{/if}">
+								<span class="hidden">{Label assets.ext.alt.changeVisibility}</span>
+							</a>
+						{/if}
+					</td>
+				</tr>
+			{/foreach}
 		{/foreach}
 		</tbody>
 	</table>

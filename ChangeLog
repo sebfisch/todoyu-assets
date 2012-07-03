@@ -1,6 +1,9 @@
 todoyu assets extension changelog
 
 assets 1.3.0 - not released yet
+	* Changed: Added link to comment in asset list
+	* Changed: Adapt asset list to new width
+	* Added: Separate types in asset list
 	* Added: Show comment assets in tab
 	* Added: Check delete right for comment assets
 	* Added: Check see rights for comment assets

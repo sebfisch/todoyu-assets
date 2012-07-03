@@ -110,15 +110,15 @@ div.directUploadBox .fField {
 	}
 
 	.checkbox {
-		width:20px;
+		width:30px;
 	}
 
 	.mimetype {
-		width:20px;
+		width:30px;
 	}
 
 	.filename {
-		width:265px
+		width:300px
 	}
 
 	.person {
@@ -133,31 +133,31 @@ div.directUploadBox .fField {
 		width:90px;
 	}
 
-	.asset-icon-download {
-		background:url(../../../../core/asset/img/icons.png) no-repeat 0 -840px;
-	}
-
-	.asset-icon-delete {
-		background:url(../../../../core/asset/img/icons.png) no-repeat 0 -330px;
-	}
-
-	.asset-icon-public {
-		background:url(../../../../core/asset/img/icons.png) no-repeat 0 -1081px;
-
-		&.not {
-			opacity: 0.3;
-		}
-	}
-
-
 	.actions {
+		align: right;
 
 		a {
 			width:22px;
 			height:16px;
 			display:block;
-			float:left;
+			float:right;
 			clear:none;
+
+			&.asset-icon-download {
+				background:url(../../../../core/asset/img/icons.png) no-repeat 0 -840px;
+			}
+
+			&.asset-icon-delete {
+				background:url(../../../../core/asset/img/icons.png) no-repeat 0 -330px;
+			}
+
+			&.asset-icon-public {
+				background:url(../../../../core/asset/img/icons.png) no-repeat 0 -1081px;
+
+				&.not {
+					opacity: 0.3;
+				}
+			}
 		}
 	}
 
