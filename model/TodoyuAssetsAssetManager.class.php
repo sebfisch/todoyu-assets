@@ -226,11 +226,11 @@ class TodoyuAssetsAssetManager {
 	/**
 	 * Add an uploaded file as comment asset
 	 *
-	 * @param	Integer		$idComment		Comment ID
-	 * @param	String		$tempFile		Path to temporary file on server
-	 * @param	String		$fileName		Filename on browser system
-	 * @param	String		$mimeType		Submitted file type by browser
-	 * @return	Integer		Asset ID
+	 * @param	Integer			$idComment		Comment ID
+	 * @param	String			$tempFile		Path to temporary file on server
+	 * @param	String			$fileName		Filename on browser system
+	 * @param	String			$mimeType		Submitted file type by browser
+	 * @return	Integer|Boolean		Asset ID
 	 */
 	public static function addCommentAsset($idComment, $tempFile, $fileName, $mimeType) {
 		$idComment	= intval($idComment);
@@ -245,12 +245,12 @@ class TodoyuAssetsAssetManager {
 	 *  - Copy the file to the file structure
 	 *  - Add an asset record to the database
 	 *
-	 * @param	Integer		$type
-	 * @param	Integer		$idParent
-	 * @param	String		$tempFile		Absolute path to the temporary file
-	 * @param	String		$fileName		Original file name
-	 * @param	String		$mimeType		File mime type
-	 * @return	Integer		Asset ID
+	 * @param	Integer			$type
+	 * @param	Integer			$idParent
+	 * @param	String			$tempFile		Absolute path to the temporary file
+	 * @param	String			$fileName		Original file name
+	 * @param	String			$mimeType		File mime type
+	 * @return	Integer|Boolean		Asset ID or FALSE
 	 */
 	public static function addAsset($type, $idParent, $tempFile, $fileName, $mimeType) {
 		$type		= intval($type);
