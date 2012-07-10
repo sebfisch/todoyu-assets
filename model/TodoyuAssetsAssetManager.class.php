@@ -224,6 +224,23 @@ class TodoyuAssetsAssetManager {
 
 
 	/**
+	 * Add an uploaded file as comment asset
+	 *
+	 * @param	Integer		$idComment		Comment ID
+	 * @param	String		$tempFile		Path to temporary file on server
+	 * @param	String		$fileName		Filename on browser system
+	 * @param	String		$mimeType		Submitted file type by browser
+	 * @return	Integer		Asset ID
+	 */
+	public static function addCommentAsset($idComment, $tempFile, $fileName, $mimeType) {
+		$idComment	= intval($idComment);
+
+		return self::addAsset(ASSET_PARENTTYPE_COMMENT, $idComment, $tempFile, $fileName, $mimeType);
+	}
+
+
+
+	/**
 	 * Add a new file to the system.
 	 *  - Copy the file to the file structure
 	 *  - Add an asset record to the database
