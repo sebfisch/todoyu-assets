@@ -78,11 +78,6 @@ div.directUploadBox .fField {
 	Task inline upload form
    ---------------------------------------------- */
 .inlineAssetUpload {
-	//.fElement.typeUpload .fField {
-	//	top:10px;
-	//	left:-60px;
-	//}
-
 	.fieldnameDelete,
 	.inlineAssetUpload .fieldnameUpload {
 		float:left;
@@ -221,17 +216,19 @@ th.assetsFilelistHeaderFilenames {
 /* --------------------------
  	Field types
    --------------------------*/
-.fElement.typeRecords {
-	&.recordsAsset,
-	&.recordsTaskAsset,
-	&.recordsProjectAsset {
-		.recordIcon {
-			background:url(../img/icons.png) no-repeat 3px -28px;
+.fElement {
+	&.typeRecords {
+		&.recordsAsset,
+		&.recordsTaskAsset,
+		&.recordsProjectAsset {
+			.recordIcon {
+				background:url(../img/icons.png) no-repeat 3px -28px;
+			}
 		}
 	}
-}
 
-.fElement .directUploadBox {
-	margin-top: 10px;
-	font-size: 14px;
+	.directUploadBox {
+		margin-top: 10px;
+		font-size: 14px;
+	}
 }
