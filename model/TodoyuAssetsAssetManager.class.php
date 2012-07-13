@@ -766,7 +766,9 @@ class TodoyuAssetsAssetManager {
 	 * @param	Integer		$idProject
 	 * @return	Array
 	 */
-	public static function getMatchingAssets(array $searchWords, array $ignoreIDs = array(), $idTask = 0, $idProject = 0) {
+	public static function getMatchingAssets(array $searchWords, array $ignoreIDs = array(), array $params = array(), $type = null) {
+		$idTask		= intval($params['task']);
+		$idProject	= intval($params['project']);
 		$assetIDs	= self::searchAssets($searchWords, 30, 0, $ignoreIDs, $idTask, $idProject);
 		$assetItems	= array();
 

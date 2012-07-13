@@ -22,11 +22,26 @@
 
 class TodoyuAssetsFormElement_RecordSelectAsset extends TodoyuAssetsFormElement_RecordsAsset {
 
+
+	/**
+	 * Initialize
+	 *
+	 * @param	String				$name
+	 * @param	TodoyuFormFieldset	$fieldset
+	 * @param	Array				$config
+	 */
+	public function __construct($name, TodoyuFormFieldset $fieldset, array $config = array()) {
+		TodoyuFormElement_Records::__construct('selectAsset', $name, $fieldset, $config);
+	}
+
+
+
 	/**
 	 * Init the object with special person config
+	 *
 	 */
-	protected function init() {
-		$this->initRecords('selectAsset', 'assets', 'asset', 'selectAssetList');
+	protected function initRecords($type) {
+		parent::initRecords($type);
 
 		$this->config['options'] = array();
 	}
@@ -34,6 +49,8 @@ class TodoyuAssetsFormElement_RecordSelectAsset extends TodoyuAssetsFormElement_
 
 
 	/**
+	 * Get template data
+	 *
 	 * @return	Array
 	 */
 	protected function getData() {
@@ -51,6 +68,8 @@ class TodoyuAssetsFormElement_RecordSelectAsset extends TodoyuAssetsFormElement_
 
 
 	/**
+	 * Add option
+	 *
 	 * @param	String		$group
 	 * @param	String		$value
 	 * @param	String		$label
@@ -69,10 +88,14 @@ class TodoyuAssetsFormElement_RecordSelectAsset extends TodoyuAssetsFormElement_
 
 
 	/**
+	 * Get records
+	 * Nothing to do because not using normal records listing
+	 *
 	 * @return	Array
 	 */
 	public function getRecords() {
-		return TodoyuFunction::callUserFunction($this->config['source']['recordFunction'], $this);
+		return array();
+//		return TodoyuFunction::callUserFunction($this->config['source']['recordFunction'], $this);
 	}
 }
 

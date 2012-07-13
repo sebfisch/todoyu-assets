@@ -27,10 +27,14 @@
 class TodoyuAssetsFormElement_RecordsProjectAsset extends TodoyuAssetsFormElement_RecordsAsset {
 
 	/**
-	 * Init the object with special person config
+	 * Initialize
+	 *
+	 * @param	String				$name
+	 * @param	TodoyuFormFieldset	$fieldset
+	 * @param	Array				$config
 	 */
-	protected function init() {
-		$this->initRecords('projectAsset', 'assets', 'asset', 'projectAssetList');
+	public function __construct($name, TodoyuFormFieldset $fieldset, array $config = array()) {
+		parent::__construct('projectAsset', $name, $fieldset, $config);
 	}
 
 

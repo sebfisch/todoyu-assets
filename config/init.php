@@ -47,11 +47,14 @@ if( Todoyu::allowed('assets', 'general:use') ) {
 
 
 	// Asset selector
-TodoyuFormManager::addFieldTypeRecords('recordsAsset', 'TodoyuAssetsFormElement_RecordsAsset');
+TodoyuFormRecordsManager::addType('asset', 'TodoyuAssetsFormElement_RecordsAsset', 'TodoyuAssetsAssetManager::getMatchingAssets');
+
 	// Task asset selector
-TodoyuFormManager::addFieldTypeRecords('recordsTaskAsset', 'TodoyuAssetsFormElement_RecordsTaskAsset');
+TodoyuFormRecordsManager::addType('taskAsset', 'TodoyuAssetsFormElement_RecordsTaskAsset', 'TodoyuAssetsAssetManager::getMatchingAssets');
+
 	// Project asset selector
-TodoyuFormManager::addFieldTypeRecords('recordsProjectAsset', 'TodoyuAssetsFormElement_RecordsProjectAsset');
+TodoyuFormRecordsManager::addType('projectAsset', 'TodoyuAssetsFormElement_RecordsProjectAsset', 'TodoyuAssetsAssetManager::getMatchingAssets');
+
 	// General asset selector
 TodoyuFormManager::addFieldType('recordsSelectAsset', 'TodoyuAssetsFormElement_RecordSelectAsset', 'ext/assets/view/form/FormElement_SelectAsset.tmpl');
 
