@@ -218,6 +218,7 @@ Todoyu.Ext.assets.Upload = {
 	/**
 	 * Cancel file upload
 	 *
+	 * @method	cancelUpload
 	 * @param	{Number}	idTask
 	 */
 	cancelUpload: function(idTask) {

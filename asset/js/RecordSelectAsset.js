@@ -30,7 +30,7 @@
 Todoyu.Ext.assets.RecordSelectAsset = Class.create(Todoyu.FormRecords, {
 
 	/**
-	 *
+	 * @method	init
 	 * @param	{Todoyu.FormRecords}		$super
 	 */
 	init: function($super) {
@@ -44,8 +44,9 @@ Todoyu.Ext.assets.RecordSelectAsset = Class.create(Todoyu.FormRecords, {
 	},
 
 
+
 	/**
-	 *
+	 * @method	onSelectAsset
 	 */
 	onSelectAsset: function() {
 		$(this.searchField).select('option').each(function(option){
@@ -58,9 +59,10 @@ Todoyu.Ext.assets.RecordSelectAsset = Class.create(Todoyu.FormRecords, {
 	},
 
 
+
 	/**
-	 *
-	 * @param	{Integer}		selected
+	 * @method	isSelected
+	 * @param	{Number}		selected
 	 * @return	{Boolean}
 	 */
 	isSelected: function(selected) {
@@ -68,4 +70,5 @@ Todoyu.Ext.assets.RecordSelectAsset = Class.create(Todoyu.FormRecords, {
 
 		return selectedIDs.include(selected);
 	}
+
 });
