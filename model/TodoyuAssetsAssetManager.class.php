@@ -762,8 +762,8 @@ class TodoyuAssetsAssetManager {
 	 *
 	 * @param	Array		$searchWords
 	 * @param	Array		$ignoreIDs
-	 * @param	Integer		$idTask
-	 * @param	Integer		$idProject
+	 * @param	Array		$params
+	 * @param	String		$type
 	 * @return	Array
 	 */
 	public static function getMatchingAssets(array $searchWords, array $ignoreIDs = array(), array $params = array(), $type = null) {
