@@ -26,6 +26,8 @@ if( Todoyu::allowed('assets', 'general:use') ) {
 
 	TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuAssetsAssetManager::hookAddAssetUploadToTaskCreateForm');
 	TodoyuFormHook::registerSaveData('ext/project/config/form/task.xml', 'TodoyuAssetsAssetManager::hookStoreUplodedTaskAssets');
+
+	TodoyuProjectProjectDetailsTabsManager::registerDetailsTab('assets', 'LLL:assets.ext.tab.assets', 'TodoyuAssetsProjectRenderer::renderProjectDetailsTab', 100);
 }
 
 ?>

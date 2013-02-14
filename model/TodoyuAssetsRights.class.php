@@ -66,6 +66,12 @@ class TodoyuAssetsRights {
 					}
 				}
 				break;
+			case ASSET_PARENTTYPE_PROJECT:
+				if( TodoyuProjectProjectRights::isSeeAllowed($idParent) ) {
+					if( Todoyu::allowed('assets', 'asset:seeAll') || $asset->isPublic() || $asset->isCurrentPersonCreator() ) {
+						return true;
+					}
+				}
 		}
 
 		return false;
@@ -105,6 +111,14 @@ class TodoyuAssetsRights {
 					}
 				}
 				break;
+			case ASSET_PARENTTYPE_PROJECT:
+				if( TodoyuProjectProjectRights::isSeeAllowed($idParent) ) {
+					if( self::isSeeAllowed($idAsset) ) {
+						if( Todoyu::allowed('assets', 'asset:delete')) {
+							return true;
+						}
+					}
+				}
 		}
 
 		return false;

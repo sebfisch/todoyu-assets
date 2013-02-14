@@ -91,7 +91,7 @@ Todoyu.Ext.assets.TaskEdit = {
 			// Update assets list and tab of task
 		if( idTask > 0 && $('task-' + idTask + '-tabcontent-assets') ) {
 			if( Todoyu.exists('task-' + idTask + '-assets-commands') ) {
-				Todoyu.Ext.assets.List.refresh(idTask);
+				Todoyu.Ext.assets.List.refresh(idTask, 'task');
 			} else {
 				Todoyu.Ext.assets.updateTab(idTask);
 			}

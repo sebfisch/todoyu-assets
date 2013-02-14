@@ -46,7 +46,22 @@ class TodoyuAssetsListActionController extends TodoyuActionController {
 	public function defaultAction(array $params) {
 		$idTask		= intval($params['task']);
 
-		return TodoyuAssetsAssetRenderer::renderList($idTask);
+		return TodoyuAssetsAssetRenderer::renderTaskList($idTask);
+	}
+
+
+
+	/**
+	 * @param	Array $params
+	 * @return	String
+	 */
+	public function listAction(array $params) {
+		$idRecord	= intval($params['record']);
+		$recordType	= $params['recordType'];
+
+		$method = 'render' . ucfirst($recordType) . 'List';
+
+		return TodoyuAssetsAssetRenderer::$method($idRecord);
 	}
 
 }

@@ -167,6 +167,26 @@ class TodoyuAssetsAssetManager {
 
 
 	/**
+	 * @param	Integer		$idProject
+	 * @return	Array
+	 */
+	public static function getProjectAssets($idProject) {
+		$idProject	= intval($idProject);
+
+		$projectAssets['project'] = self::getElementAssets($idProject, ASSET_PARENTTYPE_PROJECT);
+
+		$taskIDs = TodoyuProjectProjectManager::getTaskIDs($idProject);
+
+		foreach($taskIDs as $idTask) {
+			$projectAssets = array_merge_recursive($projectAssets, self::getTaskAssets($idTask));
+		}
+
+		return $projectAssets;
+	}
+
+
+
+	/**
 	 * Get the assets of a task
 	 *
 	 * @param	Integer		$idTask
@@ -178,7 +198,6 @@ class TodoyuAssetsAssetManager {
 		$taskAssets['task']	= self::getElementAssets($idTask, ASSET_PARENTTYPE_TASK);
 
 		$commentIDs	= TodoyuCommentCommentManager::getTaskCommentIDs($idTask);
-
 
 		$taskAssets['comment'] = array();
 		foreach($commentIDs as $idCommment) {
@@ -219,6 +238,23 @@ class TodoyuAssetsAssetManager {
 		$idTask	= intval($idTask);
 
 		return self::addAsset(ASSET_PARENTTYPE_TASK, $idTask, $tempFile, $fileName, $mimeType);
+	}
+
+
+
+	/**
+	 * Add an uploaded file as project asset
+	 *
+	 * @param	Integer		$idProject		Project ID
+	 * @param	String		$tempFile		Path to temporary file on server
+	 * @param	String		$fileName		Filename on browser system
+	 * @param	String		$mimeType		Submitted file type by browser
+	 * @return	Integer		Asset ID
+	 */
+	public static function addProjectAsset($idProject, $tempFile, $fileName, $mimeType) {
+		$idProject	= intval($idProject);
+
+		return self::addAsset(ASSET_PARENTTYPE_PROJECT, $idProject, $tempFile, $fileName, $mimeType);
 	}
 
 
@@ -357,24 +393,24 @@ class TodoyuAssetsAssetManager {
 	/**
 	 * Download assets zipped
 	 *
-	 * @param	Integer $idTask
+	 * @param	Integer $idRecord
 	 * @param	Array	$assetIDs
 	 */
-	public static function downloadAssetsZipped($idTask, array $assetIDs) {
-		$idTask		= intval($idTask);
-		$assetIDs	= TodoyuArray::intval($assetIDs);
+	public static function downloadAssetsZipped($idRecord, $recordType, array $assetIDs) {
+		$idRecord		= intval($idRecord);
+		$assetIDs		= TodoyuArray::intval($assetIDs);
 
-		$pathZipFile= self::createAssetZip($idTask, $assetIDs);
+		$pathZipFile= self::createAssetZip($idRecord, $assetIDs);
 
 		if( ! is_file($pathZipFile) ) {
 			die("Download of ZIP file failed");
 		}
 
-		$filename	= 'Assets_' . $idTask . '.zip';
+		$filename	= 'Assets_' . $idRecord . '.zip';
 		$mimeType	= 'application/octet-stream';
 
 		try {
-			TodoyuHookManager::callHook('assets', 'asset.download.zip', array($idTask, $assetIDs, $pathZipFile, $filename));
+			TodoyuHookManager::callHook('assets', 'asset.download.zip', array($idRecord, $assetIDs, $pathZipFile, $filename));
 			TodoyuFileManager::sendFile($pathZipFile, $mimeType, $filename);
 			unlink($pathZipFile);
 		} catch(TodoyuExceptionFileDownload $e) {
@@ -387,18 +423,18 @@ class TodoyuAssetsAssetManager {
 	/**
 	 * Create ZIP file from assets
 	 *
-	 * @param	Integer		$idTask
+	 * @param	Integer		$idRecord
 	 * @param	Array		$assetIDs
 	 * @return	String		path to ZIP file
 	 */
-	private static function createAssetZip($idTask, array $assetIDs) {
-		$idTask		= intval($idTask);
+	private static function createAssetZip($idRecord, array $assetIDs) {
+		$idRecord		= intval($idRecord);
 		$assetIDs	= TodoyuArray::intval($assetIDs, true, true);
 
 		TodoyuFileManager::makeDirDeep(Todoyu::$CONFIG['EXT']['assets']['cachePath']);
 
 			// Build file path and name
-		$zipName	= self::makeZipFileName($idTask, $assetIDs);
+		$zipName	= self::makeZipFileName($idRecord, $assetIDs);
 		$zipPath	= TodoyuFileManager::pathAbsolute(Todoyu::$CONFIG['EXT']['assets']['cachePath'] . DIR_SEP . $zipName);
 
 			// Create ZIP file
@@ -416,7 +452,7 @@ class TodoyuAssetsAssetManager {
 		if( count($assetIDs) > 0 ) {
 			$where	= 'id IN(' . implode(',', $assetIDs) . ')';
 		} else {
-			$where = 'id_task = ' . $idTask . ' AND deleted = 0';
+			$where = 'id_parent = ' . $idRecord . ' AND deleted = 0';
 		}
 
 			// Get selected asset records
@@ -537,14 +573,15 @@ class TodoyuAssetsAssetManager {
 		$basePath	= self::getStorageBasePath();
 
 		switch($type) {
-			case ASSET_PARENTTYPE_TASK:
-					// User project ID as parent folder
-				$folder		= TodoyuProjectTaskManager::getProjectID($idParent);
+
+			case ASSET_PARENTTYPE_PROJECT:
+				$folder		= '';
 				break;
 
-//			case ASSET_PARENTTYPE_PROJECT:
-//				$folder = Todoyu::$CONFIG['EXT']['assets']['TYPES']['project']['folder'];
-//				break;
+			case ASSET_PARENTTYPE_TASK:
+				// User project ID as parent folder
+				$folder		= TodoyuProjectTaskManager::getProjectID($idParent);
+				break;
 
 			case ASSET_PARENTTYPE_COMMENT:
 				$idTask		= TodoyuCommentCommentManager::getTaskID($idParent);
@@ -556,7 +593,7 @@ class TodoyuAssetsAssetManager {
 				die('INVALID ASSET TYPE');
 		}
 
-		$storagePath = TodoyuFileManager::pathAbsolute($basePath . DIR_SEP . $folder . DIR_SEP . $idParent);
+		$storagePath = TodoyuFileManager::pathAbsolute($basePath . DIR_SEP . ($folder ? $folder . DIR_SEP : '') . $idParent);
 
 			// Create storage folder if it doesn't exist
 		TodoyuFileManager::makeDirDeep($storagePath);
@@ -827,15 +864,15 @@ class TodoyuAssetsAssetManager {
 		if( $idTask !== 0 ) {
 			$where .= ' AND a.parenttype = 1 AND a.id_parent = ' . $idTask;
 		}
+
 		if( $idProject !== 0 ) {
 			$table .= ', ext_project_task t';
-			$where .= ' AND a.id_task	= t.id'
+			$where .= ' AND a.id_parent	= t.id'
 					. ' AND t.id_project= ' . $idProject;
 		}
 
 		return Todoyu::db()->getColumn($field, $table, $where, '', $order, $limit, 'id');
 	}
-
 }
 
 ?>

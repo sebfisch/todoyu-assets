@@ -37,4 +37,5 @@
 	<label index="contextmenu.task.addasset">Asset</label>
 	<label index="type.task">Task Assets</label>
 	<label index="type.comment">Comment Assets</label>
+	<label index="type.project">Project Assets</label>
 </labels>

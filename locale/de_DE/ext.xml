@@ -37,4 +37,5 @@
 	<label index="contextmenu.task.addasset">Dateianhang</label>
 	<label index="type.task">Aufgaben-Anhänge</label>
 	<label index="type.comment">Kommentar-Anhänge</label>
+	<label index="type.project">Projekt-Anhänge</label>
 </labels>

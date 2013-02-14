@@ -44,13 +44,13 @@ class TodoyuAssetsAssetRenderer {
 			if( !$hasAssets ) {
 				$content = self::renderLockedMessage();
 			} else {
-				$content = self::renderList($idTask);
+				$content = self::renderTaskList($idTask);
 			}
 		} else {
-			$content = self::renderListControl($idTask);
+			$content = self::renderListControl($idTask, 'task');
 
 			if( $hasAssets ) {
-				$content .= self::renderList($idTask);
+				$content .= self::renderTaskList($idTask);
 			}
 		}
 
@@ -79,13 +79,36 @@ class TodoyuAssetsAssetRenderer {
 	 * @param	Integer		$idTask
 	 * @return	String
 	 */
-	public static function renderList($idTask) {
+	public static function renderTaskList($idTask) {
 		$idTask	= intval($idTask);
+		return self::renderList($idTask, TodoyuAssetsAssetManager::getTaskAssets($idTask), 'task');
+	}
 
+
+
+	/**
+	 * @param $idProject
+	 * @return String
+	 */
+	public static function renderProjectList($idProject) {
+		$idProject	= intval($idProject);
+		return self::renderList($idProject, TodoyuAssetsAssetManager::getProjectAssets($idProject), 'project');
+	}
+
+
+
+	/**
+	 * @param $idRecord
+	 * @param $assets
+	 * @return String
+	 */
+	protected static function renderList($idRecord, $assets, $recordType) {
 		$tmpl	= 'ext/assets/view/list.tmpl';
+
 		$data	= array(
-			'idTask'	=> $idTask,
-			'assets'	=> TodoyuAssetsAssetManager::getTaskAssets($idTask)
+			'idRecord'		=> $idRecord,
+			'assets'		=> $assets,
+			'recordType'	=> $recordType
 		);
 
 		return Todoyu::render($tmpl, $data);
@@ -96,15 +119,17 @@ class TodoyuAssetsAssetRenderer {
 	/**
 	 * Render list control elements
 	 *
-	 * @param	Integer		$idTask
+	 * @param	Integer		$idRecord
+	 * @param	String		$recordType
 	 * @return	String
 	 */
-	public static function renderListControl($idTask) {
-		$idTask	= intval($idTask);
+	public static function renderListControl($idRecord, $recordType) {
+		$idRecord	= intval($idRecord);
 
 		$tmpl	= 'ext/assets/view/list-control.tmpl';
 		$data	= array(
-			'idTask'	=> $idTask
+			'idRecord'		=> $idRecord,
+			'recordType'	=> $recordType
 		);
 
 		return Todoyu::render($tmpl, $data);
@@ -115,18 +140,18 @@ class TodoyuAssetsAssetRenderer {
 	/**
 	 * Render upload-frame content
 	 *
-	 * @param	Integer		$idTask
+	 * @param	Integer		$idRecord
 	 * @param	String		$fileName
 	 * @return	String
 	 */
-	public static function renderUploadframeContent($idTask, $fileName) {
-		$idTask		= intval($idTask);
-		$tabLabel	= TodoyuAssetsTaskAssetViewHelper::getTabLabel($idTask);
+	public static function renderUploadframeContent($idRecord, $recordType, $fileName) {
+		$idRecord		= intval($idRecord);
+		$tabLabel	= TodoyuAssetsTaskAssetViewHelper::getTabLabel($idRecord);
 
 		$tmpl	= 'core/view/htmldoc.tmpl';
 		$data	= array(
 			'title'		=> 'Uploader IFrame',
-			'content'	=> TodoyuString::wrapScript('window.parent.Todoyu.Ext.assets.Upload.uploadFinished(' . $idTask . ', \'' . $tabLabel . '\');')
+			'content'	=> TodoyuString::wrapScript('window.parent.Todoyu.Ext.assets.Upload.uploadFinished(' . $idRecord . ', \''. $recordType . '\', \'' . $tabLabel . '\');')
 		);
 
 		return Todoyu::render($tmpl, $data);

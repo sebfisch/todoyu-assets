@@ -141,10 +141,10 @@ Todoyu.Ext.assets = {
 	 * Download (zipped) selection of assets of given task
 	 *
 	 * @method	downloadSelection
-	 * @param	{Number}	idTask
+	 * @param	{Number}	idRecord
 	 */
-	downloadSelection: function(idTask) {
-		var selectedAssets = this.List.getSelectedAssets(idTask);
+	downloadSelection: function(idRecord, recordType) {
+		var selectedAssets = this.List.getSelectedAssets(idRecord, recordType);
 
 		if( selectedAssets.size() === 0 ) {
 			Todoyu.notifyError('[LLL:assets.ext.error.minimumFile]');
@@ -155,7 +155,8 @@ Todoyu.Ext.assets = {
 			Todoyu.notifyInfo('[LLL:assets.ext.download.compressed]');
 			var params = {
 				action:	'download',
-				task:		idTask,
+				record:	idRecord,
+				recordType: recordType,
 				assets:	selectedAssets.join(',')
 			};
 
@@ -194,7 +195,7 @@ Todoyu.Ext.assets = {
 	 * @param	{Ajax.Response}		response
 	 */
 	onToggledVisibility: function(idAsset, response) {
-		var isPublic	= ! $('asset-' + idAsset + '-icon-public').hasClassName('not');
+		var isPublic	= $$('[id$=asset-' + idAsset + '-icon-public][class*=not]').length == 0;
 
 		if( isPublic ) {
 			Todoyu.notifySuccess('[LLL:assets.ext.togglepublic.notifiy.ispublic]', 'assets.public.toggle');
@@ -211,7 +212,8 @@ Todoyu.Ext.assets = {
 	 * @method	remove
 	 * @param	{Number}	idAsset
 	 */
-	remove: function(idAsset) {
+	remove: function(idAsset, recordType) {
+		console.log(idAsset, recordType);
 		if( confirm('[LLL:assets.ext.delete.confirm]') ) {
 			var url		= Todoyu.getUrl('assets', 'asset');
 			var options	= {
@@ -219,7 +221,7 @@ Todoyu.Ext.assets = {
 					action:	'delete',
 					asset:	idAsset
 				},
-				onComplete: this.onRemoved.bind(this, idAsset)
+				onComplete: this.onRemoved.bind(this, idAsset, recordType)
 			};
 
 			Todoyu.send(url, options);
@@ -235,19 +237,43 @@ Todoyu.Ext.assets = {
 	 * @param	{Number}			idAsset
 	 * @param	{Ajax.Response}		response
 	 */
-	onRemoved: function(idAsset, response) {
-		Effect.Fade('asset-' + idAsset);
+	onRemoved: function(idAsset, recordType, response) {
+		$$('[id$=asset-'+idAsset+']').invoke('fade');
 
 		var idTask	= response.getTodoyuHeader('idTask');
 		var label	= response.getTodoyuHeader('tabLabel');
 
-		Todoyu.Ext.project.Task.refreshHeader(idTask);
-
 		Todoyu.Notification.notifySuccess('[LLL:assets.ext.delete.notifiy.success]');
 
-		this.setTabLabel(idTask, label);
-		this.updateTab(idTask);
+		if( recordType == 'task') {
+			Todoyu.Ext.project.Task.refreshHeader(idTask);
+			this.setTabLabel(idTask, label);
+			this.updateTab(idTask);
+		}
 	},
+
+/****************************************************************************
+* todoyu is published under the BSD License:
+* http://www.opensource.org/licenses/bsd-license.php
+*
+* Copyright (c) 2012, snowflake productions GmbH, Switzerland
+* All rights reserved.
+*
+* This script is part of the todoyu project.
+* The todoyu project is free software; you can redistribute it and/or modify
+* it under the terms of the BSD License.
+*
+* This script is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the BSD License
+* for more details.
+*
+* This copyright notice MUST APPEAR in all copies of the script.
+*****************************************************************************/
+
+/**
+ * @module	Assets
+ */
 
 
 

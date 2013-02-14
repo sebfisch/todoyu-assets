@@ -232,3 +232,17 @@ th.assetsFilelistHeaderFilenames {
 		font-size: 14px;
 	}
 }
+
+/* --------------------------
+ 	Field types
+   --------------------------*/
+
+.project {
+
+	.projectDetailsTab {
+
+		&.assetsProjectTab .icon {
+			background:url(../../../project/asset/img/projectheader.png) no-repeat 0px -60px;
+		}
+	}
+}

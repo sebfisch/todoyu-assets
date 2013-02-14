@@ -59,11 +59,12 @@ Todoyu.Ext.assets.Upload = {
 	 * onChange handler of assets upload form to given task
 	 *
 	 * @method	onChange
-	 * @param	{Number}	idTask
+	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType
 	 */
-	onChange: function(idTask) {
-		this.showProgressBar(idTask);
-		this.submit(idTask);
+	onChange: function(idRecord, recordType) {
+		this.showProgressBar(idRecord, recordType);
+		this.submit(idRecord, recordType);
 	},
 
 
@@ -72,17 +73,17 @@ Todoyu.Ext.assets.Upload = {
 	 * Assets upload form submission handler
 	 *
 	 * @method	submit
-	 * @param	{Number}	idTask
+	 * @param    {Number}    idRecord
 	 */
-	submit: function(idTask) {
+	submit: function(idRecord, recordType) {
 		this.active	= true;
-		var form	= this.getForm(idTask);
+		var form	= this.getForm(idRecord, recordType);
 		var iFrame	= Todoyu.Form.submitFileUploadForm(form);
 
-		this.iframes[idTask] = iFrame;
+		this.iframes[recordType + idRecord] = iFrame;
 
 			// Register callback to check after 20 seconds if upload failed
-		this.uploadFailingDetection.bind(this, idTask, iFrame).delay(20);
+		this.uploadFailingDetection.bind(this, idRecord, recordType, iFrame).delay(20);
 	},
 
 
@@ -92,12 +93,12 @@ Todoyu.Ext.assets.Upload = {
 	 * This means an error page has been loaded and the upload failed
 	 *
 	 * @method	uploadFailingDetection
-	 * @param	{Number}	idTask
+	 * @param	{Number}	idRecord
 	 * @param	{Element}	iFrame
 	 */
-	uploadFailingDetection: function(idTask, iFrame) {
+	uploadFailingDetection: function(idRecord, recordType, iFrame) {
 		if( this.active === true && iFrame.contentDocument.URL !== 'about:blank' ) {
-			this.uploadFailed(idTask);
+			this.uploadFailed(idRecord, recordType);
 		}
 	},
 
@@ -107,11 +108,11 @@ Todoyu.Ext.assets.Upload = {
 	 * Get asset upload form file field's value of given task
 	 *
 	 * @method	getField
-	 * @param	{Number}	idTask
+	 * @param	{Number}	idRecord
 	 * @return	{Element}
 	 */
-	getField: function(idTask) {
-		return $('task-' + idTask + '-asset-file');
+	getField: function(idRecord, recordType) {
+		return $(recordType + '-' + idRecord + '-asset-file');
 	},
 
 
@@ -123,8 +124,8 @@ Todoyu.Ext.assets.Upload = {
 	 * @param	{Number}	idTask
 	 * @return	{Element}
 	 */
-	getForm: function(idTask) {
-		return $('task-' + idTask + '-asset-form');
+	getForm: function(idTask, recordType) {
+		return $(recordType + '-' + idTask + '-asset-form');
 	},
 
 
@@ -133,16 +134,17 @@ Todoyu.Ext.assets.Upload = {
 	 * Show assets uploader
 	 *
 	 * @method	showProgressBar
-	 * @param	{Number}	idTask
+	 * @param    {Number}    idRecord
 	 * @param	{Boolean}	show
 	 */
-	showProgressBar: function(idTask, show) {
+	showProgressBar: function(idRecord, recordType, show) {
 		show	= show !== false;
 
-		if( idTask == 0 && !show ) {
+		if( idRecord == 0 && !show ) {
 			$$('.uploadProgress').invoke('hide');
 		} else {
-			$('task-' + idTask + '-asset-progress')[show?'show':'hide']();
+			console.log(idRecord, recordType);
+			$(recordType + '-' + idRecord + '-asset-progress')[show?'show':'hide']();
 		}
 	},
 
@@ -152,27 +154,29 @@ Todoyu.Ext.assets.Upload = {
 	 * Asset upload finished handler
 	 *
 	 * @method	uploadFinished
-	 * @param	{Number}		idTask
+	 * @param	{Number}		idRecord
 	 * @param	{String}		tabLabel
 	 */
-	uploadFinished: function(idTask, tabLabel) {
+	uploadFinished: function(idRecord,recordType, tabLabel) {
 		this.active = false;
 
-		delete this.iframes[idTask];
+		delete this.iframes[recordType + idRecord];
 
-		this.showProgressBar(idTask, false);
+		this.showProgressBar(idRecord, recordType, false);
 
-		Todoyu.Ext.project.Task.refreshHeader(idTask);
 
-		if( Todoyu.exists('task-' + idTask + '-assets-commands') ) {
-			Todoyu.Ext.assets.List.refresh(idTask);
-		} else {
-			Todoyu.Ext.assets.updateTab(idTask);
+
+		if( Todoyu.exists(recordType + '-' + idRecord + '-assets-commands') ) {
+			Todoyu.Ext.assets.List.refresh(idRecord, recordType);
+		} else if(recordType=='task') {
+			Todoyu.Ext.project.Task.refreshHeader(idRecord);
+			Todoyu.Ext.assets.updateTab(idRecord);
+			Todoyu.Ext.assets.setTabLabel(idRecord, tabLabel);
 		}
 
 		Todoyu.notifySuccess('[LLL:assets.ext.uploadOk]');
 
-		Todoyu.Ext.assets.setTabLabel(idTask, tabLabel);
+
 	},
 
 
@@ -181,20 +185,20 @@ Todoyu.Ext.assets.Upload = {
 	 * Check whether upload failed, determine reason (file too big / failure) and notify
 	 *
 	 * @method	uploadFailed
-	 * @param	{Number}		idTask
+	 * @param	{Number}		idRecord
 	 * @param	{Number}		[error]			1 = file size exceeded, 2 = failure
 	 * @param	{String}		[filename]
 	 * @param	{Number}		[maxFileSize]
 	 */
-	uploadFailed: function(idTask, error, filename, maxFileSize) {
+	uploadFailed: function(idRecord, recordType, error, filename, maxFileSize) {
 		error	= error || 0;
 		filename= filename || '';
 
 		this.active = false;
 
-		delete this.iframes[idTask];
+		delete this.iframes[recordType + idRecord];
 
-		this.showProgressBar(idTask, false);
+		this.showProgressBar(idRecord, recordType, false);
 
 		var info	= {
 			filename:		filename,
@@ -219,17 +223,17 @@ Todoyu.Ext.assets.Upload = {
 	 * Cancel file upload
 	 *
 	 * @method	cancelUpload
-	 * @param	{Number}	idTask
+	 * @param	{Number}	idRecord
 	 */
-	cancelUpload: function(idTask) {
-		var iFrame	= this.iframes[idTask];
+	cancelUpload: function(idRecord, recordType) {
+		var iFrame	= this.iframes[recordType + idRecord];
 
 		if( iFrame ) {
 			iFrame.src = 'about:blank';
-			delete this.iframes[idTask];
+			delete this.iframes[recordType + idRecord];
 		}
 
-		this.showProgressBar(idTask, false);
+		this.showProgressBar(idRecord, recordType, false);
 		Todoyu.notifyInfo('[LLL:assets.ext.uploadCanceled]');
 	}
 

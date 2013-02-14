@@ -46,7 +46,7 @@ class TodoyuAssetsTasktabActionController extends TodoyuActionController {
 	public function listAction(array $params) {
 		$idTask	= intval($params['task']);
 
-		return TodoyuAssetsAssetRenderer::renderList($idTask);
+		return TodoyuAssetsAssetRenderer::renderTaskList($idTask);
 	}
 
 

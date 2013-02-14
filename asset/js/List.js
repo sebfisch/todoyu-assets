@@ -45,8 +45,8 @@ Todoyu.Ext.assets.List = {
 	 * @method	initList
 	 * @param	{Number}	idTask
 	 */
-	initList: function(idTask) {
-		this.addListObservers(idTask);
+	initList: function(idTask, recordType) {
+		this.addListObservers(idTask, recordType);
 	},
 
 
@@ -55,10 +55,10 @@ Todoyu.Ext.assets.List = {
 	 * Initialize control
 	 *
 	 * @method	initControl
-	 * @param	{Number}	idTask
+	 * @param	{Number}	idRecord
 	 */
-	initControl: function(idTask) {
-		this.toggleButtons(idTask);
+	initControl: function(idRecord, recordType) {
+		this.toggleButtons(idRecord, recordType);
 	},
 
 
@@ -67,12 +67,16 @@ Todoyu.Ext.assets.List = {
 	 * Toggle control buttons: hide download selection if no files available
 	 *
 	 * @method	toggleButtons
-	 * @param	{Number}	idTask
+	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType
 	 */
-	toggleButtons: function(idTask) {
-		var method	= this.hasListElements(idTask) ? 'show' : 'hide';
+	toggleButtons: function(idRecord, recordType) {
+		var button = $(recordType + '-' + idRecord + '-asset-button-downloadselection');
 
-		$('task-'+ idTask + '-asset-button-downloadselection')[method]();
+		if( button ) {
+			var method	= this.hasListElements(idRecord, recordType) ? 'show' : 'hide';
+			button[method]();
+		}
 	},
 
 
@@ -81,11 +85,11 @@ Todoyu.Ext.assets.List = {
 	 * Check whether list exists and contains elements
 	 *
 	 * @method	hasListElements
-	 * @param	{Number}	idTask
+	 * @param	{Number}	idRecord
 	 * @return	{Boolean}
 	 */
-	hasListElements: function(idTask) {
-		var list = $('task-' + idTask + '-assets-list');
+	hasListElements: function(idRecord, recordType) {
+		var list = $(recordType + '-' + idRecord + '-assets-list');
 
 		if( list ) {
 			return !!list.down('tbody tr');
@@ -100,14 +104,14 @@ Todoyu.Ext.assets.List = {
 	 * Add observers for list
 	 *
 	 * @method	addObservers
-	 * @param	{Number}	idTask
+	 * @param    {Number}    idRecord
 	 */
-	addListObservers: function(idTask) {
+	addListObservers: function(idRecord, recordType) {
 			// Check all button
-		$('task-' + idTask + '-assets-checkallbox').on('click', this.toggleSelectAll.bind(this, idTask));
+		$(recordType + '-' + idRecord + '-assets-checkallbox').on('click', this.toggleSelectAll.bind(this, idRecord, recordType));
 
 			// Select asset row
-		var assetsTableBody	= $('task-' + idTask + '-assets-tablebody');
+		var assetsTableBody	= $(recordType + '-' + idRecord + '-assets-tablebody');
 		assetsTableBody.on('click', 'tr', this.select.bind(this));
 
 			// Actions
@@ -125,7 +129,7 @@ Todoyu.Ext.assets.List = {
 			}
 				// Delete
 			if( row.down('a.delete') ) {
-				row.down('a.delete').on('click', 'td', this.handleRemoveClick.bind(this, idAsset));
+				row.down('a.delete').on('click', 'td', this.handleRemoveClick.bind(this, idAsset, recordType));
 			}
 		}, this);
 	},
@@ -136,23 +140,24 @@ Todoyu.Ext.assets.List = {
 	 * Refresh assets list of given task
 	 *
 	 * @method	refresh
-	 * @param	{Number}	idTask
+	 * @param	{Number}	idRecord
 	 */
-	refresh: function(idTask) {
-		var list	= 'task-' + idTask + '-assets-list';
-		var url		= Todoyu.getUrl('assets', 'tasktab');
+	refresh: function(idRecord, recordType) {
+		var list	= recordType + '-' + idRecord + '-assets-list';
+		var url		= Todoyu.getUrl('assets', 'list');
 		var options	= {
 			parameters: {
-				action:	'list',
-				task:	idTask
+				action:		'list',
+				recordType:	recordType,
+				record:		idRecord
 			},
-			onComplete: this.onRefreshed.bind(this, idTask)
+			onComplete: this.onRefreshed.bind(this, idRecord, recordType)
 		};
 
 		if( Todoyu.exists(list) ) {
 			Todoyu.Ui.replace(list, url, options);
 		} else {
-			var target	= 'task-' + idTask + '-tabcontent-assets';
+			var target	= recordType + '-' + idRecord + '-tabcontent-assets';
 			Todoyu.Ui.insert(target, url, options);
 		}
 	},
@@ -163,11 +168,11 @@ Todoyu.Ext.assets.List = {
 	 * Re-init after refresh
 	 *
 	 * @method	onRefreshed
-	 * @param	{Number}		idTask
+	 * @param	{Number}		idRecord
 	 * @param	{Ajax.Response}	response
 	 */
-	onRefreshed: function(idTask, response) {
-		this.initControl(idTask);
+	onRefreshed: function(idRecord, recordType, response) {
+		this.initControl(idRecord, recordType);
 	},
 
 
@@ -181,11 +186,12 @@ Todoyu.Ext.assets.List = {
 	 */
 	select: function(event, row) {
 		var idAsset	= $(row).id.split('-').last();
+		var recordType = $(row).id.split('-').first();
 
 		if( row.hasClassName('selected') ) {
-			this.unCheck(idAsset);
+			this.unCheck(idAsset, recordType);
 		} else {
-			this.check(idAsset);
+			this.check(idAsset, recordType);
 		}
 	},
 
@@ -202,7 +208,8 @@ Todoyu.Ext.assets.List = {
 	handleVisibilityToggle: function(idAsset, event, link) {
 		event.stop();
 
-		link.toggleClassName('not');
+		$$('[id$=asset-' + idAsset + '-icon-public]').invoke('toggleClassName', 'not');
+
 		this.ext.toggleVisibility(idAsset);
 	},
 
@@ -232,10 +239,10 @@ Todoyu.Ext.assets.List = {
 	 * @param	{Event}		event
 	 * @param	{Element}	cell
 	 */
-	handleRemoveClick: function(idAsset, event, cell) {
+	handleRemoveClick: function(idAsset, recordType, event, cell) {
 		event.stop();
 
-		this.ext.remove(idAsset);
+		this.ext.remove(idAsset, recordType);
 	},
 
 
@@ -246,13 +253,8 @@ Todoyu.Ext.assets.List = {
 	 * @method	check
 	 * @param	{Number}	idAsset
 	 */
-	check: function(idAsset) {
-		$('asset-' + idAsset).addClassName('selected');
-		$('asset-' + idAsset + '-checkbox').checked = true;
-
-		var idTask = $('asset-' + idAsset).up('tbody').id.split('-')[1];
-
-		this.toggleSelectionDownload(idTask);
+	check: function(idAsset, recordType) {
+		this.handleCheck(idAsset, recordType, true);
 	},
 
 
@@ -263,13 +265,28 @@ Todoyu.Ext.assets.List = {
 	 * @method	unCheck
 	 * @param	{Number}	idAsset
 	 */
-	unCheck: function(idAsset) {
-		$('asset-' + idAsset).removeClassName('selected');
-		$('asset-' + idAsset + '-checkbox').checked = false;
+	unCheck: function(idAsset, recordType) {
+		this.handleCheck(idAsset, recordType, false);
+	},
 
-		var idTask = $('asset-' + idAsset).up('tbody').id.split('-')[1];
 
-		this.toggleSelectionDownload(idTask);
+
+	/**
+	 *
+	 * @param idAsset
+	 * @param recordType
+	 * @param check
+	 */
+	handleCheck: function(idAsset, recordType, check) {
+		var idElement = recordType + '-asset-'+ idAsset;
+		var assetElement = $(idElement);
+		var method = check ? 'addClassName' : 'removeClassName';
+		var idRecord = assetElement.up('tbody').id.split('-')[1];
+
+		$(idElement + '-checkbox').checked = check;
+		assetElement[method]('selected');
+
+		this.toggleSelectionDownload(idRecord, recordType);
 	},
 
 
@@ -279,13 +296,16 @@ Todoyu.Ext.assets.List = {
 	 * Disable if no asset is selected
 	 *
 	 * @method	toggleSelectionDownload
-	 * @param	{Number}	idTask
+	 * @param	{Number}	idRecord
 	 */
-	toggleSelectionDownload: function(idTask) {
-		var oneSelected = $('task-' + idTask + '-assets-tablebody').select(':checkbox:checked').size() > 0;
+	toggleSelectionDownload: function(idRecord, recordType) {
+		var oneSelected = $(recordType + '-' + idRecord + '-assets-tablebody').select(':checkbox:checked').size() > 0;
 		var method		= oneSelected ? 'enable' : 'disable';
+		var button		= $(recordType + '-' + idRecord + '-asset-button-downloadselection');
 
-		$('task-' + idTask + '-asset-button-downloadselection')[method]();
+		if( button ) {
+			button[method]();
+		}
 	},
 
 
@@ -294,15 +314,16 @@ Todoyu.Ext.assets.List = {
 	 * Get assets checkbox elements of given task
 	 *
 	 * @method	getAllAssetsCheckboxes
-	 * @param	{Number}	idTask
+	 * @param	{Number}    idRecord
+	 * @param	{String}	recordType
 	 * @param	{Boolean}	checkedOnly
 	 * @return	{Element[]}
 	 */
-	getAssetsCheckboxes: function(idTask, checkedOnly) {
+	getAssetsCheckboxes: function(idRecord, recordType, checkedOnly) {
 		checkedOnly	= checkedOnly ? checkedOnly : false;
 
-		var list	= $('task-' + idTask + '-assets-tablebody');
-
+		var list	= $(recordType + '-' + idRecord + '-assets-tablebody');
+		console.log(idRecord, recordType);
 		var selector	= checkedOnly ? 'input:checked' : 'input';
 
 		return list.select(selector);
@@ -314,11 +335,12 @@ Todoyu.Ext.assets.List = {
 	 * Get selected assets of given task
 	 *
 	 * @method	getSelectedAssets
-	 * @param	{Number}	idTask
+	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType
 	 * @return	{Number[]}	Asset IDs
 	 */
-	getSelectedAssets: function(idTask) {
-		var boxes	= this.getAssetsCheckboxes(idTask, true);
+	getSelectedAssets: function(idRecord, recordType) {
+		var boxes	= this.getAssetsCheckboxes(idRecord, recordType, true);
 
 		return boxes.collect(function(box) {
 			return box.value;
@@ -331,10 +353,11 @@ Todoyu.Ext.assets.List = {
 	 * Check whether all assets of the given task are selected
 	 *
 	 * @method	areAllAssetsSelected
-	 * @param	{Number}	idTask
+	 * @param    {Number}    idRecord
+	 * @param	{String}	recordType
 	 */
-	areAllAssetsSelected: function(idTask) {
-		var boxes	= this.getAssetsCheckboxes(idTask, false);
+	areAllAssetsSelected: function(idRecord, recordType) {
+		var boxes	= this.getAssetsCheckboxes(idRecord, recordType, false);
 
 		return boxes.all(function(box){
 			return box.checked
@@ -347,22 +370,23 @@ Todoyu.Ext.assets.List = {
 	 * De/Select all assets of given task
 	 *
 	 * @method	selectAll
-	 * @param	{Number}	idTask
+	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType
 	 * @param	{Event}		event
 	 */
-	toggleSelectAll: function(idTask, event) {
-		var allChecked	= this.areAllAssetsSelected(idTask);
-		var boxes		= this.getAssetsCheckboxes(idTask, false);
+	toggleSelectAll: function(idRecord, recordType,  event) {
+		var allChecked	= this.areAllAssetsSelected(idRecord, recordType);
+		var boxes		= this.getAssetsCheckboxes(idRecord, recordType, false);
 
 		boxes.each(function(item){
 			if( allChecked !== true ) {
-				this.check(item.value);
+				this.check(item.value, recordType);
 			} else {
-				this.unCheck(item.value);
+				this.unCheck(item.value, recordType);
 			}
 		}, this);
 
-		$('task-' + idTask + '-assets-checkallbox').checked = ! allChecked;
+		$(recordType + '-' + idRecord + '-assets-checkallbox').checked = ! allChecked;
 	}
 
 };

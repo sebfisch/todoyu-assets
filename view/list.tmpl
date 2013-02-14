@@ -1,8 +1,8 @@
-<div id="task-{$idTask}-assets-list" class="tabBlock overflow assetList">
-	<table id="task-{$idTask}-assettable" class="asset-table" width="100%">
+<div id="{$recordType}-{$idRecord}-assets-list" class="tabBlock overflow assetList">
+	<table id="{$recordType}-{$idRecord}-assettable" class="assetTable" width="100%">
 		<thead>
 			<tr class="assets-table-header">
-				<th class="checkbox checkbox"><input type="checkbox" id="task-{$idTask}-assets-checkallbox" title="{Label assets.ext.alt.selectall}"/></th>
+				<th class="checkbox checkbox"><input type="checkbox" id="{$recordType}-{$idRecord}-assets-checkallbox" title="{Label assets.ext.alt.selectall}"/></th>
 				<th class="mimetype">&nbsp;</th>
 				<th class="filename">{Label core.file.filename}</th>
 				<th class="parent">&nbsp;</th>
@@ -12,7 +12,7 @@
 				<th class="actions">&nbsp;</th>
 			</tr>
 		</thead>
-		<tbody id="task-{$idTask}-assets-tablebody">
+		<tbody id="{$recordType}-{$idRecord}-assets-tablebody">
 		{foreach $assets type typeAssets}
 			{foreach $typeAssets key asset assetList}
 				{if $.foreach.assetList.first}
@@ -23,9 +23,9 @@
 					</tr>
 				{/if}
 
-				<tr id="asset-{$asset.id}" class="{cycle values="odd,even"} asset">
+				<tr id="{$recordType}-asset-{$asset.id}" class="{cycle values="odd,even"} asset">
 					<td class="checkbox">
-						<input type="checkbox" id="asset-{$asset.id}-checkbox" value="{$asset.id}" />
+						<input type="checkbox" id="{$recordType}-asset-{$asset.id}-checkbox" value="{$asset.id}" />
 					</td>
 					<td class="mimetype mime{strtoupper $asset.file_ext}">
 						<span class="icon"></span>
@@ -36,7 +36,9 @@
 						</a>
 					</td>
 					<td class="parent">
-						{if $asset.parenttype == constant(ASSET_PARENTTYPE_COMMENT)}
+						{if $asset.parenttype == constant(ASSET_PARENTTYPE_TASK) && $recordType !== 'task'}
+							{linkTasks taskNumber($asset.id_parent)}
+						{elseif $asset.parenttype == constant(ASSET_PARENTTYPE_COMMENT)}
 							{linkComments 'c$asset.id_parent'}
 						{/if}
 					</td>
@@ -51,16 +53,16 @@
 					</td>
 					<td class="actions">
 						{if isAssetDeleteAllowed($asset.id)}
-							<a id="asset-{$asset.id}-icon-delete" href="javascript:void(0)" title="{Label assets.ext.alt.delete}" class="delete asset-icon-delete">
+							<a id="{$recordType}-asset-{$asset.id}-icon-delete" href="javascript:void(0)" title="{Label assets.ext.alt.delete}" class="delete asset-icon-delete">
 								<span class="hidden">{Label assets.ext.alt.delete}</span>
 							</a>
 						{/if}
-						<a id="asset-{$asset.id}-icon-download" href="javascript:void(0)" title="{Label assets.ext.alt.download}" class="download asset-icon-download">
+						<a id="{$recordType}-asset-{$asset.id}-icon-download" href="javascript:void(0)" title="{Label assets.ext.alt.download}" class="download asset-icon-download">
 							<span class="hidden">{Label assets.ext.alt.download}</span>
 						</a>
 
 						{if isInternal()}
-							<a id="asset-{$asset.id}-icon-public" href="javascript:void(0)" title="{Label assets.ext.alt.changeVisibility}" class="visibility asset-icon-public {if !$asset.is_public}not{/if}">
+							<a id="{$recordType}-asset-{$asset.id}-icon-public" href="javascript:void(0)" title="{Label assets.ext.alt.changeVisibility}" class="visibility asset-icon-public {if !$asset.is_public}not{/if}">
 								<span class="hidden">{Label assets.ext.alt.changeVisibility}</span>
 							</a>
 						{/if}
@@ -72,5 +74,5 @@
 	</table>
 </div>
 <script type="text/javascript">
-Todoyu.Ext.assets.List.initList({$idTask});
+Todoyu.Ext.assets.List.initList({$idRecord}, '{$recordType}');
 </script>

@@ -44,8 +44,8 @@ class TodoyuAssetsUploadActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function defaultAction(array $params) {
-		$idTask		= intval($params['asset']['id_task']);
-
+		$idRecord		= intval($params['asset']['id_record']);
+		$recordType		= $params['asset']['recordType'];
 		$file	= TodoyuRequest::getUploadFile('file', 'asset');
 
 		if( strlen($file['name']) > Todoyu::$CONFIG['EXT']['assets']['max_length_filename'] ) {
@@ -56,11 +56,12 @@ class TodoyuAssetsUploadActionController extends TodoyuActionController {
 		if( !$file || $file['error'] !== UPLOAD_ERR_OK ) {
 			TodoyuLogger::logError('File upload failed: ' . $file['name'] . ' (ERROR:' . $file['error'] . ')');
 
-			return TodoyuAssetsAssetRenderer::renderUploadframeContentFailed($idTask, $file['error'], $file['name']);
+			return TodoyuAssetsAssetRenderer::renderUploadframeContentFailed($idRecord, $file['error'], $file['name']);
 		} else {
-			TodoyuAssetsAssetManager::addTaskAsset($idTask, $file['tmp_name'], $file['name'], $file['type']);
+			$methodName = 'add' . ucfirst($recordType) . 'Asset';
+			TodoyuAssetsAssetManager::$methodName($idRecord, $file['tmp_name'], $file['name'], $file['type']);
 
-			return TodoyuAssetsAssetRenderer::renderUploadframeContent($idTask, $file['name']);
+			return TodoyuAssetsAssetRenderer::renderUploadframeContent($idRecord, $recordType, $file['name']);
 		}
 	}
 
