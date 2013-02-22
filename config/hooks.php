@@ -23,9 +23,15 @@ if( Todoyu::allowed('assets', 'general:use') ) {
 	TodoyuHookManager::registerHook('project', 'quickcreatetask', 'TodoyuAssetsTempUploaderTask::hookClearNewTaskFiles');
 	TodoyuHookManager::registerHook('project', 'task.create', 'TodoyuAssetsTempUploaderTask::hookTaskCreate');
 	TodoyuHookManager::registerHook('project', 'task.edit', 'TodoyuAssetsTempUploaderTask::hookTaskEdit');
+	TodoyuHookManager::registerHook('project', 'quickcreateproject', 'TodoyuAssetsTempUploaderProject::hookClearNewProjectFiles');
+	TodoyuHookManager::registerHook('project', 'project.create', 'TodoyuAssetsTempUploaderProject::hookProjectCreate');
+	TodoyuHookManager::registerHook('project', 'project.edit', 'TodoyuAssetsTempUploaderProject::hookProjectEdit');
 
 	TodoyuFormHook::registerBuildForm('ext/project/config/form/task.xml', 'TodoyuAssetsAssetManager::hookAddAssetUploadToTaskCreateForm');
 	TodoyuFormHook::registerSaveData('ext/project/config/form/task.xml', 'TodoyuAssetsAssetManager::hookStoreUplodedTaskAssets');
+
+	TodoyuFormHook::registerBuildForm('ext/project/config/form/project.xml', 'TodoyuAssetsAssetManager::hookAddAssetUploadToProjectCreateForm');
+	TodoyuFormHook::registerSaveData('ext/project/config/form/project.xml', 'TodoyuAssetsAssetManager::hookStoreUplodedProjectAssets');
 
 	TodoyuProjectProjectDetailsTabsManager::registerDetailsTab('assets', 'LLL:assets.ext.tab.assets', 'TodoyuAssetsProjectRenderer::renderProjectDetailsTab', 100);
 }

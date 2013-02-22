@@ -60,8 +60,10 @@ Todoyu.Ext.assets = {
 	 * @method	registerHooks
 	 */
 	registerHooks: function() {
-		Todoyu.Hook.add('project.task.edit.cancelled', this.TaskEdit.onCancelledTaskEdit.bind(this.TaskEdit));
-		Todoyu.Hook.add('project.task.formLoaded', this.TaskEdit.onTaskEditFormLoaded.bind(this.TaskEdit));
+		Todoyu.Hook.add('project.task.edit.cancelled', this.RecordEdit.onCancelledTaskEdit.bind(this.RecordEdit));
+		Todoyu.Hook.add('project.task.formLoaded', this.RecordEdit.onTaskEditFormLoaded.bind(this.RecordEdit));
+		Todoyu.Hook.add('project.project.edit.cancelled', this.RecordEdit.onCancelledProjectEdit.bind(this.RecordEdit));
+		Todoyu.Hook.add('project.project.formLoaded', this.RecordEdit.onProjectEditFormLoaded.bind(this.RecordEdit));
 	},
 
 

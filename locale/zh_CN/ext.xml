@@ -32,7 +32,5 @@
 	<label index="uploadCanceled">上传已取消</label>
 	<label index="locked">任务锁定, 无法增加文件</label>
 	<label index="task.icon">任务存在资源</label>
-	<label index="taskform.assets.button.delete">删除选择的资源</label>
-	<label index="taskform.assets.button.upload">上传新资源</label>
 	<label index="contextmenu.task.addasset">资源</label>
 </labels>

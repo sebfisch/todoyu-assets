@@ -31,7 +31,5 @@
 	<label index="uploadOk">Soubor byl nahrán</label>
 	<label index="locked">Tento úkol je uzamčen. Nemůžete přidávat soubory</label>
 	<label index="task.icon">Úkol má přílohy</label>
-	<label index="taskform.assets.button.delete">Smazat označenou přílohu</label>
-	<label index="taskform.assets.button.upload">Nahrát novou přílohu</label>
 	<label index="contextmenu.task.addasset">Příloha</label>
 </labels>

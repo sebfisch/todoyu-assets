@@ -39,7 +39,7 @@ Todoyu::$CONFIG['EXT']['assets']['assets']	= array(
 			'position'	=> 120
 		),
 		array(
-			'file'		=> 'ext/assets/asset/js/TaskEdit.js',
+			'file'		=> 'ext/assets/asset/js/RecordEdit.js',
 			'position'	=> 120
 		),
 		array(

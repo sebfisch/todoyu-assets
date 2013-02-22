@@ -32,8 +32,6 @@
 	<label index="uploadCanceled">Das Hochladen wurde abgebrochen</label>
 	<label index="locked">Die Aufgabe ist gesperrt. Es können keine Dateien angefügt werden</label>
 	<label index="task.icon">Aufgabe hat Dateianhänge</label>
-	<label index="taskform.assets.button.delete">Ausgewählte Datei löschen</label>
-	<label index="taskform.assets.button.upload">Neue Datei anfügen</label>
 	<label index="contextmenu.task.addasset">Dateianhang</label>
 	<label index="type.task">Aufgaben-Anhänge</label>
 	<label index="type.comment">Kommentar-Anhänge</label>

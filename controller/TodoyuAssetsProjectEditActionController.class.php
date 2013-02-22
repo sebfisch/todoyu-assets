@@ -1,31 +1,26 @@
 <?php
 /****************************************************************************
-* todoyu is published under the BSD License:
-* http://www.opensource.org/licenses/bsd-license.php
-*
-* Copyright (c) 2012, snowflake productions GmbH, Switzerland
-* All rights reserved.
-*
-* This script is part of the todoyu project.
-* The todoyu project is free software; you can redistribute it and/or modify
-* it under the terms of the BSD License.
-*
-* This script is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the BSD License
-* for more details.
-*
-* This copyright notice MUST APPEAR in all copies of the script.
-*****************************************************************************/
-
-/**
- * Assets file upload action controller for task edit form inline
+ * todoyu is published under the BSD License:
+ * http://www.opensource.org/licenses/bsd-license.php
  *
- * @package		Todoyu
- * @subpackage	Assets
- */
-class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
+ * Copyright (c) 2012, snowflake productions GmbH, Switzerland
+ * All rights reserved.
+ *
+ * This script is part of the todoyu project.
+ * The todoyu project is free software; you can redistribute it and/or modify
+ * it under the terms of the BSD License.
+ *
+ * This script is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the BSD License
+ * for more details.
+ *
+ * This copyright notice MUST APPEAR in all copies of the script.
+ *****************************************************************************/
 
+
+
+class TodoyuAssetsProjectEditActionController extends TodoyuActionController {
 	/**
 	 * Restrict access
 	 *
@@ -56,9 +51,9 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function sessionFilesAction(array $params) {
-		$idTask	= intval($params['record']);
+		$idProject	= intval($params['record']);
 
-		return TodoyuAssetsTaskEditRenderer::renderSessionFileOptions($idTask);
+		return TodoyuAssetsProjectRenderer::renderSessionFileOptions($idProject);
 	}
 
 
@@ -70,8 +65,8 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function uploadassetfileAction(array $params) {
-		$idTask	= intval($params['task']['id']);
-		$file	= TodoyuRequest::getUploadFile('file', 'task');
+		$idProject	= intval($params['project']['id']);
+		$file	= TodoyuRequest::getUploadFile('file', 'project');
 		$error	= intval($file['error']);
 
 			// Check again for file limit
@@ -86,15 +81,15 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 
 			// Render frame content. Success or error
 		if( $error === UPLOAD_ERR_OK && is_array($file) && !$file['error'] ) {
-			$uploader	= new TodoyuAssetsTempUploaderTask($idTask);
+			$uploader	= new TodoyuAssetsTempUploaderProject($idProject);
 			$uploader->addFile($file);
 
-			return TodoyuAssetsTaskEditRenderer::renderUploadframeContent($file['name'], $idTask);
+			return TodoyuAssetsProjectRenderer::renderUploadframeContent($file['name'], $idProject);
 		} else {
 				// Notify upload failure
 			TodoyuLogger::logError('File upload failed: ' . $file['name'] . ' (ERROR:' . $error . ')');
 
-			return TodoyuAssetsTaskEditRenderer::renderUploadframeContentFailed($error, $file['name'], $idTask);
+			return TodoyuAssetsProjectRenderer::renderUploadframeContentFailed($error, $file['name'], $idProject);
 		}
 	}
 
@@ -108,12 +103,12 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 	 */
 	public static function deletesessionfileAction(array $params) {
 		$fileKey	= trim($params['filekey']);
-		$idTask		= intval($params['record']);
+		$idProject	= intval($params['record']);
 
-		$uploader	= new TodoyuAssetsTempUploaderTask($idTask);
+		$uploader	= new TodoyuAssetsTempUploaderProject($idProject);
 		$uploader->removeFile($fileKey);
 
-		return TodoyuAssetsTaskEditRenderer::renderSessionFileOptions($idTask);
+		return TodoyuAssetsTaskEditRenderer::renderSessionFileOptions($idProject);
 	}
 
 
@@ -124,9 +119,9 @@ class TodoyuAssetsTaskEditActionController extends TodoyuActionController {
 	 * @param	Array	$params
 	 */
 	public static function deleteuploadsAction(array $params) {
-		$idTask		= intval($params['record']);
+		$idProject		= intval($params['record']);
 
-		$uploader	= new TodoyuAssetsTempUploaderTask($idTask);
+		$uploader	= new TodoyuAssetsTempUploaderProject($idProject);
 		$uploader->clear();
 	}
 

@@ -2,4 +2,6 @@
 <labels>
 	<label index="legend.basics">Příloha úkolu </label>
 	<label index="legend.inlineAssetUpload">Přidat soubory k tomuto úkolu</label>
+	<label index="assets.button.delete">Smazat označenou přílohu</label>
+	<label index="assets.button.upload">Nahrát novou přílohu</label>
 </labels>

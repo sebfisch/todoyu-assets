@@ -27,6 +27,4 @@
 	<label index="uploadOk">Файл загружен</label>
 	<label index="locked">Эта задача заблокирована. Вы не можете добавить файлы</label>
 	<label index="task.icon">У задачи есть активы</label>
-	<label index="taskform.assets.button.delete">Удалить выбранный актив</label>
-	<label index="taskform.assets.button.upload">Добавить актив</label>
 </labels>

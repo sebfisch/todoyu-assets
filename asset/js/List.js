@@ -43,10 +43,10 @@ Todoyu.Ext.assets.List = {
 	 * Initialize list
 	 *
 	 * @method	initList
-	 * @param	{Number}	idTask
+	 * @param	{Number}	idRecord
 	 */
-	initList: function(idTask, recordType) {
-		this.addListObservers(idTask, recordType);
+	initList: function(idRecord, recordType) {
+		this.addListObservers(idRecord, recordType);
 	},
 
 

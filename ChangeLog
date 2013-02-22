@@ -1,6 +1,7 @@
 todoyu assets extension changelog
 
 assets 1.3.0 - not released yet
+	* Added: Inline adding of assets to project
 	* Added: Listing of assets in project header (new tab)
 	* Changed: Added link to comment in asset list
 	* Changed: Adapt asset list to new width

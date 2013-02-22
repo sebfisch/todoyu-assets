@@ -668,6 +668,27 @@ class TodoyuAssetsAssetManager {
 
 
 	/**
+	 * Modify form for project creation - add assets fieldset
+	 *
+	 * @param	TodoyuForm		$form
+	 * @param	Integer			$idProject
+	 * @param	Array			$params
+	 * @return	TodoyuForm
+	 */
+	public static function hookAddAssetUploadToProjectCreateForm(TodoyuForm $form, $idProject, array $params) {
+			// Add assets fieldset
+		$xmlPathSave	= 'ext/assets/config/form/project-inline-upload.xml';
+		$assetForm		= TodoyuFormManager::getForm($xmlPathSave);
+		$assetFieldset	= $assetForm->getFieldset('assets');
+
+		$form->addFieldset('assets', $assetFieldset, 'before:buttons');
+
+		return $form;
+	}
+
+
+
+	/**
 	 * Save assets (uploaded inline from within task creation form) of new task
 	 *
 	 * @param	Array		$data
@@ -687,6 +708,33 @@ class TodoyuAssetsAssetManager {
 
 		foreach($fileInfos as $asset) {
 			self::addTaskAsset($idTask, $asset['path'], $asset['name'], $asset['type']);
+		}
+
+		$uploader->clear();
+
+		return $data;
+	}
+
+
+
+	/**
+	 * @param	Array		$data
+	 * @param	Integer		$idProject
+	 * @param	Array		$params
+	 * @return	Array
+	 */
+	public static function hookStoreUplodedProjectAssets(array $data, $idProject, array $params) {
+		$idProjectOld	= intval($data['id']);
+		$uploader	= new TodoyuAssetsTempUploaderProject($idProjectOld);
+		$fileInfos	= $uploader->getFilesInfos();
+
+			// Remove asset fields from form data
+		unset($data['MAX_FILE_SIZE']);
+		unset($data['assetlist']);
+		unset($data['file']);
+
+		foreach($fileInfos as $asset) {
+			self::addProjectAsset($idProject, $asset['path'], $asset['name'], $asset['type']);
 		}
 
 		$uploader->clear();

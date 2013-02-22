@@ -27,6 +27,4 @@
 	<label index="uploadOk">ファイルはアップロードされました</label>
 	<label index="locked">このタスクはロックされているため、ファイルを追加できません</label>
 	<label index="task.icon">タスクは資源を持っています</label>
-	<label index="taskform.assets.button.delete">選択した資源を削除</label>
-	<label index="taskform.assets.button.upload">新しい資源のアップロード</label>
 </labels>

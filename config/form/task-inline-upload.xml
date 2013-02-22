@@ -27,21 +27,21 @@
 				</field>
 
 				<field type="upload" name="file">
-					<onchange>Todoyu.Ext.assets.TaskEdit.uploadFileInline(this)</onchange>
+					<onchange>Todoyu.Ext.assets.RecordEdit.uploadFileInline(this, 'task')</onchange>
 					<class>directUploadBox</class>
 				</field>
 
 				<field type="button" name="upload">
-					<text>assets.ext.taskform.assets.button.upload</text>
+					<text>assets.form.assets.button.upload</text>
 					<class>buttonUploadAsset</class>
 					<hasIcon />
 				</field>
 
 				<field type="button" name="delete">
-					<text>assets.ext.taskform.assets.button.delete</text>
+					<text>assets.form.assets.button.delete</text>
 					<class>buttonDeleteAsset</class>
 					<hasIcon />
-					<onclick>Todoyu.Ext.assets.TaskEdit.removeSelectedTempAsset(#id#)</onclick>
+					<onclick>Todoyu.Ext.assets.RecordEdit.removeSelectedTempAsset(#id#, 'task')</onclick>
 				</field>
 
 			</elements>

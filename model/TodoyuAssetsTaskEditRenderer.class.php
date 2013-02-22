@@ -39,7 +39,7 @@ class TodoyuAssetsTaskEditRenderer {
 		$tmpl	= 'core/view/htmldoc.tmpl';
 		$data	= array(
 			'title'		=> 'Uploader IFrame',
-			'content'	=> TodoyuString::wrapScript('window.parent.Todoyu.Ext.assets.TaskEdit.uploadFinished(' . $idTask . ');')
+			'content'	=> TodoyuString::wrapScript('window.parent.Todoyu.Ext.assets.RecordEdit.uploadFinished(' . $idTask . ', \'task\');')
 		);
 
 		return Todoyu::render($tmpl, $data);
@@ -63,7 +63,7 @@ class TodoyuAssetsTaskEditRenderer {
 		$tmpl	= 'core/view/htmldoc.tmpl';
 		$data	= array(
 			'title'		=> 'Uploader IFrame',
-			'content'	=> TodoyuString::wrapScript('window.parent.Todoyu.Ext.assets.TaskEdit.uploadFailed(' . $idTask . ', ' . $error . ', \'' . $fileName . '\', \'' . $maxFileSize . '\');')
+			'content'	=> TodoyuString::wrapScript('window.parent.Todoyu.Ext.assets.RecordEdit.uploadFailed(' . $idTask . ', \'task\', ' . $error . ', \'' . $fileName . '\', \'' . $maxFileSize . '\');')
 		);
 
 		return Todoyu::render($tmpl, $data);

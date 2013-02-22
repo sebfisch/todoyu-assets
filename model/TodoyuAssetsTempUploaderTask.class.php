@@ -29,10 +29,10 @@ class TodoyuAssetsTempUploaderTask extends TodoyuAssetsTempUploader {
 	/**
 	 * Initialize
 	 *
-	 * @param	Integer		$idTask
+	 * @param	Integer		$idProject
 	 */
-	public function __construct($idTask) {
-		parent::__construct('task', $idTask);
+	public function __construct($idProject) {
+		parent::__construct('task', $idProject);
 	}
 
 

@@ -27,6 +27,4 @@
 	<label index="uploadOk">Plik został przesłany</label>
 	<label index="locked">Ten wątek jest zamknięty. Nie możesz dodawać plików.</label>
 	<label index="task.icon">Task has assets</label>
-	<label index="taskform.assets.button.delete">Usuń Wybrany Asset</label>
-	<label index="taskform.assets.button.upload">Upload New Asset</label>
 </labels>

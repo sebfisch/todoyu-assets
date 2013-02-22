@@ -22,7 +22,6 @@ h1.extIconAssets .title {
 	button {
 		&.upload .icon,
 		button.buttonUploadAsset .icon {
-			background:url(../../../../core/asset/img/icons.png) no-repeat 5px -1692px;
 			width:24px;
 		}
 
@@ -33,9 +32,14 @@ h1.extIconAssets .title {
 	}
 }
 
+button {
+	&.buttonDeleteAsset .icon {
+		background:url(../../../../core/asset/img/icons.png) no-repeat 3px -357px;
+	}
 
-button.buttonDeleteAsset .icon {
-	background:url(../../../../core/asset/img/icons.png) no-repeat 0 -357px;
+	&.buttonUploadAsset .icon {
+		background:url(../../../../core/asset/img/icons.png) no-repeat 5px -1692px;
+	}
 }
 
 .directUploadForm {
@@ -59,6 +63,7 @@ div.directUploadBox .fField {
 .directUploadBox {
 	input.upload {
 		cursor: pointer;
+		background: url(../../../../core/asset/img/icons.png) no-repeat 5px -1692px;;
 	}
 }
 
