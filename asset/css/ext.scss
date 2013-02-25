@@ -19,6 +19,8 @@ h1.extIconAssets .title {
 	Asset form elements
    ---------------------------------------------- */
 .assetsButtons {
+	padding:10px;
+    
 	button {
 		&.upload .icon,
 		button.buttonUploadAsset .icon {
