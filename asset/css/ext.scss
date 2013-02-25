@@ -129,12 +129,21 @@ div.directUploadBox .fField {
 
 	.filesize {
 		width:50px;
+		text-align: right;
 	}
 
 	.uploaddate {
 		width:90px;
 	}
+	
+	.parent {
+	
+		a:hover {
+			background-color: $colorLinkHover;
+		}
 
+	}
+						
 	.actions {
 		align: right;
 
@@ -169,7 +178,7 @@ div.directUploadBox .fField {
 	}
 
 	td {
-		padding:3px 0 0 0;
+		padding:3px 6px 3px 0;
 	}
 
 	tr {
