@@ -23,9 +23,6 @@ h1.extIconAssets .title {
     
 	button {
 		&.upload .icon,
-		button.buttonUploadAsset .icon {
-			width:24px;
-		}
 
 		&.downloadSelection .icon {
 			background:url(../../../../core/asset/img/icons.png) no-repeat 5px -237px;
@@ -40,6 +37,7 @@ button {
 	}
 
 	&.buttonUploadAsset .icon {
+		width:24px;
 		background:url(../../../../core/asset/img/icons.png) no-repeat 5px -1692px;
 	}
 }
