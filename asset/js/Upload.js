@@ -186,6 +186,7 @@ Todoyu.Ext.assets.Upload = {
 	 *
 	 * @method	uploadFailed
 	 * @param	{Number}		idRecord
+	 * @param	{String}		recordType
 	 * @param	{Number}		[error]			1 = file size exceeded, 2 = failure
 	 * @param	{String}		[filename]
 	 * @param	{Number}		[maxFileSize]
