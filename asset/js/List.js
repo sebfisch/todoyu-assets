@@ -104,7 +104,8 @@ Todoyu.Ext.assets.List = {
 	 * Add observers for list
 	 *
 	 * @method	addObservers
-	 * @param    {Number}    idRecord
+	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType
 	 */
 	addListObservers: function(idRecord, recordType) {
 			// Check all button
@@ -353,8 +354,9 @@ Todoyu.Ext.assets.List = {
 	 * Check whether all assets of the given task are selected
 	 *
 	 * @method	areAllAssetsSelected
-	 * @param    {Number}    idRecord
+	 * @param	{Number}    idRecord
 	 * @param	{String}	recordType
+	 * @return	{Boolean}
 	 */
 	areAllAssetsSelected: function(idRecord, recordType) {
 		var boxes	= this.getAssetsCheckboxes(idRecord, recordType, false);

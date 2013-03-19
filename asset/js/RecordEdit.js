@@ -45,6 +45,7 @@ Todoyu.Ext.assets.RecordEdit = {
 	 *
 	 * @method	toggleFormElements
 	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType
 	 */
 	toggleFormElements: function(idRecord, recordType) {
 		var assetSelector	= this.getAssetSelector(idRecord, recordType);
@@ -66,6 +67,7 @@ Todoyu.Ext.assets.RecordEdit = {
 	 *
 	 * @method	uploadFileInline
 	 * @param	{Element}	field
+	 * @param	{String}	recordType
 	 */
 	uploadFileInline: function(field, recordType) {
 		if( $F(field) !== '' ) {
@@ -84,6 +86,7 @@ Todoyu.Ext.assets.RecordEdit = {
 	 *
 	 * @method	uploadFinished
 	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType
 	 */
 	uploadFinished: function(idRecord, recordType) {
 		this.toggleFormElements(idRecord, recordType);
@@ -138,7 +141,8 @@ Todoyu.Ext.assets.RecordEdit = {
 	 * Delete selected temporary asset file from server
 	 *
 	 * @method	removeSelectedTempAsset
-	 * @param	{Number}	idTask
+	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType
 	 */
 	removeSelectedTempAsset: function(idRecord, recordType) {
 		var fileKey		= this.getSelectedAssetFileID(idRecord, recordType);
@@ -167,6 +171,7 @@ Todoyu.Ext.assets.RecordEdit = {
 	 *
 	 * @method	removeAllTempAssets
 	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType
 	 */
 	removeAllTempAssets: function(idRecord, recordType) {
 		var url		= Todoyu.getUrl('assets', recordType + 'Edit');
@@ -186,7 +191,8 @@ Todoyu.Ext.assets.RecordEdit = {
 	 * Check whether the record has an assets tab. Missing if user does not have the right to use assets.
 	 *
 	 * @method	hasAssetsTab
-	 * @param    {Number}        idRecord
+	 * @param	{Number}		idRecord
+	 * @param	{String}		recordType
 	 */
 	hasAssetsTab: function(idRecord, recordType) {
 		return Todoyu.exists(recordType + '-' + idRecord + '-tab-assets');
@@ -199,6 +205,7 @@ Todoyu.Ext.assets.RecordEdit = {
 	 *
 	 * @method	getAssetSelector
 	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType
 	 * @return	{Element}
 	 */
 	getAssetSelector: function(idRecord, recordType) {
@@ -212,6 +219,7 @@ Todoyu.Ext.assets.RecordEdit = {
 	 *
 	 * @method	getSelectedAssetFileID
 	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType
 	 * @return	{String}
 	 */
 	getSelectedAssetFileID: function(idRecord, recordType) {
@@ -240,6 +248,7 @@ Todoyu.Ext.assets.RecordEdit = {
 	 * @method	onRemovedAsset
 	 * @param	{String}			filename
 	 * @param	{Number}			idRecord
+	 * @param	{String}			recordType
 	 * @param	{Ajax.Response}		response
 	 */
 	onRemovedAsset: function(filename, idRecord, recordType, response) {
@@ -255,6 +264,7 @@ Todoyu.Ext.assets.RecordEdit = {
 	 *
 	 * @method	refreshFileOptions
 	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType
 	 */
 	refreshFileOptions: function(idRecord, recordType) {
 		var target	= this.getAssetSelector(idRecord, recordType);
@@ -277,6 +287,7 @@ Todoyu.Ext.assets.RecordEdit = {
 	 *
 	 * @method	onRefreshedFileOptions
 	 * @param	{Number}		idRecord
+	 * @param	{String}		recordType
 	 * @param	{Ajax.Response}	response
 	 */
 	onRefreshedFileOptions: function(idRecord, recordType, response) {

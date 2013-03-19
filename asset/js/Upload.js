@@ -73,7 +73,8 @@ Todoyu.Ext.assets.Upload = {
 	 * Assets upload form submission handler
 	 *
 	 * @method	submit
-	 * @param    {Number}    idRecord
+	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType		'person' / 'company'
 	 */
 	submit: function(idRecord, recordType) {
 		this.active	= true;
@@ -109,6 +110,7 @@ Todoyu.Ext.assets.Upload = {
 	 *
 	 * @method	getField
 	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType		'person' / 'company'
 	 * @return	{Element}
 	 */
 	getField: function(idRecord, recordType) {
@@ -122,6 +124,7 @@ Todoyu.Ext.assets.Upload = {
 	 *
 	 * @method	getForm
 	 * @param	{Number}	idTask
+	 * @param	{String}	recordType
 	 * @return	{Element}
 	 */
 	getForm: function(idTask, recordType) {
@@ -134,7 +137,8 @@ Todoyu.Ext.assets.Upload = {
 	 * Show assets uploader
 	 *
 	 * @method	showProgressBar
-	 * @param    {Number}    idRecord
+	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType		'person' / 'company'
 	 * @param	{Boolean}	show
 	 */
 	showProgressBar: function(idRecord, recordType, show) {
@@ -155,16 +159,13 @@ Todoyu.Ext.assets.Upload = {
 	 *
 	 * @method	uploadFinished
 	 * @param	{Number}		idRecord
+	 * @param	{String}		recordType		'person' / 'company'
 	 * @param	{String}		tabLabel
 	 */
 	uploadFinished: function(idRecord,recordType, tabLabel) {
 		this.active = false;
-
 		delete this.iframes[recordType + idRecord];
-
 		this.showProgressBar(idRecord, recordType, false);
-
-
 
 		if( Todoyu.exists(recordType + '-' + idRecord + '-assets-commands') ) {
 			Todoyu.Ext.assets.List.refresh(idRecord, recordType);
@@ -175,8 +176,6 @@ Todoyu.Ext.assets.Upload = {
 		}
 
 		Todoyu.notifySuccess('[LLL:assets.ext.uploadOk]');
-
-
 	},
 
 
@@ -225,6 +224,7 @@ Todoyu.Ext.assets.Upload = {
 	 *
 	 * @method	cancelUpload
 	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType		'person' / 'company'
 	 */
 	cancelUpload: function(idRecord, recordType) {
 		var iFrame	= this.iframes[recordType + idRecord];
