@@ -44,6 +44,7 @@ Todoyu.Ext.assets.List = {
 	 *
 	 * @method	initList
 	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType
 	 */
 	initList: function(idRecord, recordType) {
 		this.addListObservers(idRecord, recordType);
@@ -56,6 +57,7 @@ Todoyu.Ext.assets.List = {
 	 *
 	 * @method	initControl
 	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType
 	 */
 	initControl: function(idRecord, recordType) {
 		this.toggleButtons(idRecord, recordType);
@@ -86,6 +88,7 @@ Todoyu.Ext.assets.List = {
 	 *
 	 * @method	hasListElements
 	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType
 	 * @return	{Boolean}
 	 */
 	hasListElements: function(idRecord, recordType) {
@@ -142,6 +145,7 @@ Todoyu.Ext.assets.List = {
 	 *
 	 * @method	refresh
 	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType
 	 */
 	refresh: function(idRecord, recordType) {
 		var list	= recordType + '-' + idRecord + '-assets-list';
@@ -170,6 +174,7 @@ Todoyu.Ext.assets.List = {
 	 *
 	 * @method	onRefreshed
 	 * @param	{Number}		idRecord
+	 * @param	{String}		recordType
 	 * @param	{Ajax.Response}	response
 	 */
 	onRefreshed: function(idRecord, recordType, response) {
@@ -237,6 +242,7 @@ Todoyu.Ext.assets.List = {
 	 *
 	 * @method	handleRemoveClick
 	 * @param	{Number}	idAsset
+	 * @param	{String}	recordType
 	 * @param	{Event}		event
 	 * @param	{Element}	cell
 	 */
@@ -253,6 +259,7 @@ Todoyu.Ext.assets.List = {
 	 *
 	 * @method	check
 	 * @param	{Number}	idAsset
+	 * @param	{String}	recordType
 	 */
 	check: function(idAsset, recordType) {
 		this.handleCheck(idAsset, recordType, true);
@@ -265,6 +272,7 @@ Todoyu.Ext.assets.List = {
 	 *
 	 * @method	unCheck
 	 * @param	{Number}	idAsset
+	 * @param	{String}	recordType
 	 */
 	unCheck: function(idAsset, recordType) {
 		this.handleCheck(idAsset, recordType, false);
@@ -273,10 +281,10 @@ Todoyu.Ext.assets.List = {
 
 
 	/**
-	 *
-	 * @param idAsset
-	 * @param recordType
-	 * @param check
+	 * @method	handleCheck
+	 * @param	{Number}	idAsset
+	 * @param	{String}	recordType
+	 * @param	{Boolean}	check
 	 */
 	handleCheck: function(idAsset, recordType, check) {
 		var idElement = recordType + '-asset-'+ idAsset;
@@ -298,6 +306,7 @@ Todoyu.Ext.assets.List = {
 	 *
 	 * @method	toggleSelectionDownload
 	 * @param	{Number}	idRecord
+	 * @param	{String}	recordType
 	 */
 	toggleSelectionDownload: function(idRecord, recordType) {
 		var oneSelected = $(recordType + '-' + idRecord + '-assets-tablebody').select(':checkbox:checked').size() > 0;
