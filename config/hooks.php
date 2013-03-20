@@ -33,7 +33,7 @@ if( Todoyu::allowed('assets', 'general:use') ) {
 	TodoyuFormHook::registerBuildForm('ext/project/config/form/project.xml', 'TodoyuAssetsAssetManager::hookAddAssetUploadToProjectCreateForm');
 	TodoyuFormHook::registerSaveData('ext/project/config/form/project.xml', 'TodoyuAssetsAssetManager::hookStoreUplodedProjectAssets');
 
-	TodoyuProjectProjectDetailsTabsManager::registerDetailsTab('assets', 'LLL:assets.ext.tab.assets', 'TodoyuAssetsProjectRenderer::renderProjectDetailsTab', 100);
+	TodoyuProjectProjectDetailsTabsManager::registerDetailsTab('assets', 'assets.ext.tab.assets', 'TodoyuAssetsProjectRenderer::renderProjectDetailsTab', 100);
 }
 
 ?>
