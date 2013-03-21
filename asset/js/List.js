@@ -324,7 +324,7 @@ Todoyu.Ext.assets.List = {
 	 * Get assets checkbox elements of given task
 	 *
 	 * @method	getAllAssetsCheckboxes
-	 * @param	{Number}    idRecord
+	 * @param	{Number}	idRecord
 	 * @param	{String}	recordType
 	 * @param	{Boolean}	checkedOnly
 	 * @return	{Element[]}
@@ -363,7 +363,7 @@ Todoyu.Ext.assets.List = {
 	 * Check whether all assets of the given task are selected
 	 *
 	 * @method	areAllAssetsSelected
-	 * @param	{Number}    idRecord
+	 * @param	{Number}	idRecord
 	 * @param	{String}	recordType
 	 * @return	{Boolean}
 	 */
