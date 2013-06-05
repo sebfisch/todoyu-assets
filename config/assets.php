@@ -3,7 +3,7 @@
 * todoyu is published under the BSD License:
 * http://www.opensource.org/licenses/bsd-license.php
 *
-* Copyright (c) 2012, snowflake productions GmbH, Switzerland
+* Copyright (c) 2013, snowflake productions GmbH, Switzerland
 * All rights reserved.
 *
 * This script is part of the todoyu project.
@@ -40,6 +40,10 @@ Todoyu::$CONFIG['EXT']['assets']['assets']	= array(
 		),
 		array(
 			'file'		=> 'ext/assets/asset/js/RecordEdit.js',
+			'position'	=> 120
+		),
+		array(
+			'file'		=> 'ext/assets/asset/js/Preview.js',
 			'position'	=> 120
 		),
 		array(

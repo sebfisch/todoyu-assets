@@ -3,7 +3,7 @@
 * todoyu is published under the BSD License:
 * http://www.opensource.org/licenses/bsd-license.php
 *
-* Copyright (c) 2012, snowflake productions GmbH, Switzerland
+* Copyright (c) 2013, snowflake productions GmbH, Switzerland
 * All rights reserved.
 *
 * This script is part of the todoyu project.
@@ -393,8 +393,9 @@ class TodoyuAssetsAssetManager {
 	/**
 	 * Download assets zipped
 	 *
-	 * @param	Integer $idRecord
-	 * @param	Array	$assetIDs
+	 * @param	Integer 	$idRecord
+	 * @param	String 		$recordType
+	 * @param	Array		$assetIDs
 	 */
 	public static function downloadAssetsZipped($idRecord, $recordType, array $assetIDs) {
 		$idRecord		= intval($idRecord);
@@ -571,9 +572,24 @@ class TodoyuAssetsAssetManager {
 		$type		= intval($type);
 		$idParent	= intval($idParent);
 		$basePath	= self::getStorageBasePath();
+		$folder 	= self::getFolderNameByParentType($type);
 
+		$storagePath = TodoyuFileManager::pathAbsolute($basePath . DIR_SEP . ($folder ? $folder . DIR_SEP : '') . $idParent);
+
+			// Create storage folder if it doesn't exist
+		TodoyuFileManager::makeDirDeep($storagePath);
+
+		return $storagePath;
+	}
+
+
+
+	/**
+	 * @param	Integer		$type
+	 * @return	Integer|String
+	 */
+	public static function getFolderNameByParentType($type) {
 		switch($type) {
-
 			case ASSET_PARENTTYPE_PROJECT:
 				$folder		= '';
 				break;
@@ -593,12 +609,7 @@ class TodoyuAssetsAssetManager {
 				die('INVALID ASSET TYPE');
 		}
 
-		$storagePath = TodoyuFileManager::pathAbsolute($basePath . DIR_SEP . ($folder ? $folder . DIR_SEP : '') . $idParent);
-
-			// Create storage folder if it doesn't exist
-		TodoyuFileManager::makeDirDeep($storagePath);
-
-		return $storagePath;
+		return $folder;
 	}
 
 

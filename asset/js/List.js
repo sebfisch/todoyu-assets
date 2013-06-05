@@ -2,7 +2,7 @@
 * todoyu is published under the BSD License:
 * http://www.opensource.org/licenses/bsd-license.php
 *
-* Copyright (c) 2012, snowflake productions GmbH, Switzerland
+* Copyright (c) 2013, snowflake productions GmbH, Switzerland
 * All rights reserved.
 *
 * This script is part of the todoyu project.
@@ -118,24 +118,53 @@ Todoyu.Ext.assets.List = {
 		var assetsTableBody	= $(recordType + '-' + idRecord + '-assets-tablebody');
 		assetsTableBody.on('click', 'tr', this.select.bind(this));
 
-			// Actions
+			// Install actions on options of all asset item rows
 		assetsTableBody.select('tr.asset').each(function(row){
 			var idAsset	= row.id.split('-').last();
-				// Filename
+
+				// Click 'filename': download asset
 			row.down('.filename a').on('click', 'td', this.handleDownloadClick.bind(this, idAsset));
-				// Visibility
+
+				// Install preview on hover over icon and filename of images
+			this.addObserveForPreview(row, idAsset);
+
+				// Click 'visibility': toggle asset visibility
 			if( row.down('a.visibility') ) {
 				row.down('a.visibility').on('click', 'a', this.handleVisibilityToggle.bind(this, idAsset));
 			}
-				// Download
+
+				// Click 'download': download asset
 			if( row.down('a.download') ) {
 				row.down('a.download').on('click', 'td', this.handleDownloadClick.bind(this, idAsset));
 			}
-				// Delete
+
+				// Click 'delete': (confirm and) delete asset
 			if( row.down('a.delete') ) {
 				row.down('a.delete').on('click', 'td', this.handleRemoveClick.bind(this, idAsset, recordType));
 			}
 		}, this);
+	},
+
+
+
+	/**
+	 * Install preview on hover over icon and filename (of image assets) in given row
+	 *
+	 * @param	{Element}	row
+	 * @param	{Number}	idAsset
+	 */
+	addObserveForPreview: function(row, idAsset) {
+		var mimeTypeElement = row.down('.mimetype');
+
+		if( mimeTypeElement.hasClassName('mimeGIF') || mimeTypeElement.hasClassName('mimeJPG') || mimeTypeElement.hasClassName('mimePNG') ) {
+			var optionFilename = row.down('.filename a');
+			optionFilename.on('mouseover', 'td', this.handleShowPreview.bind(this, idAsset));
+			optionFilename.on('mouseout', 'td', this.handleHidePreview.bind(this, idAsset));
+
+			var optionMimeIcon = row.down('.mimetype span');
+			optionMimeIcon.on('mouseover', 'td', this.handleShowPreview.bind(this, idAsset));
+			optionMimeIcon.on('mouseout', 'td', this.handleHidePreview.bind(this, idAsset));
+		}
 	},
 
 
@@ -199,6 +228,31 @@ Todoyu.Ext.assets.List = {
 		} else {
 			this.check(idAsset, recordType);
 		}
+	},
+
+
+
+	/**
+	 * Display asset info
+	 *
+	 * @method	handleShowPreview
+	 * @param	{Number}	idAsset
+	 * @param	{Event}		event
+	 */
+	handleShowPreview: function(idAsset, event) {
+		this.ext.Preview.show(idAsset, event);
+	},
+
+
+
+	/**
+	 * Hide asset info
+	 *
+	 * @method	handleShowPreview
+	 * @param	{Number}	idAsset
+	 */
+	handleHidePreview: function(idAsset) {
+		this.ext.Preview.hide(idAsset);
 	},
 
 

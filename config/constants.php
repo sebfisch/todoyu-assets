@@ -3,7 +3,7 @@
 * todoyu is published under the BSD License:
 * http://www.opensource.org/licenses/bsd-license.php
 *
-* Copyright (c) 2012, snowflake productions GmbH, Switzerland
+* Copyright (c) 2013, snowflake productions GmbH, Switzerland
 * All rights reserved.
 *
 * This script is part of the todoyu project.
@@ -29,5 +29,10 @@
 define('ASSET_PARENTTYPE_TASK', 1);
 define('ASSET_PARENTTYPE_PROJECT', 2);
 define('ASSET_PARENTTYPE_COMMENT', 3);
+
+	// Preview settings
+define('ASSET_PREVIEW_WIDTH', 600);
+define('ASSET_PREVIEW_HEIGHT', 450);
+define('ASSET_PREVIEW_QUALITY', 100);
 
 ?>

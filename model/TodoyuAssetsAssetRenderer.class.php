@@ -3,7 +3,7 @@
 * todoyu is published under the BSD License:
 * http://www.opensource.org/licenses/bsd-license.php
 *
-* Copyright (c) 2012, snowflake productions GmbH, Switzerland
+* Copyright (c) 2013, snowflake productions GmbH, Switzerland
 * All rights reserved.
 *
 * This script is part of the todoyu project.
@@ -98,9 +98,10 @@ class TodoyuAssetsAssetRenderer {
 
 
 	/**
-	 * @param $idRecord
-	 * @param $assets
-	 * @return String
+	 * @param	Integer		$idRecord
+	 * @param	Array		$assets
+	 * @param	String		$recordType
+	 * @return	String
 	 */
 	protected static function renderList($idRecord, $assets, $recordType) {
 		$tmpl	= 'ext/assets/view/list.tmpl';
@@ -141,11 +142,12 @@ class TodoyuAssetsAssetRenderer {
 	 * Render upload-frame content
 	 *
 	 * @param	Integer		$idRecord
+	 * @param	String		$recordType
 	 * @param	String		$fileName
 	 * @return	String
 	 */
 	public static function renderUploadframeContent($idRecord, $recordType, $fileName) {
-		$idRecord		= intval($idRecord);
+		$idRecord	= intval($idRecord);
 		$tabLabel	= TodoyuAssetsTaskAssetViewHelper::getTabLabel($idRecord);
 
 		$tmpl	= 'core/view/htmldoc.tmpl';
@@ -174,6 +176,19 @@ class TodoyuAssetsAssetRenderer {
 		$commands	= 'window.parent.Todoyu.Ext.assets.Upload.uploadFailed(' . $idTask . ', ' . $error . ', \'' . $fileName . '\', \'' . $maxFileSize . '\');';
 
 		return TodoyuRenderer::renderUploadIFrameJsContent($commands);
+	}
+
+
+	public static function renderPreview($idAsset) {
+		$idAsset	= intval($idAsset);
+
+		$tmpl	= 'ext/assets/view/preview.tmpl';
+		$data	= array(
+			'idAsset'	=> $idAsset,
+			'imgPath'	=> TodoyuAssetsPreviewManager::getPreviewImage($idAsset)
+		);
+
+		return Todoyu::render($tmpl, $data);
 	}
 
 }

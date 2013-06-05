@@ -19,31 +19,44 @@
 *****************************************************************************/
 
 /**
- * Task asset object
+ * Asset info action controller
  *
  * @package		Todoyu
  * @subpackage	Assets
  */
-class TodoyuAssetsTaskAsset extends TodoyuAssetsAsset {
+class TodoyuAssetsPreviewActionController extends TodoyuActionController {
 
 	/**
-	 * Get task ID
+	 * Initialize controller: restrict access
 	 *
-	 * @return	Integer
+	 * @param	Array	$params
 	 */
-	public function getTaskID() {
-		return $this->getParentID();
+	public function init(array $params) {
+		Todoyu::restrict('assets', 'general:use');
 	}
 
 
 
 	/**
-	 * Get task object
+	 * Default action
 	 *
-	 * @return	Task
+	 * @param	Array		$params
+	 * @return	String
 	 */
-	public function getTask() {
-		return TodoyuProjectTaskManager::getTask($this->getTaskID());
+	public function defaultAction(array $params) {
+		return $this->getAction($params);
+	}
+
+
+
+	/**
+	 * @param	Array	$params
+	 * @return	String
+	 */
+	public function getAction(array $params) {
+		$idAsset	= intval($params['asset']);
+
+		return TodoyuAssetsAssetRenderer::renderPreview($idAsset);
 	}
 
 }

@@ -3,7 +3,7 @@
 * todoyu is published under the BSD License:
 * http://www.opensource.org/licenses/bsd-license.php
 *
-* Copyright (c) 2012, snowflake productions GmbH, Switzerland
+* Copyright (c) 2013, snowflake productions GmbH, Switzerland
 * All rights reserved.
 *
 * This script is part of the todoyu project.
@@ -21,8 +21,9 @@
 	// Basic paths
 Todoyu::$CONFIG['EXT']['assets']['basePath']	= PATH_FILES . DIR_SEP . 'assets';
 Todoyu::$CONFIG['EXT']['assets']['cachePath']	= PATH_CACHE . DIR_SEP . 'temp';
+Todoyu::$CONFIG['EXT']['assets']['previewPath']	= PATH_CACHE . DIR_SEP . 'previews';
 
-	// Delete files on hard disk when deleted in database
+// Delete files on hard disk when deleted in database
 Todoyu::$CONFIG['EXT']['assets']['deleteFiles']	= false;
 
 	// Add allowed paths where files can be downloaded from
