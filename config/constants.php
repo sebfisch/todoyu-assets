@@ -30,9 +30,4 @@ define('ASSET_PARENTTYPE_TASK', 1);
 define('ASSET_PARENTTYPE_PROJECT', 2);
 define('ASSET_PARENTTYPE_COMMENT', 3);
 
-	// Preview settings
-define('ASSET_PREVIEW_WIDTH', 600);
-define('ASSET_PREVIEW_HEIGHT', 450);
-define('ASSET_PREVIEW_QUALITY', 100);
-
 ?>

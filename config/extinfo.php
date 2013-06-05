@@ -23,22 +23,21 @@
  */
 
 Todoyu::$CONFIG['EXT']['assets']['info']	= array(
-	'title'				=> 'Task Assets',
-	'description'		=> 'Task Assets Listing, Upload, Download, etc.',
-	'author'			=> array(
-		'name'		=> 'todoyu Core Developer Team',
-		'email'		=> 'team@todoyu.com',
-		'company'	=> 'snowflake productions GmbH, Zurich'
+	'title'			=> 'Task Assets',
+	'description'	=> 'Task Assets Listing, Upload, Download, etc.',
+	'author'		=> array(
+			'name'		=> 'todoyu Core Developer Team',
+			'email'		=> 'team@todoyu.com',
+			'company'	=> 'snowflake productions GmbH, Zurich'
 	),
 	'state'			=> 'stable',
 	'version'		=> '1.3.1',
 	'constraints'	=> array(
-		'core'		=> '2.3.0',
-		'depends'	=> array(
-			'contact'	=> '1.2.0',
-			'project'	=> '1.3.0',
-		)
-	),
+			'core'		=> '2.3.0',
+			'depends'	=> array(
+				'contact'	=> '1.2.0',
+				'project'	=> '1.3.0',
+	)),
 	'urlDocumentation'	=> 'http://doc.todoyu.com/?assets'
 );
 

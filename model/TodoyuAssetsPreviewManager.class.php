@@ -38,7 +38,7 @@ class TodoyuAssetsPreviewManager {
 		$asset		= TodoyuAssetsAssetManager::getAsset($idAsset);
 		$idParent	= $asset->getParentID();
 		$basePath	= self::getStorageBasePath();
-		$folder		= TodoyuAssetsAssetManager::getFolderNameByParentType($asset->getParentType());
+		$folder		= TodoyuAssetsAssetManager::getFolderNameByParentType($asset->getParentType(), $idParent);
 
 		$storagePath= TodoyuFileManager::pathAbsolute($basePath . DIR_SEP . ($folder ? $folder . DIR_SEP : '') . $idParent);
 
@@ -48,13 +48,15 @@ class TodoyuAssetsPreviewManager {
 		$extension			= TodoyuFileManager::getFileExtension($asset->getFilename());
 		$previewImagePath	= $storagePath . DIR_SEP . $idAsset . '.' . $extension;
 
-			// Render preview image if it doesn't exist
+			// Render preview image if it doesn't exist yet
 		$pathAsset	= $asset->getFileStoragePath();
 
 		if( !file_exists($previewImagePath) ) {
 			$Resize		= new TodoyuAssetsImageResizer($pathAsset);
-			$Resize->resizeImage(ASSET_PREVIEW_WIDTH, ASSET_PREVIEW_HEIGHT);
-			$Resize->saveImage($previewImagePath, ASSET_PREVIEW_QUALITY);
+			$extConf = TodoyuAssetsManager::getExtConf();
+
+			$Resize->resizeImage($extConf['preview_max_width'], $extConf['preview_max_height']);
+			$Resize->saveImage($previewImagePath, $extConf['preview_quality']);
 		}
 
 		return TodoyuFilemanager::pathWeb($previewImagePath);

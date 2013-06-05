@@ -572,7 +572,7 @@ class TodoyuAssetsAssetManager {
 		$type		= intval($type);
 		$idParent	= intval($idParent);
 		$basePath	= self::getStorageBasePath();
-		$folder 	= self::getFolderNameByParentType($type);
+		$folder 	= self::getFolderNameByParentType($type, $idParent);
 
 		$storagePath = TodoyuFileManager::pathAbsolute($basePath . DIR_SEP . ($folder ? $folder . DIR_SEP : '') . $idParent);
 
@@ -586,16 +586,17 @@ class TodoyuAssetsAssetManager {
 
 	/**
 	 * @param	Integer		$type
+	 * @param	Integer		$idParent
 	 * @return	Integer|String
 	 */
-	public static function getFolderNameByParentType($type) {
+	public static function getFolderNameByParentType($type, $idParent) {
 		switch($type) {
 			case ASSET_PARENTTYPE_PROJECT:
 				$folder		= '';
 				break;
 
 			case ASSET_PARENTTYPE_TASK:
-				// User project ID as parent folder
+					// Use project ID as parent folder
 				$folder		= TodoyuProjectTaskManager::getProjectID($idParent);
 				break;
 
