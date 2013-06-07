@@ -147,7 +147,6 @@ Todoyu.Ext.assets.Upload = {
 		if( idRecord == 0 && !show ) {
 			$$('.uploadProgress').invoke('hide');
 		} else {
-			console.log(idRecord, recordType);
 			$(recordType + '-' + idRecord + '-asset-progress')[show?'show':'hide']();
 		}
 	},
@@ -168,8 +167,10 @@ Todoyu.Ext.assets.Upload = {
 		this.showProgressBar(idRecord, recordType, false);
 
 		if( Todoyu.exists(recordType + '-' + idRecord + '-assets-commands') ) {
+				// If tab is currently expanded
 			Todoyu.Ext.assets.List.refresh(idRecord, recordType);
-		} else if(recordType=='task') {
+		} else if(recordType == 'task') {
+				// Tab is collapsed
 			Todoyu.Ext.project.Task.refreshHeader(idRecord);
 			Todoyu.Ext.assets.updateTab(idRecord);
 			Todoyu.Ext.assets.setTabLabel(idRecord, tabLabel);

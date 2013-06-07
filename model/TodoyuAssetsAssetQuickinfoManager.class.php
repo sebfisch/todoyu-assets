@@ -19,44 +19,37 @@
 *****************************************************************************/
 
 /**
- * Asset info action controller
+ * Manage asset quickinfo
  *
  * @package		Todoyu
  * @subpackage	Assets
  */
-class TodoyuAssetsPreviewActionController extends TodoyuActionController {
+class TodoyuAssetsAssetQuickInfoManager {
 
 	/**
-	 * Initialize controller: restrict access
+	 * Add items to asset quickinfo
 	 *
-	 * @param	Array	$params
+	 * @param	TodoyuQuickinfo		$quickInfo
+	 * @param	Integer				$idAsset
 	 */
-	public function init(array $params) {
-		Todoyu::restrict('assets', 'general:use');
+	public static function addAssetInfos(TodoyuQuickinfo $quickInfo, $idAsset) {
+		$idAsset= intval($idAsset);
+		$asset 	= TodoyuAssetsAssetManager::getAsset($idAsset);
+
+		$fileInfo	= $asset->getFilename() . ' (' . $asset->getFilesizeFormatted(). ')';
+		$quickInfo->addInfo('fileinfo', $fileInfo, 10, false);
+
+		$preview	= TodoyuAssetsAssetRenderer::renderPreview($idAsset);
+		$quickInfo->addInfo('image', $preview, 10, false);
 	}
 
 
 
 	/**
-	 * Default action
-	 *
-	 * @param	Array		$params
-	 * @return	String
+	 * Add JS onload function to page (hooked into TodoyuPage::render())
 	 */
-	public function defaultAction(array $params) {
-		return $this->getAction($params);
-	}
-
-
-
-	/**
-	 * @param	Array	$params
-	 * @return	String
-	 */
-	public function getAction(array $params) {
-		$idAsset	= intval($params['asset']);
-
-		return TodoyuAssetsAssetRenderer::renderPreview($idAsset);
+	public static function addJSonloadFunction() {
+		TodoyuPage::addJsInit('Todoyu.Ext.assets.QuickinfoAsset.init()', 100);
 	}
 
 }

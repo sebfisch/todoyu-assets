@@ -57,3 +57,19 @@ function Dwoo_Plugin_isAssetDeleteAllowed(Dwoo $dwoo, $idAsset) {
 }
 
 
+
+/**
+ * Check whether the given asset is an image type that GD lib can handle
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
+ * @param	Dwoo		$dwoo
+ * @param	Integer		$idAsset
+ * @return	Boolean
+ */
+function Dwoo_Plugin_isAssetGDcompatibleImage(Dwoo $dwoo, $idAsset) {
+	return TodoyuAssetsImageResizer::isGDcompatibleImage($idAsset);
+}
+
+

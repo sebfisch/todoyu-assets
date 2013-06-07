@@ -59,4 +59,9 @@ TodoyuFormRecordsManager::addType('projectAsset', 'TodoyuAssetsFormElement_Recor
 	// General asset selector
 TodoyuFormManager::addFieldType('recordsSelectAsset', 'TodoyuAssetsFormElement_RecordSelectAsset', 'ext/assets/view/form/FormElement_SelectAsset.tmpl');
 
+/* ---------------------------------------------
+	Add quickInfo callback for assets
+   --------------------------------------------- */
+TodoyuQuickinfoManager::addFunction('asset', 'TodoyuAssetsAssetQuickinfoManager::addAssetInfos');
+
 ?>

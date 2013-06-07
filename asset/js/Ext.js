@@ -50,6 +50,29 @@ Todoyu.Ext.assets = {
 	 */
 	init: function() {
 		this.registerHooks();
+		this.initObservers();
+	},
+
+
+
+	/**
+	 * @method	initObservers
+	 */
+	initObservers: function() {
+		this.initAssetQuickInfos();
+	},
+
+
+
+	/**
+	 * Install observers for asset quickInfo
+	 *
+	 * @method	initAssetQuickInfos
+	 */
+	initAssetQuickInfos: function() {
+		$$('.quickInfoAsset').each(function(element, index) {
+			Todoyu.Ext.assets.QuickInfoAsset.add(element.id);
+		});
 	},
 
 
@@ -190,7 +213,7 @@ Todoyu.Ext.assets = {
 
 
 	/**
-	 * Callend after asset visibility has been toggled: notify success
+	 * Called after asset visibility has been toggled: notify success
 	 *
 	 * @method	onToggledVisibility
 	 * @param	{Number}			idAsset
@@ -215,7 +238,6 @@ Todoyu.Ext.assets = {
 	 * @param	{Number}	idAsset
 	 */
 	remove: function(idAsset, recordType) {
-		console.log(idAsset, recordType);
 		if( confirm('[LLL:assets.ext.delete.confirm]') ) {
 			var url		= Todoyu.getUrl('assets', 'asset');
 			var options	= {
@@ -254,29 +276,6 @@ Todoyu.Ext.assets = {
 		}
 	},
 
-/****************************************************************************
-* todoyu is published under the BSD License:
-* http://www.opensource.org/licenses/bsd-license.php
-*
-* Copyright (c) 2013, snowflake productions GmbH, Switzerland
-* All rights reserved.
-*
-* This script is part of the todoyu project.
-* The todoyu project is free software; you can redistribute it and/or modify
-* it under the terms of the BSD License.
-*
-* This script is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the BSD License
-* for more details.
-*
-* This copyright notice MUST APPEAR in all copies of the script.
-*****************************************************************************/
-
-/**
- * @module	Assets
- */
-
 
 
 	/**
@@ -291,11 +290,22 @@ Todoyu.Ext.assets = {
 			parameters: {
 				action:	'tab',
 				task:	idTask
-			}
+			},
+			onComplete: this.onUpdateTab.bind(this, idTask)
 		};
 		var target	= 'task-' + idTask + '-tabcontent-assets';
 
 		Todoyu.Ui.update(target, url, options);
+	},
+
+
+
+	/**
+	 * @method	onUpdateTab
+	 * @param	{Number}		idTask
+	 */
+	onUpdateTab: function(idTask) {
+		Todoyu.Ext.assets.QuickInfoAsset.install();
 	},
 
 

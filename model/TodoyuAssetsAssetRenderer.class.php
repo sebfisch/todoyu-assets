@@ -72,7 +72,6 @@ class TodoyuAssetsAssetRenderer {
 
 
 
-
 	/**
 	 * Render asset list view
 	 *
@@ -179,13 +178,21 @@ class TodoyuAssetsAssetRenderer {
 	}
 
 
+
+	/**
+	 * @param	Integer	$idAsset
+	 * @return	String
+	 */
 	public static function renderPreview($idAsset) {
-		$idAsset	= intval($idAsset);
+		$idAsset			= intval($idAsset);
+		$previewAttributes	= TodoyuAssetsPreviewManager::getPreviewImage($idAsset);
 
 		$tmpl	= 'ext/assets/view/preview.tmpl';
 		$data	= array(
 			'idAsset'	=> $idAsset,
-			'imgPath'	=> TodoyuAssetsPreviewManager::getPreviewImage($idAsset)
+			'path'		=>	$previewAttributes['path'],
+			'width'		=>	$previewAttributes['width'],
+			'height'	=>	$previewAttributes['height'],
 		);
 
 		return Todoyu::render($tmpl, $data);

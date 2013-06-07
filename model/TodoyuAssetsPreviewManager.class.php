@@ -30,7 +30,7 @@ class TodoyuAssetsPreviewManager {
 	 * Create scaled version of given (image) asset for preview, return it's path
 	 *
 	 * @param	Integer		$idAsset
-	 * @return	String		Path of the preview image
+	 * @return	Array		Attributes of the preview image: path, width, height
 	 */
 	public static function getPreviewImage($idAsset) {
 		$idAsset= intval($idAsset);
@@ -52,14 +52,24 @@ class TodoyuAssetsPreviewManager {
 		$pathAsset	= $asset->getFileStoragePath();
 
 		if( !file_exists($previewImagePath) ) {
-			$Resize		= new TodoyuAssetsImageResizer($pathAsset);
-			$extConf = TodoyuAssetsManager::getExtConf();
+			$Resize	= new TodoyuAssetsImageResizer($pathAsset);
+			$extConf= TodoyuAssetsManager::getExtConf();
 
 			$Resize->resizeImage($extConf['preview_max_width'], $extConf['preview_max_height']);
 			$Resize->saveImage($previewImagePath, $extConf['preview_quality']);
+			$width	= $Resize->getScaledWidth();
+			$height = $Resize->getScaledHeight();
+		} else {
+			$Resize	= new TodoyuAssetsImageResizer($previewImagePath);
+			$width	= $Resize->getWidth();
+			$height = $Resize->getHeight();
 		}
 
-		return TodoyuFilemanager::pathWeb($previewImagePath);
+		return array(
+			'path' 	=> TodoyuFilemanager::pathWeb($previewImagePath),
+			'width'	=> $width,
+			'height'=> $height,
+		);
 	}
 
 

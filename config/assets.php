@@ -43,7 +43,7 @@ Todoyu::$CONFIG['EXT']['assets']['assets']	= array(
 			'position'	=> 120
 		),
 		array(
-			'file'		=> 'ext/assets/asset/js/Preview.js',
+			'file'		=> 'ext/assets/asset/js/QuickInfoAsset.js',
 			'position'	=> 120
 		),
 		array(
@@ -58,6 +58,12 @@ Todoyu::$CONFIG['EXT']['assets']['assets']	= array(
 	'css'	=> array(
 		array(
 			'file'	=> 'ext/assets/asset/css/ext.scss'
+		),
+		array(
+			'file'	=> 'ext/assets/asset/css/list.scss'
+		),
+		array(
+			'file'	=> 'ext/assets/asset/css/task.scss'
 		),
 		array(
 			'file'	=> 'ext/assets/asset/css/mime.scss'

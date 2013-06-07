@@ -111,6 +111,8 @@ Todoyu.Ext.assets.List = {
 	 * @param	{String}	recordType
 	 */
 	addListObservers: function(idRecord, recordType) {
+		Todoyu.Ext.assets.QuickInfoAsset.install();
+
 			// Check all button
 		$(recordType + '-' + idRecord + '-assets-checkallbox').on('click', this.toggleSelectAll.bind(this, idRecord, recordType));
 
@@ -125,8 +127,7 @@ Todoyu.Ext.assets.List = {
 				// Click 'filename': download asset
 			row.down('.filename a').on('click', 'td', this.handleDownloadClick.bind(this, idAsset));
 
-				// Install preview on hover over icon and filename of images
-			this.addObserveForPreview(row, idAsset);
+				// @note asset preview is handled via quickInfo
 
 				// Click 'visibility': toggle asset visibility
 			if( row.down('a.visibility') ) {
@@ -146,26 +147,6 @@ Todoyu.Ext.assets.List = {
 	},
 
 
-
-	/**
-	 * Install preview on hover over icon and filename (of image assets) in given row
-	 *
-	 * @param	{Element}	row
-	 * @param	{Number}	idAsset
-	 */
-	addObserveForPreview: function(row, idAsset) {
-		var mimeTypeElement = row.down('.mimetype');
-
-		if( mimeTypeElement.hasClassName('mimeGIF') || mimeTypeElement.hasClassName('mimeJPG') || mimeTypeElement.hasClassName('mimePNG') ) {
-			var optionFilename = row.down('.filename a');
-			optionFilename.on('mouseover', 'td', this.handleShowPreview.bind(this, idAsset));
-			optionFilename.on('mouseout', 'td', this.handleHidePreview.bind(this, idAsset));
-
-			var optionMimeIcon = row.down('.mimetype span');
-			optionMimeIcon.on('mouseover', 'td', this.handleShowPreview.bind(this, idAsset));
-			optionMimeIcon.on('mouseout', 'td', this.handleHidePreview.bind(this, idAsset));
-		}
-	},
 
 
 
@@ -228,31 +209,6 @@ Todoyu.Ext.assets.List = {
 		} else {
 			this.check(idAsset, recordType);
 		}
-	},
-
-
-
-	/**
-	 * Display asset info
-	 *
-	 * @method	handleShowPreview
-	 * @param	{Number}	idAsset
-	 * @param	{Event}		event
-	 */
-	handleShowPreview: function(idAsset, event) {
-		this.ext.Preview.show(idAsset, event);
-	},
-
-
-
-	/**
-	 * Hide asset info
-	 *
-	 * @method	handleShowPreview
-	 * @param	{Number}	idAsset
-	 */
-	handleHidePreview: function(idAsset) {
-		this.ext.Preview.hide(idAsset);
 	},
 
 
@@ -387,7 +343,6 @@ Todoyu.Ext.assets.List = {
 		checkedOnly	= checkedOnly ? checkedOnly : false;
 
 		var list	= $(recordType + '-' + idRecord + '-assets-tablebody');
-		console.log(idRecord, recordType);
 		var selector	= checkedOnly ? 'input:checked' : 'input';
 
 		return list.select(selector);

@@ -428,4 +428,20 @@ class TodoyuAssetsImageResizer {
 		return 9 - $scaleQuality;
 	}
 
+
+
+	/**
+	 * Check whether the given asset is an image than GD lib can handle
+	 *
+	 * @param	Integer		$idAsset
+	 * @return	Boolean
+	 */
+	public static function isGDcompatibleImage($idAsset) {
+		$idAsset		= intval($idAsset);
+		$asset 			= TodoyuAssetsAssetManager::getAsset($idAsset);
+		$fileExtension	= strtolower(TodoyuFileManager::getFileExtension($asset->getFilename()));
+
+		return in_array($fileExtension, array('gif', 'jpeg', 'jpg', 'png'));
+	}
+
 }
