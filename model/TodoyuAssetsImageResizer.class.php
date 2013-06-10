@@ -128,21 +128,33 @@ class TodoyuAssetsImageResizer {
 	 * @param	Integer		$width
 	 * @param	Integer		$height
 	 * @param	Boolean		[$crop]
+	 * @return	Boolean
 	 */
 	public function resizeImage($width, $height, $crop= false) {
 			// Get optimal width and height - based on $option
 		$optionArray	= $this->getDimensions($width, $height, $crop ? 'crop' : 'auto');
 
-		$this->newWidth 	= $optionArray['optimalWidth'];
-		$this->newHeight	= $optionArray['optimalHeight'];
+		$this->newWidth 	= intval($optionArray['optimalWidth']);
+		$this->newHeight	= intval($optionArray['optimalHeight']);
+
+		if( $this->newWidth === 0 || $this->newHeight === 0 ) {
+			return false;
+		}
 
 			// Resample - create image canvas of x, y size
 		$this->imageScaled	= imagecreatetruecolor($this->newWidth, $this->newHeight);
+
+		if( gettype($this->imageScaled) !== 'resource' ) {
+			return false;
+		}
+
 		imagecopyresampled($this->imageScaled, $this->image, 0, 0, 0, 0, $this->newWidth, $this->newHeight, $this->width, $this->height);
 
 		if( $crop ) {
 			$this->crop($this->newWidth, $this->newHeight, $width, $height);
 		}
+
+		return true;
 	}
 
 
@@ -378,8 +390,13 @@ class TodoyuAssetsImageResizer {
 	 *
 	 * @param	String	$savePath			Store path including filename of image to be saved
 	 * @param	String	[$imageQuality]
+	 * @return	Boolean
 	 */
 	public function saveImage($savePath, $imageQuality = '100') {
+		if( gettype($this->imageScaled) !== 'resource' ) {
+			return false;
+		}
+
 		$extension	= strtolower(TodoyuFilemanager::getFileExtension($savePath));
 		$imageTypes	= imagetypes();
 
@@ -410,6 +427,8 @@ class TodoyuAssetsImageResizer {
 		}
 
 		imagedestroy($this->imageScaled);
+
+		return true;
 	}
 
 

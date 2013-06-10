@@ -27,7 +27,7 @@
 					<td class="checkbox">
 						<input type="checkbox" id="{$recordType}-asset-{$asset.id}-checkbox" value="{$asset.id}" />
 					</td>
-					<td class="mimetype mime{strtoupper $asset.file_ext} {if isAssetGDcompatibleImage($asset.id)}quickInfoAsset){/if}" id="asset-{$asset.id}-mime">
+					<td class="mimetype mime{strtoupper $asset.file_ext} {if isAssetGDcompatibleImage($asset.id)}quickInfoAsset{/if}" id="asset-{$asset.id}-mime">
 						<span class="icon"></span>
 					</td>
 					<td class="filename {if isAssetGDcompatibleImage($asset.id)}quickInfoAsset{/if}" id="asset-{$asset.id}-filename">
