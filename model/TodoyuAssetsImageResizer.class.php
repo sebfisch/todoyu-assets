@@ -85,8 +85,16 @@ class TodoyuAssetsImageResizer {
 	 */
 	function __construct($filename) {
 		$this->image	= $this->openImage($filename);
-		$this->width	= imagesx($this->image);
-		$this->height	= imagesy($this->image);
+		$this->initSize();
+	}
+
+
+
+	/**
+	 * @return	Boolean
+	 */
+	public function isValidImage() {
+		return gettype($this->image) == 'resource';
 	}
 
 
@@ -103,7 +111,11 @@ class TodoyuAssetsImageResizer {
 		switch($extension) {
 			case 'jpg':
 			case 'jpeg':
+				// Disable error handler, to suppress confusing error-messages.
+				// Sometimes the library can not handle not well formed jpeg-files.
+				TodoyuErrorHandler::setActive(false);
 				$image	= @imagecreatefromjpeg($filename);
+				TodoyuErrorHandler::setActive(true);
 				break;
 			
 			case 'gif':
@@ -131,6 +143,10 @@ class TodoyuAssetsImageResizer {
 	 * @return	Boolean
 	 */
 	public function resizeImage($width, $height, $crop= false) {
+		if( !$this->isValidImage() ) {
+			return false;
+		}
+
 			// Get optimal width and height - based on $option
 		$optionArray	= $this->getDimensions($width, $height, $crop ? 'crop' : 'auto');
 
@@ -461,6 +477,18 @@ class TodoyuAssetsImageResizer {
 		$fileExtension	= strtolower(TodoyuFileManager::getFileExtension($asset->getFilename()));
 
 		return in_array($fileExtension, array('gif', 'jpeg', 'jpg', 'png'));
+	}
+
+
+
+	/**
+	 *
+	 */
+	protected function initSize() {
+		if( $this->isValidImage() ) {
+			$this->width = imagesx($this->image);
+			$this->height = imagesy($this->image);
+		}
 	}
 
 }

@@ -1,1 +1,7 @@
-<img src="{$path}" width="{$width}" height="{$height}" />
+{if $path != false}
+	<img src="{$path}" width="{$width}" height="{$height}" />
+{else}
+	<p>{Label LLL:assets.ext.preview.notpossible}</p>
+{/if}
+
+

@@ -34,6 +34,8 @@ class TodoyuAssetsPreviewManager {
 	 */
 	public static function getPreviewImage($idAsset) {
 		$idAsset= intval($idAsset);
+		$width = 0;
+		$height = 0;
 
 		$asset		= TodoyuAssetsAssetManager::getAsset($idAsset);
 		$idParent	= $asset->getParentID();
@@ -55,10 +57,12 @@ class TodoyuAssetsPreviewManager {
 			$Resize	= new TodoyuAssetsImageResizer($pathAsset);
 			$extConf= TodoyuAssetsManager::getExtConf();
 
-			$Resize->resizeImage($extConf['preview_max_width'], $extConf['preview_max_height']);
-			$Resize->saveImage($previewImagePath, $extConf['preview_quality']);
-			$width	= $Resize->getScaledWidth();
-			$height = $Resize->getScaledHeight();
+			if( $Resize->isValidImage() ) {
+				$Resize->resizeImage($extConf['preview_max_width'], $extConf['preview_max_height']);
+				$Resize->saveImage($previewImagePath, $extConf['preview_quality']);
+				$width	= $Resize->getScaledWidth();
+				$height = $Resize->getScaledHeight();
+			}
 		} else {
 			$Resize	= new TodoyuAssetsImageResizer($previewImagePath);
 			$width	= $Resize->getWidth();

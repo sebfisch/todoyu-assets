@@ -187,10 +187,12 @@ class TodoyuAssetsAssetRenderer {
 		$idAsset			= intval($idAsset);
 		$previewAttributes	= TodoyuAssetsPreviewManager::getPreviewImage($idAsset);
 
+		$path = file_exists($previewAttributes['path']) ? $previewAttributes['path'] : false;
+
 		$tmpl	= 'ext/assets/view/preview.tmpl';
 		$data	= array(
-			'idAsset'	=> $idAsset,
-			'path'		=>	$previewAttributes['path'],
+			'idAsset'	=>	$idAsset,
+			'path'		=>	$path,
 			'width'		=>	$previewAttributes['width'],
 			'height'	=>	$previewAttributes['height'],
 		);

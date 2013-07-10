@@ -36,4 +36,5 @@
 	<label index="type.task">Aufgaben-Anhänge</label>
 	<label index="type.comment">Kommentar-Anhänge</label>
 	<label index="type.project">Projekt-Anhänge</label>
+	<label index="preview.notpossible">Die Anzeige der Vorschau ist nicht möglich!</label>
 </labels>
