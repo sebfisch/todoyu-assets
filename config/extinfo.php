@@ -33,10 +33,10 @@ Todoyu::$CONFIG['EXT']['assets']['info']	= array(
 	'state'			=> 'stable',
 	'version'		=> '1.3.1',
 	'constraints'	=> array(
-			'core'		=> '2.3.0',
+			'core'		=> '2.3.1',
 			'depends'	=> array(
-				'contact'	=> '1.2.0',
-				'project'	=> '1.3.0',
+				'contact'	=> '1.3.1',
+				'project'	=> '1.5.1',
 	)),
 	'urlDocumentation'	=> 'http://doc.todoyu.com/?assets'
 );
