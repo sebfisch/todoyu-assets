@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="ext.title">Aset Tugas</label>
+	<label index="search.label">Aset</label>
+	<label index="tab.noAssets">Tambahkan Aset Pertama</label>
+	<label index="tab.asset">Aset</label>
+	<label index="tab.assets">Aset</label>
+	<label index="tab.toggle">Asets On/Off</label>
+	<label index="list.header.uploaddate">Unggah Tanggal</label>
+	<label index="alt.download">Unduh Berkas</label>
+	<label index="alt.uploadedby">Diunggah oleh</label>
+	<label index="alt.delete">Hapus Berkas</label>
+	<label index="alt.changeVisibility">Ubah visibility</label>
+	<label index="alt.selectall">Pilih Semua/Tidak satupun</label>
+	<label index="upload.selectfile">Pilih berkas untuk mengunggah</label>
+	<label index="upload.filename">Nama Berkas</label>
+	<label index="upload.new">Tambah Berkas Baru</label>
+	<label index="delete.confirm">Apakah Anda benar-benar ingin menghapus berkas ini?</label>
+	<label index="delete.notifiy.success">Berkas telah dihapus.</label>
+	<label index="togglepublic.notifiy.ispublic">Berkas ini sekarang terlihat juga bagi pelanggan yang dapat melihat tugas.</label>
+	<label index="togglepublic.notifiy.notpublic">Berkas ini sekarang tidak terlihat bagi pelanggan yang dapat melihat tugas.</label>
+	<label index="download.selection">Unduh Seleksi</label>
+	<label index="download.normal">Anda hanya memilih satu file -> download file yang normal</label>
+	<label index="download.compressed">Berkas yang dipilih telah dikemas ke dalam sebuah arsip untuk diunduh</label>
+	<label index="error.minimumFile">Harap pilih setidaknya satu berkas</label>
+	<label index="error.download">Unduh aset tidak mungkin</label>
+	<label index="error.access">Tidak ada akses ke aset ini</label>
+	<label index="maxFileSizeExceeded">Berkas '#{filename}' telah melampaui ukuran Berkas maksimum yang diizinkan (#{maxFileSize}) untuk diunggah</label>
+	<label index="maxLengthFileNameExceeded">Berkas '#{filename}' telah melampaui maksimum yang diizinkan panjang (#{maxLengthFileName}) namanya untuk mengunggah</label>
+	<label index="uploadFailed">Pengunggahan berkas '#{filename}' gagal</label>
+	<label index="uploadOk">Berkas telah diunggah.</label>
+	<label index="uploadCanceled">Pengunggahan telah di batalkan</label>
+	<label index="locked">Tugas ini terkunci. Anda tidak dapat menambahkan Berkas.</label>
+	<label index="task.icon">Tugas memiliki aset</label>
+	<label index="contextmenu.task.addasset">Aset</label>
+	<label index="type.task">Aset Tugas</label>
+	<label index="type.comment">Aset komentar</label>
+	<label index="type.project">Aset proyek</label>
+</labels>

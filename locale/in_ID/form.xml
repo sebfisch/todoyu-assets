@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="legend.basics">Aset Tugas</label>
+	<label index="legend.inlineAssetUpload">Melampirkan berkas ke tugas ini</label>
+	<label index="assets.button.delete">Hapus Aset Terpilih</label>
+	<label index="assets.button.upload">Unggah Aset Baru</label>
+</labels>

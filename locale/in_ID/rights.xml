@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="general">Pengaturan Umum</label>
+	<label index="general.use">Gunakan Fungsi Aset</label>
+	<label index="asset">Aset</label>
+	<label index="asset.seeAll">Lihat Semua Aset</label>
+	<label index="asset.delete">Hapus Aset</label>
+</labels>
